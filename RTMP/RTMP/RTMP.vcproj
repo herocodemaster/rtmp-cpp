@@ -177,11 +177,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\handshake_manager.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\mime_types.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\posix_main.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\protocol_manager.cpp"
 				>
 			</File>
 			<File
@@ -219,11 +227,27 @@
 				>
 			</File>
 			<File
+				RelativePath=".\constants.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\handshake_manager.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\header.hpp"
 				>
 			</File>
 			<File
+				RelativePath=".\MessageHeader.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\mime_types.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\protocol_manager.hpp"
 				>
 			</File>
 			<File

@@ -32,7 +32,8 @@ void connection::handle_read(const boost::system::error_code& e, std::size_t byt
 	if (!e)
 	{
 		boost::tribool result;
-		boost::tie(result, boost::tuples::ignore) = request_parser_.parse(request_, buffer_.data(), buffer_.data() + bytes_transferred);
+		//boost::tie(result, boost::tuples::ignore) = request_parser_.parse(request_, buffer_.data(), buffer_.data() + bytes_transferred);
+		//this->handshakeManager_ = NULL;
 
 		if (result)
 		{
