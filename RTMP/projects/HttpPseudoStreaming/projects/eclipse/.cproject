@@ -14,11 +14,11 @@
 </extensions>
 </storageModule>
 <storageModule moduleId="cdtBuildSystem" version="4.0.0">
-<configuration artifactName="temp" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.mingw.exe.debug.192955624" name="Debug" parent="cdt.managedbuild.config.gnu.mingw.exe.debug">
+<configuration artifactName="HttpPseudoStreaming" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.mingw.exe.debug.192955624" name="Debug" parent="cdt.managedbuild.config.gnu.mingw.exe.debug">
 <folderInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.192955624." name="/" resourcePath="">
 <toolChain id="cdt.managedbuild.toolchain.gnu.mingw.exe.debug.1312472175" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.exe.debug">
 <targetPlatform id="cdt.managedbuild.target.gnu.platform.mingw.exe.debug.683882022" name="Debug Platform" superClass="cdt.managedbuild.target.gnu.platform.mingw.exe.debug"/>
-<builder buildPath="${workspace_loc:/temp/Debug}" id="cdt.managedbuild.tool.gnu.builder.mingw.base.1079033697" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="CDT Internal Builder" superClass="cdt.managedbuild.tool.gnu.builder.mingw.base"/>
+<builder autoBuildTarget="" buildPath="${workspace_loc:/HttpPseudoStreaming/Debug}" cleanBuildTarget="" enableAutoBuild="false" enableCleanBuild="true" enabledIncrementalBuild="true" id="cdt.managedbuild.tool.gnu.builder.mingw.base.1079033697" incrementalBuildTarget="" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="CDT Internal Builder" parallelizationNumber="1" superClass="cdt.managedbuild.tool.gnu.builder.mingw.base"/>
 <tool id="cdt.managedbuild.tool.gnu.assembler.mingw.exe.debug.919478578" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.exe.debug">
 <inputType id="cdt.managedbuild.tool.gnu.assembler.input.1412175778" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 </tool>
@@ -28,6 +28,7 @@
 <option id="gnu.cpp.compiler.mingw.exe.debug.option.debugging.level.1413270621" name="Debug Level" superClass="gnu.cpp.compiler.mingw.exe.debug.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 <option id="gnu.cpp.compiler.option.include.paths.1029675542" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
 <listOptionValue builtIn="false" value="&quot;C:\Program Files\boost\boost_1_36_0&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${workspace_loc:/HttpPseudoStreaming/include}&quot;"/>
 </option>
 <option id="gnu.cpp.compiler.option.preprocessor.undef.1095875677" name="Undefined symbols (-U)" superClass="gnu.cpp.compiler.option.preprocessor.undef" valueType="undefDefinedSymbols">
 <listOptionValue builtIn="false" value="_WIN32"/>
@@ -63,8 +64,9 @@
 </toolChain>
 </folderInfo>
 <sourceEntries>
-<entry excluding="src" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+<entry excluding="include|src" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 <entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
+<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="include"/>
 </sourceEntries>
 </configuration>
 </storageModule>
@@ -332,11 +334,11 @@
 </extensions>
 </storageModule>
 <storageModule moduleId="cdtBuildSystem" version="4.0.0">
-<configuration artifactName="temp" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.mingw.exe.release.1665242652" name="Release" parent="cdt.managedbuild.config.gnu.mingw.exe.release">
+<configuration artifactName="HttpPseudoStreaming" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.mingw.exe.release.1665242652" name="Release" parent="cdt.managedbuild.config.gnu.mingw.exe.release">
 <folderInfo id="cdt.managedbuild.config.gnu.mingw.exe.release.1665242652." name="/" resourcePath="">
 <toolChain id="cdt.managedbuild.toolchain.gnu.mingw.exe.release.918189694" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.exe.release">
 <targetPlatform id="cdt.managedbuild.target.gnu.platform.mingw.exe.release.1917407243" name="Debug Platform" superClass="cdt.managedbuild.target.gnu.platform.mingw.exe.release"/>
-<builder buildPath="${workspace_loc:/temp/Release}" id="cdt.managedbuild.tool.gnu.builder.mingw.base.333972776" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="CDT Internal Builder" superClass="cdt.managedbuild.tool.gnu.builder.mingw.base"/>
+<builder buildPath="${workspace_loc:/HttpPseudoStreaming/Release}" id="cdt.managedbuild.tool.gnu.builder.mingw.base.333972776" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="CDT Internal Builder" superClass="cdt.managedbuild.tool.gnu.builder.mingw.base"/>
 <tool id="cdt.managedbuild.tool.gnu.assembler.mingw.exe.release.491326266" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.exe.release">
 <inputType id="cdt.managedbuild.tool.gnu.assembler.input.1791746960" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 </tool>

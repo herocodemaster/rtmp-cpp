@@ -5,7 +5,7 @@ UnitCount=18
 Type=1
 Ver=1
 ObjFiles=
-Includes="C:\Program Files\boost\boost_1_36_0"
+Includes="C:\Program Files\boost\boost_1_36_0";"C:\Documents and Settings\TR-ARG03-NewEmp\My Documents\Development\CPP\rtmp-cpp\RTMP\projects\HttpPseudoStreaming\include"
 Libs="C:\Program Files\boost\boost_1_36_0\stage\lib"
 PrivateResource=
 ResourceIncludes=
@@ -50,7 +50,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit3]
-FileName=..\..\src\connection.hpp
+FileName=..\..\include\connection.hpp
 CompileCpp=1
 Folder=HttpPseudoStreaming
 Compile=1
@@ -70,7 +70,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit5]
-FileName=..\..\src\connection_manager.hpp
+FileName=..\..\include\connection_manager.hpp
 CompileCpp=1
 Folder=HttpPseudoStreaming
 Compile=1
@@ -80,7 +80,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit6]
-FileName=..\..\src\header.hpp
+FileName=..\..\include\header.hpp
 CompileCpp=1
 Folder=HttpPseudoStreaming
 Compile=1
@@ -100,7 +100,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit8]
-FileName=..\..\src\mime_types.hpp
+FileName=..\..\include\mime_types.hpp
 CompileCpp=1
 Folder=HttpPseudoStreaming
 Compile=1
@@ -130,7 +130,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit11]
-FileName=..\..\src\reply.hpp
+FileName=..\..\include\reply.hpp
 CompileCpp=1
 Folder=HttpPseudoStreaming
 Compile=1
@@ -140,7 +140,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit12]
-FileName=..\..\src\request.hpp
+FileName=..\..\include\request.hpp
 CompileCpp=1
 Folder=HttpPseudoStreaming
 Compile=1
@@ -160,7 +160,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit14]
-FileName=..\..\src\request_handler.hpp
+FileName=..\..\include\request_handler.hpp
 CompileCpp=1
 Folder=HttpPseudoStreaming
 Compile=1
@@ -180,7 +180,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit16]
-FileName=..\..\src\request_parser.hpp
+FileName=..\..\include\request_parser.hpp
 CompileCpp=1
 Folder=HttpPseudoStreaming
 Compile=1
@@ -200,7 +200,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit18]
-FileName=..\..\src\server.hpp
+FileName=..\..\include\server.hpp
 CompileCpp=1
 Folder=HttpPseudoStreaming
 Compile=1
