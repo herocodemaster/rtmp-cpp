@@ -5,6 +5,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RTMP", "RTMP\RTMP.vcproj", 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HTTP_Server", "HTTP_Server\HTTP_Server.vcproj", "{6CC36E75-B515-4D58-90CA-BE44868F44FF}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HttpPseudoStreaming", "HttpPseudoStreaming\HttpPseudoStreaming.vcproj", "{9B35BE34-6656-4430-A95B-611D94B6DA21}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -23,6 +25,10 @@ Global
 		{6CC36E75-B515-4D58-90CA-BE44868F44FF}.Debug|Win32.Build.0 = Debug|Win32
 		{6CC36E75-B515-4D58-90CA-BE44868F44FF}.Release|Win32.ActiveCfg = Release|Win32
 		{6CC36E75-B515-4D58-90CA-BE44868F44FF}.Release|Win32.Build.0 = Release|Win32
+		{9B35BE34-6656-4430-A95B-611D94B6DA21}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9B35BE34-6656-4430-A95B-611D94B6DA21}.Debug|Win32.Build.0 = Debug|Win32
+		{9B35BE34-6656-4430-A95B-611D94B6DA21}.Release|Win32.ActiveCfg = Release|Win32
+		{9B35BE34-6656-4430-A95B-611D94B6DA21}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
