@@ -5,10 +5,13 @@
 #include <boost/bind.hpp>
 #include "server.hpp"
 
+
 #if !defined(_WIN32)
 
 #include <pthread.h>
 #include <signal.h>
+
+
 
 int main(int argc, char* argv[])
 {
