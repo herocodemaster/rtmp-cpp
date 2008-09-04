@@ -1,7 +1,16 @@
 TODO List:
 
-	- Tratar de hacer andar el servidor escrito en Ruby con cualquier FLV player
 	- Crear un FLV Player en Flex 3 (Bajar y probar)
-	- Probar la aplicacion Simple Subscriber de Red5
+
+En Proceso:
 	- Armar proyecto, compilar y debuggear ffmpeg
-	
+	- Probar Red5 StreamPlayer y snifear
+
+
+
+TERMINADOS:	
+	- Probar la aplicacion Simple Subscriber de Red5
+
+
+DESCARTADOS:
+	- Tratar de hacer andar el servidor escrito en Ruby con cualquier FLV player
