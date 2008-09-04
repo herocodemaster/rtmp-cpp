@@ -1,0 +1,13 @@
+<root>
+<registars>
+	<registar id="reg_01">
+		<virtualhost>
+			<appliRoot root="./appli_root"/>
+		</virtualhost>
+	</registar>
+</registars>
+
+<servers>
+	<RTMPserver host="0.0.0.0" port="1935" registar="reg_01"/>
+</servers>
+<root>
