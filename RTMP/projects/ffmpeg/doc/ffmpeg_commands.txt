@@ -1,0 +1,63 @@
+----------------------------------------------------------------------------------------
+ULTIMO COMANDO JPG's A FLV:
+	   
+ffmpeg -i %03d.jpg -ab 56 -ar 22050 -b 500 -r 15 -s 320×240 output.flv	   
+
+----------------------------------------------------------------------------------------
+
+
+ffmpeg -i %03d.jpg  -ar 22050 -ab 32 -f flv -s 320x240 output.flv
+ffmpeg -i %03d.jpg  -ar 22050        -f flv -s 320x240 output.flv
+
+ffmpeg -r 12 -i nuxified%05d.png -y -an nuxified.avi
+
+
+
+ffmpeg -r 12 -i %03d.jpg -y -an output.avi
+ffmpeg -r 12 -i %03d.jpg -y -an output.mpg
+ffmpeg -r 12 -i %03d.jpg  -ar 22050  -f flv -s 320x240 output.flv
+ffmpeg -t 80 -i %03d.jpg -y -an output.mpg
+
+--
+ffmpeg -i test.mpg             -ab 56 -ar 44100 -b 200 - r 15 -s 320x240 -f  flv output.flv
+ffmpeg -i "MovieToConvert.wmv" -y -f flv -ar 44100 -ab 128 -ac 1 -acodec mp3 -vol 100 "ConvertedMovie.flv"
+--
+-----------------------
+
+ffmpeg -b 2500       -i %03d.jpg  output.mpg
+ffmpeg -b 2500 -r 12 -i %03d.jpg  output.mpg
+
+------------------------------------------------------------------------------------------------------------------------
+
+ffmpeg -r 10 -b 1800 -i %03d.jpg output.mp4
+ffmpeg -i %03d.jpg -ab 56 -ar 22050 -b 500 -r 15 -s 320×240 output.flv
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+# FFmpeg:
+
+    * crop a video file which will have the same quality as the input file
+          o ffmpeg -i inputfile.avi -croptop 30 -cropbottom 30 -cropleft 0 -cropright 0 -sameq cropped.avi
+    * Cut a video file with arbritrary input format using ffmpeg (cutted video will have the same quality as the input file)
+          o ffmpeg -i inputfile -ss starttime -t duration -sameq outputfile
+    * Create a flash video (.flv) file for web streaming from a video source using ffmpeg
+          o ffmpeg -i inputfile -ab 56 -ar 22050 -b 500 -r 15 -s 320×240 outputfile.flv
+    * Create a snaphshot of a flash video (.flv) file for web streaming from a video source using ffmpeg
+          o ffmpeg -i inputfile -vcodec mjpeg -vframes 1 -an -f rawvideo -s 320×240 snapshot.jpg
+    * Create a jpeg snapshot every 12.5 seconds (1/0.08) from a video source using ffmpeg
+          o ffmpeg -i inputfile -r 0.08 -s 320x240 f%06d.jpg
+    * Create a single jpeg snapshot from a video source using ffmpeg
+          o ffmpeg -i inputfile -f singlejpeg -t 0.001 -s 320x240 snapshot.jpg
+    * Create an MP4 video file from multiple jpeg source files using ffmpeg
+          o ffmpeg -r 10 -b 1800 -i %03d.jpg outputfile.mp4
+    * After exporting an iMovie project to an avi file, it might happen that all video clips (e.g. avi, mov, xvid, ...) imported to the iMovie application do not appear in the final output. To be sure that everythings works fine, you should convert your clips to the Sony DV format before importing them to the iMovie application. This can be easily done by using ffmpeg
+          o ffmpeg -i inputfile -target dv -aspect 16:9 outputfilename.dv
+    * If you have to work with panavision video clips (e.g. 640x272 video files with an 2.35 aspect ratio), you have to add black borders (letterboxing) before converting them to DV format, as ffmpeg can either convert the videos to 4:3 or 16:9 aspect ratio in DV format.
+          o 1. padding: ffmpeg -i inputfile -padtop 44 -padbottom 44 -sameq paddedoutput
+          o 2. converting: ffmpeg -i paddedoutput -target dv -aspect 16:9 outputfilename.dv
+    * Another FFmpeg HowTo Page ( http://howto-pages.org/ffmpeg/ )
+    
+
