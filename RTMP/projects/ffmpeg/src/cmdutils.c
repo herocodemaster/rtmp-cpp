@@ -40,9 +40,13 @@
 
 double parse_number_or_die( const char *context, const char *numstr, int type, double min, double max )
 {
+    printf("********************* Init -> double parse_number_or_die( const char *context, const char *numstr, int type, double min, double max )");
+
+
     char *tail;
     const char *error;
     double d = strtod(numstr, &tail);
+
     if (*tail)
         error = "Expected number for %s but found: %s\n";
     else if (d < min || d > max)
@@ -50,24 +54,40 @@ double parse_number_or_die( const char *context, const char *numstr, int type, d
     else if (type == OPT_INT64 && (int64_t) d != d)
         error = "Expected int64 for %s but found %s\n";
     else
+    {
+        printf("********************* Exit -> double parse_number_or_die( const char *context, const char *numstr, int type, double min, double max )");
         return d;
+    }
+
     fprintf(stderr, error, context, numstr, min, max);
+
+    printf("********************* Exit -> double parse_number_or_die( const char *context, const char *numstr, int type, double min, double max )");
     exit(1);
+
 }
 
 int64_t parse_time_or_die( const char *context, const char *timestr, int is_duration )
 {
+    printf("********************* Init -> int64_t parse_time_or_die( const char *context, const char *timestr, int is_duration )");
+
+
     int64_t us = parse_date(timestr, is_duration);
     if (us == INT64_MIN)
     {
         fprintf(stderr, "Invalid %s specification for %s: %s\n", is_duration ? "duration" : "date", context, timestr);
+        printf("********************* Exit -> int64_t parse_time_or_die( const char *context, const char *timestr, int is_duration )");
         exit(1);
     }
+
+    printf("********************* Exit -> int64_t parse_time_or_die( const char *context, const char *timestr, int is_duration )");
     return us;
 }
 
 void show_help_options( const OptionDef *options, const char *msg, int mask, int value )
 {
+    printf("********************* Init -> void show_help_options( const OptionDef *options, const char *msg, int mask, int value )");
+
+
     const OptionDef *po;
     int first;
 
@@ -91,16 +111,27 @@ void show_help_options( const OptionDef *options, const char *msg, int mask, int
             printf("-%-17s  %s\n", buf, po->help);
         }
     }
+
+    printf("********************* Exit -> void show_help_options( const OptionDef *options, const char *msg, int mask, int value )");
+
 }
 
 static const OptionDef* find_option( const OptionDef *po, const char *name )
 {
+    printf("********************* Init -> static const OptionDef* find_option( const OptionDef *po, const char *name )");
+
+
     while (po->name != NULL)
     {
         if (!strcmp(name, po->name))
+        {
             break;
+        }
         po++;
     }
+
+    printf("********************* Exit -> static const OptionDef* find_option( const OptionDef *po, const char *name )");
+
     return po;
 }
 
@@ -110,7 +141,7 @@ void parse_options( int argc, char **argv, const OptionDef *options, void(* pars
     int optindex, handleoptions = 1;
     const OptionDef *po;
 
-    printf("Init -> void parse_options(int argc, char **argv, const OptionDef *options, void (* parse_arg_function)(const char*))");
+    printf("********************* Init -> void parse_options(int argc, char **argv, const OptionDef *options, void (* parse_arg_function)(const char*))");
 
     /* parse options */
     optindex = 1;
@@ -136,6 +167,7 @@ void parse_options( int argc, char **argv, const OptionDef *options, void(* pars
             if (!po->name)
             {
                 unknown_opt: fprintf(stderr, "%s: unrecognized option '%s'\n", argv[0], opt);
+                printf("********************* Exit -> void parse_options(int argc, char **argv, const OptionDef *options, void (* parse_arg_function)(const char*))");
                 exit(1);
             }
 
@@ -146,6 +178,7 @@ void parse_options( int argc, char **argv, const OptionDef *options, void(* pars
                 if (!arg)
                 {
                     fprintf(stderr, "%s: missing argument for option '%s'\n", argv[0], opt);
+                    printf("********************* Exit -> void parse_options(int argc, char **argv, const OptionDef *options, void (* parse_arg_function)(const char*))");
                     exit(1);
                 }
             }
@@ -186,6 +219,7 @@ void parse_options( int argc, char **argv, const OptionDef *options, void(* pars
 
             if (po->flags & OPT_EXIT)
             {
+                printf("********************* Exit -> void parse_options(int argc, char **argv, const OptionDef *options, void (* parse_arg_function)(const char*))");
                 exit(0);
             }
         }
@@ -198,12 +232,13 @@ void parse_options( int argc, char **argv, const OptionDef *options, void(* pars
         }
     }
 
-    printf("Exit -> void parse_options(int argc, char **argv, const OptionDef *options, void (* parse_arg_function)(const char*))");
-
+    printf("********************* Exit -> void parse_options(int argc, char **argv, const OptionDef *options, void (* parse_arg_function)(const char*))");
 }
 
 void print_error( const char *filename, int err )
 {
+    printf("********************* Init -> void print_error( const char *filename, int err )");
+
     switch (err)
     {
         case AVERROR_NUMEXPECTED:
@@ -237,6 +272,8 @@ void print_error( const char *filename, int err )
             fprintf(stderr, "%s: Error while opening file\n", filename);
             break;
     }
+
+    printf("********************* Exit -> void print_error( const char *filename, int err )");
 }
 
 #define PRINT_LIB_VERSION(outstream,libname,LIBNAME,indent) \
@@ -247,6 +284,9 @@ void print_error( const char *filename, int err )
 
 void print_all_lib_versions( FILE* outstream, int indent )
 {
+
+    printf("********************* Init -> void print_all_lib_versions( FILE* outstream, int indent )");
+
     unsigned int version;
     PRINT_LIB_VERSION(outstream, avutil, AVUTIL, indent);
     PRINT_LIB_VERSION(outstream, avcodec, AVCODEC, indent);
@@ -258,10 +298,16 @@ void print_all_lib_versions( FILE* outstream, int indent )
 #if ENABLE_SWSCALE
     PRINT_LIB_VERSION(outstream, swscale, SWSCALE, indent);
 #endif
+
+
+    printf("********************* Exit -> void print_all_lib_versions( FILE* outstream, int indent )");
+
 }
 
 void show_banner( void )
 {
+    printf("********************* Init -> void show_banner( void )");
+
     fprintf(stderr, "%s version " FFMPEG_VERSION ", Copyright (c) %d-2008 Fabrice Bellard, et al.\n", program_name, program_birth_year);
     fprintf(stderr, "  configuration: " FFMPEG_CONFIGURATION "\n");
     print_all_lib_versions(stderr, 1);
@@ -271,16 +317,26 @@ void show_banner( void )
 #else
     fprintf(stderr, ", using a non-gcc compiler\n");
 #endif
+
+    printf("********************* Exit -> void show_banner( void )");
+
 }
 
 void show_version( void )
 {
+    printf("********************* Init -> void show_version( void )");
+
     printf("%s " FFMPEG_VERSION "\n", program_name);
     print_all_lib_versions(stdout, 0);
+
+    printf("********************* Exit -> void show_version( void )");
 }
 
 void show_license( void )
 {
+    printf("********************* Init -> void show_license( void )");
+
+
 #ifdef CONFIG_NONFREE
     printf(
             "This version of %s has nonfree parts compiled in.\n"
@@ -319,10 +375,18 @@ void show_license( void )
             program_name, program_name, program_name
     );
 #endif
+
+
+    printf("********************* Exit -> void show_license( void )");
+
 }
 
 void show_formats( void )
 {
+
+    printf("********************* Init -> void show_formats( void )");
+
+
     AVInputFormat *ifmt = NULL;
     AVOutputFormat *ofmt = NULL;
     URLProtocol *up = NULL;
@@ -351,18 +415,20 @@ void show_formats( void )
         }
         while ((ifmt = av_iformat_next(ifmt)))
         {
-            if ((name == NULL || strcmp(ifmt->name, name) < 0)
-                    && strcmp(ifmt->name, last_name) > 0)
+            if ((name == NULL || strcmp(ifmt->name, name) < 0) && strcmp(ifmt->name, last_name) > 0)
             {
                 name = ifmt->name;
                 long_name = ifmt->long_name;
                 encode = 0;
             }
+
             if (name && strcmp(ifmt->name, name) == 0)
                 decode = 1;
         }
+
         if (name == NULL)
             break;
+
         last_name = name;
 
         printf(" %s%s %-15s %s\n", decode ? "D" : " ", encode ? "E" : " ", name, long_name ? long_name : " ");
@@ -381,12 +447,12 @@ void show_formats( void )
         p2 = NULL;
         while ((p = av_codec_next(p)))
         {
-            if ((p2 == NULL || strcmp(p->name, p2->name) < 0)
-                    && strcmp(p->name, last_name) > 0)
+            if ((p2 == NULL || strcmp(p->name, p2->name) < 0) && strcmp(p->name, last_name) > 0)
             {
                 p2 = p;
                 decode = encode = cap = 0;
             }
+
             if (p2 && strcmp(p->name, p2->name) == 0)
             {
                 if (p->decode)
@@ -396,8 +462,10 @@ void show_formats( void )
                 cap |= p->capabilities;
             }
         }
+
         if (p2 == NULL)
             break;
+
         last_name = p2->name;
 
         switch (p2->type)
@@ -441,4 +509,8 @@ void show_formats( void )
         "even though both encoding and decoding are supported. For example, the h263\n"
         "decoder corresponds to the h263 and h263p encoders, for file formats it is even\n"
         "worse.\n");
+
+
+    printf("********************* Exit -> void show_formats( void )");
+
 }
