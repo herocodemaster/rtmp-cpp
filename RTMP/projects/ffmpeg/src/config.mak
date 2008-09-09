@@ -12,7 +12,7 @@ AR=ar
 RANLIB=ranlib
 LN_S=ln -sf
 STRIP=strip
-OPTFLAGS= -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wcast-qual -Wwrite-strings -O3 -fno-math-errno
+OPTFLAGS= -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wno-pointer-sign -Wcast-qual -Wwrite-strings -Wtype-limits -O3 -fno-math-errno -fno-signed-zeros
 VHOOKCFLAGS=-fPIC
 LDFLAGS=  -Wl,-add-stdcall-alias -Wl,--warn-common -Wl,--as-needed -Wl,-rpath-link,$(BUILD_ROOT)/libpostproc -Wl,-rpath-link,$(BUILD_ROOT)/libswscale -Wl,-rpath-link,$(BUILD_ROOT)/libavfilter -Wl,-rpath-link,$(BUILD_ROOT)/libavdevice -Wl,-rpath-link,$(BUILD_ROOT)/libavformat -Wl,-rpath-link,$(BUILD_ROOT)/libavcodec -Wl,-rpath-link,$(BUILD_ROOT)/libavutil -Wl,-Bsymbolic
 FFSERVERLDFLAGS=-Wl,-E
@@ -55,6 +55,7 @@ HAVE_SSSE3=yes
 HAVE_BSWAP=yes
 HAVE_CLOSESOCKET=yes
 HAVE_CONIO_H=yes
+HAVE_EBP_AVAILABLE=yes
 HAVE_EBX_AVAILABLE=yes
 HAVE_FAST_UNALIGNED=yes
 HAVE_GETPROCESSTIMES=yes
@@ -590,6 +591,6 @@ CONFIG_RTP_PROTOCOL=yes
 CONFIG_TCP_PROTOCOL=yes
 CONFIG_UDP_PROTOCOL=yes
 CONFIG_VFWCAP_DEMUXER=yes
-SRC_PATH="/home/TR-ARG03-NewEmp/ffmpeg/src"
-SRC_PATH_BARE=/home/TR-ARG03-NewEmp/ffmpeg/src
-BUILD_ROOT="/home/TR-ARG03-NewEmp/ffmpeg/src"
+SRC_PATH="/ffmpeg"
+SRC_PATH_BARE=/ffmpeg
+BUILD_ROOT="/ffmpeg"

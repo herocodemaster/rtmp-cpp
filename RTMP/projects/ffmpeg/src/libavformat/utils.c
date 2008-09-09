@@ -187,7 +187,7 @@ void av_register_output_format( AVOutputFormat *format )
 
 int match_ext( const char *filename, const char *extensions )
 {
-    LogStr("Init");
+    //LogStr("Init");
 
     /*
     char temp[1024];
@@ -204,7 +204,7 @@ int match_ext( const char *filename, const char *extensions )
 
     if (!filename)
     {
-        LogStr ("Exit");
+        //LogStr ("Exit");
         return 0;
     }
 
@@ -230,7 +230,7 @@ int match_ext( const char *filename, const char *extensions )
             p++;
         }
     }
-    LogStr ("Exit");
+    //LogStr ("Exit");
     return 0;
 }
 
@@ -2612,20 +2612,20 @@ static void compute_chapters_end( AVFormatContext *s )
 #define MAX_STD_TIMEBASES (60*12+5)
 static int get_std_framerate( int i )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
     if (i < 60 * 12)
     {
-        LogStr ("Exit");
+        //LogStr ("Exit");
         return i * 1001;
     }
     else
     {
-        LogStr ("Exit");
+        //LogStr ("Exit");
         return ( (const int[]) {   24,30,60,12,15})[i-60*12]*1000*12;
     }
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 }
 
         /*
@@ -4029,8 +4029,8 @@ int av_get_frame_filename( char *buf, int buf_size, const char *path, int number
     if (!percentd_found)
         goto fail;
     *q = '\0';
-    return 0;
     LogStr ("Exit");
+    return 0;
 
     fail: *q = '\0';
 

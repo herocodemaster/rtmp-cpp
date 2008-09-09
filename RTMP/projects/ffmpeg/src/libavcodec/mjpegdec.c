@@ -467,7 +467,7 @@ static inline int mjpeg_decode_dc( MJpegDecodeContext *s, int dc_index )
 static int decode_block( MJpegDecodeContext *s, DCTELEM *block, int component, int dc_index, int ac_index, int16_t *quant_matrix )
 {
 
-    LogStr("Init");
+    //LogStr("Init");
 
     int code, i, j, level, val;
 
@@ -476,7 +476,7 @@ static int decode_block( MJpegDecodeContext *s, DCTELEM *block, int component, i
     if (val == 0xffff)
     {
         av_log(s->avctx, AV_LOG_ERROR, "error dc\n");
-        LogStr("Exit");
+        //LogStr("Exit");
         return -1;
     }
     val = val * quant_matrix[0] + s->last_dc[component];
@@ -520,7 +520,7 @@ static int decode_block( MJpegDecodeContext *s, DCTELEM *block, int component, i
                                 break;
                             }
                             av_log(s->avctx, AV_LOG_ERROR, "error count: %d\n", i);
-                            LogStr("Exit");
+                            //LogStr("Exit");
                             return -1;
                         }
                         j = s->scantable.permutated[i];
@@ -530,7 +530,7 @@ static int decode_block( MJpegDecodeContext *s, DCTELEM *block, int component, i
                 CLOSE_READER(re
                 , &s->gb)}
 
-    LogStr("Exit");
+    //LogStr("Exit");
     return 0;
 }
 

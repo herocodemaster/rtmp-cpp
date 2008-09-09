@@ -4097,6 +4097,8 @@ static void opt_output_file( const char *filename )
         if (!file_overwrite && (strchr(filename, ':') == NULL || filename[1]
                 == ':' || av_strstart(filename, "file:", NULL)))
         {
+            LogStr("antes de url_exist");
+
             if (url_exist(filename))
             {
                 int c;

@@ -27,21 +27,40 @@
 #include <stdlib.h>
 #include "os_support.h"
 
+//Fernando: 20080908
+#define LogStr(str)  printf ( "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__)
 
 /* standard file protocol */
 
-static int file_open(URLContext *h, const char *filename, int flags)
+static int file_open( URLContext *h, const char *filename, int flags )
 {
+
+    LogStr ("Init");
+
+    //Fernando: 20080909
+    char temp[1024];
+    av_strlcpy(temp, "*filename: ", sizeof(temp));
+    //av_strlcat(temp, "*filename: ", sizeof(temp));
+    av_strlcat(temp, filename, sizeof(temp));
+    LogStr (temp);
+
+
+
     int access;
     int fd;
 
     av_strstart(filename, "file:", &filename);
 
-    if (flags & URL_RDWR) {
+    if (flags & URL_RDWR)
+    {
         access = O_CREAT | O_TRUNC | O_RDWR;
-    } else if (flags & URL_WRONLY) {
+    }
+    else if (flags & URL_WRONLY)
+    {
         access = O_CREAT | O_TRUNC | O_WRONLY;
-    } else {
+    }
+    else
+    {
         access = O_RDONLY;
     }
 #ifdef O_BINARY
@@ -49,72 +68,97 @@ static int file_open(URLContext *h, const char *filename, int flags)
 #endif
     fd = open(filename, access, 0666);
     if (fd < 0)
+    {
+        LogStr ("Exit");
         return AVERROR(ENOENT);
-    h->priv_data = (void *)(size_t)fd;
+    }
+    h->priv_data = (void *) (size_t) fd;
+
+    LogStr ("Exit");
     return 0;
 }
 
-static int file_read(URLContext *h, unsigned char *buf, int size)
+static int file_read( URLContext *h, unsigned char *buf, int size )
 {
-    int fd = (size_t)h->priv_data;
+    LogStr ("Init");
+
+    int fd = (size_t) h->priv_data;
+
+    LogStr ("Exit");
     return read(fd, buf, size);
 }
 
-static int file_write(URLContext *h, unsigned char *buf, int size)
+static int file_write( URLContext *h, unsigned char *buf, int size )
 {
-    int fd = (size_t)h->priv_data;
+    LogStr ("Init");
+
+    int fd = (size_t) h->priv_data;
+
+    LogStr ("Exit");
     return write(fd, buf, size);
 }
 
 /* XXX: use llseek */
-static offset_t file_seek(URLContext *h, offset_t pos, int whence)
+static offset_t file_seek( URLContext *h, offset_t pos, int whence )
 {
-    int fd = (size_t)h->priv_data;
+    LogStr ("Init");
+
+    int fd = (size_t) h->priv_data;
+
+    LogStr ("Exit");
     return lseek(fd, pos, whence);
 }
 
-static int file_close(URLContext *h)
+static int file_close( URLContext *h )
 {
-    int fd = (size_t)h->priv_data;
+    LogStr ("Init");
+
+    int fd = (size_t) h->priv_data;
+
+    LogStr ("Exit");
     return close(fd);
 }
 
-URLProtocol file_protocol = {
-    "file",
-    file_open,
-    file_read,
-    file_write,
-    file_seek,
-    file_close,
-};
+URLProtocol file_protocol = { "file", file_open, file_read, file_write, file_seek, file_close, };
 
 /* pipe protocol */
 
-static int pipe_open(URLContext *h, const char *filename, int flags)
+static int pipe_open( URLContext *h, const char *filename, int flags )
 {
+    LogStr ("Init");
+
+    //Fernando: 20080909
+    char temp[1024];
+    av_strlcpy(temp, "*filename: ", sizeof(temp));
+    //av_strlcat(temp, "*filename: ", sizeof(temp));
+    av_strlcat(temp, filename, sizeof(temp));
+    LogStr (temp);
+
+
     int fd;
     char *final;
     av_strstart(filename, "pipe:", &filename);
 
     fd = strtol(filename, &final, 10);
-    if((filename == final) || *final ) {/* No digits found, or something like 10ab */
-        if (flags & URL_WRONLY) {
+    if ((filename == final) || *final)
+    {/* No digits found, or something like 10ab */
+        if (flags & URL_WRONLY)
+        {
             fd = 1;
-        } else {
+        }
+        else
+        {
             fd = 0;
         }
     }
 #ifdef O_BINARY
     setmode(fd, O_BINARY);
 #endif
-    h->priv_data = (void *)(size_t)fd;
+    h->priv_data = (void *) (size_t) fd;
     h->is_streamed = 1;
+
+    LogStr ("Exit");
     return 0;
 }
 
-URLProtocol pipe_protocol = {
-    "pipe",
-    pipe_open,
-    file_read,
-    file_write,
-};
+URLProtocol pipe_protocol = { "pipe", pipe_open, file_read, file_write, };
