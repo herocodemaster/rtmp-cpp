@@ -19,6 +19,10 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
+//Fernando: 20080908
+#define LogStr(str)  printf ( "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__)
+
+
 #include <string.h>
 #include <stdlib.h>
 #include <errno.h>
@@ -40,7 +44,7 @@
 
 double parse_number_or_die( const char *context, const char *numstr, int type, double min, double max )
 {
-    printf("********************* Init -> double parse_number_or_die( const char *context, const char *numstr, int type, double min, double max )");
+    LogStr ("Init");
 
 
     char *tail;
@@ -55,37 +59,37 @@ double parse_number_or_die( const char *context, const char *numstr, int type, d
         error = "Expected int64 for %s but found %s\n";
     else
     {
-        printf("********************* Exit -> double parse_number_or_die( const char *context, const char *numstr, int type, double min, double max )");
+        LogStr ("Exit");
         return d;
     }
 
     fprintf(stderr, error, context, numstr, min, max);
 
-    printf("********************* Exit -> double parse_number_or_die( const char *context, const char *numstr, int type, double min, double max )");
+    LogStr ("Exit");
     exit(1);
 
 }
 
 int64_t parse_time_or_die( const char *context, const char *timestr, int is_duration )
 {
-    printf("********************* Init -> int64_t parse_time_or_die( const char *context, const char *timestr, int is_duration )");
+    LogStr ("Init");
 
 
     int64_t us = parse_date(timestr, is_duration);
     if (us == INT64_MIN)
     {
         fprintf(stderr, "Invalid %s specification for %s: %s\n", is_duration ? "duration" : "date", context, timestr);
-        printf("********************* Exit -> int64_t parse_time_or_die( const char *context, const char *timestr, int is_duration )");
+        LogStr ("Exit");
         exit(1);
     }
 
-    printf("********************* Exit -> int64_t parse_time_or_die( const char *context, const char *timestr, int is_duration )");
+    LogStr ("Exit");
     return us;
 }
 
 void show_help_options( const OptionDef *options, const char *msg, int mask, int value )
 {
-    printf("********************* Init -> void show_help_options( const OptionDef *options, const char *msg, int mask, int value )");
+    LogStr ("Init");
 
 
     const OptionDef *po;
@@ -112,13 +116,13 @@ void show_help_options( const OptionDef *options, const char *msg, int mask, int
         }
     }
 
-    printf("********************* Exit -> void show_help_options( const OptionDef *options, const char *msg, int mask, int value )");
+    LogStr ("Exit");
 
 }
 
 static const OptionDef* find_option( const OptionDef *po, const char *name )
 {
-    printf("********************* Init -> static const OptionDef* find_option( const OptionDef *po, const char *name )");
+    LogStr ("Init");
 
 
     while (po->name != NULL)
@@ -130,7 +134,7 @@ static const OptionDef* find_option( const OptionDef *po, const char *name )
         po++;
     }
 
-    printf("********************* Exit -> static const OptionDef* find_option( const OptionDef *po, const char *name )");
+    LogStr ("Exit");
 
     return po;
 }
@@ -141,7 +145,7 @@ void parse_options( int argc, char **argv, const OptionDef *options, void(* pars
     int optindex, handleoptions = 1;
     const OptionDef *po;
 
-    printf("********************* Init -> void parse_options(int argc, char **argv, const OptionDef *options, void (* parse_arg_function)(const char*))");
+    LogStr ("Init");
 
     /* parse options */
     optindex = 1;
@@ -167,7 +171,7 @@ void parse_options( int argc, char **argv, const OptionDef *options, void(* pars
             if (!po->name)
             {
                 unknown_opt: fprintf(stderr, "%s: unrecognized option '%s'\n", argv[0], opt);
-                printf("********************* Exit -> void parse_options(int argc, char **argv, const OptionDef *options, void (* parse_arg_function)(const char*))");
+                LogStr ("Exit");
                 exit(1);
             }
 
@@ -178,7 +182,7 @@ void parse_options( int argc, char **argv, const OptionDef *options, void(* pars
                 if (!arg)
                 {
                     fprintf(stderr, "%s: missing argument for option '%s'\n", argv[0], opt);
-                    printf("********************* Exit -> void parse_options(int argc, char **argv, const OptionDef *options, void (* parse_arg_function)(const char*))");
+                    LogStr ("Exit");
                     exit(1);
                 }
             }
@@ -219,7 +223,7 @@ void parse_options( int argc, char **argv, const OptionDef *options, void(* pars
 
             if (po->flags & OPT_EXIT)
             {
-                printf("********************* Exit -> void parse_options(int argc, char **argv, const OptionDef *options, void (* parse_arg_function)(const char*))");
+                LogStr ("Exit");
                 exit(0);
             }
         }
@@ -232,12 +236,12 @@ void parse_options( int argc, char **argv, const OptionDef *options, void(* pars
         }
     }
 
-    printf("********************* Exit -> void parse_options(int argc, char **argv, const OptionDef *options, void (* parse_arg_function)(const char*))");
+    LogStr ("Exit");
 }
 
 void print_error( const char *filename, int err )
 {
-    printf("********************* Init -> void print_error( const char *filename, int err )");
+    LogStr ("Init");
 
     switch (err)
     {
@@ -273,7 +277,7 @@ void print_error( const char *filename, int err )
             break;
     }
 
-    printf("********************* Exit -> void print_error( const char *filename, int err )");
+    LogStr ("Exit");
 }
 
 #define PRINT_LIB_VERSION(outstream,libname,LIBNAME,indent) \
@@ -285,7 +289,7 @@ void print_error( const char *filename, int err )
 void print_all_lib_versions( FILE* outstream, int indent )
 {
 
-    printf("********************* Init -> void print_all_lib_versions( FILE* outstream, int indent )");
+    LogStr ("Init");
 
     unsigned int version;
     PRINT_LIB_VERSION(outstream, avutil, AVUTIL, indent);
@@ -300,13 +304,13 @@ void print_all_lib_versions( FILE* outstream, int indent )
 #endif
 
 
-    printf("********************* Exit -> void print_all_lib_versions( FILE* outstream, int indent )");
+    LogStr ("Exit");
 
 }
 
 void show_banner( void )
 {
-    printf("********************* Init -> void show_banner( void )");
+    LogStr ("Init");
 
     fprintf(stderr, "%s version " FFMPEG_VERSION ", Copyright (c) %d-2008 Fabrice Bellard, et al.\n", program_name, program_birth_year);
     fprintf(stderr, "  configuration: " FFMPEG_CONFIGURATION "\n");
@@ -318,23 +322,23 @@ void show_banner( void )
     fprintf(stderr, ", using a non-gcc compiler\n");
 #endif
 
-    printf("********************* Exit -> void show_banner( void )");
+    LogStr ("Exit");
 
 }
 
 void show_version( void )
 {
-    printf("********************* Init -> void show_version( void )");
+    LogStr ("Init");
 
     printf("%s " FFMPEG_VERSION "\n", program_name);
     print_all_lib_versions(stdout, 0);
 
-    printf("********************* Exit -> void show_version( void )");
+    LogStr ("Exit");
 }
 
 void show_license( void )
 {
-    printf("********************* Init -> void show_license( void )");
+    LogStr ("Init");
 
 
 #ifdef CONFIG_NONFREE
@@ -377,14 +381,14 @@ void show_license( void )
 #endif
 
 
-    printf("********************* Exit -> void show_license( void )");
+    LogStr ("Exit");
 
 }
 
 void show_formats( void )
 {
 
-    printf("********************* Init -> void show_formats( void )");
+    LogStr ("Init");
 
 
     AVInputFormat *ifmt = NULL;
@@ -511,6 +515,6 @@ void show_formats( void )
         "worse.\n");
 
 
-    printf("********************* Exit -> void show_formats( void )");
+    LogStr ("Exit");
 
 }

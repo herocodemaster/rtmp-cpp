@@ -1,8 +1,8 @@
 # ./configure --extra-cflags=-mno-cygwin -mms-bitfields --extra-ldflags=-Wl,-add-stdcall-alias --enable-memalign-hack --target-os=mingw32 --enable-gpl
 !::='::\'
-!C:='C:\msys\1.0'
+!C:='C:\msys\1.0\bin'
 ALLUSERSPROFILE='C:\Documents and Settings\All Users'
-APPDATA='C:\Documents and Settings\TR-ARG03-NewEmp\Application Data'
+APPDATA='C:\Documents and Settings\Fernando\Application Data'
 ARCH_EXT_LIST='
     altivec
     armv5te
@@ -52,7 +52,6 @@ noise_bsf
 remove_extradata_bsf
 text2movsub_bsf'
 CFLAGS=' -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields'
-CLIENTNAME=Console
 CMDLINE_SELECT='
     
     altivec
@@ -171,8 +170,8 @@ COMPONENT_LIST='
     parsers
     protocols
 '
-COMPUTERNAME=BARAA002DKVB01D
-COMSPEC='C:\WINNT\system32\cmd.exe'
+COMPUTERNAME=W-HOMERO
+COMSPEC='C:\WINDOWS\system32\cmd.exe'
 CONFIG_LIST='
     
     bsfs
@@ -659,7 +658,6 @@ libtheora_encoder
 libvorbis_encoder
 libx264_encoder
 libxvid_encoder'
-ESIMAGEVER=XPGOLD4.1
 EUID=500
 FFMPEG_CONFIGURATION='--extra-cflags=-mno-cygwin -mms-bitfields --extra-ldflags=-Wl,-add-stdcall-alias --enable-memalign-hack --target-os=mingw32 --enable-gpl'
 FFSERVERLDFLAGS=-Wl,-E
@@ -744,11 +742,11 @@ HAVE_LIST='
     winsock2_h
     yasm
 '
-HISTFILE=/home/TR-ARG03-NewEmp/.bash_history
-HOME=/home/TR-ARG03-NewEmp
+HISTFILE=/home/Fernando/.bash_history
+HOME=/home/Fernando
 HOMEDRIVE=C:
 HOMEPATH='\'
-HOSTNAME=BARAA002DKVB01D
+HOSTNAME=W-HOMERO
 HOSTTYPE=i686
 IFS=' 	
 '
@@ -766,8 +764,8 @@ LIBNAME='$(LIBPREF)$(FULLNAME)$(LIBSUF)'
 LIBPREF=lib
 LIBSUF=.a
 LIB_INSTALL_EXTRA_CMD='$(RANLIB) "$(LIBDIR)/$(LIBNAME)"'
-LOGNAME=TR-ARG03-NewEmp
-LOGONSERVER='\\NTSAARGDC01'
+LOGNAME=Fernando
+LOGONSERVER='\\W-HOMERO'
 MACHTYPE=i686-pc-msys
 MAKE_MODE=unix
 MINGW32BGCOLOR=LightYellow
@@ -858,7 +856,7 @@ voc_muxer
 wav_muxer
 yuv4mpegpipe_muxer
 libnut_muxer'
-NUMBER_OF_PROCESSORS=2
+NUMBER_OF_PROCESSORS=1
 OPTERR=1
 OPTIND=1
 OS=Windows_NT
@@ -883,8 +881,8 @@ mpegvideo_parser
 pnm_parser
 vc1_parser
 vp3_parser'
-PATH='.:/usr/local/bin:/mingw/bin:/bin:/c/WINNT/system32:/c/WINNT:/c/WINNT/System32/Wbem:/c/Program Files/TortoiseSVN/bin:/mingw/bin/:/bin'
-PATHEXT='.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH'
+PATH='.:/usr/local/bin:/mingw/bin:/bin:/c/Program Files/Windows Resource Kits/Tools/:/c/WINDOWS/system32:/c/WINDOWS:/c/WINDOWS/System32/Wbem:/c/Program Files/Diskeeper Corporation/Diskeeper/:/c/Program Files/IDM Computer Solutions/UltraEdit-32:/c/WINDOWS/system32/WindowsPowerShell/v1.0:/c/Program Files/Microsoft SQL Server/90/Tools/binn/:/c/Program Files/TortoiseSVN/bin:/c/Program Files/boost/boost_1_36_0/tools/jam/src/bin.ntx86/:/c/Documents and Settings/Fernando/Desktop/ruby-1.8.7-i386-mswin32/bin/:/c/Program Files/IDM Computer Solutions/UltraEdit-32/'
+PATHEXT='.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.PSC1'
 PATHS_LIST='
     bindir
     incdir
@@ -895,11 +893,11 @@ PATHS_LIST='
 '
 PIPESTATUS=([0]="0")
 POSIXLY_CORRECT=y
-PPID=1092
+PPID=3604
 PROCESSOR_ARCHITECTURE=x86
-PROCESSOR_IDENTIFIER='x86 Family 15 Model 4 Stepping 9, GenuineIntel'
+PROCESSOR_IDENTIFIER='x86 Family 15 Model 47 Stepping 2, AuthenticAMD'
 PROCESSOR_LEVEL=15
-PROCESSOR_REVISION=0409
+PROCESSOR_REVISION=2f02
 PROGRAMFILES='C:\Program Files'
 PROMPT='$P$G'
 PROTOCOL_LIST='file_protocol
@@ -909,7 +907,7 @@ rtp_protocol
 tcp_protocol
 udp_protocol'
 PS4='+ '
-PWD=/home/TR-ARG03-NewEmp/ffmpeg/src
+PWD=/ffmpeg
 SESSIONNAME=Console
 SHELL=/bin/sh
 SHELLOPTS=braceexpand:hashall:interactive-comments:posix
@@ -921,7 +919,7 @@ SLIBNAME_WITH_VERSION='$(SLIBNAME).$(LIBVERSION)'
 SLIBPREF=lib
 SLIBSUF=.so
 SYSTEMDRIVE=C:
-SYSTEMROOT='C:\WINNT'
+SYSTEMROOT='C:\WINDOWS'
 TEMP=/tmp
 TERM=msys
 THREADS_LIST='
@@ -932,15 +930,13 @@ THREADS_LIST='
 '
 TMP=/tmp
 UID=500
-USERDNSDOMAIN=NA.DSMAIN.COM
-USERDOMAIN=NA
-USERNAME=TR-ARG03-NewEmp
-USERPROFILE='C:\Documents and Settings\TR-ARG03-NewEmp'
+USERDOMAIN=W-HOMERO
+USERNAME=Fernando
+USERPROFILE='C:\Documents and Settings\Fernando'
 VHOOKSHFLAGS='$(SHFLAGS)'
-WCOMOSID=WINXP
-WD='C:\msys\1.0\\bin\'
-WINDIR='C:\WINNT'
-WINDOWID=268567720
+VS90COMNTOOLS='C:\Program Files\Microsoft Visual Studio 9.0\Common7\Tools\'
+WINDIR='C:\WINDOWS'
+WINDOWID=167838872
 _=--enable-gpl
 aac_decoder=yes
 aac_demuxer=yes
@@ -1518,7 +1514,7 @@ sol_dpcm_decoder=yes
 sonic_decoder=yes
 sonic_encoder=yes
 sonic_ls_encoder=yes
-source_path=/home/TR-ARG03-NewEmp/ffmpeg/src
+source_path=/ffmpeg
 source_path_used=no
 sp5x_decoder=yes
 ssse3=yes
@@ -1632,43 +1628,43 @@ zmbv_encoder=yes
 zmbv_encoder_deps=zlib
 check_cflags -fasm
 check_cc -fasm
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
 check_cflags -std=c99
 check_cc -std=c99
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
 check_cflags -fomit-frame-pointer
 check_cc -fomit-frame-pointer
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
 check_ld
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	int main(void){ return 0; }
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-13839-3908-11382 /tmp/ffmpeg-conf-9729-3908-31456.o
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-29068-1788-17126 /tmp/ffmpeg-conf-14395-1788-2092.o
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	int ff_extern;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
 check_asm inline_asm ""
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	int foo(void){ asm volatile(""); }
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
 check_ld
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	#include <signal.h>
     2	static void sighandler(int sig){
     3	    raise(SIGTERM);
@@ -1686,351 +1682,349 @@ BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
    15	    ::: "%ebp");
    16	    return i; }
    17	}
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-13839-3908-11382 /tmp/ffmpeg-conf-9729-3908-31456.o
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-29068-1788-17126 /tmp/ffmpeg-conf-14395-1788-2092.o
 check_asm ebx_available "":::"%ebx"
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	int foo(void){ asm volatile("":::"%ebx"); }
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
 check_asm ssse3 "pabsw %xmm0, %xmm0"
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	int foo(void){ asm volatile("pabsw %xmm0, %xmm0"); }
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
 check_asm mmx2 "movss %xmm0, %xmm0"
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	int foo(void){ asm volatile("movss %xmm0, %xmm0"); }
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
 check_asm bswap "bswap %%eax" ::: "%eax"
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	int foo(void){ asm volatile("bswap %%eax" ::: "%eax"); }
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
 check_yasm pabsw xmm0, xmm0
-BEGIN /tmp/ffmpeg-conf-5210-3908-14718.S
+BEGIN /tmp/ffmpeg-conf-11806-1788-5752.S
     1	pabsw xmm0, xmm0
-END /tmp/ffmpeg-conf-5210-3908-14718.S
-yasm -f win32 -DARCH_X86_32 -DPREFIX -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-5210-3908-14718.S
+END /tmp/ffmpeg-conf-11806-1788-5752.S
+yasm -f win32 -DARCH_X86_32 -DPREFIX -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-11806-1788-5752.S
 ./configure: line 421: yasm: command not found
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	unsigned int endian = 'B' << 24 | 'I' << 16 | 'G' << 8 | 'E';
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
 check_func dlopen
 check_ld
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	extern int dlopen();
     2	int main(void){ dlopen(); }
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-13839-3908-11382 /tmp/ffmpeg-conf-9729-3908-31456.o
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-9729-3908-31456.o:ffmpeg-conf-926-3908-32021.c:(.text+0x2b): undefined reference to `dlopen'
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-29068-1788-17126 /tmp/ffmpeg-conf-14395-1788-2092.o
+F:/TEMPOR~1/ffmpeg-conf-14395-1788-2092.o:ffmpeg-conf-32155-1788-8121.c:(.text+0x14): undefined reference to `dlopen'
 collect2: ld returned 1 exit status
 check_func dlopen -ldl
 check_ld -ldl
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	extern int dlopen();
     2	int main(void){ dlopen(); }
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-13839-3908-11382 /tmp/ffmpeg-conf-9729-3908-31456.o -ldl
-c:\mingw\bin\..\lib\gcc\mingw32\3.4.5\..\..\..\..\mingw32\bin\ld.exe: cannot find -ldl
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-29068-1788-17126 /tmp/ffmpeg-conf-14395-1788-2092.o -ldl
+c:/mingw/bin/../lib/gcc/mingw32/4.3.0/../../../../mingw32/bin/ld.exe: cannot find -ldl
 collect2: ld returned 1 exit status
 check_func fork
 check_ld
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	extern int fork();
     2	int main(void){ fork(); }
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-13839-3908-11382 /tmp/ffmpeg-conf-9729-3908-31456.o
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-9729-3908-31456.o:ffmpeg-conf-926-3908-32021.c:(.text+0x2b): undefined reference to `fork'
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-29068-1788-17126 /tmp/ffmpeg-conf-14395-1788-2092.o
+F:/TEMPOR~1/ffmpeg-conf-14395-1788-2092.o:ffmpeg-conf-32155-1788-8121.c:(.text+0x14): undefined reference to `fork'
 collect2: ld returned 1 exit status
 check_func gethrtime
 check_ld
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	extern int gethrtime();
     2	int main(void){ gethrtime(); }
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-13839-3908-11382 /tmp/ffmpeg-conf-9729-3908-31456.o
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-9729-3908-31456.o:ffmpeg-conf-926-3908-32021.c:(.text+0x2b): undefined reference to `gethrtime'
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-29068-1788-17126 /tmp/ffmpeg-conf-14395-1788-2092.o
+F:/TEMPOR~1/ffmpeg-conf-14395-1788-2092.o:ffmpeg-conf-32155-1788-8121.c:(.text+0x14): undefined reference to `gethrtime'
 collect2: ld returned 1 exit status
 check_func getrusage
 check_ld
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	extern int getrusage();
     2	int main(void){ getrusage(); }
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-13839-3908-11382 /tmp/ffmpeg-conf-9729-3908-31456.o
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-9729-3908-31456.o:ffmpeg-conf-926-3908-32021.c:(.text+0x2b): undefined reference to `getrusage'
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-29068-1788-17126 /tmp/ffmpeg-conf-14395-1788-2092.o
+F:/TEMPOR~1/ffmpeg-conf-14395-1788-2092.o:ffmpeg-conf-32155-1788-8121.c:(.text+0x14): undefined reference to `getrusage'
 collect2: ld returned 1 exit status
 check_func inet_aton
 check_ld
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	extern int inet_aton();
     2	int main(void){ inet_aton(); }
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-13839-3908-11382 /tmp/ffmpeg-conf-9729-3908-31456.o
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-9729-3908-31456.o:ffmpeg-conf-926-3908-32021.c:(.text+0x2b): undefined reference to `inet_aton'
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-29068-1788-17126 /tmp/ffmpeg-conf-14395-1788-2092.o
+F:/TEMPOR~1/ffmpeg-conf-14395-1788-2092.o:ffmpeg-conf-32155-1788-8121.c:(.text+0x14): undefined reference to `inet_aton'
 collect2: ld returned 1 exit status
 check_func memalign
 check_ld
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	extern int memalign();
     2	int main(void){ memalign(); }
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-13839-3908-11382 /tmp/ffmpeg-conf-9729-3908-31456.o
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-9729-3908-31456.o:ffmpeg-conf-926-3908-32021.c:(.text+0x2b): undefined reference to `memalign'
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-29068-1788-17126 /tmp/ffmpeg-conf-14395-1788-2092.o
+F:/TEMPOR~1/ffmpeg-conf-14395-1788-2092.o:ffmpeg-conf-32155-1788-8121.c:(.text+0x14): undefined reference to `memalign'
 collect2: ld returned 1 exit status
 check_func mkstemp
 check_ld
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	extern int mkstemp();
     2	int main(void){ mkstemp(); }
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-13839-3908-11382 /tmp/ffmpeg-conf-9729-3908-31456.o
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-9729-3908-31456.o:ffmpeg-conf-926-3908-32021.c:(.text+0x2b): undefined reference to `mkstemp'
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-29068-1788-17126 /tmp/ffmpeg-conf-14395-1788-2092.o
+F:/TEMPOR~1/ffmpeg-conf-14395-1788-2092.o:ffmpeg-conf-32155-1788-8121.c:(.text+0x14): undefined reference to `mkstemp'
 collect2: ld returned 1 exit status
 check_func2 windows.h GetProcessTimes
 check_ld
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	
     2	#include <windows.h>
     3	int main(int argc, char **argv){
     4	    (void) GetProcessTimes;
     5	    return 0;
     6	}
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-13839-3908-11382 /tmp/ffmpeg-conf-9729-3908-31456.o
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-29068-1788-17126 /tmp/ffmpeg-conf-14395-1788-2092.o
 check_header byteswap.h
 check_cpp
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	#include <byteswap.h>
     2	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c:1:22: byteswap.h: No such file or directory
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+F:/TEMPOR~1/ffmpeg-conf-32155-1788-8121.c:1:22: error: byteswap.h: No such file or directory
 check_header conio.h
 check_cpp
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	#include <conio.h>
     2	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
 check_header dlfcn.h
 check_cpp
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	#include <dlfcn.h>
     2	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c:1:19: dlfcn.h: No such file or directory
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+F:/TEMPOR~1/ffmpeg-conf-32155-1788-8121.c:1:19: error: dlfcn.h: No such file or directory
 check_header malloc.h
 check_cpp
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	#include <malloc.h>
     2	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
 check_header poll.h
 check_cpp
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	#include <poll.h>
     2	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c:1:18: poll.h: No such file or directory
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+F:/TEMPOR~1/ffmpeg-conf-32155-1788-8121.c:1:18: error: poll.h: No such file or directory
 check_header sys/mman.h
 check_cpp
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	#include <sys/mman.h>
     2	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c:1:22: sys/mman.h: No such file or directory
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+F:/TEMPOR~1/ffmpeg-conf-32155-1788-8121.c:1:22: error: sys/mman.h: No such file or directory
 check_header sys/resource.h
 check_cpp
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	#include <sys/resource.h>
     2	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c:1:26: sys/resource.h: No such file or directory
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+F:/TEMPOR~1/ffmpeg-conf-32155-1788-8121.c:1:26: error: sys/resource.h: No such file or directory
 check_header sys/select.h
 check_cpp
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	#include <sys/select.h>
     2	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c:1:24: sys/select.h: No such file or directory
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+F:/TEMPOR~1/ffmpeg-conf-32155-1788-8121.c:1:24: error: sys/select.h: No such file or directory
 check_header termios.h
 check_cpp
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	#include <termios.h>
     2	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c:1:21: termios.h: No such file or directory
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+F:/TEMPOR~1/ffmpeg-conf-32155-1788-8121.c:1:21: error: termios.h: No such file or directory
 check_lib zlib.h zlibVersion -lz
 check_header zlib.h
 check_cpp
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	#include <zlib.h>
     2	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c:1:18: zlib.h: No such file or directory
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+F:/TEMPOR~1/ffmpeg-conf-32155-1788-8121.c:1:18: error: zlib.h: No such file or directory
 check_lib bzlib.h BZ2_bzlibVersion -lbz2
 check_header bzlib.h
 check_cpp
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	#include <bzlib.h>
     2	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c:1:19: bzlib.h: No such file or directory
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+F:/TEMPOR~1/ffmpeg-conf-32155-1788-8121.c:1:19: error: bzlib.h: No such file or directory
 check_lib math.h sin -lm
 check_header math.h
 check_cpp
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	#include <math.h>
     2	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
 check_func sin
 check_ld
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	extern int sin();
     2	int main(void){ sin(); }
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c:1: warning: conflicting types for built-in function 'sin'
-gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-13839-3908-11382 /tmp/ffmpeg-conf-9729-3908-31456.o -lm
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+F:/TEMPOR~1/ffmpeg-conf-32155-1788-8121.c:1: warning: conflicting types for built-in function 'sin'
+gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-29068-1788-17126 /tmp/ffmpeg-conf-14395-1788-2092.o -lm
 check_ld
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	#include <math.h>
     2	int main(void) { return (llrint(3.999f) > 0)?0:1; }
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-13839-3908-11382 /tmp/ffmpeg-conf-9729-3908-31456.o -lm
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-29068-1788-17126 /tmp/ffmpeg-conf-14395-1788-2092.o -lm
 check_ld
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	#include <math.h>
     2	int main(void) { return (lrint(3.999f) > 0)?0:1; }
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-13839-3908-11382 /tmp/ffmpeg-conf-9729-3908-31456.o -lm
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-29068-1788-17126 /tmp/ffmpeg-conf-14395-1788-2092.o -lm
 check_ld
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	#include <math.h>
     2	int main(void) { return (lrintf(3.999f) > 0)?0:1; }
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-13839-3908-11382 /tmp/ffmpeg-conf-9729-3908-31456.o -lm
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-29068-1788-17126 /tmp/ffmpeg-conf-14395-1788-2092.o -lm
 check_ld
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	#include <math.h>
     2	int main(void) { return (round(3.999f) > 0)?0:1; }
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-13839-3908-11382 /tmp/ffmpeg-conf-9729-3908-31456.o -lm
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-29068-1788-17126 /tmp/ffmpeg-conf-14395-1788-2092.o -lm
 check_ld
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	#include <math.h>
     2	int main(void) { return (roundf(3.999f) > 0)?0:1; }
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-13839-3908-11382 /tmp/ffmpeg-conf-9729-3908-31456.o -lm
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-29068-1788-17126 /tmp/ffmpeg-conf-14395-1788-2092.o -lm
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	void foo(char * restrict p);
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
 imlib2-config --version
 ./configure: line 421: imlib2-config: command not found
 freetype-config --version
 ./configure: line 421: freetype-config: command not found
 check_type sys/socket.h socklen_t
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	
     2	#include <sys/socket.h>
     3	socklen_t v;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c:2:24: sys/socket.h: No such file or directory
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c:3: error: syntax error before "v"
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c:3: warning: type defaults to `int' in declaration of `v'
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c:3: warning: data definition has no type or storage class
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+F:/TEMPOR~1/ffmpeg-conf-32155-1788-8121.c:2:24: error: sys/socket.h: No such file or directory
+F:/TEMPOR~1/ffmpeg-conf-32155-1788-8121.c:3: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'v'
 check_header arpa/inet.h
 check_cpp
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	#include <arpa/inet.h>
     2	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c:1:23: arpa/inet.h: No such file or directory
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+F:/TEMPOR~1/ffmpeg-conf-32155-1788-8121.c:1:23: error: arpa/inet.h: No such file or directory
 check_header winsock2.h
 check_cpp
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	#include <winsock2.h>
     2	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
 check_type ws2tcpip.h socklen_t
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	
     2	#include <ws2tcpip.h>
     3	socklen_t v;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
 check_func2 winsock2.h closesocket
 check_ld
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	
     2	#include <winsock2.h>
     3	int main(int argc, char **argv){
     4	    (void) closesocket;
     5	    return 0;
     6	}
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-13839-3908-11382 /tmp/ffmpeg-conf-9729-3908-31456.o -lm
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-29068-1788-17126 /tmp/ffmpeg-conf-14395-1788-2092.o -lm
 check_ld
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	#include <sys/types.h>
     2	#include <sys/socket.h>
     3	#include <netinet/in.h>
@@ -2042,37 +2036,37 @@ BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
     9	    getnameinfo(0,0,0,0,0,0,0);
    10	    IN6_IS_ADDR_MULTICAST((const struct in6_addr *)0);
    11	}
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c:2:24: sys/socket.h: No such file or directory
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c:3:24: netinet/in.h: No such file or directory
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c:4:19: netdb.h: No such file or directory
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c: In function `main':
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c:6: error: storage size of 'saddr' isn't known
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c:7: error: storage size of 'mreq6' isn't known
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c:8: warning: implicit declaration of function `getaddrinfo'
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c:9: warning: implicit declaration of function `getnameinfo'
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c:10: warning: implicit declaration of function `IN6_IS_ADDR_MULTICAST'
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+F:/TEMPOR~1/ffmpeg-conf-32155-1788-8121.c:2:24: error: sys/socket.h: No such file or directory
+F:/TEMPOR~1/ffmpeg-conf-32155-1788-8121.c:3:24: error: netinet/in.h: No such file or directory
+F:/TEMPOR~1/ffmpeg-conf-32155-1788-8121.c:4:19: error: netdb.h: No such file or directory
+F:/TEMPOR~1/ffmpeg-conf-32155-1788-8121.c: In function 'main':
+F:/TEMPOR~1/ffmpeg-conf-32155-1788-8121.c:6: error: storage size of 'saddr' isn't known
+F:/TEMPOR~1/ffmpeg-conf-32155-1788-8121.c:7: error: storage size of 'mreq6' isn't known
+F:/TEMPOR~1/ffmpeg-conf-32155-1788-8121.c:8: warning: implicit declaration of function 'getaddrinfo'
+F:/TEMPOR~1/ffmpeg-conf-32155-1788-8121.c:9: warning: implicit declaration of function 'getnameinfo'
+F:/TEMPOR~1/ffmpeg-conf-32155-1788-8121.c:10: warning: implicit declaration of function 'IN6_IS_ADDR_MULTICAST'
 check_header linux/videodev.h
 check_cpp
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	#include <linux/videodev.h>
     2	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c:1:28: linux/videodev.h: No such file or directory
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+F:/TEMPOR~1/ffmpeg-conf-32155-1788-8121.c:1:28: error: linux/videodev.h: No such file or directory
 check_header linux/videodev2.h
 check_cpp
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	#include <linux/videodev2.h>
     2	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c:1:29: linux/videodev2.h: No such file or directory
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+F:/TEMPOR~1/ffmpeg-conf-32155-1788-8121.c:1:29: error: linux/videodev2.h: No such file or directory
 check_func2 windows.h vfw.h capCreateCaptureWindow -lvfw32
 check_ld -lvfw32
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	
     2	#include <windows.h>
     3	#include <vfw.h>
@@ -2080,168 +2074,176 @@ BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
     5	    (void) capCreateCaptureWindow;
     6	    return 0;
     7	}
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-13839-3908-11382 /tmp/ffmpeg-conf-9729-3908-31456.o -lm -lvfw32
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -Wl,-add-stdcall-alias -o /tmp/ffmpeg-conf-29068-1788-17126 /tmp/ffmpeg-conf-14395-1788-2092.o -lm -lvfw32
 check_header dev/bktr/ioctl_meteor.h
 check_cpp
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	#include <dev/bktr/ioctl_meteor.h>
     2	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c:1:35: dev/bktr/ioctl_meteor.h: No such file or directory
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+F:/TEMPOR~1/ffmpeg-conf-32155-1788-8121.c:1:35: error: dev/bktr/ioctl_meteor.h: No such file or directory
 check_header machine/ioctl_meteor.h
 check_cpp
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	#include <machine/ioctl_meteor.h>
     2	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c:1:34: machine/ioctl_meteor.h: No such file or directory
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+F:/TEMPOR~1/ffmpeg-conf-32155-1788-8121.c:1:34: error: machine/ioctl_meteor.h: No such file or directory
 check_header dev/video/meteor/ioctl_meteor.h
 check_cpp
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	#include <dev/video/meteor/ioctl_meteor.h>
     2	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c:1:43: dev/video/meteor/ioctl_meteor.h: No such file or directory
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+F:/TEMPOR~1/ffmpeg-conf-32155-1788-8121.c:1:43: error: dev/video/meteor/ioctl_meteor.h: No such file or directory
 check_header dev/ic/bt8xx.h
 check_cpp
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	#include <dev/ic/bt8xx.h>
     2	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c:1:26: dev/ic/bt8xx.h: No such file or directory
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+F:/TEMPOR~1/ffmpeg-conf-32155-1788-8121.c:1:26: error: dev/ic/bt8xx.h: No such file or directory
 check_header sys/soundcard.h
 check_cpp
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	#include <sys/soundcard.h>
     2	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c:1:27: sys/soundcard.h: No such file or directory
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+F:/TEMPOR~1/ffmpeg-conf-32155-1788-8121.c:1:27: error: sys/soundcard.h: No such file or directory
 check_header soundcard.h
 check_cpp
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	#include <soundcard.h>
     2	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ffmpeg-conf-926-3908-32021.c:1:23: soundcard.h: No such file or directory
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -E -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+F:/TEMPOR~1/ffmpeg-conf-32155-1788-8121.c:1:23: error: soundcard.h: No such file or directory
 check_cflags -Wdeclaration-after-statement
 check_cc -Wdeclaration-after-statement
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
 check_cflags -Wall
 check_cc -Wall
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
 check_cflags -Wno-switch
 check_cc -Wno-switch
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
 check_cflags -Wdisabled-optimization
 check_cc -Wdisabled-optimization
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -Wdisabled-optimization -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -Wdisabled-optimization -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+cc1.exe: warning: -funit-at-a-time is required for inlining of functions that are only called once
 check_cflags -Wpointer-arith
 check_cc -Wpointer-arith
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -Wdisabled-optimization -Wpointer-arith -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -Wdisabled-optimization -Wpointer-arith -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+cc1.exe: warning: -funit-at-a-time is required for inlining of functions that are only called once
 check_cflags -Wredundant-decls
 check_cc -Wredundant-decls
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+cc1.exe: warning: -funit-at-a-time is required for inlining of functions that are only called once
 check_cflags -Wno-pointer-sign
 check_cc -Wno-pointer-sign
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wno-pointer-sign -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-cc1.exe: error: unrecognized command line option "-Wno-pointer-sign"
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wno-pointer-sign -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+cc1.exe: warning: -funit-at-a-time is required for inlining of functions that are only called once
 check_cflags -Wcast-qual
 check_cc -Wcast-qual
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wcast-qual -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wno-pointer-sign -Wcast-qual -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+cc1.exe: warning: -funit-at-a-time is required for inlining of functions that are only called once
 check_cflags -Wwrite-strings
 check_cc -Wwrite-strings
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wcast-qual -Wwrite-strings -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wno-pointer-sign -Wcast-qual -Wwrite-strings -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+cc1.exe: warning: -funit-at-a-time is required for inlining of functions that are only called once
 check_cflags -Wtype-limits
 check_cc -Wtype-limits
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wcast-qual -Wwrite-strings -Wtype-limits -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-cc1.exe: error: unrecognized command line option "-Wtype-limits"
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wno-pointer-sign -Wcast-qual -Wwrite-strings -Wtype-limits -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+cc1.exe: warning: -funit-at-a-time is required for inlining of functions that are only called once
 check_ldflags -Wl,--warn-common
 check_ld -Wl,--warn-common
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	int main(void){ return 0; }
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wcast-qual -Wwrite-strings -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -Wl,-add-stdcall-alias -Wl,--warn-common -o /tmp/ffmpeg-conf-13839-3908-11382 /tmp/ffmpeg-conf-9729-3908-31456.o -lm
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wno-pointer-sign -Wcast-qual -Wwrite-strings -Wtype-limits -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+cc1.exe: warning: -funit-at-a-time is required for inlining of functions that are only called once
+gcc -Wl,-add-stdcall-alias -Wl,--warn-common -o /tmp/ffmpeg-conf-29068-1788-17126 /tmp/ffmpeg-conf-14395-1788-2092.o -lm
 check_ldflags -Wl,--as-needed
 check_ld -Wl,--as-needed
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	int main(void){ return 0; }
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wcast-qual -Wwrite-strings -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -Wl,-add-stdcall-alias -Wl,--warn-common -Wl,--as-needed -o /tmp/ffmpeg-conf-13839-3908-11382 /tmp/ffmpeg-conf-9729-3908-31456.o -lm
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wno-pointer-sign -Wcast-qual -Wwrite-strings -Wtype-limits -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+cc1.exe: warning: -funit-at-a-time is required for inlining of functions that are only called once
+gcc -Wl,-add-stdcall-alias -Wl,--warn-common -Wl,--as-needed -o /tmp/ffmpeg-conf-29068-1788-17126 /tmp/ffmpeg-conf-14395-1788-2092.o -lm
 check_ldflags -Wl,-rpath-link,\$(BUILD_ROOT)/libpostproc -Wl,-rpath-link,\$(BUILD_ROOT)/libswscale -Wl,-rpath-link,\$(BUILD_ROOT)/libavfilter -Wl,-rpath-link,\$(BUILD_ROOT)/libavdevice -Wl,-rpath-link,\$(BUILD_ROOT)/libavformat -Wl,-rpath-link,\$(BUILD_ROOT)/libavcodec -Wl,-rpath-link,\$(BUILD_ROOT)/libavutil
 check_ld -Wl,-rpath-link,\$(BUILD_ROOT)/libpostproc -Wl,-rpath-link,\$(BUILD_ROOT)/libswscale -Wl,-rpath-link,\$(BUILD_ROOT)/libavfilter -Wl,-rpath-link,\$(BUILD_ROOT)/libavdevice -Wl,-rpath-link,\$(BUILD_ROOT)/libavformat -Wl,-rpath-link,\$(BUILD_ROOT)/libavcodec -Wl,-rpath-link,\$(BUILD_ROOT)/libavutil
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	int main(void){ return 0; }
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wcast-qual -Wwrite-strings -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -Wl,-add-stdcall-alias -Wl,--warn-common -Wl,--as-needed -Wl,-rpath-link,\$(BUILD_ROOT)/libpostproc -Wl,-rpath-link,\$(BUILD_ROOT)/libswscale -Wl,-rpath-link,\$(BUILD_ROOT)/libavfilter -Wl,-rpath-link,\$(BUILD_ROOT)/libavdevice -Wl,-rpath-link,\$(BUILD_ROOT)/libavformat -Wl,-rpath-link,\$(BUILD_ROOT)/libavcodec -Wl,-rpath-link,\$(BUILD_ROOT)/libavutil -o /tmp/ffmpeg-conf-13839-3908-11382 /tmp/ffmpeg-conf-9729-3908-31456.o -lm
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wno-pointer-sign -Wcast-qual -Wwrite-strings -Wtype-limits -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+cc1.exe: warning: -funit-at-a-time is required for inlining of functions that are only called once
+gcc -Wl,-add-stdcall-alias -Wl,--warn-common -Wl,--as-needed -Wl,-rpath-link,\$(BUILD_ROOT)/libpostproc -Wl,-rpath-link,\$(BUILD_ROOT)/libswscale -Wl,-rpath-link,\$(BUILD_ROOT)/libavfilter -Wl,-rpath-link,\$(BUILD_ROOT)/libavdevice -Wl,-rpath-link,\$(BUILD_ROOT)/libavformat -Wl,-rpath-link,\$(BUILD_ROOT)/libavcodec -Wl,-rpath-link,\$(BUILD_ROOT)/libavutil -o /tmp/ffmpeg-conf-29068-1788-17126 /tmp/ffmpeg-conf-14395-1788-2092.o -lm
 check_ldflags -Wl,-Bsymbolic
 check_ld -Wl,-Bsymbolic
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	int main(void){ return 0; }
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wcast-qual -Wwrite-strings -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -Wl,-add-stdcall-alias -Wl,--warn-common -Wl,--as-needed -Wl,-rpath-link,$(BUILD_ROOT)/libpostproc -Wl,-rpath-link,$(BUILD_ROOT)/libswscale -Wl,-rpath-link,$(BUILD_ROOT)/libavfilter -Wl,-rpath-link,$(BUILD_ROOT)/libavdevice -Wl,-rpath-link,$(BUILD_ROOT)/libavformat -Wl,-rpath-link,$(BUILD_ROOT)/libavcodec -Wl,-rpath-link,$(BUILD_ROOT)/libavutil -Wl,-Bsymbolic -o /tmp/ffmpeg-conf-13839-3908-11382 /tmp/ffmpeg-conf-9729-3908-31456.o -lm
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wno-pointer-sign -Wcast-qual -Wwrite-strings -Wtype-limits -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+cc1.exe: warning: -funit-at-a-time is required for inlining of functions that are only called once
+gcc -Wl,-add-stdcall-alias -Wl,--warn-common -Wl,--as-needed -Wl,-rpath-link,$(BUILD_ROOT)/libpostproc -Wl,-rpath-link,$(BUILD_ROOT)/libswscale -Wl,-rpath-link,$(BUILD_ROOT)/libavfilter -Wl,-rpath-link,$(BUILD_ROOT)/libavdevice -Wl,-rpath-link,$(BUILD_ROOT)/libavformat -Wl,-rpath-link,$(BUILD_ROOT)/libavcodec -Wl,-rpath-link,$(BUILD_ROOT)/libavutil -Wl,-Bsymbolic -o /tmp/ffmpeg-conf-29068-1788-17126 /tmp/ffmpeg-conf-14395-1788-2092.o -lm
 check_cflags -fno-math-errno
 check_cc -fno-math-errno
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wcast-qual -Wwrite-strings -O3 -fno-math-errno -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wno-pointer-sign -Wcast-qual -Wwrite-strings -Wtype-limits -O3 -fno-math-errno -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
 check_cflags -fno-signed-zeros
 check_cc -fno-signed-zeros
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	int x;
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wcast-qual -Wwrite-strings -O3 -fno-math-errno -fno-signed-zeros -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-cc1.exe: error: unrecognized command line option "-fno-signed-zeros"
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wno-pointer-sign -Wcast-qual -Wwrite-strings -Wtype-limits -O3 -fno-math-errno -fno-signed-zeros -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
 check_cc
-BEGIN /tmp/ffmpeg-conf-926-3908-32021.c
+BEGIN /tmp/ffmpeg-conf-32155-1788-8121.c
     1	asm (".align 3");
-END /tmp/ffmpeg-conf-926-3908-32021.c
-gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wcast-qual -Wwrite-strings -O3 -fno-math-errno -c -o /tmp/ffmpeg-conf-9729-3908-31456.o /tmp/ffmpeg-conf-926-3908-32021.c
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ccu4aaaa.s: Assembler messages:
-C:/DOCUME~1/TR-ARG~1/LOCALS~1/Temp/ccu4aaaa.s:29: Error: alignment not a power of 2
+END /tmp/ffmpeg-conf-32155-1788-8121.c
+gcc -D_ISOC99_SOURCE -D_POSIX_C_SOURCE=200112 -mno-cygwin -mms-bitfields -fasm -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wno-switch -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wno-pointer-sign -Wcast-qual -Wwrite-strings -Wtype-limits -O3 -fno-math-errno -fno-signed-zeros -c -o /tmp/ffmpeg-conf-14395-1788-2092.o /tmp/ffmpeg-conf-32155-1788-8121.c
+F:/TEMPOR~1/ccWvrAyR.s: Assembler messages:
+F:/TEMPOR~1/ccWvrAyR.s:11: Error: alignment not a power of 2

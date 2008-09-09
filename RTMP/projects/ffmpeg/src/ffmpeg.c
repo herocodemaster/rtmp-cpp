@@ -20,9 +20,8 @@
  */
 
 //Fernando: 20080908
-#define LogStr(str)  printf ( "************************** %s, %s-%d: %s **************************\n", __FILE__, __func__, __LINE__, str )
-//#define LogStr(str)  printf ( "%s, %d: %s\n", __FILE__, __LINE__, str )
-
+//#define LogStr(str)  printf ( "************************** %s, %s-%d: %s **************************\n", __FILE__, __func__, __LINE__, str )
+#define LogStr(str)  printf ( "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__)
 
 /* needed for usleep() */
 #define _XOPEN_SOURCE 500
@@ -3379,10 +3378,11 @@ static void opt_input_file( const char *filename )
     int64_t timestamp;
 
     if (!strcmp(filename, "-"))
+    {
         filename = "pipe:";
+    }
 
-    using_stdin |= !strncmp(filename, "pipe:", 5)
-            || !strcmp(filename, "/dev/stdin");
+    using_stdin |= !strncmp(filename, "pipe:", 5) || !strcmp(filename, "/dev/stdin");
 
     /* get default parameters from command line */
     ic = av_alloc_format_context();
@@ -3399,21 +3399,19 @@ static void opt_input_file( const char *filename )
     // ap->sample_fmt = audio_sample_fmt; //FIXME:not implemented in libavformat
     ap->channel = video_channel;
     ap->standard = video_standard;
-    ap->video_codec_id
-            = find_codec_or_die(video_codec_name, CODEC_TYPE_VIDEO, 0);
-    ap->audio_codec_id
-            = find_codec_or_die(audio_codec_name, CODEC_TYPE_AUDIO, 0);
+    ap->video_codec_id = find_codec_or_die(video_codec_name, CODEC_TYPE_VIDEO, 0);
+    ap->audio_codec_id = find_codec_or_die(audio_codec_name, CODEC_TYPE_AUDIO, 0);
+
     if (pgmyuv_compatibility_hack)
+    {
         ap->video_codec_id = CODEC_ID_PGMYUV;
+    }
 
     set_context_opts(ic, avformat_opts, AV_OPT_FLAG_DECODING_PARAM);
 
-    ic->video_codec_id
-            = find_codec_or_die(video_codec_name, CODEC_TYPE_VIDEO, 0);
-    ic->audio_codec_id
-            = find_codec_or_die(audio_codec_name, CODEC_TYPE_AUDIO, 0);
-    ic->subtitle_codec_id
-            = find_codec_or_die(subtitle_codec_name, CODEC_TYPE_SUBTITLE, 0);
+    ic->video_codec_id = find_codec_or_die(video_codec_name, CODEC_TYPE_VIDEO, 0);
+    ic->audio_codec_id = find_codec_or_die(audio_codec_name, CODEC_TYPE_AUDIO, 0);
+    ic->subtitle_codec_id = find_codec_or_die(subtitle_codec_name, CODEC_TYPE_SUBTITLE, 0);
 
     /* open the input file with generic libav function */
     err = av_open_input_file(&ic, filename, file_iformat, 0, ap);
@@ -3422,18 +3420,22 @@ static void opt_input_file( const char *filename )
         print_error(filename, err);
         av_exit(1);
     }
+
     if (opt_programid)
     {
         int i;
         for (i = 0; i < ic->nb_programs; i++)
+        {
             if (ic->programs[i]->id != opt_programid)
+            {
                 ic->programs[i]->discard = AVDISCARD_ALL;
+            }
+        }
     }
 
     ic->loop_input = loop_input;
 
-    /* If not enough info to get the stream parameters, we decode the
-     first frames to get it. (used in mpeg case for example) */
+    /* If not enough info to get the stream parameters, we decode the first frames to get it. (used in mpeg case for example) */
     ret = av_find_stream_info(ic);
     if (ret < 0 && verbose >= 0)
     {
@@ -3444,7 +3446,9 @@ static void opt_input_file( const char *filename )
     timestamp = start_time;
     /* add the stream start time */
     if (ic->start_time != AV_NOPTS_VALUE)
+    {
         timestamp += ic->start_time;
+    }
 
     /* if seeking requested, we execute it */
     if (start_time != 0)
@@ -3452,8 +3456,7 @@ static void opt_input_file( const char *filename )
         ret = av_seek_frame(ic, -1, timestamp, AVSEEK_FLAG_BACKWARD);
         if (ret < 0)
         {
-            fprintf(stderr, "%s: could not seek to position %0.3f\n", filename, (double) timestamp
-                    / AV_TIME_BASE);
+            fprintf(stderr, "%s: could not seek to position %0.3f\n", filename, (double) timestamp / AV_TIME_BASE);
         }
         /* reset seek info */
         start_time = 0;
@@ -3463,49 +3466,61 @@ static void opt_input_file( const char *filename )
     for (i = 0; i < ic->nb_streams; i++)
     {
         AVCodecContext *enc = ic->streams[i]->codec;
+
         if (thread_count > 1)
+        {
             avcodec_thread_init(enc, thread_count);
+        }
+
         enc->thread_count = thread_count;
         switch (enc->codec_type)
         {
             case CODEC_TYPE_AUDIO:
-                set_context_opts(enc, avctx_opts[CODEC_TYPE_AUDIO], AV_OPT_FLAG_AUDIO_PARAM
-                        | AV_OPT_FLAG_DECODING_PARAM);
+                set_context_opts(enc, avctx_opts[CODEC_TYPE_AUDIO], AV_OPT_FLAG_AUDIO_PARAM | AV_OPT_FLAG_DECODING_PARAM);
                 //fprintf(stderr, "\nInput Audio channels: %d", enc->channels);
                 audio_channels = enc->channels;
                 audio_sample_rate = enc->sample_rate;
                 audio_sample_fmt = enc->sample_fmt;
+
                 if (audio_disable)
+                {
                     ic->streams[i]->discard = AVDISCARD_ALL;
+                }
                 break;
             case CODEC_TYPE_VIDEO:
-                set_context_opts(enc, avctx_opts[CODEC_TYPE_VIDEO], AV_OPT_FLAG_VIDEO_PARAM
-                        | AV_OPT_FLAG_DECODING_PARAM);
+                set_context_opts(enc, avctx_opts[CODEC_TYPE_VIDEO], AV_OPT_FLAG_VIDEO_PARAM | AV_OPT_FLAG_DECODING_PARAM);
                 frame_height = enc->height;
                 frame_width = enc->width;
+
                 if (ic->streams[i]->sample_aspect_ratio.num)
-                    frame_aspect_ratio
-                            = av_q2d(ic->streams[i]->sample_aspect_ratio);
+                {
+                    frame_aspect_ratio = av_q2d(ic->streams[i]->sample_aspect_ratio);
+                }
                 else
+                {
                     frame_aspect_ratio = av_q2d(enc->sample_aspect_ratio);
+                }
+
                 frame_aspect_ratio *= (float) enc->width / enc->height;
                 frame_pix_fmt = enc->pix_fmt;
                 rfps = ic->streams[i]->r_frame_rate.num;
                 rfps_base = ic->streams[i]->r_frame_rate.den;
+
                 if (enc->lowres)
-                    enc->flags |= CODEC_FLAG_EMU_EDGE;
-                if (me_threshold)
-                    enc->debug |= FF_DEBUG_MV;
-
-                if (enc->time_base.den != rfps || enc->time_base.num
-                        != rfps_base)
                 {
+                    enc->flags |= CODEC_FLAG_EMU_EDGE;
+                }
+                if (me_threshold)
+                {
+                    enc->debug |= FF_DEBUG_MV;
+                }
 
+                if (enc->time_base.den != rfps || enc->time_base.num != rfps_base)
+                {
                     if (verbose >= 0)
-                        fprintf(stderr, "\nSeems stream %d codec frame rate differs from container frame rate: %2.2f (%d/%d) -> %2.2f (%d/%d)\n", i, (float) enc->time_base.den
-                                / enc->time_base.num, enc->time_base.den, enc->time_base.num,
-
-                        (float) rfps / rfps_base, rfps, rfps_base);
+                    {
+                        fprintf(stderr, "\nSeems stream %d codec frame rate differs from container frame rate: %2.2f (%d/%d) -> %2.2f (%d/%d)\n", i, (float) enc->time_base.den / enc->time_base.num, enc->time_base.den, enc->time_base.num, (float) rfps / rfps_base, rfps, rfps_base);
+                    }
                 }
                 /* update the current frame rate to match the stream frame rate */
                 frame_rate.num = rfps;
@@ -3513,15 +3528,21 @@ static void opt_input_file( const char *filename )
 
                 enc->rate_emu = rate_emu;
                 if (video_disable)
+                {
                     ic->streams[i]->discard = AVDISCARD_ALL;
+                }
                 else if (video_discard)
+                {
                     ic->streams[i]->discard = video_discard;
+                }
                 break;
             case CODEC_TYPE_DATA:
                 break;
             case CODEC_TYPE_SUBTITLE:
                 if (subtitle_disable)
+                {
                     ic->streams[i]->discard = AVDISCARD_ALL;
+                }
                 break;
             case CODEC_TYPE_ATTACHMENT:
             case CODEC_TYPE_UNKNOWN:
@@ -3532,11 +3553,12 @@ static void opt_input_file( const char *filename )
     }
 
     input_files[nb_input_files] = ic;
-    input_files_ts_offset[nb_input_files] = input_ts_offset
-            - (copy_ts ? 0 : timestamp);
+    input_files_ts_offset[nb_input_files] = input_ts_offset - (copy_ts ? 0 : timestamp);
     /* dump the file content */
     if (verbose >= 0)
+    {
         dump_format(ic, nb_input_files, filename, 0);
+    }
 
     nb_input_files++;
     file_iformat = NULL;
