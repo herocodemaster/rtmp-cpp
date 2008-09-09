@@ -18,6 +18,13 @@
  * License along with FFmpeg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
+
+#undef printf
+//Fernando: 20080908
+#define LogStr(str)  printf ( "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__)
+
+
+
 #include "avformat.h"
 #include "rtp_internal.h"
 
@@ -40,10 +47,17 @@
  */
 void av_register_all(void)
 {
+
+    LogStr("Init");
+
     static int initialized;
 
     if (initialized)
+    {
+        LogStr("Exit");
         return;
+    }
+
     initialized = 1;
 
     avcodec_init();
@@ -201,4 +215,6 @@ void av_register_all(void)
     REGISTER_PROTOCOL (RTP, rtp);
     REGISTER_PROTOCOL (TCP, tcp);
     REGISTER_PROTOCOL (UDP, udp);
+
+    LogStr("Exit");
 }

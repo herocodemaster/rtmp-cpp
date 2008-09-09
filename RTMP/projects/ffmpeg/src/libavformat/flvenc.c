@@ -18,6 +18,11 @@
  * License along with FFmpeg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
+
+//Fernando: 20080908
+#define LogStr(str)  printf ( "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__)
+
+
 #include "avformat.h"
 #include "flv.h"
 #include "riff.h"
@@ -26,27 +31,21 @@
 #undef NDEBUG
 #include <assert.h>
 
-static const AVCodecTag flv_video_codec_ids[] = {
-    {CODEC_ID_FLV1,    FLV_CODECID_H263  },
-    {CODEC_ID_FLASHSV, FLV_CODECID_SCREEN},
-    {CODEC_ID_VP6F,    FLV_CODECID_VP6   },
-    {CODEC_ID_VP6,     FLV_CODECID_VP6   },
-    {CODEC_ID_H264,    FLV_CODECID_H264  },
-    {CODEC_ID_NONE,    0}
-};
+static const AVCodecTag
+        flv_video_codec_ids[] = { { CODEC_ID_FLV1, FLV_CODECID_H263 }, { CODEC_ID_FLASHSV, FLV_CODECID_SCREEN }, { CODEC_ID_VP6F, FLV_CODECID_VP6 }, { CODEC_ID_VP6, FLV_CODECID_VP6 }, { CODEC_ID_H264, FLV_CODECID_H264 }, { CODEC_ID_NONE, 0 } };
 
-static const AVCodecTag flv_audio_codec_ids[] = {
-    {CODEC_ID_MP3,       FLV_CODECID_MP3    >> FLV_AUDIO_CODECID_OFFSET},
-    {CODEC_ID_PCM_S8,    FLV_CODECID_PCM    >> FLV_AUDIO_CODECID_OFFSET},
-    {CODEC_ID_PCM_S16BE, FLV_CODECID_PCM    >> FLV_AUDIO_CODECID_OFFSET},
-    {CODEC_ID_PCM_S16LE, FLV_CODECID_PCM_LE >> FLV_AUDIO_CODECID_OFFSET},
-    {CODEC_ID_ADPCM_SWF, FLV_CODECID_ADPCM  >> FLV_AUDIO_CODECID_OFFSET},
-    {CODEC_ID_AAC,       FLV_CODECID_AAC    >> FLV_AUDIO_CODECID_OFFSET},
-    {CODEC_ID_NELLYMOSER, FLV_CODECID_NELLYMOSER >> FLV_AUDIO_CODECID_OFFSET},
-    {CODEC_ID_NONE,      0}
-};
+static const AVCodecTag
+        flv_audio_codec_ids[] = { { CODEC_ID_MP3, FLV_CODECID_MP3
+                >> FLV_AUDIO_CODECID_OFFSET }, { CODEC_ID_PCM_S8, FLV_CODECID_PCM
+                >> FLV_AUDIO_CODECID_OFFSET }, { CODEC_ID_PCM_S16BE, FLV_CODECID_PCM
+                >> FLV_AUDIO_CODECID_OFFSET }, { CODEC_ID_PCM_S16LE, FLV_CODECID_PCM_LE
+                >> FLV_AUDIO_CODECID_OFFSET }, { CODEC_ID_ADPCM_SWF, FLV_CODECID_ADPCM
+                >> FLV_AUDIO_CODECID_OFFSET }, { CODEC_ID_AAC, FLV_CODECID_AAC
+                >> FLV_AUDIO_CODECID_OFFSET }, { CODEC_ID_NELLYMOSER, FLV_CODECID_NELLYMOSER
+                >> FLV_AUDIO_CODECID_OFFSET }, { CODEC_ID_NONE, 0 } };
 
-typedef struct FLVContext {
+typedef struct FLVContext
+{
     int reserved;
     offset_t duration_offset;
     offset_t filesize_offset;
@@ -54,88 +53,112 @@ typedef struct FLVContext {
     int delay; ///< first dts delay for AVC
 } FLVContext;
 
-static int get_audio_flags(AVCodecContext *enc){
+static int get_audio_flags( AVCodecContext *enc )
+{
+    LogStr("Init");
+
     int flags = (enc->bits_per_sample == 16) ? FLV_SAMPLESSIZE_16BIT : FLV_SAMPLESSIZE_8BIT;
 
     if (enc->codec_id == CODEC_ID_AAC) // specs force these parameters
+    {
         return FLV_CODECID_AAC | FLV_SAMPLERATE_44100HZ | FLV_SAMPLESSIZE_16BIT | FLV_STEREO;
-    else {
-    switch (enc->sample_rate) {
-        case    44100:
-            flags |= FLV_SAMPLERATE_44100HZ;
-            break;
-        case    22050:
-            flags |= FLV_SAMPLERATE_22050HZ;
-            break;
-        case    11025:
-            flags |= FLV_SAMPLERATE_11025HZ;
-            break;
-        case     8000: //nellymoser only
-        case     5512: //not mp3
-            if(enc->codec_id != CODEC_ID_MP3){
-                flags |= FLV_SAMPLERATE_SPECIAL;
-                break;
-            }
-        default:
-            av_log(enc, AV_LOG_ERROR, "flv does not support that sample rate, choose from (44100, 22050, 11025).\n");
-            return -1;
     }
+    else
+    {
+        switch (enc->sample_rate)
+        {
+            case 44100:
+                flags |= FLV_SAMPLERATE_44100HZ;
+                break;
+            case 22050:
+                flags |= FLV_SAMPLERATE_22050HZ;
+                break;
+            case 11025:
+                flags |= FLV_SAMPLERATE_11025HZ;
+                break;
+            case 8000: //nellymoser only
+            case 5512: //not mp3
+                if (enc->codec_id != CODEC_ID_MP3)
+                {
+                    flags |= FLV_SAMPLERATE_SPECIAL;
+                    break;
+                }
+            default:
+                av_log(enc, AV_LOG_ERROR, "flv does not support that sample rate, choose from (44100, 22050, 11025).\n");
+                LogStr("Exit");
+                return -1;
+        }
     }
 
-    if (enc->channels > 1) {
+    if (enc->channels > 1)
+    {
         flags |= FLV_STEREO;
     }
 
-    switch(enc->codec_id){
-    case CODEC_ID_MP3:
-        flags |= FLV_CODECID_MP3    | FLV_SAMPLESSIZE_16BIT;
-        break;
-    case CODEC_ID_PCM_S8:
-        flags |= FLV_CODECID_PCM    | FLV_SAMPLESSIZE_8BIT;
-        break;
-    case CODEC_ID_PCM_S16BE:
-        flags |= FLV_CODECID_PCM    | FLV_SAMPLESSIZE_16BIT;
-        break;
-    case CODEC_ID_PCM_S16LE:
-        flags |= FLV_CODECID_PCM_LE | FLV_SAMPLESSIZE_16BIT;
-        break;
-    case CODEC_ID_ADPCM_SWF:
-        flags |= FLV_CODECID_ADPCM | FLV_SAMPLESSIZE_16BIT;
-        break;
-    case CODEC_ID_NELLYMOSER:
-        flags |= FLV_CODECID_NELLYMOSER | FLV_SAMPLESSIZE_16BIT;
-        break;
-    case 0:
-        flags |= enc->codec_tag<<4;
-        break;
-    default:
-        av_log(enc, AV_LOG_ERROR, "codec not compatible with flv\n");
-        return -1;
+    switch (enc->codec_id)
+    {
+        case CODEC_ID_MP3:
+            flags |= FLV_CODECID_MP3 | FLV_SAMPLESSIZE_16BIT;
+            break;
+        case CODEC_ID_PCM_S8:
+            flags |= FLV_CODECID_PCM | FLV_SAMPLESSIZE_8BIT;
+            break;
+        case CODEC_ID_PCM_S16BE:
+            flags |= FLV_CODECID_PCM | FLV_SAMPLESSIZE_16BIT;
+            break;
+        case CODEC_ID_PCM_S16LE:
+            flags |= FLV_CODECID_PCM_LE | FLV_SAMPLESSIZE_16BIT;
+            break;
+        case CODEC_ID_ADPCM_SWF:
+            flags |= FLV_CODECID_ADPCM | FLV_SAMPLESSIZE_16BIT;
+            break;
+        case CODEC_ID_NELLYMOSER:
+            flags |= FLV_CODECID_NELLYMOSER | FLV_SAMPLESSIZE_16BIT;
+            break;
+        case 0:
+            flags |= enc->codec_tag << 4;
+            break;
+        default:
+            av_log(enc, AV_LOG_ERROR, "codec not compatible with flv\n");
+            LogStr("Exit");
+            return -1;
     }
 
+    LogStr("Exit");
     return flags;
 }
 
-static void put_amf_string(ByteIOContext *pb, const char *str)
+static void put_amf_string( ByteIOContext *pb, const char *str )
 {
+    LogStr("Init");
+
     size_t len = strlen(str);
     put_be16(pb, len);
     put_buffer(pb, str, len);
+
+    LogStr("Exit");
 }
 
-static void put_amf_double(ByteIOContext *pb, double d)
+static void put_amf_double( ByteIOContext *pb, double d )
 {
+    LogStr("Init");
     put_byte(pb, AMF_DATA_TYPE_NUMBER);
     put_be64(pb, av_dbl2int(d));
+    LogStr("Exit");
 }
 
-static void put_amf_bool(ByteIOContext *pb, int b) {
+static void put_amf_bool( ByteIOContext *pb, int b )
+{
+    LogStr("Init");
     put_byte(pb, AMF_DATA_TYPE_BOOL);
     put_byte(pb, !!b);
+    LogStr("Exit");
 }
 
-static int flv_write_header(AVFormatContext *s)
+static int flv_write_header( AVFormatContext *s )
 {
+    LogStr("Init");
+
     ByteIOContext *pb = s->pb;
     FLVContext *flv = s->priv_data;
     AVCodecContext *audio_enc = NULL, *video_enc = NULL;
@@ -143,50 +166,63 @@ static int flv_write_header(AVFormatContext *s)
     double framerate = 0.0;
     int metadata_size_pos, data_size;
 
-    for(i=0; i<s->nb_streams; i++){
+    for (i = 0; i < s->nb_streams; i++)
+    {
         AVCodecContext *enc = s->streams[i]->codec;
-        if (enc->codec_type == CODEC_TYPE_VIDEO) {
-            if (s->streams[i]->r_frame_rate.den && s->streams[i]->r_frame_rate.num) {
+        if (enc->codec_type == CODEC_TYPE_VIDEO)
+        {
+            if (s->streams[i]->r_frame_rate.den && s->streams[i]->r_frame_rate.num)
+            {
                 framerate = av_q2d(s->streams[i]->r_frame_rate);
-            } else {
-                framerate = 1/av_q2d(s->streams[i]->codec->time_base);
+            }
+            else
+            {
+                framerate = 1 / av_q2d(s->streams[i]->codec->time_base);
             }
             video_enc = enc;
-            if(enc->codec_tag == 0) {
+            if (enc->codec_tag == 0)
+            {
                 av_log(enc, AV_LOG_ERROR, "video codec not compatible with flv\n");
+                LogStr("Exit");
                 return -1;
             }
-        } else {
+        }
+        else
+        {
             audio_enc = enc;
-            if(get_audio_flags(enc)<0)
+            if (get_audio_flags(enc) < 0)
+            {
+                LogStr("Exit");
                 return -1;
+            }
         }
         av_set_pts_info(s->streams[i], 32, 1, 1000); /* 32 bit pts in ms */
     }
-    put_tag(pb,"FLV");
-    put_byte(pb,1);
-    put_byte(pb,   FLV_HEADER_FLAG_HASAUDIO * !!audio_enc
-                 + FLV_HEADER_FLAG_HASVIDEO * !!video_enc);
-    put_be32(pb,9);
-    put_be32(pb,0);
+    put_tag(pb, "FLV");
+    put_byte(pb, 1);
+    put_byte(pb, FLV_HEADER_FLAG_HASAUDIO * !!audio_enc + FLV_HEADER_FLAG_HASVIDEO * !!video_enc);
+    put_be32(pb, 9);
+    put_be32(pb, 0);
 
-    for(i=0; i<s->nb_streams; i++){
-        if(s->streams[i]->codec->codec_tag == 5){
-            put_byte(pb,8); // message type
-            put_be24(pb,0); // include flags
-            put_be24(pb,0); // time stamp
-            put_be32(pb,0); // reserved
-            put_be32(pb,11); // size
-            flv->reserved=5;
+    for (i = 0; i < s->nb_streams; i++)
+    {
+        if (s->streams[i]->codec->codec_tag == 5)
+        {
+            put_byte(pb, 8); // message type
+            put_be24(pb, 0); // include flags
+            put_be24(pb, 0); // time stamp
+            put_be32(pb, 0); // reserved
+            put_be32(pb, 11); // size
+            flv->reserved = 5;
         }
     }
 
     /* write meta_tag */
-    put_byte(pb, 18);         // tag type META
-    metadata_size_pos= url_ftell(pb);
-    put_be24(pb, 0);          // size of data part (sum of all parts below)
-    put_be24(pb, 0);          // time stamp
-    put_be32(pb, 0);          // reserved
+    put_byte(pb, 18); // tag type META
+    metadata_size_pos = url_ftell(pb);
+    put_be24(pb, 0); // size of data part (sum of all parts below)
+    put_be24(pb, 0); // time stamp
+    put_be32(pb, 0); // reserved
 
     /* now data of data_size size */
 
@@ -196,13 +232,14 @@ static int flv_write_header(AVFormatContext *s)
 
     /* mixed array (hash) with size and string/type/data tuples */
     put_byte(pb, AMF_DATA_TYPE_MIXEDARRAY);
-    put_be32(pb, 5*!!video_enc + 4*!!audio_enc + 2); // +2 for duration and file size
+    put_be32(pb, 5 * !!video_enc + 4 * !!audio_enc + 2); // +2 for duration and file size
 
     put_amf_string(pb, "duration");
-    flv->duration_offset= url_ftell(pb);
+    flv->duration_offset = url_ftell(pb);
     put_amf_double(pb, 0); // delayed write
 
-    if(video_enc){
+    if (video_enc)
+    {
         put_amf_string(pb, "width");
         put_amf_double(pb, video_enc->width);
 
@@ -219,7 +256,8 @@ static int flv_write_header(AVFormatContext *s)
         put_amf_double(pb, video_enc->codec_tag);
     }
 
-    if(audio_enc){
+    if (audio_enc)
+    {
         put_amf_string(pb, "audiosamplerate");
         put_amf_double(pb, audio_enc->sample_rate);
 
@@ -234,35 +272,39 @@ static int flv_write_header(AVFormatContext *s)
     }
 
     put_amf_string(pb, "filesize");
-    flv->filesize_offset= url_ftell(pb);
+    flv->filesize_offset = url_ftell(pb);
     put_amf_double(pb, 0); // delayed write
 
     put_amf_string(pb, "");
     put_byte(pb, AMF_END_OF_OBJECT);
 
     /* write total size of tag */
-    data_size= url_ftell(pb) - metadata_size_pos - 10;
+    data_size = url_ftell(pb) - metadata_size_pos - 10;
     url_fseek(pb, metadata_size_pos, SEEK_SET);
     put_be24(pb, data_size);
     url_fseek(pb, data_size + 10 - 3, SEEK_CUR);
     put_be32(pb, data_size + 11);
 
-    for (i = 0; i < s->nb_streams; i++) {
+    for (i = 0; i < s->nb_streams; i++)
+    {
         AVCodecContext *enc = s->streams[i]->codec;
-        if (enc->codec_id == CODEC_ID_AAC || enc->codec_id == CODEC_ID_H264) {
+        if (enc->codec_id == CODEC_ID_AAC || enc->codec_id == CODEC_ID_H264)
+        {
             offset_t pos;
-            put_byte(pb, enc->codec_type == CODEC_TYPE_VIDEO ?
-                     FLV_TAG_TYPE_VIDEO : FLV_TAG_TYPE_AUDIO);
+            put_byte(pb, enc->codec_type == CODEC_TYPE_VIDEO ? FLV_TAG_TYPE_VIDEO : FLV_TAG_TYPE_AUDIO);
             put_be24(pb, 0); // size patched later
             put_be24(pb, 0); // ts
             put_byte(pb, 0); // ts ext
             put_be24(pb, 0); // streamid
             pos = url_ftell(pb);
-            if (enc->codec_id == CODEC_ID_AAC) {
+            if (enc->codec_id == CODEC_ID_AAC)
+            {
                 put_byte(pb, get_audio_flags(enc));
                 put_byte(pb, 0); // AAC sequence header
                 put_buffer(pb, enc->extradata, enc->extradata_size);
-            } else {
+            }
+            else
+            {
                 put_byte(pb, enc->codec_tag | FLV_FRAME_KEY); // flags
                 put_byte(pb, 0); // AVC sequence header
                 put_be24(pb, 0); // composition time
@@ -276,11 +318,15 @@ static int flv_write_header(AVFormatContext *s)
         }
     }
 
+    LogStr("Exit");
     return 0;
 }
 
-static int flv_write_trailer(AVFormatContext *s)
+static int flv_write_trailer( AVFormatContext *s )
 {
+
+    LogStr("Init");
+
     int64_t file_size;
 
     ByteIOContext *pb = s->pb;
@@ -290,44 +336,54 @@ static int flv_write_trailer(AVFormatContext *s)
 
     /* update informations */
     url_fseek(pb, flv->duration_offset, SEEK_SET);
-    put_amf_double(pb, flv->duration / (double)1000);
+    put_amf_double(pb, flv->duration / (double) 1000);
     url_fseek(pb, flv->filesize_offset, SEEK_SET);
     put_amf_double(pb, file_size);
 
     url_fseek(pb, file_size, SEEK_SET);
+
+    LogStr("Exit");
     return 0;
 }
 
-static int flv_write_packet(AVFormatContext *s, AVPacket *pkt)
+static int flv_write_packet( AVFormatContext *s, AVPacket *pkt )
 {
+
+    LogStr("Init");
+
     ByteIOContext *pb = s->pb;
     AVCodecContext *enc = s->streams[pkt->stream_index]->codec;
     FLVContext *flv = s->priv_data;
     unsigned ts;
-    int size= pkt->size;
+    int size = pkt->size;
     int flags, flags_size;
 
-//    av_log(s, AV_LOG_DEBUG, "type:%d pts: %"PRId64" size:%d\n", enc->codec_type, timestamp, size);
+    //    av_log(s, AV_LOG_DEBUG, "type:%d pts: %"PRId64" size:%d\n", enc->codec_type, timestamp, size);
 
-    if(enc->codec_id == CODEC_ID_VP6 || enc->codec_id == CODEC_ID_VP6F ||
-       enc->codec_id == CODEC_ID_AAC)
-        flags_size= 2;
-    else if(enc->codec_id == CODEC_ID_H264)
-        flags_size= 5;
+    if (enc->codec_id == CODEC_ID_VP6 || enc->codec_id == CODEC_ID_VP6F
+            || enc->codec_id == CODEC_ID_AAC)
+        flags_size = 2;
+    else if (enc->codec_id == CODEC_ID_H264)
+        flags_size = 5;
     else
-        flags_size= 1;
+        flags_size = 1;
 
-    if (enc->codec_type == CODEC_TYPE_VIDEO) {
+    if (enc->codec_type == CODEC_TYPE_VIDEO)
+    {
         put_byte(pb, FLV_TAG_TYPE_VIDEO);
 
         flags = enc->codec_tag;
-        if(flags == 0) {
-            av_log(enc, AV_LOG_ERROR, "video codec %X not compatible with flv\n",enc->codec_id);
+        if (flags == 0)
+        {
+            av_log(enc, AV_LOG_ERROR, "video codec %X not compatible with flv\n", enc->codec_id);
+            LogStr("Exit");
             return -1;
         }
 
         flags |= pkt->flags & PKT_FLAG_KEY ? FLV_FRAME_KEY : FLV_FRAME_INTER;
-    } else {
+    }
+    else
+    {
         assert(enc->codec_type == CODEC_TYPE_AUDIO);
         flags = get_audio_flags(enc);
 
@@ -337,10 +393,14 @@ static int flv_write_packet(AVFormatContext *s, AVPacket *pkt)
     }
 
     if (enc->codec_id == CODEC_ID_H264 &&
-        /* check if extradata looks like mp4 formated */
-        enc->extradata_size > 0 && *(uint8_t*)enc->extradata != 1) {
+    /* check if extradata looks like mp4 formated */
+    enc->extradata_size > 0 && *(uint8_t*) enc->extradata != 1)
+    {
         if (ff_avc_parse_nal_units(pkt->data, &pkt->data, &pkt->size) < 0)
+        {
+            LogStr("Exit");
             return -1;
+        }
         assert(pkt->size);
         size = pkt->size;
         /* cast needed to get negative value */
@@ -349,44 +409,37 @@ static int flv_write_packet(AVFormatContext *s, AVPacket *pkt)
     }
 
     ts = pkt->dts + flv->delay; // add delay to force positive dts
-    put_be24(pb,size + flags_size);
-    put_be24(pb,ts);
-    put_byte(pb,(ts >> 24) & 0x7F); // timestamps are 32bits _signed_
-    put_be24(pb,flv->reserved);
-    put_byte(pb,flags);
+    put_be24(pb, size + flags_size);
+    put_be24(pb, ts);
+    put_byte(pb, (ts >> 24) & 0x7F); // timestamps are 32bits _signed_
+    put_be24(pb, flv->reserved);
+    put_byte(pb, flags);
     if (enc->codec_id == CODEC_ID_VP6)
-        put_byte(pb,0);
+        put_byte(pb, 0);
     if (enc->codec_id == CODEC_ID_VP6F)
         put_byte(pb, enc->extradata_size ? enc->extradata[0] : 0);
     else if (enc->codec_id == CODEC_ID_AAC)
-        put_byte(pb,1); // AAC raw
-    else if (enc->codec_id == CODEC_ID_H264) {
-        put_byte(pb,1); // AVC NALU
-        put_be24(pb,pkt->pts - pkt->dts);
+        put_byte(pb, 1); // AAC raw
+    else if (enc->codec_id == CODEC_ID_H264)
+    {
+        put_byte(pb, 1); // AVC NALU
+        put_be24(pb, pkt->pts - pkt->dts);
     }
     put_buffer(pb, pkt->data, size);
-    put_be32(pb,size+flags_size+11); // previous tag size
+    put_be32(pb, size + flags_size + 11); // previous tag size
     flv->duration = FFMAX(flv->duration, pkt->pts + flv->delay + pkt->duration);
 
     put_flush_packet(pb);
+    LogStr("Exit");
     return 0;
 }
 
-AVOutputFormat flv_muxer = {
-    "flv",
-    NULL_IF_CONFIG_SMALL("FLV format"),
-    "video/x-flv",
-    "flv",
-    sizeof(FLVContext),
+AVOutputFormat
+        flv_muxer = { "flv", NULL_IF_CONFIG_SMALL("FLV format"), "video/x-flv", "flv", sizeof(FLVContext),
 #ifdef CONFIG_LIBMP3LAME
-    CODEC_ID_MP3,
+                CODEC_ID_MP3,
 #else // CONFIG_LIBMP3LAME
-    CODEC_ID_ADPCM_SWF,
+                CODEC_ID_ADPCM_SWF,
 #endif // CONFIG_LIBMP3LAME
-    CODEC_ID_FLV1,
-    flv_write_header,
-    flv_write_packet,
-    flv_write_trailer,
-    .codec_tag= (const AVCodecTag* const []){flv_video_codec_ids, flv_audio_codec_ids, 0},
-    .flags= AVFMT_GLOBALHEADER,
-};
+                CODEC_ID_FLV1, flv_write_header, flv_write_packet, flv_write_trailer, .codec_tag= (const AVCodecTag* const [])
+                {   flv_video_codec_ids, flv_audio_codec_ids, 0}, .flags= AVFMT_GLOBALHEADER, };

@@ -1876,16 +1876,15 @@ static int av_encode( AVFormatContext **output_files, int nb_output_files, AVFor
         int fi = stream_maps[i].file_index;
         int si = stream_maps[i].stream_index;
 
-        if (fi < 0 || fi > nb_input_files - 1 || si < 0 || si
-                > file_table[fi].nb_streams - 1)
+        if (fi < 0 || fi > nb_input_files - 1 || si < 0 || si > file_table[fi].nb_streams - 1)
         {
             fprintf(stderr, "Could not find input stream #%d.%d\n", fi, si);
             av_exit(1);
         }
+
         fi = stream_maps[i].sync_file_index;
         si = stream_maps[i].sync_stream_index;
-        if (fi < 0 || fi > nb_input_files - 1 || si < 0 || si
-                > file_table[fi].nb_streams - 1)
+        if (fi < 0 || fi > nb_input_files - 1 || si < 0 || si > file_table[fi].nb_streams - 1)
         {
             fprintf(stderr, "Could not find sync stream #%d.%d\n", fi, si);
             av_exit(1);
@@ -1916,13 +1915,10 @@ static int av_encode( AVFormatContext **output_files, int nb_output_files, AVFor
             ost->st = os->streams[i];
             if (nb_stream_maps > 0)
             {
-                ost->source_index
-                        = file_table[stream_maps[n].file_index].ist_index
-                                + stream_maps[n].stream_index;
+                ost->source_index = file_table[stream_maps[n].file_index].ist_index + stream_maps[n].stream_index;
 
                 /* Sanity check that the stream types match */
-                if (ist_table[ost->source_index]->st->codec->codec_type
-                        != ost->st->codec->codec_type)
+                if (ist_table[ost->source_index]->st->codec->codec_type != ost->st->codec->codec_type)
                 {
                     int i = ost->file_index;
                     dump_format(output_files[i], i, output_files[i]->filename, 1);
@@ -1936,8 +1932,7 @@ static int av_encode( AVFormatContext **output_files, int nb_output_files, AVFor
                 if (opt_programid)
                 {
                     found = 0;
-                    j
-                            = stream_index_from_inputs(input_files, nb_input_files, file_table, ist_table, ost->st->codec->codec_type, opt_programid);
+                    j = stream_index_from_inputs(input_files, nb_input_files, file_table, ist_table, ost->st->codec->codec_type, opt_programid);
                     if (j != -1)
                     {
                         ost->source_index = j;
@@ -1951,8 +1946,7 @@ static int av_encode( AVFormatContext **output_files, int nb_output_files, AVFor
                     for (j = 0; j < nb_istreams; j++)
                     {
                         ist = ist_table[j];
-                        if (ist->discard && ist->st->codec->codec_type
-                                == ost->st->codec->codec_type)
+                        if (ist->discard && ist->st->codec->codec_type == ost->st->codec->codec_type)
                         {
                             ost->source_index = j;
                             found = 1;
@@ -1969,8 +1963,7 @@ static int av_encode( AVFormatContext **output_files, int nb_output_files, AVFor
                         for (j = 0; j < nb_istreams; j++)
                         {
                             ist = ist_table[j];
-                            if (ist->st->codec->codec_type
-                                    == ost->st->codec->codec_type)
+                            if (ist->st->codec->codec_type == ost->st->codec->codec_type)
                             {
                                 ost->source_index = j;
                                 found = 1;
@@ -1988,9 +1981,7 @@ static int av_encode( AVFormatContext **output_files, int nb_output_files, AVFor
             }
             ist = ist_table[ost->source_index];
             ist->discard = 0;
-            ost->sync_ist
-                    = (nb_stream_maps > 0) ? ist_table[file_table[stream_maps[n].sync_file_index].ist_index
-                            + stream_maps[n].sync_stream_index] : ist;
+            ost->sync_ist = (nb_stream_maps > 0) ? ist_table[file_table[stream_maps[n].sync_file_index].ist_index + stream_maps[n].sync_stream_index] : ist;
         }
     }
 
@@ -3371,6 +3362,17 @@ static void set_context_opts( void *ctx, void *opts_ctx, int flags )
 static void opt_input_file( const char *filename )
 {
     LogStr ("Init");
+
+
+    /*
+    char temp[1024];
+    av_strlcat(temp, "*filename: ", sizeof(temp));
+    av_strlcat(temp, filename, sizeof(temp));
+    LogStr (temp);
+    //delete temp;
+    */
+
+
 
     AVFormatContext *ic;
     AVFormatParameters params, *ap = &params;

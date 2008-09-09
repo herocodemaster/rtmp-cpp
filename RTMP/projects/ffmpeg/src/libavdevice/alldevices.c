@@ -18,6 +18,11 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
+
+//Fernando: 20080908
+#define LogStr(str)  printf ( "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__)
+
+
 #include "config.h"
 #include "libavformat/avformat.h"
 #include "avdevice.h"
@@ -37,6 +42,8 @@ unsigned avdevice_version(void)
 
 void avdevice_register_all(void)
 {
+    LogStr ("Init");
+
     static int initialized;
 
     if (initialized)
@@ -55,4 +62,6 @@ void avdevice_register_all(void)
 
     /* external libraries */
     REGISTER_DEMUXER  (LIBDC1394, libdc1394);
+
+    LogStr ("Exit");
 }

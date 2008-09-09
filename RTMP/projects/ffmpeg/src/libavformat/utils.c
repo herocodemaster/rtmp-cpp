@@ -18,6 +18,11 @@
  * License along with FFmpeg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
+
+//Fernando: 20080908
+#define LogStr(str)  printf ( "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__)
+
+
 #include "avformat.h"
 #include "internal.h"
 #include "libavcodec/opt.h"
@@ -147,35 +152,52 @@ AVOutputFormat *av_oformat_next( AVOutputFormat *f )
 
 void av_register_input_format( AVInputFormat *format )
 {
-    LogStr("Init");
+    //LogStr("Init");
 
     AVInputFormat **p;
     p = &first_iformat;
+
     while (*p != NULL)
+    {
         p = &(*p)->next;
+    }
+
     *p = format;
     format->next = NULL;
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 }
 
 void av_register_output_format( AVOutputFormat *format )
 {
-    LogStr("Init");
+    //LogStr("Init");
 
     AVOutputFormat **p;
     p = &first_oformat;
     while (*p != NULL)
+    {
         p = &(*p)->next;
+    }
+
     *p = format;
     format->next = NULL;
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 }
 
 int match_ext( const char *filename, const char *extensions )
 {
     LogStr("Init");
+
+    /*
+    char temp[1024];
+    av_strlcat(temp, "*filename: ", sizeof(temp));
+    av_strlcat(temp, filename, sizeof(temp));
+    LogStr (temp);
+    //delete temp;
+    */
+
+
 
     const char *ext, *p;
     char ext1[32], *q;
@@ -613,6 +635,14 @@ AVFormatContext *av_alloc_format_context( void )
 int av_open_input_stream( AVFormatContext **ic_ptr, ByteIOContext *pb, const char *filename, AVInputFormat *fmt, AVFormatParameters *ap )
 {
     LogStr("Init");
+/*
+    char temp[1024];
+    av_strlcat(temp, "*filename: ", sizeof(temp));
+    av_strlcat(temp, filename, sizeof(temp));
+    LogStr (temp);
+    //delete temp;
+*/
+
 
     int err;
     AVFormatContext *ic;
@@ -696,6 +726,15 @@ int av_open_input_stream( AVFormatContext **ic_ptr, ByteIOContext *pb, const cha
 int av_open_input_file( AVFormatContext **ic_ptr, const char *filename, AVInputFormat *fmt, int buf_size, AVFormatParameters *ap )
 {
     LogStr("Init");
+
+    /*
+    char temp[1024];
+    av_strlcat(temp, "*filename: ", sizeof(temp));
+    av_strlcat(temp, filename, sizeof(temp));
+    LogStr (temp);
+    //delete temp;
+*/
+
 
     int err, probe_size;
     AVProbeData probe_data, *pd = &probe_data;
@@ -2487,6 +2526,7 @@ enum CodecID codec_get_id( const AVCodecTag *tags, unsigned int tag )
     {
         if (tag == tags[i].tag)
         {
+            LogStr ("Exit");
             return tags[i].id;
         }
     }
@@ -2495,6 +2535,7 @@ enum CodecID codec_get_id( const AVCodecTag *tags, unsigned int tag )
     {
         if (toupper((tag >> 0) & 0xFF) == toupper((tags[i].tag >> 0) & 0xFF) && toupper((tag >> 8) & 0xFF) == toupper((tags[i].tag >> 8) & 0xFF) && toupper((tag >> 16) & 0xFF) == toupper((tags[i].tag >> 16) & 0xFF) && toupper((tag >> 24) & 0xFF) == toupper((tags[i].tag >> 24) & 0xFF))
         {
+            LogStr ("Exit");
             return tags[i].id;
         }
     }
@@ -2513,6 +2554,7 @@ unsigned int av_codec_get_tag( const AVCodecTag *tags[4], enum CodecID id )
         int tag = codec_get_tag(tags[i], id);
         if (tag)
         {
+            LogStr ("Exit");
             return tag;
         }
     }
@@ -2531,6 +2573,7 @@ enum CodecID av_codec_get_id( const AVCodecTag *tags[4], unsigned int tag )
         enum CodecID id = codec_get_id(tags[i], tag);
         if (id != CODEC_ID_NONE)
         {
+            LogStr ("Exit");
             return id;
         }
     }
@@ -2573,10 +2616,12 @@ static int get_std_framerate( int i )
 
     if (i < 60 * 12)
     {
+        LogStr ("Exit");
         return i * 1001;
     }
     else
     {
+        LogStr ("Exit");
         return ( (const int[]) {   24,30,60,12,15})[i-60*12]*1000*12;
     }
 
@@ -2600,6 +2645,7 @@ static int tb_unreliable( AVCodecContext *c )
      || c->codec_tag == ff_get_fourcc("XVID")*/
     || c->codec_id == CODEC_ID_MPEG2VIDEO)
     {
+        LogStr ("Exit");
         return 1;
     }
 
@@ -2624,6 +2670,7 @@ int av_find_stream_info( AVFormatContext *ic )
     duration_error = av_mallocz(MAX_STREAMS * sizeof(*duration_error));
     if (!duration_error)
     {
+        LogStr ("Exit");
         return AVERROR(ENOMEM);
     }
 
@@ -2718,6 +2765,7 @@ int av_find_stream_info( AVFormatContext *ic )
         if (av_dup_packet(pkt) < 0)
         {
             av_free(duration_error);
+            LogStr ("Exit");
             return AVERROR(ENOMEM);
         }
 
@@ -2898,10 +2946,12 @@ int av_read_play( AVFormatContext *s )
 
     if (s->iformat->read_play)
     {
+        LogStr ("Exit");
         return s->iformat->read_play(s);
     }
     if (s->pb)
     {
+        LogStr ("Exit");
         return av_url_read_fpause(s->pb, 0);
     }
 
@@ -2916,11 +2966,13 @@ int av_read_pause( AVFormatContext *s )
 
     if (s->iformat->read_pause)
     {
+        LogStr ("Exit");
         return s->iformat->read_pause(s);
     }
 
     if (s->pb)
     {
+        LogStr ("Exit");
         return av_url_read_fpause(s->pb, 1);
     }
 
@@ -3000,12 +3052,14 @@ AVStream *av_new_stream( AVFormatContext *s, int id )
 
     if (s->nb_streams >= MAX_STREAMS)
     {
+        LogStr ("Exit");
         return NULL;
     }
 
     st = av_mallocz(sizeof(AVStream));
     if (!st)
     {
+        LogStr ("Exit");
         return NULL;
     }
 
@@ -3059,6 +3113,7 @@ AVProgram *av_new_program( AVFormatContext *ac, int id )
         program = av_mallocz(sizeof(AVProgram));
         if (!program)
         {
+            LogStr ("Exit");
             return NULL;
         }
         dynarray_add(&ac->programs, &ac->nb_programs, program);
@@ -3102,6 +3157,7 @@ AVChapter *ff_new_chapter( AVFormatContext *s, int id, AVRational time_base, int
         chapter = av_mallocz(sizeof(AVChapter));
         if (!chapter)
         {
+            LogStr ("Exit");
             return NULL;
         }
         dynarray_add(&s->chapters, &s->nb_chapters, chapter);
@@ -3132,6 +3188,7 @@ int av_set_parameters( AVFormatContext *s, AVFormatParameters *ap )
         s->priv_data = av_mallocz(s->oformat->priv_data_size);
         if (!s->priv_data)
         {
+            LogStr ("Exit");
             return AVERROR(ENOMEM);
         }
     }
@@ -3143,6 +3200,7 @@ int av_set_parameters( AVFormatContext *s, AVFormatParameters *ap )
         ret = s->oformat->set_parameters(s, ap);
         if (ret < 0)
         {
+            LogStr ("Exit");
             return ret;
         }
 
@@ -3170,6 +3228,7 @@ int av_write_header( AVFormatContext *s )
                 if (st->codec->sample_rate <= 0)
                 {
                     av_log(s, AV_LOG_ERROR, "sample rate not set\n");
+                    LogStr ("Exit");
                     return -1;
                 }
                 break;
@@ -3177,11 +3236,13 @@ int av_write_header( AVFormatContext *s )
                 if (st->codec->time_base.num <= 0 || st->codec->time_base.den <= 0)
                 { //FIXME audio too?
                     av_log(s, AV_LOG_ERROR, "time base not set\n");
+                    LogStr ("Exit");
                     return -1;
                 }
                 if (st->codec->width <= 0 || st->codec->height <= 0)
                 {
                     av_log(s, AV_LOG_ERROR, "dimensions not set\n");
+                    LogStr ("Exit");
                     return -1;
                 }
                 break;
@@ -3207,6 +3268,7 @@ int av_write_header( AVFormatContext *s )
         s->priv_data = av_mallocz(s->oformat->priv_data_size);
         if (!s->priv_data)
         {
+            LogStr ("Exit");
             return AVERROR(ENOMEM);
         }
     }
@@ -3216,6 +3278,7 @@ int av_write_header( AVFormatContext *s )
         ret = s->oformat->write_header(s);
         if (ret < 0)
         {
+            LogStr ("Exit");
             return ret;
         }
     }
@@ -3241,6 +3304,7 @@ int av_write_header( AVFormatContext *s )
         {
             if (den <= 0)
             {
+                LogStr ("Exit");
                 return AVERROR_INVALIDDATA;
             }
             av_frac_init(&st->pts, 0, 0, den);
@@ -3300,11 +3364,13 @@ static int compute_pkt_fields2( AVStream *st, AVPacket *pkt )
     if (st->cur_dts && st->cur_dts != AV_NOPTS_VALUE && st->cur_dts >= pkt->dts)
     {
         av_log(st->codec, AV_LOG_ERROR, "error, non monotone timestamps %"PRId64" >= %"PRId64"\n", st->cur_dts, pkt->dts);
+        LogStr ("Exit");
         return -1;
     }
     if (pkt->dts != AV_NOPTS_VALUE && pkt->pts != AV_NOPTS_VALUE && pkt->pts < pkt->dts)
     {
         av_log(st->codec, AV_LOG_ERROR, "error, pts < dts\n");
+        LogStr ("Exit");
         return -1;
     }
 
@@ -3345,6 +3411,7 @@ int av_write_frame( AVFormatContext *s, AVPacket *pkt )
 
     if (ret < 0 && !(s->oformat->flags & AVFMT_NOTIMESTAMPS))
     {
+        LogStr ("Exit");
         return ret;
     }
 
@@ -3409,11 +3476,13 @@ int av_interleave_packet_per_dts( AVFormatContext *s, AVPacket *out, AVPacket *p
 
         s->packet_buffer = pktl->next;
         av_freep(&pktl);
+        LogStr ("Exit");
         return 1;
     }
     else
     {
         av_init_packet(out);
+        LogStr ("Exit");
         return 0;
     }
 
@@ -3435,10 +3504,12 @@ static int av_interleave_packet( AVFormatContext *s, AVPacket *out, AVPacket *in
 
     if (s->oformat->interleave_packet)
     {
+        LogStr ("Exit");
         return s->oformat->interleave_packet(s, out, in, flush);
     }
     else
     {
+        LogStr ("Exit");
         return av_interleave_packet_per_dts(s, out, in, flush);
     }
 
@@ -3454,17 +3525,20 @@ int av_interleaved_write_frame( AVFormatContext *s, AVPacket *pkt )
     //FIXME/XXX/HACK drop zero sized packets
     if (st->codec->codec_type == CODEC_TYPE_AUDIO && pkt->size == 0)
     {
+        LogStr ("Exit");
         return 0;
     }
 
     //av_log(NULL, AV_LOG_DEBUG, "av_interleaved_write_frame %d %"PRId64" %"PRId64"\n", pkt->size, pkt->dts, pkt->pts);
     if (compute_pkt_fields2(st, pkt) < 0 && !(s->oformat->flags & AVFMT_NOTIMESTAMPS))
     {
+        LogStr ("Exit");
         return -1;
     }
 
     if (pkt->dts == AV_NOPTS_VALUE)
     {
+        LogStr ("Exit");
         return -1;
     }
 
@@ -3474,6 +3548,7 @@ int av_interleaved_write_frame( AVFormatContext *s, AVPacket *pkt )
         int ret = av_interleave_packet(s, &opkt, pkt, 0);
         if (ret <= 0) //FIXME cleanup needed for ret<0 ?
         {
+            LogStr ("Exit");
             return ret;
         }
 
@@ -3484,10 +3559,12 @@ int av_interleaved_write_frame( AVFormatContext *s, AVPacket *pkt )
 
         if (ret < 0)
         {
+            LogStr ("Exit");
             return ret;
         }
         if (url_ferror(s->pb))
         {
+            LogStr ("Exit");
             return url_ferror(s->pb);
         }
     }
@@ -3552,6 +3629,7 @@ void av_program_add_stream_index( AVFormatContext *ac, int progid, unsigned int 
         {
             if (program->stream_index[j] == idx)
             {
+                LogStr ("Exit");
                 return;
             }
         }
@@ -3559,10 +3637,12 @@ void av_program_add_stream_index( AVFormatContext *ac, int progid, unsigned int 
         tmp = av_realloc(program->stream_index, sizeof(unsigned int) * (program->nb_stream_indexes + 1));
         if (!tmp)
         {
+            LogStr ("Exit");
             return;
         }
         program->stream_index = tmp;
         program->stream_index[program->nb_stream_indexes++] = idx;
+        LogStr ("Exit");
         return;
     }
 
@@ -3788,6 +3868,7 @@ int64_t parse_date( const char *datestr, int duration )
             if (q == p)
             {
                 /* the parsing didn't succeed */
+                LogStr ("Exit");
                 return INT64_MIN;
             }
             dt.tm_min = 0;
@@ -3798,6 +3879,7 @@ int64_t parse_date( const char *datestr, int duration )
     /* Now we have all the fields that we can get */
     if (!q)
     {
+        LogStr ("Exit");
         return INT64_MIN;
     }
 
@@ -3878,6 +3960,7 @@ int find_info_tag( char *arg, int arg_size, const char *tag1, const char *info )
         }
         if (!strcmp(tag, tag1))
         {
+            LogStr ("Exit");
             return 1;
         }
         if (*p != '&')
@@ -3947,6 +4030,8 @@ int av_get_frame_filename( char *buf, int buf_size, const char *path, int number
         goto fail;
     *q = '\0';
     return 0;
+    LogStr ("Exit");
+
     fail: *q = '\0';
 
 
@@ -4086,6 +4171,7 @@ void url_split( char *proto, int proto_size, char *authorization, int authorizat
     {
         /* no protocol means plain filename */
         av_strlcpy(path, url, path_size);
+        LogStr ("Exit");
         return;
     }
 
