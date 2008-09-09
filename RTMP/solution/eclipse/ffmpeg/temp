@@ -69,19 +69,17 @@ FFmpeg version UNKNOWN, Copyright (c) 2000-2008 Fabrice Bellard, et al.
 ************************** av_get_frame_filename: Exit - libavformat/utils.c-4032 **************************
 ************************** av_probe_input_format2: Exit - libavformat/utils.c-509 **************************
 ************************** av_open_input_stream: Init - libavformat/utils.c-637 **************************
+
+************************** img_read_header: Init - libavformat/img2.c-162 **************************
 ************************** av_new_stream: Init - libavformat/utils.c-3048 **************************
 ************************** av_set_pts_info: Init - libavformat/utils.c-4237 **************************
 ************************** av_set_pts_info: Exit - libavformat/utils.c-4247 **************************
 ************************** av_new_stream: Exit - libavformat/utils.c-3092 **************************
 ************************** av_set_pts_info: Init - libavformat/utils.c-4237 **************************
 ************************** av_set_pts_info: Exit - libavformat/utils.c-4247 **************************
-
-
 ************************** find_image_range: Init - libavformat/img2.c-87 **************************
 ************************** av_get_frame_filename: Init - libavformat/utils.c-3978 **************************
 ************************** av_get_frame_filename: Exit - libavformat/utils.c-4032 **************************
-
-
 ************************** url_exist: Init - libavformat/avio.c-277 **************************
 ************************** url_open: Init - libavformat/avio.c-150 **************************
 ************************** url_open: Exit - libavformat/avio.c-188 **************************
@@ -99,12 +97,8 @@ FFmpeg version UNKNOWN, Copyright (c) 2000-2008 Fabrice Bellard, et al.
 ************************** file_close: Exit - libavformat/file.c-118 **************************
 ************************** url_close: Exit - libavformat/avio.c-271 **************************
 ************************** url_exist: Exit - libavformat/avio.c-288 **************************
-
-
 ************************** av_get_frame_filename: Init - libavformat/utils.c-3978 **************************
 ************************** av_get_frame_filename: Exit - libavformat/utils.c-4032 **************************
-
-
 ************************** url_exist: Init - libavformat/avio.c-277 **************************
 ************************** url_open: Init - libavformat/avio.c-150 **************************
 ************************** url_open: Exit - libavformat/avio.c-188 **************************
@@ -122,12 +116,8 @@ FFmpeg version UNKNOWN, Copyright (c) 2000-2008 Fabrice Bellard, et al.
 ************************** file_close: Exit - libavformat/file.c-118 **************************
 ************************** url_close: Exit - libavformat/avio.c-271 **************************
 ************************** url_exist: Exit - libavformat/avio.c-288 **************************
-
-
 ************************** av_get_frame_filename: Init - libavformat/utils.c-3978 **************************
 ************************** av_get_frame_filename: Exit - libavformat/utils.c-4032 **************************
-
-
 ************************** url_exist: Init - libavformat/avio.c-277 **************************
 ************************** url_open: Init - libavformat/avio.c-150 **************************
 ************************** url_open: Exit - libavformat/avio.c-188 **************************
@@ -137,12 +127,8 @@ FFmpeg version UNKNOWN, Copyright (c) 2000-2008 Fabrice Bellard, et al.
 ************************** file_open: Exit - libavformat/file.c-72 **************************
 ************************** url_open_protocol: Exit - libavformat/avio.c-130 **************************
 ************************** url_exist: Exit - libavformat/avio.c-283 **************************
-
-
 ************************** av_get_frame_filename: Init - libavformat/utils.c-3978 **************************
 ************************** av_get_frame_filename: Exit - libavformat/utils.c-4032 **************************
-
-
 ************************** url_exist: Init - libavformat/avio.c-277 **************************
 ************************** url_open: Init - libavformat/avio.c-150 **************************
 ************************** url_open: Exit - libavformat/avio.c-188 **************************
@@ -152,11 +138,8 @@ FFmpeg version UNKNOWN, Copyright (c) 2000-2008 Fabrice Bellard, et al.
 ************************** file_open: Exit - libavformat/file.c-72 **************************
 ************************** url_open_protocol: Exit - libavformat/avio.c-130 **************************
 ************************** url_exist: Exit - libavformat/avio.c-283 **************************
-
-
 ************************** find_image_range: Exit - libavformat/img2.c-134 **************************
-
-
+************************** img_read_header: Exit - libavformat/img2.c-238 **************************
 
 
 ************************** av_open_input_stream: Exit - libavformat/utils.c-698 **************************
@@ -512,8 +495,6 @@ WARNING: The bitrate parameter is set too low. It takes bits/s as argument, not 
 ************************** set_context_opts: Init - ffmpeg.c-3346 **************************
 ************************** set_context_opts: Exit - ffmpeg.c-3359 **************************
 ************************** new_video_stream: Exit - ffmpeg.c-3783 **************************
-
-
 ************************** opt_output_file: antes de url_exist - ffmpeg.c-4100 **************************
 ************************** url_exist: Init - libavformat/avio.c-277 **************************
 ************************** url_open: Init - libavformat/avio.c-150 **************************
@@ -532,8 +513,6 @@ WARNING: The bitrate parameter is set too low. It takes bits/s as argument, not 
 ************************** file_close: Exit - libavformat/file.c-118 **************************
 ************************** url_close: Exit - libavformat/avio.c-271 **************************
 ************************** url_exist: Exit - libavformat/avio.c-288 **************************
-
-
 File 'flv\output.flv' already exists. Overwrite ? [y/N] y
 ************************** url_open: Init - libavformat/avio.c-150 **************************
 ************************** url_open: Exit - libavformat/avio.c-188 **************************
