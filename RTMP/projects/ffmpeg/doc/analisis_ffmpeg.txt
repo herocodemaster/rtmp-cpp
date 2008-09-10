@@ -442,21 +442,21 @@ main: - ffmpeg.c-4686
 				new_video_stream: Exit - ffmpeg.c-3783 
 				opt_output_file: antes de url_exist - ffmpeg.c-4100 
 				url_exist: Init - libavformat/avio.c-277 
-				url_open: Init - libavformat/avio.c-150 
-				url_open: Exit - libavformat/avio.c-188 
-				url_open_protocol: Init - libavformat/avio.c-105 
-				file_open: Init - libavformat/file.c-38 
-				file_open: *filename: flv\output.flv - libavformat/file.c-45 
-				file_open: Exit - libavformat/file.c-77 
-				url_seek: Init - libavformat/avio.c-241 
-				file_seek: Init - libavformat/file.c-104 
-				file_seek: Exit - libavformat/file.c-108 
-				url_seek: Exit - libavformat/avio.c-252 
-				url_open_protocol: Exit - libavformat/avio.c-140 
-				url_close: Init - libavformat/avio.c-258 
-				file_close: Init - libavformat/file.c-114 
-				file_close: Exit - libavformat/file.c-118 
-				url_close: Exit - libavformat/avio.c-271 
+						url_open: Init - libavformat/avio.c-150 
+						url_open: Exit - libavformat/avio.c-188 
+						url_open_protocol: Init - libavformat/avio.c-105 
+						file_open: Init - libavformat/file.c-38 
+						file_open: *filename: flv\output.flv - libavformat/file.c-45 
+						file_open: Exit - libavformat/file.c-77 
+						url_seek: Init - libavformat/avio.c-241 
+						file_seek: Init - libavformat/file.c-104 
+						file_seek: Exit - libavformat/file.c-108 
+						url_seek: Exit - libavformat/avio.c-252 
+						url_open_protocol: Exit - libavformat/avio.c-140 
+						url_close: Init - libavformat/avio.c-258 
+						file_close: Init - libavformat/file.c-114 
+						file_close: Exit - libavformat/file.c-118 
+						url_close: Exit - libavformat/avio.c-271 
 				url_exist: Exit - libavformat/avio.c-288 
 				url_open: Init - libavformat/avio.c-150 
 				url_open: Exit - libavformat/avio.c-188 
