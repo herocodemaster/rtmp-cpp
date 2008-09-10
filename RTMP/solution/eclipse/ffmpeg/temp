@@ -1,27 +1,29 @@
 F:\Development\CPP\RTMP\projects\ffmpeg\bin>ffmpeg -i img\%03d.jpg -ab 56 -ar 22050 -b 500 -r 15 -s 320×240 flv\output.flv
 ************************** main: Init - ffmpeg.c-4686 **************************
-************************** avcodec_register_all: Init - libavcodec/allcodecs.c-63 **************************
-************************** avcodec_register_all: Exit - libavcodec/allcodecs.c-351 **************************
-************************** avdevice_register_all: Init - libavdevice/alldevices.c-45 **************************
-************************** avdevice_register_all: Exit - libavdevice/alldevices.c-66 **************************
-************************** av_register_all: Init - libavformat/allformats.c-51 **************************
-************************** avcodec_init: Init - libavcodec/utils.c-1255 **************************
-************************** avcodec_init: Exit - libavcodec/utils.c-1267 **************************
-************************** avcodec_register_all: Init - libavcodec/allcodecs.c-63 **************************
-************************** avcodec_register_all: Exit - libavcodec/allcodecs.c-69 **************************
-************************** register_protocol: Init - libavformat/avio.c-86 **************************
-************************** register_protocol: Exit - libavformat/avio.c-99 **************************
-************************** register_protocol: Init - libavformat/avio.c-86 **************************
-************************** register_protocol: Exit - libavformat/avio.c-99 **************************
-************************** register_protocol: Init - libavformat/avio.c-86 **************************
-************************** register_protocol: Exit - libavformat/avio.c-99 **************************
-************************** register_protocol: Init - libavformat/avio.c-86 **************************
-************************** register_protocol: Exit - libavformat/avio.c-99 **************************
-************************** register_protocol: Init - libavformat/avio.c-86 **************************
-************************** register_protocol: Exit - libavformat/avio.c-99 **************************
-************************** register_protocol: Init - libavformat/avio.c-86 **************************
-************************** register_protocol: Exit - libavformat/avio.c-99 **************************
-************************** av_register_all: Exit - libavformat/allformats.c-219 **************************
+	************************** avcodec_register_all: Init - libavcodec/allcodecs.c-63 **************************
+	************************** avcodec_register_all: Exit - libavcodec/allcodecs.c-351 **************************
+	************************** avdevice_register_all: Init - libavdevice/alldevices.c-45 **************************
+	************************** avdevice_register_all: Exit - libavdevice/alldevices.c-66 **************************
+
+	************************** av_register_all: Init - libavformat/allformats.c-51 **************************
+		************************** avcodec_init: Init - libavcodec/utils.c-1255 **************************
+		************************** avcodec_init: Exit - libavcodec/utils.c-1267 **************************
+		************************** avcodec_register_all: Init - libavcodec/allcodecs.c-63 **************************
+		************************** avcodec_register_all: Exit - libavcodec/allcodecs.c-69 **************************
+		************************** register_protocol: Init - libavformat/avio.c-86 **************************
+		************************** register_protocol: Exit - libavformat/avio.c-99 **************************
+		************************** register_protocol: Init - libavformat/avio.c-86 **************************
+		************************** register_protocol: Exit - libavformat/avio.c-99 **************************
+		************************** register_protocol: Init - libavformat/avio.c-86 **************************
+		************************** register_protocol: Exit - libavformat/avio.c-99 **************************
+		************************** register_protocol: Init - libavformat/avio.c-86 **************************
+		************************** register_protocol: Exit - libavformat/avio.c-99 **************************
+		************************** register_protocol: Init - libavformat/avio.c-86 **************************
+		************************** register_protocol: Exit - libavformat/avio.c-99 **************************
+		************************** register_protocol: Init - libavformat/avio.c-86 **************************
+		************************** register_protocol: Exit - libavformat/avio.c-99 **************************
+	************************** av_register_all: Exit - libavformat/allformats.c-219 **************************
+
 ************************** url_set_interrupt_cb: Init - libavformat/avio.c-340 **************************
 ************************** url_set_interrupt_cb: Exit - libavformat/avio.c-348 **************************
 ************************** av_alloc_format_context: Init - libavformat/utils.c-619 **************************
@@ -29,16 +31,11 @@ F:\Development\CPP\RTMP\projects\ffmpeg\bin>ffmpeg -i img\%03d.jpg -ab 56 -ar 22
 ************************** avformat_get_context_defaults: Exit - libavformat/utils.c-614 **************************
 ************************** av_alloc_format_context: Exit - libavformat/utils.c-631 **************************
 ************************** show_banner: Init - cmdutils.c-313 **************************
-FFmpeg version UNKNOWN, Copyright (c) 2000-2008 Fabrice Bellard, et al.
-  configuration: --extra-cflags=-mno-cygwin -mms-bitfields --extra-ldflags=-Wl,-add-stdcall-alias --enable-memalign-hack --target-os=mingw32 --enable-gpl
 ************************** print_all_lib_versions: Init - cmdutils.c-292 **************************
-  libavutil     49.10. 0 / 49.10. 0
-  libavcodec    51.71. 0 / 51.71. 0
-  libavformat   52.21. 0 / 52.21. 0
-  libavdevice   52. 1. 0 / 52. 1. 0
 ************************** print_all_lib_versions: Exit - cmdutils.c-307 **************************
-  built on Sep  8 2008 19:14:30, gcc: 4.3.0 20080305 (alpha-testing) mingw-20080502
 ************************** show_banner: Exit - cmdutils.c-325 **************************
+
+
 ************************** parse_options: Init - cmdutils.c-148 **************************
 ************************** find_option: Init - cmdutils.c-125 **************************
 ************************** find_option: Exit - cmdutils.c-137 **************************
@@ -436,10 +433,7 @@ FFmpeg version UNKNOWN, Copyright (c) 2000-2008 Fabrice Bellard, et al.
 ************************** set_context_opts: Init - ffmpeg.c-3346 **************************
 ************************** set_context_opts: Exit - ffmpeg.c-3359 **************************
 ************************** dump_format: Init - libavformat/utils.c-3687 **************************
-Input #0, image2, from 'img\%03d.jpg':
-  Duration: 00:00:00.08, start: 0.000000, bitrate: N/A
 ************************** dump_stream_format: Init - libavformat/utils.c-3655 **************************
-    Stream #0.0: Video: mjpeg, yuvj420p, 320x240 [PAR 100:100 DAR 4:3], 25.00 tb(r)
 ************************** dump_stream_format: Exit - libavformat/utils.c-3682 **************************
 ************************** dump_format: Exit - libavformat/utils.c-3744 **************************
 ************************** opt_input_file: Exit - ffmpeg.c-3576 **************************
@@ -448,7 +442,6 @@ Input #0, image2, from 'img\%03d.jpg':
 ************************** opt_bitrate: Init - ffmpeg.c-2725 **************************
 ************************** opt_default: Init - ffmpeg.c-2631 **************************
 ************************** opt_default: Exit - ffmpeg.c-2673 **************************
-WARNING: The bitrate parameter is set too low. It takes bits/s as argument, not kbits/s
 ************************** opt_bitrate: Exit - ffmpeg.c-2735 **************************
 ************************** find_option: Init - cmdutils.c-125 **************************
 ************************** find_option: Exit - cmdutils.c-137 **************************
@@ -461,7 +454,6 @@ WARNING: The bitrate parameter is set too low. It takes bits/s as argument, not 
 ************************** opt_bitrate: Init - ffmpeg.c-2725 **************************
 ************************** opt_default: Init - ffmpeg.c-2631 **************************
 ************************** opt_default: Exit - ffmpeg.c-2673 **************************
-WARNING: The bitrate parameter is set too low. It takes bits/s as argument, not kbits/s
 ************************** opt_bitrate: Exit - ffmpeg.c-2735 **************************
 ************************** find_option: Init - cmdutils.c-125 **************************
 ************************** find_option: Exit - cmdutils.c-137 **************************
@@ -513,7 +505,6 @@ WARNING: The bitrate parameter is set too low. It takes bits/s as argument, not 
 ************************** file_close: Exit - libavformat/file.c-118 **************************
 ************************** url_close: Exit - libavformat/avio.c-271 **************************
 ************************** url_exist: Exit - libavformat/avio.c-288 **************************
-File 'flv\output.flv' already exists. Overwrite ? [y/N] y
 ************************** url_open: Init - libavformat/avio.c-150 **************************
 ************************** url_open: Exit - libavformat/avio.c-188 **************************
 ************************** url_open_protocol: Init - libavformat/avio.c-105 **************************
@@ -537,13 +528,9 @@ File 'flv\output.flv' already exists. Overwrite ? [y/N] y
 ************************** getutime: Exit - ffmpeg.c-4187 **************************
 ************************** av_encode: Init - ffmpeg.c-1797 **************************
 ************************** dump_format: Init - libavformat/utils.c-3687 **************************
-Output #0, flv, to 'flv\output.flv':
 ************************** dump_stream_format: Init - libavformat/utils.c-3655 **************************
-    Stream #0.0: Video: flv, yuv420p, 320x240 [PAR 1:1 DAR 4:3], q=2-31, 0 kb/s, 15.00 tb(c)
 ************************** dump_stream_format: Exit - libavformat/utils.c-3682 **************************
 ************************** dump_format: Exit - libavformat/utils.c-3744 **************************
-Stream mapping:
-  Stream #0.0 -> #0.0
 ************************** ff_mjpeg_decode_init: Init - libavcodec/mjpegdec.c-85 **************************
 ************************** build_basic_mjpeg_vlc: Init - libavcodec/mjpegdec.c-74 **************************
 ************************** build_vlc: Init - libavcodec/mjpegdec.c-50 **************************
@@ -600,7 +587,6 @@ Stream mapping:
 ************************** av_frac_init: Init - libavformat/utils.c-62 **************************
 ************************** av_frac_init: Exit - libavformat/utils.c-74 **************************
 ************************** av_write_header: Exit - libavformat/utils.c-3314 **************************
-Press [q] to stop encoding
 ************************** url_set_interrupt_cb: Init - libavformat/avio.c-340 **************************
 ************************** url_set_interrupt_cb: Exit - libavformat/avio.c-348 **************************
 ************************** term_init: Init - ffmpeg.c-329 **************************
@@ -936,8 +922,6 @@ Press [q] to stop encoding
 ************************** url_seek: Exit - libavformat/avio.c-252 **************************
 ************************** av_gettime: Init - libavformat/utils.c-3772 **************************
 ************************** av_gettime: Exit - libavformat/utils.c-3777 **************************
-frame=    2 fps=  0 q=8.0 Lsize=      23kB time=0.13 bitrate=1413.2kbits/s
-video:23kB audio:0kB global headers:0kB muxing overhead 0.940924%
 ************************** print_report: Exit - ffmpeg.c-1338 **************************
 ************************** ff_mjpeg_decode_end: Init - libavcodec/mjpegdec.c-1652 **************************
 ************************** ff_mjpeg_decode_end: Exit - libavcodec/mjpegdec.c-1666 **************************
