@@ -35,7 +35,9 @@ main: - ffmpeg.c-4686
 		---------------------------------------------------------------------------------------------------------------------
 
 		parse_options: Init - cmdutils.c-148 
+				
 				find_option: Init - cmdutils.c-125 
+				
 				opt_input_file: Init - ffmpeg.c-3364 
 						av_alloc_format_context: Init - libavformat/utils.c-619 
 								avformat_get_context_defaults: Init - libavformat/utils.c-606 
@@ -94,811 +96,1037 @@ main: - ffmpeg.c-4686
 						av_find_stream_info: Init - libavformat/utils.c-2658 
 								has_codec_parameters: Init - libavformat/utils.c-2427 
 								has_codec_parameters: Exit - libavformat/utils.c-2448 
+
 								av_read_frame_internal: Init - libavformat/utils.c-1287 
-								av_init_packet: Init - libavformat/utils.c-372 
-								av_init_packet: Exit - libavformat/utils.c-382 
-								av_read_packet: Init - libavformat/utils.c-855 
-								av_init_packet: Init - libavformat/utils.c-372 
-								av_init_packet: Exit - libavformat/utils.c-382 
-								av_get_frame_filename: Init - libavformat/utils.c-3978 
-								av_get_frame_filename: Exit - libavformat/utils.c-4032 
-								url_open: Init - libavformat/avio.c-150 
-								url_open: Exit - libavformat/avio.c-188 
-								url_open_protocol: Init - libavformat/avio.c-105 
-								file_open: Init - libavformat/file.c-38 
-								file_open: *filename: img\000.jpg - libavformat/file.c-45 
-								file_open: Exit - libavformat/file.c-77 
-								url_seek: Init - libavformat/avio.c-241 
-								file_seek: Init - libavformat/file.c-104 
-								file_seek: Exit - libavformat/file.c-108 
-								url_seek: Exit - libavformat/avio.c-252 
-								url_open_protocol: Exit - libavformat/avio.c-140 
-								url_get_max_packet_size: Init - libavformat/avio.c-317 
-								url_get_max_packet_size: Exit - libavformat/avio.c-318 
-								url_seek: Init - libavformat/avio.c-241 
-								file_seek: Init - libavformat/file.c-104 
-								file_seek: Exit - libavformat/file.c-108 
-								url_seek: Exit - libavformat/avio.c-252 
-								url_seek: Init - libavformat/avio.c-241 
-								file_seek: Init - libavformat/file.c-104 
-								file_seek: Exit - libavformat/file.c-108 
-								url_seek: Exit - libavformat/avio.c-252 
-								url_seek: Init - libavformat/avio.c-241 
-								file_seek: Init - libavformat/file.c-104 
-								file_seek: Exit - libavformat/file.c-108 
-								url_seek: Exit - libavformat/avio.c-252 
-								av_new_packet: Init - libavformat/utils.c-387 
-								av_init_packet: Init - libavformat/utils.c-372 
-								av_init_packet: Exit - libavformat/utils.c-382 
-								av_new_packet: Exit - libavformat/utils.c-408 
-								url_read: Init - libavformat/avio.c-201 
-								file_read: Init - libavformat/file.c-83 
-								file_read: Exit - libavformat/file.c-87 
-								url_read: Exit - libavformat/avio.c-212 
-								url_close: Init - libavformat/avio.c-258 
-								file_close: Init - libavformat/file.c-114 
-								file_close: Exit - libavformat/file.c-118 
-								url_close: Exit - libavformat/avio.c-271 
-								av_read_packet: Exit - libavformat/utils.c-904 
-								compute_pkt_fields: Init - libavformat/utils.c-1148 
-								compute_frame_duration: Init - libavformat/utils.c-987 
-								compute_frame_duration: Exit - libavformat/utils.c-1023 
-								update_initial_timestamps: Init - libavformat/utils.c-1062 
-								update_initial_timestamps: Exit - libavformat/utils.c-1069 
-								is_intra_only: Init - libavformat/utils.c-1028 
-								is_intra_only: Exit - libavformat/utils.c-1049 
-								compute_pkt_fields: Exit - libavformat/utils.c-1272 
+										av_init_packet: Init - libavformat/utils.c-372 
+										av_init_packet: Exit - libavformat/utils.c-382 
+										av_read_packet: Init - libavformat/utils.c-855 
+												av_init_packet: Init - libavformat/utils.c-372 
+												av_init_packet: Exit - libavformat/utils.c-382 
+												av_get_frame_filename: Init - libavformat/utils.c-3978 
+												av_get_frame_filename: Exit - libavformat/utils.c-4032 
+												url_open: Init - libavformat/avio.c-150 
+														url_open_protocol: Init - libavformat/avio.c-105 
+																file_open: Init - libavformat/file.c-38 
+																file_open: *filename: img\000.jpg - libavformat/file.c-45 
+																file_open: Exit - libavformat/file.c-77 
+																url_seek: Init - libavformat/avio.c-241 
+																	file_seek: Init - libavformat/file.c-104 
+																	file_seek: Exit - libavformat/file.c-108 
+																url_seek: Exit - libavformat/avio.c-252 
+														url_open_protocol: Exit - libavformat/avio.c-140 
+												url_open: Exit - libavformat/avio.c-188 
+												url_get_max_packet_size: Init - libavformat/avio.c-317 
+												url_get_max_packet_size: Exit - libavformat/avio.c-318 
+												url_seek: Init - libavformat/avio.c-241 
+														file_seek: Init - libavformat/file.c-104 
+														file_seek: Exit - libavformat/file.c-108 
+												url_seek: Exit - libavformat/avio.c-252 
+												url_seek: Init - libavformat/avio.c-241 
+														file_seek: Init - libavformat/file.c-104 
+														file_seek: Exit - libavformat/file.c-108 
+												url_seek: Exit - libavformat/avio.c-252 
+												url_seek: Init - libavformat/avio.c-241 
+														file_seek: Init - libavformat/file.c-104 
+														file_seek: Exit - libavformat/file.c-108 
+												url_seek: Exit - libavformat/avio.c-252 
+	
+												av_new_packet: Init - libavformat/utils.c-387 
+														av_init_packet: Init - libavformat/utils.c-372 
+														av_init_packet: Exit - libavformat/utils.c-382 
+												av_new_packet: Exit - libavformat/utils.c-408 
+	
+												url_read: Init - libavformat/avio.c-201 
+														file_read: Init - libavformat/file.c-83 
+														file_read: Exit - libavformat/file.c-87 
+												url_read: Exit - libavformat/avio.c-212 
+	
+												url_close: Init - libavformat/avio.c-258 
+														file_close: Init - libavformat/file.c-114 
+														file_close: Exit - libavformat/file.c-118 
+												url_close: Exit - libavformat/avio.c-271 
+										av_read_packet: Exit - libavformat/utils.c-904
+												 
+										compute_pkt_fields: Init - libavformat/utils.c-1148 
+												compute_frame_duration: Init - libavformat/utils.c-987 
+												compute_frame_duration: Exit - libavformat/utils.c-1023 
+								
+												update_initial_timestamps: Init - libavformat/utils.c-1062 
+												update_initial_timestamps: Exit - libavformat/utils.c-1069 
+								
+												is_intra_only: Init - libavformat/utils.c-1028 
+												is_intra_only: Exit - libavformat/utils.c-1049
+												 
+										compute_pkt_fields: Exit - libavformat/utils.c-1272 
+								
 								av_read_frame_internal: Exit - libavformat/utils.c-1417 
+								
 								add_to_pktbuf: Init - libavformat/utils.c-831 
 								add_to_pktbuf: Exit - libavformat/utils.c-849 
 								av_dup_packet: Init - libavformat/utils.c-439 
 								av_dup_packet: Exit - libavformat/utils.c-462 
 								has_codec_parameters: Init - libavformat/utils.c-2427 
 								has_codec_parameters: Exit - libavformat/utils.c-2448 
+								
 								try_decode_frame: Init - libavformat/utils.c-2454 
-								ff_mjpeg_decode_init: Init - libavcodec/mjpegdec.c-85 
-								build_basic_mjpeg_vlc: Init - libavcodec/mjpegdec.c-74 
-								build_vlc: Init - libavcodec/mjpegdec.c-50 
-								build_vlc: Exit - libavcodec/mjpegdec.c-68 
-								build_vlc: Init - libavcodec/mjpegdec.c-50 
-								build_vlc: Exit - libavcodec/mjpegdec.c-68 
-								build_vlc: Init - libavcodec/mjpegdec.c-50 
-								build_vlc: Exit - libavcodec/mjpegdec.c-68 
-								build_vlc: Init - libavcodec/mjpegdec.c-50 
-								build_vlc: Exit - libavcodec/mjpegdec.c-68 
-								build_basic_mjpeg_vlc: Exit - libavcodec/mjpegdec.c-80 
-								ff_mjpeg_decode_init: Exit - libavcodec/mjpegdec.c-119 
-								has_codec_parameters: Init - libavformat/utils.c-2427 
-								has_codec_parameters: Exit - libavformat/utils.c-2448 
-								ff_mjpeg_decode_frame: Init - libavcodec/mjpegdec.c-1368 
-								find_marker: Init - libavcodec/mjpegdec.c-1331 
-								find_marker: Exit - libavcodec/mjpegdec.c-1361 
-								find_marker: Init - libavcodec/mjpegdec.c-1331 
-								find_marker: Exit - libavcodec/mjpegdec.c-1361 
-								mjpeg_decode_app: Init - libavcodec/mjpegdec.c-1110 
-								mjpeg_decode_app: Exit - libavcodec/mjpegdec.c-1260 
-								find_marker: Init - libavcodec/mjpegdec.c-1331 
-								find_marker: Exit - libavcodec/mjpegdec.c-1361 
-								mjpeg_decode_app: Init - libavcodec/mjpegdec.c-1110 
-								mjpeg_decode_app: Exit - libavcodec/mjpegdec.c-1260 
-								find_marker: Init - libavcodec/mjpegdec.c-1331 
-								find_marker: Exit - libavcodec/mjpegdec.c-1361 
-								mjpeg_decode_app: Init - libavcodec/mjpegdec.c-1110 
-								mjpeg_decode_app: Exit - libavcodec/mjpegdec.c-1260 
-								find_marker: Init - libavcodec/mjpegdec.c-1331 
-								find_marker: Exit - libavcodec/mjpegdec.c-1361 
-								ff_mjpeg_decode_dqt: Init - libavcodec/mjpegdec.c-126 
-								ff_mjpeg_decode_dqt: Exit - libavcodec/mjpegdec.c-165 
-								find_marker: Init - libavcodec/mjpegdec.c-1331 
-								find_marker: Exit - libavcodec/mjpegdec.c-1361 
-								ff_mjpeg_decode_sof: Init - libavcodec/mjpegdec.c-239 
-								ff_mjpeg_decode_sof: Exit - libavcodec/mjpegdec.c-436 
-								find_marker: Init - libavcodec/mjpegdec.c-1331 
-								find_marker: Exit - libavcodec/mjpegdec.c-1361 
-								ff_mjpeg_decode_dht: Init - libavcodec/mjpegdec.c-172 
-								build_vlc: Init - libavcodec/mjpegdec.c-50 
-								build_vlc: Exit - libavcodec/mjpegdec.c-68 
-								build_vlc: Init - libavcodec/mjpegdec.c-50 
-								build_vlc: Exit - libavcodec/mjpegdec.c-68 
-								build_vlc: Init - libavcodec/mjpegdec.c-50 
-								build_vlc: Exit - libavcodec/mjpegdec.c-68 
-								build_vlc: Init - libavcodec/mjpegdec.c-50 
-								build_vlc: Exit - libavcodec/mjpegdec.c-68 
-								build_vlc: Init - libavcodec/mjpegdec.c-50 
-								build_vlc: Exit - libavcodec/mjpegdec.c-68 
-								build_vlc: Init - libavcodec/mjpegdec.c-50 
-								build_vlc: Exit - libavcodec/mjpegdec.c-68 
-								ff_mjpeg_decode_dht: Exit - libavcodec/mjpegdec.c-232 
-								find_marker: Init - libavcodec/mjpegdec.c-1331 
-								find_marker: Exit - libavcodec/mjpegdec.c-1361 
-								ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
-								mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
-								mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-937 
-								ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
-								find_marker: Init - libavcodec/mjpegdec.c-1331 
-								find_marker: Exit - libavcodec/mjpegdec.c-1361 
-								ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
-								mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
-								mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-937 
-								ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
-								find_marker: Init - libavcodec/mjpegdec.c-1331 
-								find_marker: Exit - libavcodec/mjpegdec.c-1361 
-								ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
-								mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
-								mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-937 
-								ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
-								find_marker: Init - libavcodec/mjpegdec.c-1331 
-								find_marker: Exit - libavcodec/mjpegdec.c-1361 
-								ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
-								mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
-								mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-937 
-								ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
-								find_marker: Init - libavcodec/mjpegdec.c-1331 
-								find_marker: Exit - libavcodec/mjpegdec.c-1361 
-								ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
-								mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
-								mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-937 
-								ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
-								find_marker: Init - libavcodec/mjpegdec.c-1331 
-								find_marker: Exit - libavcodec/mjpegdec.c-1361 
-								ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
-								mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
-								mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-937 
-								ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
-								find_marker: Init - libavcodec/mjpegdec.c-1331 
-								find_marker: Exit - libavcodec/mjpegdec.c-1361 
-								ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
-								mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
-								mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-937 
-								ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
-								find_marker: Init - libavcodec/mjpegdec.c-1331 
-								find_marker: Exit - libavcodec/mjpegdec.c-1361 
-								ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
-								mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
-								mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-855 
-								ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
-								find_marker: Init - libavcodec/mjpegdec.c-1331 
-								find_marker: Exit - libavcodec/mjpegdec.c-1361 
-								ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
-								mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
-								mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-855 
-								ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
-								find_marker: Init - libavcodec/mjpegdec.c-1331 
-								find_marker: Exit - libavcodec/mjpegdec.c-1361 
-								ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
-								mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
-								mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-855 
-								ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
-								find_marker: Init - libavcodec/mjpegdec.c-1331 
-								find_marker: Exit - libavcodec/mjpegdec.c-1361 
-								ff_mjpeg_decode_frame: Exit - libavcodec/mjpegdec.c-1645 
+										ff_mjpeg_decode_init: Init - libavcodec/mjpegdec.c-85 
+												build_basic_mjpeg_vlc: Init - libavcodec/mjpegdec.c-74 
+														build_vlc: Init - libavcodec/mjpegdec.c-50 
+														build_vlc: Exit - libavcodec/mjpegdec.c-68 
+														build_vlc: Init - libavcodec/mjpegdec.c-50 
+														build_vlc: Exit - libavcodec/mjpegdec.c-68 
+														build_vlc: Init - libavcodec/mjpegdec.c-50 
+														build_vlc: Exit - libavcodec/mjpegdec.c-68 
+														build_vlc: Init - libavcodec/mjpegdec.c-50 
+														build_vlc: Exit - libavcodec/mjpegdec.c-68 
+												build_basic_mjpeg_vlc: Exit - libavcodec/mjpegdec.c-80 
+										ff_mjpeg_decode_init: Exit - libavcodec/mjpegdec.c-119 
+
+										has_codec_parameters: Init - libavformat/utils.c-2427 
+										has_codec_parameters: Exit - libavformat/utils.c-2448 
+
+										ff_mjpeg_decode_frame: Init - libavcodec/mjpegdec.c-1368 
+												find_marker: Init - libavcodec/mjpegdec.c-1331 
+												find_marker: Exit - libavcodec/mjpegdec.c-1361 
+												find_marker: Init - libavcodec/mjpegdec.c-1331 
+												find_marker: Exit - libavcodec/mjpegdec.c-1361
+												 
+												mjpeg_decode_app: Init - libavcodec/mjpegdec.c-1110 
+												mjpeg_decode_app: Exit - libavcodec/mjpegdec.c-1260 
+												
+												find_marker: Init - libavcodec/mjpegdec.c-1331 
+												find_marker: Exit - libavcodec/mjpegdec.c-1361 
+												
+												mjpeg_decode_app: Init - libavcodec/mjpegdec.c-1110 
+												mjpeg_decode_app: Exit - libavcodec/mjpegdec.c-1260 
+												
+												find_marker: Init - libavcodec/mjpegdec.c-1331 
+												find_marker: Exit - libavcodec/mjpegdec.c-1361 
+												
+												mjpeg_decode_app: Init - libavcodec/mjpegdec.c-1110 
+												mjpeg_decode_app: Exit - libavcodec/mjpegdec.c-1260 
+												
+												find_marker: Init - libavcodec/mjpegdec.c-1331 
+												find_marker: Exit - libavcodec/mjpegdec.c-1361 
+												
+												ff_mjpeg_decode_dqt: Init - libavcodec/mjpegdec.c-126 
+												ff_mjpeg_decode_dqt: Exit - libavcodec/mjpegdec.c-165 
+												
+												find_marker: Init - libavcodec/mjpegdec.c-1331 
+												find_marker: Exit - libavcodec/mjpegdec.c-1361 
+												
+												ff_mjpeg_decode_sof: Init - libavcodec/mjpegdec.c-239 
+												ff_mjpeg_decode_sof: Exit - libavcodec/mjpegdec.c-436 
+												
+												find_marker: Init - libavcodec/mjpegdec.c-1331 
+												find_marker: Exit - libavcodec/mjpegdec.c-1361 
+												
+												ff_mjpeg_decode_dht: Init - libavcodec/mjpegdec.c-172 
+														build_vlc: Init - libavcodec/mjpegdec.c-50 
+														build_vlc: Exit - libavcodec/mjpegdec.c-68 
+														build_vlc: Init - libavcodec/mjpegdec.c-50 
+														build_vlc: Exit - libavcodec/mjpegdec.c-68 
+														build_vlc: Init - libavcodec/mjpegdec.c-50 
+														build_vlc: Exit - libavcodec/mjpegdec.c-68 
+														build_vlc: Init - libavcodec/mjpegdec.c-50 
+														build_vlc: Exit - libavcodec/mjpegdec.c-68 
+														build_vlc: Init - libavcodec/mjpegdec.c-50 
+														build_vlc: Exit - libavcodec/mjpegdec.c-68 
+														build_vlc: Init - libavcodec/mjpegdec.c-50 
+														build_vlc: Exit - libavcodec/mjpegdec.c-68 
+												ff_mjpeg_decode_dht: Exit - libavcodec/mjpegdec.c-232 
+
+												find_marker: Init - libavcodec/mjpegdec.c-1331 
+												find_marker: Exit - libavcodec/mjpegdec.c-1361 
+
+												ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
+														mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
+														mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-937 
+												ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
+												
+												find_marker: Init - libavcodec/mjpegdec.c-1331 
+												find_marker: Exit - libavcodec/mjpegdec.c-1361 
+
+												ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
+														mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
+														mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-937 
+												ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
+
+												find_marker: Init - libavcodec/mjpegdec.c-1331 
+												find_marker: Exit - libavcodec/mjpegdec.c-1361 
+
+												ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
+														mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
+														mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-937 
+												ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
+
+												find_marker: Init - libavcodec/mjpegdec.c-1331 
+												find_marker: Exit - libavcodec/mjpegdec.c-1361 
+
+												ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
+														mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
+														mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-937 
+												ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
+
+												find_marker: Init - libavcodec/mjpegdec.c-1331 
+												find_marker: Exit - libavcodec/mjpegdec.c-1361 
+
+												ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
+														mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
+														mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-937 
+												ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
+
+												find_marker: Init - libavcodec/mjpegdec.c-1331 
+												find_marker: Exit - libavcodec/mjpegdec.c-1361 
+
+												ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
+														mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
+														mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-937 
+												ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
+
+												find_marker: Init - libavcodec/mjpegdec.c-1331 
+												find_marker: Exit - libavcodec/mjpegdec.c-1361 
+
+												ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
+														mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
+														mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-937 
+												ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
+
+												find_marker: Init - libavcodec/mjpegdec.c-1331 
+												find_marker: Exit - libavcodec/mjpegdec.c-1361 
+
+												ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
+														mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
+														mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-855 
+												ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
+
+												find_marker: Init - libavcodec/mjpegdec.c-1331 
+												find_marker: Exit - libavcodec/mjpegdec.c-1361 
+
+												ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
+														mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
+														mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-855 
+												ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
+
+												find_marker: Init - libavcodec/mjpegdec.c-1331 
+												find_marker: Exit - libavcodec/mjpegdec.c-1361 
+
+												ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
+														mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
+														mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-855 
+												ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
+
+												find_marker: Init - libavcodec/mjpegdec.c-1331 
+												find_marker: Exit - libavcodec/mjpegdec.c-1361 
+
+										ff_mjpeg_decode_frame: Exit - libavcodec/mjpegdec.c-1645 
 								try_decode_frame: Exit - libavformat/utils.c-2498 
+
 								has_codec_parameters: Init - libavformat/utils.c-2427 
 								has_codec_parameters: Exit - libavformat/utils.c-2448 
+
 								tb_unreliable: Init - libavformat/utils.c-2641 
 								tb_unreliable: Exit - libavformat/utils.c-2652 
+
 								av_read_frame_internal: Init - libavformat/utils.c-1287 
-								av_init_packet: Init - libavformat/utils.c-372 
-								av_init_packet: Exit - libavformat/utils.c-382 
-								av_read_packet: Init - libavformat/utils.c-855 
-								av_init_packet: Init - libavformat/utils.c-372 
-								av_init_packet: Exit - libavformat/utils.c-382 
-								av_get_frame_filename: Init - libavformat/utils.c-3978 
-								av_get_frame_filename: Exit - libavformat/utils.c-4032 
-								url_open: Init - libavformat/avio.c-150 
-								url_open: Exit - libavformat/avio.c-188 
-								url_open_protocol: Init - libavformat/avio.c-105 
-								file_open: Init - libavformat/file.c-38 
-								file_open: *filename: img\001.jpg - libavformat/file.c-45 
-								file_open: Exit - libavformat/file.c-77 
-								url_seek: Init - libavformat/avio.c-241 
-								file_seek: Init - libavformat/file.c-104 
-								file_seek: Exit - libavformat/file.c-108 
-								url_seek: Exit - libavformat/avio.c-252 
-								url_open_protocol: Exit - libavformat/avio.c-140 
-								url_get_max_packet_size: Init - libavformat/avio.c-317 
-								url_get_max_packet_size: Exit - libavformat/avio.c-318 
-								url_seek: Init - libavformat/avio.c-241 
-								file_seek: Init - libavformat/file.c-104 
-								file_seek: Exit - libavformat/file.c-108 
-								url_seek: Exit - libavformat/avio.c-252 
-								url_seek: Init - libavformat/avio.c-241 
-								file_seek: Init - libavformat/file.c-104 
-								file_seek: Exit - libavformat/file.c-108 
-								url_seek: Exit - libavformat/avio.c-252 
-								url_seek: Init - libavformat/avio.c-241 
-								file_seek: Init - libavformat/file.c-104 
-								file_seek: Exit - libavformat/file.c-108 
-								url_seek: Exit - libavformat/avio.c-252 
-								av_new_packet: Init - libavformat/utils.c-387 
-								av_init_packet: Init - libavformat/utils.c-372 
-								av_init_packet: Exit - libavformat/utils.c-382 
-								av_new_packet: Exit - libavformat/utils.c-408 
-								url_read: Init - libavformat/avio.c-201 
-								file_read: Init - libavformat/file.c-83 
-								file_read: Exit - libavformat/file.c-87 
-								url_read: Exit - libavformat/avio.c-212 
-								url_close: Init - libavformat/avio.c-258 
-								file_close: Init - libavformat/file.c-114 
-								file_close: Exit - libavformat/file.c-118 
-								url_close: Exit - libavformat/avio.c-271 
-								av_read_packet: Exit - libavformat/utils.c-904 
-								compute_pkt_fields: Init - libavformat/utils.c-1148 
-								compute_frame_duration: Init - libavformat/utils.c-987 
-								compute_frame_duration: Exit - libavformat/utils.c-1023 
-								update_initial_durations: Init - libavformat/utils.c-1098 
-								update_initial_durations: Exit - libavformat/utils.c-1120 
-								update_initial_timestamps: Init - libavformat/utils.c-1062 
-								update_initial_timestamps: Exit - libavformat/utils.c-1069 
-								is_intra_only: Init - libavformat/utils.c-1028 
-								is_intra_only: Exit - libavformat/utils.c-1049 
-								compute_pkt_fields: Exit - libavformat/utils.c-1272 
+										av_init_packet: Init - libavformat/utils.c-372 
+										av_init_packet: Exit - libavformat/utils.c-382 
+
+										av_read_packet: Init - libavformat/utils.c-855 
+												av_init_packet: Init - libavformat/utils.c-372 
+												av_init_packet: Exit - libavformat/utils.c-382 
+
+												av_get_frame_filename: Init - libavformat/utils.c-3978 
+												av_get_frame_filename: Exit - libavformat/utils.c-4032 
+		
+												url_open: Init - libavformat/avio.c-150 
+														url_open_protocol: Init - libavformat/avio.c-105 
+																file_open: Init - libavformat/file.c-38 
+																file_open: *filename: img\001.jpg - libavformat/file.c-45 
+																file_open: Exit - libavformat/file.c-77 
+																url_seek: Init - libavformat/avio.c-241 
+																		file_seek: Init - libavformat/file.c-104 
+																		file_seek: Exit - libavformat/file.c-108 
+																url_seek: Exit - libavformat/avio.c-252 
+														url_open_protocol: Exit - libavformat/avio.c-140 
+												url_open: Exit - libavformat/avio.c-188 
+
+												url_get_max_packet_size: Init - libavformat/avio.c-317 
+												url_get_max_packet_size: Exit - libavformat/avio.c-318 
+
+												url_seek: Init - libavformat/avio.c-241 
+														file_seek: Init - libavformat/file.c-104 
+														file_seek: Exit - libavformat/file.c-108 
+												url_seek: Exit - libavformat/avio.c-252 
+
+												url_seek: Init - libavformat/avio.c-241 
+														file_seek: Init - libavformat/file.c-104 
+														file_seek: Exit - libavformat/file.c-108 
+												url_seek: Exit - libavformat/avio.c-252 
+
+												url_seek: Init - libavformat/avio.c-241 
+														file_seek: Init - libavformat/file.c-104 
+														file_seek: Exit - libavformat/file.c-108 
+												url_seek: Exit - libavformat/avio.c-252 
+
+												av_new_packet: Init - libavformat/utils.c-387 
+														av_init_packet: Init - libavformat/utils.c-372 
+														av_init_packet: Exit - libavformat/utils.c-382 
+												av_new_packet: Exit - libavformat/utils.c-408 
+				
+												url_read: Init - libavformat/avio.c-201 
+														file_read: Init - libavformat/file.c-83 
+														file_read: Exit - libavformat/file.c-87 
+												url_read: Exit - libavformat/avio.c-212 
+								
+												url_close: Init - libavformat/avio.c-258 
+														file_close: Init - libavformat/file.c-114 
+														file_close: Exit - libavformat/file.c-118 
+												url_close: Exit - libavformat/avio.c-271 
+										av_read_packet: Exit - libavformat/utils.c-904 
+
+										compute_pkt_fields: Init - libavformat/utils.c-1148 
+												compute_frame_duration: Init - libavformat/utils.c-987 
+												compute_frame_duration: Exit - libavformat/utils.c-1023 
+
+												update_initial_durations: Init - libavformat/utils.c-1098 
+												update_initial_durations: Exit - libavformat/utils.c-1120 
+
+												update_initial_timestamps: Init - libavformat/utils.c-1062 
+												update_initial_timestamps: Exit - libavformat/utils.c-1069 
+
+												is_intra_only: Init - libavformat/utils.c-1028 
+												is_intra_only: Exit - libavformat/utils.c-1049 
+										compute_pkt_fields: Exit - libavformat/utils.c-1272 
+								
 								av_read_frame_internal: Exit - libavformat/utils.c-1417 
+								
 								add_to_pktbuf: Init - libavformat/utils.c-831 
 								add_to_pktbuf: Exit - libavformat/utils.c-849 
+
 								av_dup_packet: Init - libavformat/utils.c-439 
 								av_dup_packet: Exit - libavformat/utils.c-462 
+
 								has_codec_parameters: Init - libavformat/utils.c-2427 
 								has_codec_parameters: Exit - libavformat/utils.c-2448 
+
 								has_codec_parameters: Init - libavformat/utils.c-2427 
 								has_codec_parameters: Exit - libavformat/utils.c-2448 
+
 								tb_unreliable: Init - libavformat/utils.c-2641 
 								tb_unreliable: Exit - libavformat/utils.c-2652 
+
 								av_read_frame_internal: Init - libavformat/utils.c-1287 
-								av_init_packet: Init - libavformat/utils.c-372 
-								av_init_packet: Exit - libavformat/utils.c-382 
-								av_read_packet: Init - libavformat/utils.c-855 
-								av_init_packet: Init - libavformat/utils.c-372 
-								av_init_packet: Exit - libavformat/utils.c-382 
-								av_get_frame_filename: Init - libavformat/utils.c-3978 
-								av_get_frame_filename: Exit - libavformat/utils.c-4032 
-								url_open: Init - libavformat/avio.c-150 
-								url_open: Exit - libavformat/avio.c-188 
-								url_open_protocol: Init - libavformat/avio.c-105 
-								file_open: Init - libavformat/file.c-38 
-								file_open: *filename: img\002.jpg - libavformat/file.c-45 
-								file_open: Exit - libavformat/file.c-72 
-								url_open_protocol: Exit - libavformat/avio.c-130 
-								av_read_packet: Exit - libavformat/utils.c-880 
+										av_init_packet: Init - libavformat/utils.c-372 
+										av_init_packet: Exit - libavformat/utils.c-382 
+				
+										av_read_packet: Init - libavformat/utils.c-855 
+												av_init_packet: Init - libavformat/utils.c-372 
+												av_init_packet: Exit - libavformat/utils.c-382 
+
+												av_get_frame_filename: Init - libavformat/utils.c-3978 
+												av_get_frame_filename: Exit - libavformat/utils.c-4032 
+
+												url_open: Init - libavformat/avio.c-150 
+														url_open_protocol: Init - libavformat/avio.c-105 
+																file_open: Init - libavformat/file.c-38 
+																file_open: *filename: img\002.jpg - libavformat/file.c-45 
+																file_open: Exit - libavformat/file.c-72 
+														url_open_protocol: Exit - libavformat/avio.c-130 
+												url_open: Exit - libavformat/avio.c-188 
+
+										av_read_packet: Exit - libavformat/utils.c-880 
 								av_read_frame_internal: Exit - libavformat/utils.c-1371 
+
 								has_codec_parameters: Init - libavformat/utils.c-2427 
 								has_codec_parameters: Exit - libavformat/utils.c-2448 
+
 								ff_mjpeg_decode_end: Init - libavcodec/mjpegdec.c-1652 
 								ff_mjpeg_decode_end: Exit - libavcodec/mjpegdec.c-1666 
+
 								tb_unreliable: Init - libavformat/utils.c-2641 
 								tb_unreliable: Exit - libavformat/utils.c-2652 
+
 								av_estimate_timings: Init - libavformat/utils.c-2369 
-								av_has_duration: Init - libavformat/utils.c-2118 
-								av_has_duration: Exit - libavformat/utils.c-2128 
-								fill_all_stream_timings: Init - libavformat/utils.c-2200 
-								av_update_stream_timings: Init - libavformat/utils.c-2144 
-								av_update_stream_timings: Exit - libavformat/utils.c-2195 
-								fill_all_stream_timings: Exit - libavformat/utils.c-2218 
-								av_update_stream_timings: Init - libavformat/utils.c-2144 
-								av_update_stream_timings: Exit - libavformat/utils.c-2195 
+										av_has_duration: Init - libavformat/utils.c-2118 
+										av_has_duration: Exit - libavformat/utils.c-2128 
+				
+										fill_all_stream_timings: Init - libavformat/utils.c-2200 
+												av_update_stream_timings: Init - libavformat/utils.c-2144 
+												av_update_stream_timings: Exit - libavformat/utils.c-2195 
+										fill_all_stream_timings: Exit - libavformat/utils.c-2218 
+								
+										av_update_stream_timings: Init - libavformat/utils.c-2144 
+										av_update_stream_timings: Exit - libavformat/utils.c-2195 
+
 								av_estimate_timings: Exit - libavformat/utils.c-2422 
+		
 								compute_chapters_end: Init - libavformat/utils.c-2587 
 								compute_chapters_end: Exit - libavformat/utils.c-2606 
+		
 						av_find_stream_info: Exit - libavformat/utils.c-2937 
+
 						set_context_opts: Init - ffmpeg.c-3346 
 						set_context_opts: Exit - ffmpeg.c-3359 
+
 						dump_format: Init - libavformat/utils.c-3687 
-						dump_stream_format: Init - libavformat/utils.c-3655 
-						dump_stream_format: Exit - libavformat/utils.c-3682 
+								dump_stream_format: Init - libavformat/utils.c-3655 
+								dump_stream_format: Exit - libavformat/utils.c-3682 
 						dump_format: Exit - libavformat/utils.c-3744 
 				opt_input_file: Exit - ffmpeg.c-3576 
 				
 				
+				find_option: Init - cmdutils.c-125 
+				find_option: Exit - cmdutils.c-137 
+
+				opt_bitrate: Init - ffmpeg.c-2725 
+						opt_default: Init - ffmpeg.c-2631 
+						opt_default: Exit - ffmpeg.c-2673 
+				opt_bitrate: Exit - ffmpeg.c-2735 
 				
 				find_option: Init - cmdutils.c-125 
 				find_option: Exit - cmdutils.c-137 
-				opt_bitrate: Init - ffmpeg.c-2725 
-				opt_default: Init - ffmpeg.c-2631 
-				opt_default: Exit - ffmpeg.c-2673 
-				opt_bitrate: Exit - ffmpeg.c-2735 
-				find_option: Init - cmdutils.c-125 
-				find_option: Exit - cmdutils.c-137 
+				
 				opt_audio_rate: Init - ffmpeg.c-3092 
-				parse_number_or_die: Init - cmdutils.c-47 
-				parse_number_or_die: Exit - cmdutils.c-62 
+						parse_number_or_die: Init - cmdutils.c-47 
+						parse_number_or_die: Exit - cmdutils.c-62 
 				opt_audio_rate: Exit - ffmpeg.c-3094 
+
 				find_option: Init - cmdutils.c-125 
 				find_option: Exit - cmdutils.c-137 
+
 				opt_bitrate: Init - ffmpeg.c-2725 
-				opt_default: Init - ffmpeg.c-2631 
-				opt_default: Exit - ffmpeg.c-2673 
+						opt_default: Init - ffmpeg.c-2631 
+						opt_default: Exit - ffmpeg.c-2673 
 				opt_bitrate: Exit - ffmpeg.c-2735 
+
 				find_option: Init - cmdutils.c-125 
 				find_option: Exit - cmdutils.c-137 
+
 				opt_frame_rate: Init - ffmpeg.c-2710 
 				opt_frame_rate: Exit - ffmpeg.c-2718 
+
 				find_option: Init - cmdutils.c-125 
 				find_option: Exit - cmdutils.c-137 
+
 				opt_frame_size: Init - ffmpeg.c-2846 
 				opt_frame_size: Exit - ffmpeg.c-2859 
+
 				opt_output_file: Init - ffmpeg.c-3978 
-				av_alloc_format_context: Init - libavformat/utils.c-619 
-				avformat_get_context_defaults: Init - libavformat/utils.c-606 
-				avformat_get_context_defaults: Exit - libavformat/utils.c-614 
-				av_alloc_format_context: Exit - libavformat/utils.c-631 
-				guess_format: Init - libavformat/utils.c-239 
-				av_filename_number_test: Init - libavformat/utils.c-468 
-				av_filename_number_test: Exit - libavformat/utils.c-472 
-				av_get_frame_filename: Init - libavformat/utils.c-3978 
-				av_get_frame_filename: Exit - libavformat/utils.c-4038 
-				match_ext: Exit - libavformat/utils.c-224 
-				guess_format: Exit - libavformat/utils.c-277 
-				check_audio_video_sub_inputs: Init - ffmpeg.c-3582 
-				check_audio_video_sub_inputs: Exit - ffmpeg.c-3620 
-				new_video_stream: Init - ffmpeg.c-3626 
-				av_new_stream: Init - libavformat/utils.c-3048 
-				av_set_pts_info: Init - libavformat/utils.c-4237 
-				av_set_pts_info: Exit - libavformat/utils.c-4247 
-				av_new_stream: Exit - libavformat/utils.c-3092 
-				av_guess_codec: Init - libavformat/utils.c-305 
-				av_guess_codec: Exit - libavformat/utils.c-322 
-				set_context_opts: Init - ffmpeg.c-3346 
-				set_context_opts: Exit - ffmpeg.c-3359 
-				new_video_stream: Exit - ffmpeg.c-3783 
-				opt_output_file: antes de url_exist - ffmpeg.c-4100 
-				url_exist: Init - libavformat/avio.c-277 
+						av_alloc_format_context: Init - libavformat/utils.c-619 
+								avformat_get_context_defaults: Init - libavformat/utils.c-606 
+								avformat_get_context_defaults: Exit - libavformat/utils.c-614 
+						av_alloc_format_context: Exit - libavformat/utils.c-631 
+				
+						guess_format: Init - libavformat/utils.c-239 
+								av_filename_number_test: Init - libavformat/utils.c-468 
+								av_filename_number_test: Exit - libavformat/utils.c-472 
+
+								av_get_frame_filename: Init - libavformat/utils.c-3978 
+								av_get_frame_filename: Exit - libavformat/utils.c-4038 
+
+						guess_format: Exit - libavformat/utils.c-277 
+		
+						check_audio_video_sub_inputs: Init - ffmpeg.c-3582 
+						check_audio_video_sub_inputs: Exit - ffmpeg.c-3620 
+		
+						new_video_stream: Init - ffmpeg.c-3626 
+								av_new_stream: Init - libavformat/utils.c-3048 
+										av_set_pts_info: Init - libavformat/utils.c-4237 
+										av_set_pts_info: Exit - libavformat/utils.c-4247 
+								av_new_stream: Exit - libavformat/utils.c-3092 
+				
+								av_guess_codec: Init - libavformat/utils.c-305 
+								av_guess_codec: Exit - libavformat/utils.c-322 
+
+								set_context_opts: Init - ffmpeg.c-3346 
+								set_context_opts: Exit - ffmpeg.c-3359 
+
+						new_video_stream: Exit - ffmpeg.c-3783 
+						opt_output_file: antes de url_exist - ffmpeg.c-4100 
+
+						url_exist: Init - libavformat/avio.c-277 
+								url_open: Init - libavformat/avio.c-150 
+										url_open_protocol: Init - libavformat/avio.c-105 
+												file_open: Init - libavformat/file.c-38 
+												file_open: *filename: flv\output.flv - libavformat/file.c-45 
+												file_open: Exit - libavformat/file.c-77 
+
+												url_seek: Init - libavformat/avio.c-241 
+														file_seek: Init - libavformat/file.c-104 
+														file_seek: Exit - libavformat/file.c-108 
+												url_seek: Exit - libavformat/avio.c-252 
+										url_open_protocol: Exit - libavformat/avio.c-140 
+								url_open: Exit - libavformat/avio.c-188 
+								url_close: Init - libavformat/avio.c-258 
+										file_close: Init - libavformat/file.c-114 
+										file_close: Exit - libavformat/file.c-118 
+								url_close: Exit - libavformat/avio.c-271 
+						url_exist: Exit - libavformat/avio.c-288 
+
 						url_open: Init - libavformat/avio.c-150 
+								url_open_protocol: Init - libavformat/avio.c-105 
+										file_open: Init - libavformat/file.c-38 
+										file_open: *filename: flv\output.flv - libavformat/file.c-45 
+										file_open: Exit - libavformat/file.c-77 
+										url_seek: Init - libavformat/avio.c-241 
+												file_seek: Init - libavformat/file.c-104 
+												file_seek: Exit - libavformat/file.c-108 
+										url_seek: Exit - libavformat/avio.c-252 
+								url_open_protocol: Exit - libavformat/avio.c-140 
 						url_open: Exit - libavformat/avio.c-188 
-						url_open_protocol: Init - libavformat/avio.c-105 
-						file_open: Init - libavformat/file.c-38 
-						file_open: *filename: flv\output.flv - libavformat/file.c-45 
-						file_open: Exit - libavformat/file.c-77 
-						url_seek: Init - libavformat/avio.c-241 
-						file_seek: Init - libavformat/file.c-104 
-						file_seek: Exit - libavformat/file.c-108 
-						url_seek: Exit - libavformat/avio.c-252 
-						url_open_protocol: Exit - libavformat/avio.c-140 
-						url_close: Init - libavformat/avio.c-258 
-						file_close: Init - libavformat/file.c-114 
-						file_close: Exit - libavformat/file.c-118 
-						url_close: Exit - libavformat/avio.c-271 
-				url_exist: Exit - libavformat/avio.c-288 
-				url_open: Init - libavformat/avio.c-150 
-				url_open: Exit - libavformat/avio.c-188 
-				url_open_protocol: Init - libavformat/avio.c-105 
-				file_open: Init - libavformat/file.c-38 
-				file_open: *filename: flv\output.flv - libavformat/file.c-45 
-				file_open: Exit - libavformat/file.c-77 
-				url_seek: Init - libavformat/avio.c-241 
-				file_seek: Init - libavformat/file.c-104 
-				file_seek: Exit - libavformat/file.c-108 
-				url_seek: Exit - libavformat/avio.c-252 
-				url_open_protocol: Exit - libavformat/avio.c-140 
-				url_get_max_packet_size: Init - libavformat/avio.c-317 
-				url_get_max_packet_size: Exit - libavformat/avio.c-318 
-				av_set_parameters: Init - libavformat/utils.c-3182 
-				av_set_parameters: Exit - libavformat/utils.c-3209 
-				set_context_opts: Init - ffmpeg.c-3346 
-				set_context_opts: Exit - ffmpeg.c-3359 
+
+						url_get_max_packet_size: Init - libavformat/avio.c-317 
+						url_get_max_packet_size: Exit - libavformat/avio.c-318 
+
+						av_set_parameters: Init - libavformat/utils.c-3182 
+						av_set_parameters: Exit - libavformat/utils.c-3209 
+
+						set_context_opts: Init - ffmpeg.c-3346 
+						set_context_opts: Exit - ffmpeg.c-3359 
+
 				opt_output_file: Exit - ffmpeg.c-4150 
 		parse_options: Exit - cmdutils.c-239 
 
 
+		 getutime: Init - ffmpeg.c-4174 
+		 getutime: Exit - ffmpeg.c-4187 
 
 
+		---------------------------------------------------------------------------------------------------------------------
+		FASE ENCODE
+		---------------------------------------------------------------------------------------------------------------------
 
 
+		 av_encode: Init - ffmpeg.c-1797 
+				dump_format: Init - libavformat/utils.c-3687 
+						dump_stream_format: Init - libavformat/utils.c-3655 
+						dump_stream_format: Exit - libavformat/utils.c-3682 
+				dump_format: Exit - libavformat/utils.c-3744 
 
- getutime: Init - ffmpeg.c-4174 
- getutime: Exit - ffmpeg.c-4187 
- av_encode: Init - ffmpeg.c-1797 
- dump_format: Init - libavformat/utils.c-3687 
- dump_stream_format: Init - libavformat/utils.c-3655 
- dump_stream_format: Exit - libavformat/utils.c-3682 
- dump_format: Exit - libavformat/utils.c-3744 
- ff_mjpeg_decode_init: Init - libavcodec/mjpegdec.c-85 
- build_basic_mjpeg_vlc: Init - libavcodec/mjpegdec.c-74 
- build_vlc: Init - libavcodec/mjpegdec.c-50 
- build_vlc: Exit - libavcodec/mjpegdec.c-68 
- build_vlc: Init - libavcodec/mjpegdec.c-50 
- build_vlc: Exit - libavcodec/mjpegdec.c-68 
- build_vlc: Init - libavcodec/mjpegdec.c-50 
- build_vlc: Exit - libavcodec/mjpegdec.c-68 
- build_vlc: Init - libavcodec/mjpegdec.c-50 
- build_vlc: Exit - libavcodec/mjpegdec.c-68 
- build_basic_mjpeg_vlc: Exit - libavcodec/mjpegdec.c-80 
- ff_mjpeg_decode_init: Exit - libavcodec/mjpegdec.c-119 
- av_write_header: Init - libavformat/utils.c-3215 
- av_codec_get_tag: Init - libavformat/utils.c-2549 
- codec_get_tag: Init - libavformat/utils.c-2504 
- codec_get_tag: Exit - libavformat/utils.c-2510 
- av_codec_get_tag: Exit - libavformat/utils.c-2557 
- flv_write_header: Init - libavformat/flvenc.c-160 
- av_set_pts_info: Init - libavformat/utils.c-4237 
- av_set_pts_info: Exit - libavformat/utils.c-4247 
- put_amf_string: Init - libavformat/flvenc.c-133 
- put_amf_string: Exit - libavformat/flvenc.c-139 
- put_amf_string: Init - libavformat/flvenc.c-133 
- put_amf_string: Exit - libavformat/flvenc.c-139 
- put_amf_double: Init - libavformat/flvenc.c-144 
- put_amf_double: Exit - libavformat/flvenc.c-147 
- put_amf_string: Init - libavformat/flvenc.c-133 
- put_amf_string: Exit - libavformat/flvenc.c-139 
- put_amf_double: Init - libavformat/flvenc.c-144 
- put_amf_double: Exit - libavformat/flvenc.c-147 
- put_amf_string: Init - libavformat/flvenc.c-133 
- put_amf_string: Exit - libavformat/flvenc.c-139 
- put_amf_double: Init - libavformat/flvenc.c-144 
- put_amf_double: Exit - libavformat/flvenc.c-147 
- put_amf_string: Init - libavformat/flvenc.c-133 
- put_amf_string: Exit - libavformat/flvenc.c-139 
- put_amf_double: Init - libavformat/flvenc.c-144 
- put_amf_double: Exit - libavformat/flvenc.c-147 
- put_amf_string: Init - libavformat/flvenc.c-133 
- put_amf_string: Exit - libavformat/flvenc.c-139 
- put_amf_double: Init - libavformat/flvenc.c-144 
- put_amf_double: Exit - libavformat/flvenc.c-147 
- put_amf_string: Init - libavformat/flvenc.c-133 
- put_amf_string: Exit - libavformat/flvenc.c-139 
- put_amf_double: Init - libavformat/flvenc.c-144 
- put_amf_double: Exit - libavformat/flvenc.c-147 
- put_amf_string: Init - libavformat/flvenc.c-133 
- put_amf_string: Exit - libavformat/flvenc.c-139 
- put_amf_double: Init - libavformat/flvenc.c-144 
- put_amf_double: Exit - libavformat/flvenc.c-147 
- put_amf_string: Init - libavformat/flvenc.c-133 
- put_amf_string: Exit - libavformat/flvenc.c-139 
- flv_write_header: Exit - libavformat/flvenc.c-321 
- av_frac_init: Init - libavformat/utils.c-62 
- av_frac_init: Exit - libavformat/utils.c-74 
- av_write_header: Exit - libavformat/utils.c-3314 
- url_set_interrupt_cb: Init - libavformat/avio.c-340 
- url_set_interrupt_cb: Exit - libavformat/avio.c-348 
- term_init: Init - ffmpeg.c-329 
- term_init: Exit - ffmpeg.c-355 
- term_init: Exit - ffmpeg.c-361 
- av_gettime: Init - libavformat/utils.c-3772 
- av_gettime: Exit - libavformat/utils.c-3777 
- read_key: Init - ffmpeg.c-368 
- read_key: Exit - ffmpeg.c-403 
- av_read_frame: Init - libavformat/utils.c-1423 
- av_read_frame: Exit - libavformat/utils.c-1456 
- output_packet: Init - ffmpeg.c-1345 
- ff_mjpeg_decode_frame: Init - libavcodec/mjpegdec.c-1368 
- find_marker: Init - libavcodec/mjpegdec.c-1331 
- find_marker: Exit - libavcodec/mjpegdec.c-1361 
- find_marker: Init - libavcodec/mjpegdec.c-1331 
- find_marker: Exit - libavcodec/mjpegdec.c-1361 
- mjpeg_decode_app: Init - libavcodec/mjpegdec.c-1110 
- mjpeg_decode_app: Exit - libavcodec/mjpegdec.c-1260 
- find_marker: Init - libavcodec/mjpegdec.c-1331 
- find_marker: Exit - libavcodec/mjpegdec.c-1361 
- mjpeg_decode_app: Init - libavcodec/mjpegdec.c-1110 
- mjpeg_decode_app: Exit - libavcodec/mjpegdec.c-1260 
- find_marker: Init - libavcodec/mjpegdec.c-1331 
- find_marker: Exit - libavcodec/mjpegdec.c-1361 
- mjpeg_decode_app: Init - libavcodec/mjpegdec.c-1110 
- mjpeg_decode_app: Exit - libavcodec/mjpegdec.c-1260 
- find_marker: Init - libavcodec/mjpegdec.c-1331 
- find_marker: Exit - libavcodec/mjpegdec.c-1361 
- ff_mjpeg_decode_dqt: Init - libavcodec/mjpegdec.c-126 
- ff_mjpeg_decode_dqt: Exit - libavcodec/mjpegdec.c-165 
- find_marker: Init - libavcodec/mjpegdec.c-1331 
- find_marker: Exit - libavcodec/mjpegdec.c-1361 
- ff_mjpeg_decode_sof: Init - libavcodec/mjpegdec.c-239 
- ff_mjpeg_decode_sof: Exit - libavcodec/mjpegdec.c-436 
- find_marker: Init - libavcodec/mjpegdec.c-1331 
- find_marker: Exit - libavcodec/mjpegdec.c-1361 
- ff_mjpeg_decode_dht: Init - libavcodec/mjpegdec.c-172 
- build_vlc: Init - libavcodec/mjpegdec.c-50 
- build_vlc: Exit - libavcodec/mjpegdec.c-68 
- build_vlc: Init - libavcodec/mjpegdec.c-50 
- build_vlc: Exit - libavcodec/mjpegdec.c-68 
- build_vlc: Init - libavcodec/mjpegdec.c-50 
- build_vlc: Exit - libavcodec/mjpegdec.c-68 
- build_vlc: Init - libavcodec/mjpegdec.c-50 
- build_vlc: Exit - libavcodec/mjpegdec.c-68 
- build_vlc: Init - libavcodec/mjpegdec.c-50 
- build_vlc: Exit - libavcodec/mjpegdec.c-68 
- build_vlc: Init - libavcodec/mjpegdec.c-50 
- build_vlc: Exit - libavcodec/mjpegdec.c-68 
- ff_mjpeg_decode_dht: Exit - libavcodec/mjpegdec.c-232 
- find_marker: Init - libavcodec/mjpegdec.c-1331 
- find_marker: Exit - libavcodec/mjpegdec.c-1361 
- ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
- mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
- mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-937 
- ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
- find_marker: Init - libavcodec/mjpegdec.c-1331 
- find_marker: Exit - libavcodec/mjpegdec.c-1361 
- ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
- mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
- mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-937 
- ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
- find_marker: Init - libavcodec/mjpegdec.c-1331 
- find_marker: Exit - libavcodec/mjpegdec.c-1361 
- ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
- mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
- mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-937 
- ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
- find_marker: Init - libavcodec/mjpegdec.c-1331 
- find_marker: Exit - libavcodec/mjpegdec.c-1361 
- ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
- mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
- mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-937 
- ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
- find_marker: Init - libavcodec/mjpegdec.c-1331 
- find_marker: Exit - libavcodec/mjpegdec.c-1361 
- ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
- mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
- mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-937 
- ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
- find_marker: Init - libavcodec/mjpegdec.c-1331 
- find_marker: Exit - libavcodec/mjpegdec.c-1361 
- ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
- mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
- mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-937 
- ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
- find_marker: Init - libavcodec/mjpegdec.c-1331 
- find_marker: Exit - libavcodec/mjpegdec.c-1361 
- ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
- mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
- mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-937 
- ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
- find_marker: Init - libavcodec/mjpegdec.c-1331 
- find_marker: Exit - libavcodec/mjpegdec.c-1361 
- ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
- mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
- mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-855 
- ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
- find_marker: Init - libavcodec/mjpegdec.c-1331 
- find_marker: Exit - libavcodec/mjpegdec.c-1361 
- ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
- mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
- mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-855 
- ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
- find_marker: Init - libavcodec/mjpegdec.c-1331 
- find_marker: Exit - libavcodec/mjpegdec.c-1361 
- ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
- mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
- mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-855 
- ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
- find_marker: Init - libavcodec/mjpegdec.c-1331 
- find_marker: Exit - libavcodec/mjpegdec.c-1361 
- ff_mjpeg_decode_frame: Exit - libavcodec/mjpegdec.c-1645 
- pre_process_video_frame: Init - ffmpeg.c-827 
- pre_process_video_frame: Exit - ffmpeg.c-883 
- do_video_out: Init - ffmpeg.c-952 
- get_sync_ipts: Init - ffmpeg.c-528 
- get_sync_ipts: Exit - ffmpeg.c-532 
- av_init_packet: Init - libavformat/utils.c-372 
- av_init_packet: Exit - libavformat/utils.c-382 
- write_frame: Init - ffmpeg.c-539 
- av_interleaved_write_frame: Init - libavformat/utils.c-3521 
- compute_pkt_fields2: Init - libavformat/utils.c-3321 
- compute_frame_duration: Init - libavformat/utils.c-987 
- compute_frame_duration: Exit - libavformat/utils.c-1023 
- av_frac_add: Init - libavformat/utils.c-86 
- av_frac_add: Exit - libavformat/utils.c-109 
- compute_pkt_fields2: Exit - libavformat/utils.c-3402 
- av_interleave_packet: Init - libavformat/utils.c-3503 
- av_interleave_packet: Exit - libavformat/utils.c-3512 
- av_interleave_packet_per_dts: Init - libavformat/utils.c-3428 
- av_dup_packet: Init - libavformat/utils.c-439 
- av_dup_packet: Exit - libavformat/utils.c-462 
- av_interleave_packet_per_dts: Exit - libavformat/utils.c-3479 
- flv_write_packet: Init - libavformat/flvenc.c-352 
- url_write: Init - libavformat/avio.c-218 
- file_write: Init - libavformat/file.c-93 
- file_write: Exit - libavformat/file.c-97 
- url_write: Exit - libavformat/avio.c-235 
- flv_write_packet: Exit - libavformat/flvenc.c-433 
- av_destruct_packet: Init - libavformat/utils.c-361 
- av_destruct_packet: Exit - libavformat/utils.c-367 
- av_interleave_packet: Init - libavformat/utils.c-3503 
- av_interleave_packet: Exit - libavformat/utils.c-3512 
- av_interleave_packet_per_dts: Init - libavformat/utils.c-3428 
- av_init_packet: Init - libavformat/utils.c-372 
- av_init_packet: Exit - libavformat/utils.c-382 
- av_interleave_packet_per_dts: Exit - libavformat/utils.c-3485 
- av_interleaved_write_frame: Exit - libavformat/utils.c-3551 
- write_frame: Exit - ffmpeg.c-572 
- do_video_out: Exit - ffmpeg.c-1144 
- output_packet: Exit - ffmpeg.c-1738 
- av_destruct_packet: Init - libavformat/utils.c-361 
- av_destruct_packet: Exit - libavformat/utils.c-367 
- print_report: Init - ffmpeg.c-1203 
- av_gettime: Init - libavformat/utils.c-3772 
- av_gettime: Exit - libavformat/utils.c-3777 
- print_report: Exit - ffmpeg.c-1223 
- read_key: Init - ffmpeg.c-368 
- read_key: Exit - ffmpeg.c-403 
- av_read_frame: Init - libavformat/utils.c-1423 
- av_read_frame: Exit - libavformat/utils.c-1456 
- output_packet: Init - ffmpeg.c-1345 
- ff_mjpeg_decode_frame: Init - libavcodec/mjpegdec.c-1368 
- find_marker: Init - libavcodec/mjpegdec.c-1331 
- find_marker: Exit - libavcodec/mjpegdec.c-1361 
- find_marker: Init - libavcodec/mjpegdec.c-1331 
- find_marker: Exit - libavcodec/mjpegdec.c-1361 
- mjpeg_decode_app: Init - libavcodec/mjpegdec.c-1110 
- mjpeg_decode_app: Exit - libavcodec/mjpegdec.c-1260 
- find_marker: Init - libavcodec/mjpegdec.c-1331 
- find_marker: Exit - libavcodec/mjpegdec.c-1361 
- mjpeg_decode_app: Init - libavcodec/mjpegdec.c-1110 
- mjpeg_decode_app: Exit - libavcodec/mjpegdec.c-1260 
- find_marker: Init - libavcodec/mjpegdec.c-1331 
- find_marker: Exit - libavcodec/mjpegdec.c-1361 
- mjpeg_decode_com: Init - libavcodec/mjpegdec.c-1266 
- mjpeg_decode_com: Exit - libavcodec/mjpegdec.c-1300 
- find_marker: Init - libavcodec/mjpegdec.c-1331 
- find_marker: Exit - libavcodec/mjpegdec.c-1361 
- mjpeg_decode_app: Init - libavcodec/mjpegdec.c-1110 
- mjpeg_decode_app: Exit - libavcodec/mjpegdec.c-1260 
- find_marker: Init - libavcodec/mjpegdec.c-1331 
- find_marker: Exit - libavcodec/mjpegdec.c-1361 
- ff_mjpeg_decode_dqt: Init - libavcodec/mjpegdec.c-126 
- ff_mjpeg_decode_dqt: Exit - libavcodec/mjpegdec.c-165 
- find_marker: Init - libavcodec/mjpegdec.c-1331 
- find_marker: Exit - libavcodec/mjpegdec.c-1361 
- ff_mjpeg_decode_sof: Init - libavcodec/mjpegdec.c-239 
- ff_mjpeg_decode_sof: Exit - libavcodec/mjpegdec.c-436 
- find_marker: Init - libavcodec/mjpegdec.c-1331 
- find_marker: Exit - libavcodec/mjpegdec.c-1361 
- mjpeg_decode_dri: Init - libavcodec/mjpegdec.c-1093 
- mjpeg_decode_dri: Exit - libavcodec/mjpegdec.c-1104 
- find_marker: Init - libavcodec/mjpegdec.c-1331 
- find_marker: Exit - libavcodec/mjpegdec.c-1361 
- ff_mjpeg_decode_dht: Init - libavcodec/mjpegdec.c-172 
- build_vlc: Init - libavcodec/mjpegdec.c-50 
- build_vlc: Exit - libavcodec/mjpegdec.c-68 
- build_vlc: Init - libavcodec/mjpegdec.c-50 
- build_vlc: Exit - libavcodec/mjpegdec.c-68 
- build_vlc: Init - libavcodec/mjpegdec.c-50 
- build_vlc: Exit - libavcodec/mjpegdec.c-68 
- build_vlc: Init - libavcodec/mjpegdec.c-50 
- build_vlc: Exit - libavcodec/mjpegdec.c-68 
- ff_mjpeg_decode_dht: Exit - libavcodec/mjpegdec.c-232 
- find_marker: Init - libavcodec/mjpegdec.c-1331 
- find_marker: Exit - libavcodec/mjpegdec.c-1361 
- ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
- mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
- mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-937 
- ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
- ff_mjpeg_decode_frame: Exit - libavcodec/mjpegdec.c-1645 
- pre_process_video_frame: Init - ffmpeg.c-827 
- pre_process_video_frame: Exit - ffmpeg.c-883 
- do_video_out: Init - ffmpeg.c-952 
- get_sync_ipts: Init - ffmpeg.c-528 
- get_sync_ipts: Exit - ffmpeg.c-532 
- av_init_packet: Init - libavformat/utils.c-372 
- av_init_packet: Exit - libavformat/utils.c-382 
- write_frame: Init - ffmpeg.c-539 
- av_interleaved_write_frame: Init - libavformat/utils.c-3521 
- compute_pkt_fields2: Init - libavformat/utils.c-3321 
- compute_frame_duration: Init - libavformat/utils.c-987 
- compute_frame_duration: Exit - libavformat/utils.c-1023 
- av_frac_add: Init - libavformat/utils.c-86 
- av_frac_add: Exit - libavformat/utils.c-109 
- compute_pkt_fields2: Exit - libavformat/utils.c-3402 
- av_interleave_packet: Init - libavformat/utils.c-3503 
- av_interleave_packet: Exit - libavformat/utils.c-3512 
- av_interleave_packet_per_dts: Init - libavformat/utils.c-3428 
- av_dup_packet: Init - libavformat/utils.c-439 
- av_dup_packet: Exit - libavformat/utils.c-462 
- av_interleave_packet_per_dts: Exit - libavformat/utils.c-3479 
- flv_write_packet: Init - libavformat/flvenc.c-352 
- url_write: Init - libavformat/avio.c-218 
- file_write: Init - libavformat/file.c-93 
- file_write: Exit - libavformat/file.c-97 
- url_write: Exit - libavformat/avio.c-235 
- flv_write_packet: Exit - libavformat/flvenc.c-433 
- av_destruct_packet: Init - libavformat/utils.c-361 
- av_destruct_packet: Exit - libavformat/utils.c-367 
- av_interleave_packet: Init - libavformat/utils.c-3503 
- av_interleave_packet: Exit - libavformat/utils.c-3512 
- av_interleave_packet_per_dts: Init - libavformat/utils.c-3428 
- av_init_packet: Init - libavformat/utils.c-372 
- av_init_packet: Exit - libavformat/utils.c-382 
- av_interleave_packet_per_dts: Exit - libavformat/utils.c-3485 
- av_interleaved_write_frame: Exit - libavformat/utils.c-3551 
- write_frame: Exit - ffmpeg.c-572 
- do_video_out: Exit - ffmpeg.c-1144 
- output_packet: Exit - ffmpeg.c-1738 
- av_destruct_packet: Init - libavformat/utils.c-361 
- av_destruct_packet: Exit - libavformat/utils.c-367 
- print_report: Init - ffmpeg.c-1203 
- av_gettime: Init - libavformat/utils.c-3772 
- av_gettime: Exit - libavformat/utils.c-3777 
- print_report: Exit - ffmpeg.c-1228 
- read_key: Init - ffmpeg.c-368 
- read_key: Exit - ffmpeg.c-403 
- av_read_frame: Init - libavformat/utils.c-1423 
- av_read_frame: Exit - libavformat/utils.c-1486 
- av_read_frame_internal: Init - libavformat/utils.c-1287 
- av_init_packet: Init - libavformat/utils.c-372 
- av_init_packet: Exit - libavformat/utils.c-382 
- av_read_packet: Init - libavformat/utils.c-855 
- av_init_packet: Init - libavformat/utils.c-372 
- av_init_packet: Exit - libavformat/utils.c-382 
- av_get_frame_filename: Init - libavformat/utils.c-3978 
- av_get_frame_filename: Exit - libavformat/utils.c-4032 
- url_open: Init - libavformat/avio.c-150 
- url_open: Exit - libavformat/avio.c-188 
- url_open_protocol: Init - libavformat/avio.c-105 
- file_open: Init - libavformat/file.c-38 
- file_open: *filename: img\002.jpg - libavformat/file.c-45 
- file_open: Exit - libavformat/file.c-72 
- url_open_protocol: Exit - libavformat/avio.c-130 
- av_read_packet: Exit - libavformat/utils.c-880 
- av_read_frame_internal: Exit - libavformat/utils.c-1371 
- read_key: Init - ffmpeg.c-368 
- read_key: Exit - ffmpeg.c-403 
- output_packet: Init - ffmpeg.c-1345 
- av_init_packet: Init - libavformat/utils.c-372 
- av_init_packet: Exit - libavformat/utils.c-382 
- output_packet: Exit - ffmpeg.c-1738 
- av_write_trailer: Init - libavformat/utils.c-3577 
- av_interleave_packet: Init - libavformat/utils.c-3503 
- av_interleave_packet: Exit - libavformat/utils.c-3512 
- av_interleave_packet_per_dts: Init - libavformat/utils.c-3428 
- av_init_packet: Init - libavformat/utils.c-372 
- av_init_packet: Exit - libavformat/utils.c-382 
- av_interleave_packet_per_dts: Exit - libavformat/utils.c-3485 
- flv_write_trailer: Init - libavformat/flvenc.c-328 
- url_seek: Init - libavformat/avio.c-241 
- file_seek: Init - libavformat/file.c-104 
- file_seek: Exit - libavformat/file.c-108 
- url_seek: Exit - libavformat/avio.c-252 
- put_amf_double: Init - libavformat/flvenc.c-144 
- put_amf_double: Exit - libavformat/flvenc.c-147 
- url_write: Init - libavformat/avio.c-218 
- file_write: Init - libavformat/file.c-93 
- file_write: Exit - libavformat/file.c-97 
- url_write: Exit - libavformat/avio.c-235 
- url_seek: Init - libavformat/avio.c-241 
- file_seek: Init - libavformat/file.c-104 
- file_seek: Exit - libavformat/file.c-108 
- url_seek: Exit - libavformat/avio.c-252 
- put_amf_double: Init - libavformat/flvenc.c-144 
- put_amf_double: Exit - libavformat/flvenc.c-147 
- url_write: Init - libavformat/avio.c-218 
- file_write: Init - libavformat/file.c-93 
- file_write: Exit - libavformat/file.c-97 
- url_write: Exit - libavformat/avio.c-235 
- url_seek: Init - libavformat/avio.c-241 
- file_seek: Init - libavformat/file.c-104 
- file_seek: Exit - libavformat/file.c-108 
- url_seek: Exit - libavformat/avio.c-252 
- flv_write_trailer: Exit - libavformat/flvenc.c-345 
- av_write_trailer: Exit - libavformat/utils.c-3611 
- print_report: Init - ffmpeg.c-1203 
- url_seek: Init - libavformat/avio.c-241 
- file_seek: Init - libavformat/file.c-104 
- file_seek: Exit - libavformat/file.c-108 
- url_seek: Exit - libavformat/avio.c-252 
- url_seek: Init - libavformat/avio.c-241 
- file_seek: Init - libavformat/file.c-104 
- file_seek: Exit - libavformat/file.c-108 
- url_seek: Exit - libavformat/avio.c-252 
- url_seek: Init - libavformat/avio.c-241 
- file_seek: Init - libavformat/file.c-104 
- file_seek: Exit - libavformat/file.c-108 
- url_seek: Exit - libavformat/avio.c-252 
- av_gettime: Init - libavformat/utils.c-3772 
- av_gettime: Exit - libavformat/utils.c-3777 
- print_report: Exit - ffmpeg.c-1338 
- ff_mjpeg_decode_end: Init - libavcodec/mjpegdec.c-1652 
- ff_mjpeg_decode_end: Exit - libavcodec/mjpegdec.c-1666 
- av_encode: Exit - ffmpeg.c-2568 
- getutime: Init - ffmpeg.c-4174 
- getutime: Exit - ffmpeg.c-4187 
- main: Exit - ffmpeg.c-4737 
- av_exit: Init - ffmpeg.c-420 
- url_close: Init - libavformat/avio.c-258 
- file_close: Init - libavformat/file.c-114 
- file_close: Exit - libavformat/file.c-118 
- url_close: Exit - libavformat/avio.c-271 
- av_close_input_file: Init - libavformat/utils.c-3035 
- av_close_input_stream: Init - libavformat/utils.c-2985 
- flush_packet_queue: Init - libavformat/utils.c-1497 
- flush_packet_queue: Exit - libavformat/utils.c-1511 
- av_close_input_stream: Exit - libavformat/utils.c-3030 
- av_close_input_file: Exit - libavformat/utils.c-3043 
- av_exit: Exit - ffmpeg.c-469 
+				ff_mjpeg_decode_init: Init - libavcodec/mjpegdec.c-85 
+						build_basic_mjpeg_vlc: Init - libavcodec/mjpegdec.c-74 
+								build_vlc: Init - libavcodec/mjpegdec.c-50 
+								build_vlc: Exit - libavcodec/mjpegdec.c-68 
+								build_vlc: Init - libavcodec/mjpegdec.c-50 
+								build_vlc: Exit - libavcodec/mjpegdec.c-68 
+								build_vlc: Init - libavcodec/mjpegdec.c-50 
+								build_vlc: Exit - libavcodec/mjpegdec.c-68 
+								build_vlc: Init - libavcodec/mjpegdec.c-50 
+								build_vlc: Exit - libavcodec/mjpegdec.c-68 
+						build_basic_mjpeg_vlc: Exit - libavcodec/mjpegdec.c-80 
+				ff_mjpeg_decode_init: Exit - libavcodec/mjpegdec.c-119 
+
+				av_write_header: Init - libavformat/utils.c-3215 
+						av_codec_get_tag: Init - libavformat/utils.c-2549 
+								codec_get_tag: Init - libavformat/utils.c-2504 
+								codec_get_tag: Exit - libavformat/utils.c-2510 
+						av_codec_get_tag: Exit - libavformat/utils.c-2557 
+
+						flv_write_header: Init - libavformat/flvenc.c-160 
+								av_set_pts_info: Init - libavformat/utils.c-4237 
+								av_set_pts_info: Exit - libavformat/utils.c-4247 
+
+								put_amf_string: Init - libavformat/flvenc.c-133 
+								put_amf_string: Exit - libavformat/flvenc.c-139 
+								put_amf_string: Init - libavformat/flvenc.c-133 
+								put_amf_string: Exit - libavformat/flvenc.c-139 
+								put_amf_double: Init - libavformat/flvenc.c-144 
+								put_amf_double: Exit - libavformat/flvenc.c-147 
+								put_amf_string: Init - libavformat/flvenc.c-133 
+								put_amf_string: Exit - libavformat/flvenc.c-139 
+								put_amf_double: Init - libavformat/flvenc.c-144 
+								put_amf_double: Exit - libavformat/flvenc.c-147 
+								put_amf_string: Init - libavformat/flvenc.c-133 
+								put_amf_string: Exit - libavformat/flvenc.c-139 
+								put_amf_double: Init - libavformat/flvenc.c-144 
+								put_amf_double: Exit - libavformat/flvenc.c-147 
+								put_amf_string: Init - libavformat/flvenc.c-133 
+								put_amf_string: Exit - libavformat/flvenc.c-139 
+								put_amf_double: Init - libavformat/flvenc.c-144 
+								put_amf_double: Exit - libavformat/flvenc.c-147 
+								put_amf_string: Init - libavformat/flvenc.c-133 
+								put_amf_string: Exit - libavformat/flvenc.c-139 
+								put_amf_double: Init - libavformat/flvenc.c-144 
+								put_amf_double: Exit - libavformat/flvenc.c-147 
+								put_amf_string: Init - libavformat/flvenc.c-133 
+								put_amf_string: Exit - libavformat/flvenc.c-139 
+								put_amf_double: Init - libavformat/flvenc.c-144 
+								put_amf_double: Exit - libavformat/flvenc.c-147 
+								put_amf_string: Init - libavformat/flvenc.c-133 
+								put_amf_string: Exit - libavformat/flvenc.c-139 
+								put_amf_double: Init - libavformat/flvenc.c-144 
+								put_amf_double: Exit - libavformat/flvenc.c-147 
+								put_amf_string: Init - libavformat/flvenc.c-133 
+								put_amf_string: Exit - libavformat/flvenc.c-139 
+
+						flv_write_header: Exit - libavformat/flvenc.c-321 
+
+						av_frac_init: Init - libavformat/utils.c-62 
+						av_frac_init: Exit - libavformat/utils.c-74 
+				av_write_header: Exit - libavformat/utils.c-3314 
+
+				url_set_interrupt_cb: Init - libavformat/avio.c-340 
+				url_set_interrupt_cb: Exit - libavformat/avio.c-348 
+
+				term_init: Init - ffmpeg.c-329 
+				term_init: Exit - ffmpeg.c-361
+				 
+				av_gettime: Init - libavformat/utils.c-3772 
+				av_gettime: Exit - libavformat/utils.c-3777 
+				
+				read_key: Init - ffmpeg.c-368 
+				read_key: Exit - ffmpeg.c-403 
+				
+				av_read_frame: Init - libavformat/utils.c-1423 
+				av_read_frame: Exit - libavformat/utils.c-1456 
+				
+				output_packet: Init - ffmpeg.c-1345 
+						ff_mjpeg_decode_frame: Init - libavcodec/mjpegdec.c-1368 
+								find_marker: Init - libavcodec/mjpegdec.c-1331 
+								find_marker: Exit - libavcodec/mjpegdec.c-1361 
+								find_marker: Init - libavcodec/mjpegdec.c-1331 
+								find_marker: Exit - libavcodec/mjpegdec.c-1361 
+
+								mjpeg_decode_app: Init - libavcodec/mjpegdec.c-1110 
+								mjpeg_decode_app: Exit - libavcodec/mjpegdec.c-1260 
+
+								find_marker: Init - libavcodec/mjpegdec.c-1331 
+								find_marker: Exit - libavcodec/mjpegdec.c-1361 
+
+								mjpeg_decode_app: Init - libavcodec/mjpegdec.c-1110 
+								mjpeg_decode_app: Exit - libavcodec/mjpegdec.c-1260 
+
+								find_marker: Init - libavcodec/mjpegdec.c-1331 
+								find_marker: Exit - libavcodec/mjpegdec.c-1361 
+
+								mjpeg_decode_app: Init - libavcodec/mjpegdec.c-1110 
+								mjpeg_decode_app: Exit - libavcodec/mjpegdec.c-1260 
+
+								find_marker: Init - libavcodec/mjpegdec.c-1331 
+								find_marker: Exit - libavcodec/mjpegdec.c-1361 
+
+								ff_mjpeg_decode_dqt: Init - libavcodec/mjpegdec.c-126 
+								ff_mjpeg_decode_dqt: Exit - libavcodec/mjpegdec.c-165 
+
+								find_marker: Init - libavcodec/mjpegdec.c-1331 
+								find_marker: Exit - libavcodec/mjpegdec.c-1361 
+
+								ff_mjpeg_decode_sof: Init - libavcodec/mjpegdec.c-239 
+								ff_mjpeg_decode_sof: Exit - libavcodec/mjpegdec.c-436 
+
+								find_marker: Init - libavcodec/mjpegdec.c-1331 
+								find_marker: Exit - libavcodec/mjpegdec.c-1361 
+
+								ff_mjpeg_decode_dht: Init - libavcodec/mjpegdec.c-172 
+										build_vlc: Init - libavcodec/mjpegdec.c-50 
+										build_vlc: Exit - libavcodec/mjpegdec.c-68 
+										build_vlc: Init - libavcodec/mjpegdec.c-50 
+										build_vlc: Exit - libavcodec/mjpegdec.c-68 
+										build_vlc: Init - libavcodec/mjpegdec.c-50 
+										build_vlc: Exit - libavcodec/mjpegdec.c-68 
+										build_vlc: Init - libavcodec/mjpegdec.c-50 
+										build_vlc: Exit - libavcodec/mjpegdec.c-68 
+										build_vlc: Init - libavcodec/mjpegdec.c-50 
+										build_vlc: Exit - libavcodec/mjpegdec.c-68 
+										build_vlc: Init - libavcodec/mjpegdec.c-50 
+										build_vlc: Exit - libavcodec/mjpegdec.c-68 
+								ff_mjpeg_decode_dht: Exit - libavcodec/mjpegdec.c-232 
+
+								find_marker: Init - libavcodec/mjpegdec.c-1331 
+								find_marker: Exit - libavcodec/mjpegdec.c-1361 
+
+								ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
+										mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
+										mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-937 
+								ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
+
+								find_marker: Init - libavcodec/mjpegdec.c-1331 
+								find_marker: Exit - libavcodec/mjpegdec.c-1361 
+				
+								ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
+										mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
+										mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-937 
+								ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
+				
+								find_marker: Init - libavcodec/mjpegdec.c-1331 
+								find_marker: Exit - libavcodec/mjpegdec.c-1361 
+				
+								ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
+										mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
+										mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-937 
+								ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
+				
+								find_marker: Init - libavcodec/mjpegdec.c-1331 
+								find_marker: Exit - libavcodec/mjpegdec.c-1361 
+				
+								ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
+										mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
+										mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-937 
+								ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
+				
+								find_marker: Init - libavcodec/mjpegdec.c-1331 
+								find_marker: Exit - libavcodec/mjpegdec.c-1361 
+				
+								ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
+										mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
+										mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-937 
+								ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
+				
+								find_marker: Init - libavcodec/mjpegdec.c-1331 
+								find_marker: Exit - libavcodec/mjpegdec.c-1361 
+				
+								ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
+										mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
+										mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-937 
+								ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
+				
+								find_marker: Init - libavcodec/mjpegdec.c-1331 
+								find_marker: Exit - libavcodec/mjpegdec.c-1361 
+				
+								ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
+										mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
+										mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-937 
+								ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
+				
+								find_marker: Init - libavcodec/mjpegdec.c-1331 
+								find_marker: Exit - libavcodec/mjpegdec.c-1361 
+				
+								ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
+										mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
+										mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-855 
+								ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
+				
+								find_marker: Init - libavcodec/mjpegdec.c-1331 
+								find_marker: Exit - libavcodec/mjpegdec.c-1361 
+				
+								ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
+										mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
+										mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-855 
+								ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
+				
+								find_marker: Init - libavcodec/mjpegdec.c-1331 
+								find_marker: Exit - libavcodec/mjpegdec.c-1361 
+				
+								ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
+										mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
+										mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-855 
+								ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
+				
+								find_marker: Init - libavcodec/mjpegdec.c-1331 
+								find_marker: Exit - libavcodec/mjpegdec.c-1361 
+
+						ff_mjpeg_decode_frame: Exit - libavcodec/mjpegdec.c-1645 
+
+						pre_process_video_frame: Init - ffmpeg.c-827 
+						pre_process_video_frame: Exit - ffmpeg.c-883
+						 
+						do_video_out: Init - ffmpeg.c-952 
+								get_sync_ipts: Init - ffmpeg.c-528 
+								get_sync_ipts: Exit - ffmpeg.c-532 
+
+								av_init_packet: Init - libavformat/utils.c-372 
+								av_init_packet: Exit - libavformat/utils.c-382 
+
+								write_frame: Init - ffmpeg.c-539 
+										av_interleaved_write_frame: Init - libavformat/utils.c-3521 
+												compute_pkt_fields2: Init - libavformat/utils.c-3321 
+														compute_frame_duration: Init - libavformat/utils.c-987 
+														compute_frame_duration: Exit - libavformat/utils.c-1023 
+														
+														av_frac_add: Init - libavformat/utils.c-86 
+														av_frac_add: Exit - libavformat/utils.c-109 
+												compute_pkt_fields2: Exit - libavformat/utils.c-3402 
+
+												av_interleave_packet: Init - libavformat/utils.c-3503 
+												av_interleave_packet: Exit - libavformat/utils.c-3512
+												 
+												av_interleave_packet_per_dts: Init - libavformat/utils.c-3428 
+														av_dup_packet: Init - libavformat/utils.c-439 
+														av_dup_packet: Exit - libavformat/utils.c-462 
+												av_interleave_packet_per_dts: Exit - libavformat/utils.c-3479 
+
+												flv_write_packet: Init - libavformat/flvenc.c-352 
+														url_write: Init - libavformat/avio.c-218 
+																file_write: Init - libavformat/file.c-93 
+																file_write: Exit - libavformat/file.c-97 
+														url_write: Exit - libavformat/avio.c-235 
+												flv_write_packet: Exit - libavformat/flvenc.c-433 
+
+												av_destruct_packet: Init - libavformat/utils.c-361 
+												av_destruct_packet: Exit - libavformat/utils.c-367 
+												av_interleave_packet: Init - libavformat/utils.c-3503 
+												av_interleave_packet: Exit - libavformat/utils.c-3512 
+
+												av_interleave_packet_per_dts: Init - libavformat/utils.c-3428 
+														av_init_packet: Init - libavformat/utils.c-372 
+														av_init_packet: Exit - libavformat/utils.c-382 
+												av_interleave_packet_per_dts: Exit - libavformat/utils.c-3485 
+										av_interleaved_write_frame: Exit - libavformat/utils.c-3551 
+								write_frame: Exit - ffmpeg.c-572 
+						do_video_out: Exit - ffmpeg.c-1144 
+				output_packet: Exit - ffmpeg.c-1738 
+
+				av_destruct_packet: Init - libavformat/utils.c-361 
+				av_destruct_packet: Exit - libavformat/utils.c-367 
+
+				print_report: Init - ffmpeg.c-1203 
+						av_gettime: Init - libavformat/utils.c-3772 
+						av_gettime: Exit - libavformat/utils.c-3777 
+				print_report: Exit - ffmpeg.c-1223 
+
+				read_key: Init - ffmpeg.c-368 
+				read_key: Exit - ffmpeg.c-403 
+
+				av_read_frame: Init - libavformat/utils.c-1423 
+				av_read_frame: Exit - libavformat/utils.c-1456 
+
+				output_packet: Init - ffmpeg.c-1345 
+						ff_mjpeg_decode_frame: Init - libavcodec/mjpegdec.c-1368 
+								find_marker: Init - libavcodec/mjpegdec.c-1331 
+								find_marker: Exit - libavcodec/mjpegdec.c-1361 
+
+								find_marker: Init - libavcodec/mjpegdec.c-1331 
+								find_marker: Exit - libavcodec/mjpegdec.c-1361 
+
+								mjpeg_decode_app: Init - libavcodec/mjpegdec.c-1110 
+								mjpeg_decode_app: Exit - libavcodec/mjpegdec.c-1260 
+
+								find_marker: Init - libavcodec/mjpegdec.c-1331 
+								find_marker: Exit - libavcodec/mjpegdec.c-1361 
+
+								mjpeg_decode_app: Init - libavcodec/mjpegdec.c-1110 
+								mjpeg_decode_app: Exit - libavcodec/mjpegdec.c-1260 
+
+								find_marker: Init - libavcodec/mjpegdec.c-1331 
+								find_marker: Exit - libavcodec/mjpegdec.c-1361 
+
+								mjpeg_decode_com: Init - libavcodec/mjpegdec.c-1266 
+								mjpeg_decode_com: Exit - libavcodec/mjpegdec.c-1300 
+
+								find_marker: Init - libavcodec/mjpegdec.c-1331 
+								find_marker: Exit - libavcodec/mjpegdec.c-1361 
+
+								mjpeg_decode_app: Init - libavcodec/mjpegdec.c-1110 
+								mjpeg_decode_app: Exit - libavcodec/mjpegdec.c-1260 
+
+								find_marker: Init - libavcodec/mjpegdec.c-1331 
+								find_marker: Exit - libavcodec/mjpegdec.c-1361 
+
+								ff_mjpeg_decode_dqt: Init - libavcodec/mjpegdec.c-126 
+								ff_mjpeg_decode_dqt: Exit - libavcodec/mjpegdec.c-165 
+
+								find_marker: Init - libavcodec/mjpegdec.c-1331 
+								find_marker: Exit - libavcodec/mjpegdec.c-1361 
+
+								ff_mjpeg_decode_sof: Init - libavcodec/mjpegdec.c-239 
+								ff_mjpeg_decode_sof: Exit - libavcodec/mjpegdec.c-436 
+
+								find_marker: Init - libavcodec/mjpegdec.c-1331 
+								find_marker: Exit - libavcodec/mjpegdec.c-1361 
+
+								mjpeg_decode_dri: Init - libavcodec/mjpegdec.c-1093 
+								mjpeg_decode_dri: Exit - libavcodec/mjpegdec.c-1104 
+								find_marker: Init - libavcodec/mjpegdec.c-1331 
+								find_marker: Exit - libavcodec/mjpegdec.c-1361 
+
+								ff_mjpeg_decode_dht: Init - libavcodec/mjpegdec.c-172 
+										build_vlc: Init - libavcodec/mjpegdec.c-50 
+										build_vlc: Exit - libavcodec/mjpegdec.c-68 
+										build_vlc: Init - libavcodec/mjpegdec.c-50 
+										build_vlc: Exit - libavcodec/mjpegdec.c-68 
+										build_vlc: Init - libavcodec/mjpegdec.c-50 
+										build_vlc: Exit - libavcodec/mjpegdec.c-68 
+										build_vlc: Init - libavcodec/mjpegdec.c-50 
+										build_vlc: Exit - libavcodec/mjpegdec.c-68 
+								ff_mjpeg_decode_dht: Exit - libavcodec/mjpegdec.c-232 
+
+								find_marker: Init - libavcodec/mjpegdec.c-1331 
+								find_marker: Exit - libavcodec/mjpegdec.c-1361 
+
+								ff_mjpeg_decode_sos: Init - libavcodec/mjpegdec.c-943 
+										mjpeg_decode_scan: Init - libavcodec/mjpegdec.c-846 
+										mjpeg_decode_scan: Exit - libavcodec/mjpegdec.c-937 
+								ff_mjpeg_decode_sos: Exit - libavcodec/mjpegdec.c-1084 
+
+						ff_mjpeg_decode_frame: Exit - libavcodec/mjpegdec.c-1645 
+
+						pre_process_video_frame: Init - ffmpeg.c-827 
+						pre_process_video_frame: Exit - ffmpeg.c-883 
+
+						do_video_out: Init - ffmpeg.c-952 
+								get_sync_ipts: Init - ffmpeg.c-528 
+								get_sync_ipts: Exit - ffmpeg.c-532 
+				
+								av_init_packet: Init - libavformat/utils.c-372 
+								av_init_packet: Exit - libavformat/utils.c-382
+							 
+								write_frame: Init - ffmpeg.c-539 
+										av_interleaved_write_frame: Init - libavformat/utils.c-3521 
+												compute_pkt_fields2: Init - libavformat/utils.c-3321 
+														compute_frame_duration: Init - libavformat/utils.c-987 
+														compute_frame_duration: Exit - libavformat/utils.c-1023 
+														
+														av_frac_add: Init - libavformat/utils.c-86 
+														av_frac_add: Exit - libavformat/utils.c-109 
+												compute_pkt_fields2: Exit - libavformat/utils.c-3402 
+
+												av_interleave_packet: Init - libavformat/utils.c-3503 
+												av_interleave_packet: Exit - libavformat/utils.c-3512 
+
+												av_interleave_packet_per_dts: Init - libavformat/utils.c-3428 
+														av_dup_packet: Init - libavformat/utils.c-439 
+														av_dup_packet: Exit - libavformat/utils.c-462 
+												av_interleave_packet_per_dts: Exit - libavformat/utils.c-3479 
+
+												flv_write_packet: Init - libavformat/flvenc.c-352 
+														url_write: Init - libavformat/avio.c-218 
+																file_write: Init - libavformat/file.c-93 
+																file_write: Exit - libavformat/file.c-97 
+														url_write: Exit - libavformat/avio.c-235 
+												flv_write_packet: Exit - libavformat/flvenc.c-433 
+
+												av_destruct_packet: Init - libavformat/utils.c-361 
+												av_destruct_packet: Exit - libavformat/utils.c-367 
+												av_interleave_packet: Init - libavformat/utils.c-3503 
+												av_interleave_packet: Exit - libavformat/utils.c-3512 
+
+												av_interleave_packet_per_dts: Init - libavformat/utils.c-3428 
+														av_init_packet: Init - libavformat/utils.c-372 
+														av_init_packet: Exit - libavformat/utils.c-382 
+												av_interleave_packet_per_dts: Exit - libavformat/utils.c-3485 
+										av_interleaved_write_frame: Exit - libavformat/utils.c-3551 
+								write_frame: Exit - ffmpeg.c-572 
+						do_video_out: Exit - ffmpeg.c-1144 
+				output_packet: Exit - ffmpeg.c-1738 
+				
+				av_destruct_packet: Init - libavformat/utils.c-361 
+				av_destruct_packet: Exit - libavformat/utils.c-367 
+
+				print_report: Init - ffmpeg.c-1203 
+						av_gettime: Init - libavformat/utils.c-3772 
+						av_gettime: Exit - libavformat/utils.c-3777 
+				print_report: Exit - ffmpeg.c-1228 
+
+				read_key: Init - ffmpeg.c-368 
+				read_key: Exit - ffmpeg.c-403 
+
+				av_read_frame: Init - libavformat/utils.c-1423 
+				av_read_frame: Exit - libavformat/utils.c-1486 
+
+				av_read_frame_internal: Init - libavformat/utils.c-1287 
+						av_init_packet: Init - libavformat/utils.c-372 
+						av_init_packet: Exit - libavformat/utils.c-382 
+		
+						av_read_packet: Init - libavformat/utils.c-855 
+								av_init_packet: Init - libavformat/utils.c-372 
+								av_init_packet: Exit - libavformat/utils.c-382 
+								
+								av_get_frame_filename: Init - libavformat/utils.c-3978 
+								av_get_frame_filename: Exit - libavformat/utils.c-4032 
+				
+								url_open: Init - libavformat/avio.c-150 
+										url_open_protocol: Init - libavformat/avio.c-105 
+												file_open: Init - libavformat/file.c-38 
+												file_open: *filename: img\002.jpg - libavformat/file.c-45 
+												file_open: Exit - libavformat/file.c-72 
+										url_open_protocol: Exit - libavformat/avio.c-130 
+								url_open: Exit - libavformat/avio.c-188 
+						av_read_packet: Exit - libavformat/utils.c-880 
+				av_read_frame_internal: Exit - libavformat/utils.c-1371 
+				
+				read_key: Init - ffmpeg.c-368 
+				read_key: Exit - ffmpeg.c-403 
+				
+				output_packet: Init - ffmpeg.c-1345 
+						av_init_packet: Init - libavformat/utils.c-372 
+						av_init_packet: Exit - libavformat/utils.c-382 
+				output_packet: Exit - ffmpeg.c-1738 
+
+				av_write_trailer: Init - libavformat/utils.c-3577 
+						av_interleave_packet: Init - libavformat/utils.c-3503 
+						av_interleave_packet: Exit - libavformat/utils.c-3512 
+
+						av_interleave_packet_per_dts: Init - libavformat/utils.c-3428 
+								av_init_packet: Init - libavformat/utils.c-372 
+								av_init_packet: Exit - libavformat/utils.c-382 
+						av_interleave_packet_per_dts: Exit - libavformat/utils.c-3485 
+
+						flv_write_trailer: Init - libavformat/flvenc.c-328 
+								url_seek: Init - libavformat/avio.c-241 
+										file_seek: Init - libavformat/file.c-104 
+										file_seek: Exit - libavformat/file.c-108 
+								url_seek: Exit - libavformat/avio.c-252 
+
+								put_amf_double: Init - libavformat/flvenc.c-144 
+								put_amf_double: Exit - libavformat/flvenc.c-147 
+
+								url_write: Init - libavformat/avio.c-218 
+										file_write: Init - libavformat/file.c-93 
+										file_write: Exit - libavformat/file.c-97 
+								url_write: Exit - libavformat/avio.c-235 
+
+								url_seek: Init - libavformat/avio.c-241 
+										file_seek: Init - libavformat/file.c-104 
+										file_seek: Exit - libavformat/file.c-108 
+								url_seek: Exit - libavformat/avio.c-252 
+
+								put_amf_double: Init - libavformat/flvenc.c-144 
+								put_amf_double: Exit - libavformat/flvenc.c-147 
+
+								url_write: Init - libavformat/avio.c-218 
+										file_write: Init - libavformat/file.c-93 
+										file_write: Exit - libavformat/file.c-97 
+								url_write: Exit - libavformat/avio.c-235 
+
+								url_seek: Init - libavformat/avio.c-241 
+									file_seek: Init - libavformat/file.c-104 
+									file_seek: Exit - libavformat/file.c-108 
+								url_seek: Exit - libavformat/avio.c-252 
+						flv_write_trailer: Exit - libavformat/flvenc.c-345 
+				av_write_trailer: Exit - libavformat/utils.c-3611 
+
+				print_report: Init - ffmpeg.c-1203 
+						url_seek: Init - libavformat/avio.c-241 
+								file_seek: Init - libavformat/file.c-104 
+								file_seek: Exit - libavformat/file.c-108 
+						url_seek: Exit - libavformat/avio.c-252 
+
+						url_seek: Init - libavformat/avio.c-241 
+								file_seek: Init - libavformat/file.c-104 
+								file_seek: Exit - libavformat/file.c-108 
+						url_seek: Exit - libavformat/avio.c-252 
+
+						url_seek: Init - libavformat/avio.c-241 
+								file_seek: Init - libavformat/file.c-104 
+								file_seek: Exit - libavformat/file.c-108 
+						url_seek: Exit - libavformat/avio.c-252 
+
+						av_gettime: Init - libavformat/utils.c-3772 
+						av_gettime: Exit - libavformat/utils.c-3777 
+				print_report: Exit - ffmpeg.c-1338 
+
+				ff_mjpeg_decode_end: Init - libavcodec/mjpegdec.c-1652 
+				ff_mjpeg_decode_end: Exit - libavcodec/mjpegdec.c-1666 
+ 		av_encode: Exit - ffmpeg.c-2568 
+ 
+		getutime: Init - ffmpeg.c-4174 
+		getutime: Exit - ffmpeg.c-4187 
+
+main: Exit - ffmpeg.c-4737 
+
+av_exit: Init - ffmpeg.c-420 
+		url_close: Init - libavformat/avio.c-258 
+				file_close: Init - libavformat/file.c-114 
+				file_close: Exit - libavformat/file.c-118 
+		url_close: Exit - libavformat/avio.c-271 
+		av_close_input_file: Init - libavformat/utils.c-3035 
+				av_close_input_stream: Init - libavformat/utils.c-2985 
+						flush_packet_queue: Init - libavformat/utils.c-1497 
+						flush_packet_queue: Exit - libavformat/utils.c-1511 
+				av_close_input_stream: Exit - libavformat/utils.c-3030 
+		av_close_input_file: Exit - libavformat/utils.c-3043 
+av_exit: Exit - ffmpeg.c-469
+
+ 
 
