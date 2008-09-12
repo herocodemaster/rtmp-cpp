@@ -24,10 +24,8 @@
 #include "avformat.h"
 #include <strings.h>
 
-
 //Fernando: 20080908
 #define LogStr(str)  printf ( "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__)
-
 
 typedef struct
 {
@@ -86,6 +84,29 @@ static int find_image_range( int *pfirst_index, int *plast_index, const char *pa
 {
     LogStr("Init");
 
+    /*
+    //Fernando: 20080909
+    char temp[1024];
+
+
+    printf("pfirst_index: %d\n", *pfirst_index);
+    printf("plast_index: %d\n", *plast_index);
+
+    char *temp2 = itoa(*pfirst_index);
+    av_strlcpy(temp, "*pfirst_index: ", sizeof(temp));
+    av_strlcat(temp, temp2, sizeof(temp));
+    LogStr (temp);
+
+    *temp2 = itoa(*plast_index);
+    av_strlcpy(temp, "*plast_index: ", sizeof(temp));
+    av_strlcat(temp, temp2, sizeof(temp));
+    LogStr (temp);
+
+    av_strlcpy(temp, "*path: ", sizeof(temp));
+    av_strlcat(temp, path, sizeof(temp));
+    LogStr (temp);
+    */
+
     char buf[1024];
     int range, last_index, range1, first_index;
 
@@ -98,11 +119,17 @@ static int find_image_range( int *pfirst_index, int *plast_index, const char *pa
             LogStr ("Exit");
             return 0;
         }
+
         if (url_exist(buf))
+        {
             break;
+        }
     }
+
     if (first_index == 5)
+    {
         goto fail;
+    }
 
     /* find the last image */
     last_index = first_index;
@@ -112,29 +139,46 @@ static int find_image_range( int *pfirst_index, int *plast_index, const char *pa
         for (;;)
         {
             if (!range)
+            {
                 range1 = 1;
+            }
             else
+            {
                 range1 = 2 * range;
+            }
+
             if (av_get_frame_filename(buf, sizeof(buf), path, last_index + range1) < 0)
+            {
                 goto fail;
+            }
+
             if (!url_exist(buf))
+            {
                 break;
+            }
+
             range = range1;
             /* just in case... */
             if (range >= (1 << 30))
+            {
                 goto fail;
+            }
         }
         /* we are sure than image last_index + range exists */
         if (!range)
+        {
             break;
+        }
+
         last_index += range;
     }
     *pfirst_index = first_index;
     *plast_index = last_index;
+
     LogStr ("Exit");
     return 0;
-    fail:
 
+    fail:
     LogStr ("Exit");
     return -1;
 }
@@ -258,11 +302,13 @@ static int img_read_packet( AVFormatContext *s1, AVPacket *pkt )
         {
             s->img_number = s->img_first;
         }
+
         if (av_get_frame_filename(filename, sizeof(filename), s->path, s->img_number) < 0 && s->img_number > 1)
         {
             LogStr("Exit");
             return AVERROR(EIO);
         }
+
         for (i = 0; i < 3; i++)
         {
             if (url_fopen(&f[i], filename, URL_RDONLY) < 0)
@@ -280,7 +326,9 @@ static int img_read_packet( AVFormatContext *s1, AVPacket *pkt )
         }
 
         if (codec->codec_id == CODEC_ID_RAWVIDEO && !codec->width)
+        {
             infer_size(&codec->width, &codec->height, size[0]);
+        }
     }
     else
     {
@@ -304,9 +352,14 @@ static int img_read_packet( AVFormatContext *s1, AVPacket *pkt )
         {
             ret[i] = get_buffer(f[i], pkt->data + pkt->size, size[i]);
             if (!s->is_pipe)
+            {
                 url_fclose(f[i]);
+            }
+
             if (ret[i] > 0)
+            {
                 pkt->size += ret[i];
+            }
         }
     }
 
@@ -323,7 +376,6 @@ static int img_read_packet( AVFormatContext *s1, AVPacket *pkt )
         LogStr("Exit");
         return 0;
     }
-
 
     LogStr("Exit");
 }
@@ -419,7 +471,6 @@ AVInputFormat image2_demuxer =
     AVFMT_NOFILE,
 };
 #endif
-
 
 #ifdef CONFIG_IMAGE2PIPE_DEMUXER
 AVInputFormat image2pipe_demuxer =

@@ -2844,6 +2844,9 @@ int avcodec_close(AVCodecContext *avctx);
 
 void avcodec_register_all(void);
 
+//Fernando: 20080910
+void avcodec_register_min(void);
+
 /**
  * Flush buffers, should be called when seeking or when switching to a different stream.
  */

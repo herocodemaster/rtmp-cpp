@@ -118,6 +118,17 @@ int url_open_protocol( URLContext **puc, struct URLProtocol *up, const char *fil
 #endif
     uc->filename = (char *) &uc[1];
     strcpy(uc->filename, filename);
+
+
+
+    //Fernando: 20080909
+    char temp[1024];
+    av_strlcpy(temp, "uc->filename: ", sizeof(temp));
+    av_strlcat(temp, uc->filename, sizeof(temp));
+    LogStr (temp);
+
+
+
     uc->prot = up;
     uc->flags = flags;
     uc->is_streamed = 0; /* default = not streamed */
@@ -133,8 +144,15 @@ int url_open_protocol( URLContext **puc, struct URLProtocol *up, const char *fil
 
     //We must be carefull here as url_seek() could be slow, for example for http
     if ((flags & (URL_WRONLY | URL_RDWR)) || !strcmp(up->name, "file"))
+    {
+        LogStr ("IF 1");
         if (!uc->is_streamed && url_seek(uc, 0, SEEK_SET) < 0)
+        {
+            LogStr ("IF 2");
             uc->is_streamed = 1;
+        }
+    }
+
     *puc = uc;
 
     LogStr ("Exit");
@@ -160,6 +178,7 @@ int url_open( URLContext **puc, const char *filename, int flags )
         /* protocols can only contain alphabetic chars */
         if (!isalpha(*p))
         {
+            LogStr ("GOTO");
             goto file_proto;
         }
 
@@ -169,6 +188,8 @@ int url_open( URLContext **puc, const char *filename, int flags )
         }
         p++;
     }
+
+
 
     /* if the protocol has length 1, we consider it is a dos drive */
     if (*p == '\0' || (q - proto_str) <= 1)
@@ -180,9 +201,28 @@ int url_open( URLContext **puc, const char *filename, int flags )
         *q = '\0';
     }
 
+    /*
+    //Fernando: 20080909
+    char temp[1024];
+    av_strlcpy(temp, "proto_str: ", sizeof(temp));
+    av_strlcat(temp, proto_str, sizeof(temp));
+    LogStr (temp);
+    */
+
+
+    LogStr ("FUERA DEL WHILE");
+
     up = first_protocol;
     while (up != NULL)
     {
+        LogStr ("DENTRO DEL WHILE");
+
+        //Fernando: 20080909
+        char temp[1024];
+        av_strlcpy(temp, "up->name: ", sizeof(temp));
+        av_strlcat(temp, up->name, sizeof(temp));
+        LogStr (temp);
+
         if (!strcmp(proto_str, up->name))
         {
             LogStr ("Exit");
@@ -191,6 +231,7 @@ int url_open( URLContext **puc, const char *filename, int flags )
         up = up->next;
     }
     *puc = NULL;
+    LogStr ("FIN DEL WHILE");
 
     LogStr ("Exit");
     return AVERROR(ENOENT);
@@ -275,6 +316,13 @@ int url_close( URLContext *h )
 int url_exist( const char *filename )
 {
     LogStr ("Init");
+
+    //Fernando: 20080909
+    char temp[1024];
+    av_strlcpy(temp, "*filename: ", sizeof(temp));
+    av_strlcat(temp, filename, sizeof(temp));
+    LogStr (temp);
+
 
     URLContext *h;
 

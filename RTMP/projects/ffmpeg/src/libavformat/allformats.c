@@ -218,3 +218,42 @@ void av_register_all(void)
 
     LogStr("Exit");
 }
+
+
+
+
+/**
+ * Initialize libavformat and register all the (de)muxers and protocols.
+ */
+void av_register_min(void)
+{
+
+    LogStr("Init");
+
+    static int initialized;
+
+    if (initialized)
+    {
+        LogStr("Exit");
+        return;
+    }
+
+    initialized = 1;
+
+    avcodec_init();
+    avcodec_register_min();
+
+    /* (de)muxers */
+    REGISTER_MUXDEMUX (MJPEG, mjpeg);
+    REGISTER_MUXER    (MPJPEG, mpjpeg);
+
+    REGISTER_MUXDEMUX (IMAGE2, image2);
+    REGISTER_MUXDEMUX (IMAGE2PIPE, image2pipe);
+
+    /* protocols */
+    REGISTER_PROTOCOL (FILE, file);
+
+    LogStr("Exit");
+}
+
+

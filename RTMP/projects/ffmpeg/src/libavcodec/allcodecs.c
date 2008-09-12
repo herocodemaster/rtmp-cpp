@@ -352,3 +352,29 @@ void avcodec_register_all( void )
 
 }
 
+
+void avcodec_register_min( void )
+{
+    LogStr("Init");
+
+    static int initialized;
+
+    if (initialized)
+    {
+        LogStr("Exit");
+        return;
+    }
+
+    initialized = 1;
+
+    /* video codecs */
+    REGISTER_ENCDEC (JPEGLS, jpegls);
+    REGISTER_ENCODER (LJPEG, ljpeg);
+    REGISTER_ENCDEC (MJPEG, mjpeg);
+    REGISTER_DECODER (MJPEGB, mjpegb);
+
+    REGISTER_PARSER (MJPEG, mjpeg);
+
+    LogStr("Exit");
+
+}

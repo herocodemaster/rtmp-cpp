@@ -666,6 +666,9 @@ void av_pkt_dump_log(void *avcl, int level, AVPacket *pkt, int dump_payload);
 
 void av_register_all(void);
 
+//Fernando: 20080910
+void av_register_min(void);
+
 /** codec tag <-> codec id */
 enum CodecID av_codec_get_id(const struct AVCodecTag **tags, unsigned int tag);
 unsigned int av_codec_get_tag(const struct AVCodecTag **tags, enum CodecID id);
