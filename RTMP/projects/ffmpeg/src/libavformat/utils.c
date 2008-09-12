@@ -3704,10 +3704,15 @@ int av_interleave_packet_per_dts( AVFormatContext *s, AVPacket *out, AVPacket *p
 
         this_pktl = av_mallocz(sizeof(AVPacketList));
         this_pktl->pkt = *pkt;
+
         if (pkt->destruct == av_destruct_packet)
+        {
             pkt->destruct = NULL; // not shared -> must keep original from being freed
+        }
         else
+        {
             av_dup_packet(&this_pktl->pkt); //shared -> must dup
+        }
 
         next_point = &s->packet_buffer;
         while (*next_point)
@@ -3716,7 +3721,9 @@ int av_interleave_packet_per_dts( AVFormatContext *s, AVPacket *out, AVPacket *p
             int64_t left = st2->time_base.num * (int64_t) st ->time_base.den;
             int64_t right = st ->time_base.num * (int64_t) st2->time_base.den;
             if ((*next_point)->pkt.dts * left > pkt->dts * right) //FIXME this can overflow
+            {
                 break;
+            }
             next_point = &(*next_point)->next;
         }
         this_pktl->next = *next_point;
@@ -3729,7 +3736,10 @@ int av_interleave_packet_per_dts( AVFormatContext *s, AVPacket *out, AVPacket *p
     {
         //av_log(s, AV_LOG_DEBUG, "show st:%d dts:%"PRId64"\n", pktl->pkt.stream_index, pktl->pkt.dts);
         if (streams[pktl->pkt.stream_index] == 0)
+        {
             stream_count++;
+        }
+
         streams[pktl->pkt.stream_index]++;
         pktl = pktl->next;
     }

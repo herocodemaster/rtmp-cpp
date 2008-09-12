@@ -130,7 +130,6 @@ static int pipe_open( URLContext *h, const char *filename, int flags )
     //Fernando: 20080909
     char temp[1024];
     av_strlcpy(temp, "*filename: ", sizeof(temp));
-    //av_strlcat(temp, "*filename: ", sizeof(temp));
     av_strlcat(temp, filename, sizeof(temp));
     LogStr (temp);
 
