@@ -1,0 +1,45 @@
+
+
+
+
+		printf("%s: %d\n", "output_files[i]->audio_codec_id", output_files[i]->audio_codec_id);
+
+
+
+
+
+		printf("%s: %s\n", "output_files[i]->oformat->", output_files[i]->oformat->);
+
+
+
+
+                                                                                                                         
+                                                                                                                         
+                                                                                                                         
+typedef struct AVOutputFormat 
+{
+
+
+    const struct AVCodecTag * const *codec_tag;
+    
+} AVOutputFormat;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if (s->debug & FF_FDEBUG_TS)
+    {
+        av_log(s, AV_LOG_DEBUG, "av_read_frame_internal stream=%d, pts=%"PRId64", dts=%"PRId64", size=%d, flags=%d\n", pkt->stream_index, pkt->pts, pkt->dts, pkt->size, pkt->flags);
+    }
