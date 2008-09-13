@@ -20,7 +20,7 @@
 #ifndef SCREEN_H
 #define SCREEN_H
 
-#include <libflv.h>
+#include <libflv.hpp>
 
 struct BGR {
 	unsigned char b;

@@ -23,10 +23,10 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include <zlib.h>
-#include <flv.h>
+//#include <zlib.h>
+#include <flv.hpp>
 #include <assert.h>
-#include <screen.h>
+#include <screen.hpp>
 
 #define BLOCK_DIRTY 1
 
@@ -64,7 +64,8 @@ static inline int compareRGB_BGR(struct RGB *p1, struct BGR *p2) {
 		return 0;
 }
 
-static inline void __putChar(unsigned char *data, u_int32_t val) {
+static inline void __putChar(unsigned char *data, unsigned int val)  //u_int32_t
+{
 	*data = (val & 0x000000ff);
 }
 
@@ -178,21 +179,25 @@ static inline int writeEmptyImageBlock(ScreenVideo *video) {
 	return 2;
 }
 	
-static int writeImageBlock(ScreenVideo *video, int row, int col) {
-	struct BGR src[video->blockSize * video->blockSize];
-	unsigned char dest[video->blockSize * video->blockSize * 4];
+
+static int writeImageBlock(ScreenVideo *video, int row, int col) 
+{
+	//struct BGR src[video->blockSize * video->blockSize];
+	struct BGR *src = new struct BGR[video->blockSize * video->blockSize];
+
+	//unsigned char dest[video->blockSize * video->blockSize * 4];
+	unsigned char *dest = new unsigned char[video->blockSize * video->blockSize * 4];
+
+
 	int size, ret;
 	unsigned long zSize;
 	zSize = video->blockSize * video->blockSize * 4;
 	
 	size = getImageBlock(video, row, col, src);
-	ret = compress2((Bytef *)dest, 
-			&zSize, 
-			(Bytef *)src, 
-			size * sizeof(struct BGR),
-			9);
+	ret = compress2((Bytef *)dest, &zSize, (Bytef *)src, size * sizeof(struct BGR), 9);
 
-	if(ret != Z_OK) {
+	if(ret != Z_OK) 
+	{
 		printf("compression failed %i\n", ret);
 		return -1;
 	}
@@ -226,18 +231,25 @@ static inline int writeVideoPacketHeader(ScreenVideo *video) {
 
 
 
-static void writeVideoData(ScreenVideo *video, struct FLVDataTag *dataTag) {
+
+static void writeVideoData(ScreenVideo *video, struct FLVDataTag *dataTag) 
+{
 	int row, col, pos;
 	
 	writeVideoPacketHeader(video);
-	for(row = 0; row < video->rows; row++) {
-		for(col = 0; col < video->cols; col++) {
+	for(row = 0; row < video->rows; row++) 
+	{
+		for(col = 0; col < video->cols; col++) 
+		{
 			pos = row * video->cols + col;
-			if(video->blockMap[pos] == BLOCK_DIRTY) {
+			if(video->blockMap[pos] == BLOCK_DIRTY) 
+			{
 				writeImageBlock(video, row, col);
 			}
 			else
+			{
 				writeEmptyImageBlock(video);
+			}
 		}
 	}
 
@@ -245,7 +257,10 @@ static void writeVideoData(ScreenVideo *video, struct FLVDataTag *dataTag) {
 	dataTag->data = video->framebuf;
 }
 
-struct FLVTag *getFLVTag(ScreenVideo *video, int timeStamp) {	
+
+
+struct FLVTag *getFLVTag(ScreenVideo *video, int timeStamp) 
+{	
 	struct FLVTag *tag;
 	struct FLVDataTag *dataTag;
 	
@@ -256,10 +271,15 @@ struct FLVTag *getFLVTag(ScreenVideo *video, int timeStamp) {
 	tag->tagType = FLVTAGTYPE_VIDEO;
 	tag->timeStamp = timeStamp;
 	dataTag->codecId = FLVCODEC_SCREEN;
+
 	if(video->frame == 0)
+	{
 		dataTag->frameType = FLVFRAME_KEY;
+	}
 	else
+	{
 		dataTag->frameType = FLVFRAME_INTER;
+	}
 
 	writeVideoData(video, dataTag);
 	tag->dataSize = dataTag->size + 1;
@@ -267,20 +287,18 @@ struct FLVTag *getFLVTag(ScreenVideo *video, int timeStamp) {
 	return tag;
 }
 
-static inline int clearFrame(ScreenVideo *video) {
+
+
+
+static inline int clearFrame(ScreenVideo *video) 
+{
 	resetBlockMap(video);
 	video->frame++;
 	video->frameSize = 0;
 	return video->frame;
 }
 
-int
-ScreenVideo_addFrame(
-		ScreenVideo *video, 
-		FLVStream *flv, 
-		struct PixelData *pixelData,
-		unsigned int timeStamp
-		) 
+int ScreenVideo_addFrame(ScreenVideo *video, FLVStream *flv, struct PixelData *pixelData, unsigned int timeStamp ) 
 {
 	int x, y, row = 0;
 	struct FLVTag *tag;
@@ -330,7 +348,11 @@ ScreenVideo_addFrame(
 	
 	tag = getFLVTag(video, _timeStamp);
 	FLV_writeTag(flv, tag);
+	
 	if(tag != NULL)
+	{
 		free(tag);
+	}
+
 	return clearFrame(video);
 }

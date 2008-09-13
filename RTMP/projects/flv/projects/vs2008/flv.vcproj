@@ -40,6 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
+				AdditionalIncludeDirectories="F:\Development\CPP\RTMP\projects\flv\include"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -162,15 +163,15 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath="..\..\src\flv.c"
+				RelativePath="..\..\src\flv.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\main_test_capture.c"
+				RelativePath="..\..\src\main_test_capture.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\screen.c"
+				RelativePath="..\..\src\screen.cpp"
 				>
 			</File>
 		</Filter>
@@ -180,15 +181,15 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath="..\..\include\flv.h"
+				RelativePath="..\..\include\flv.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\include\libflv.h"
+				RelativePath="..\..\include\libflv.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\include\screen.h"
+				RelativePath="..\..\include\screen.hpp"
 				>
 			</File>
 		</Filter>

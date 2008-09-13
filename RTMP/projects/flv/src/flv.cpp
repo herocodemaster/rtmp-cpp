@@ -22,65 +22,93 @@
 #include <string.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <unistd.h>
+//#include <unistd.h>
 #include <fcntl.h>
-#include <sys/mman.h>
-#include <flv.h>
+//#include <sys/mman.h>
+#include <flv.hpp>
 #include <errno.h>
+
+
+//#include <stdint.h>
+#include <vector>
+
+
 
 int errno;
 
-struct FLVStream_s {
+struct FLVStream_s 
+{
 	int version;
 	int length;
 	int pos;
 	unsigned char *data;
+	//std::vector<unsigned char> data;
 };
 
 #define FLVGROWBY 4096
-inline void grow(FLVStream *flv) {
+inline void grow(FLVStream *flv) 
+{
 	flv->length += FLVGROWBY;
-	flv->data = realloc(flv->data, flv->length);
+	//flv->data = realloc(flv->data, flv->length);
 }
 
-static inline void __putChar(unsigned char *data, u_int32_t val) {
+
+
+
+static inline void __putChar(unsigned char *data, unsigned int val)  //u_int32_t
+{
 	*data = (val & 0x000000ff);
 }
 
-void writeData(FLVStream *flv, unsigned char *data, int size) {
+
+void writeData(FLVStream *flv, unsigned char *data, int size) 
+{
 	while(flv->pos + size >= flv->length)
+	{
 		grow(flv);
+	}
 	
+	//flv->data.insert(flv->data.end(), data, data+size);
 	memcpy(flv->data + flv->pos, data, size);
 	flv->pos += size;
 }
 
-static inline void putChar(FLVStream *flv, u_int32_t val) {
+
+static inline void putChar(FLVStream *flv, unsigned int val) //u_int32_t
+{
 	if( flv->pos + 1 >= flv->length ) 
+	{
 		grow(flv);
+	}
+	
 	
 	__putChar(flv->data + flv->pos++, val);
 }
 
-static inline void putUI16(FLVStream *flv, u_int32_t val) {
+
+static inline void putUI16(FLVStream *flv, unsigned int val)  //u_int32_t
+{
 	putChar(flv, (val >> 8));
 	putChar(flv, val);;
 }
 
-static inline void putUI24(FLVStream *flv, u_int32_t val) {
+static inline void putUI24(FLVStream *flv,  unsigned int val) //u_int32_t
+{
 	putChar(flv, (val >> 16));
 	putUI16(flv, val);
 }
 
 
-static inline void putUI32(FLVStream *flv, u_int32_t val) {
+static inline void putUI32(FLVStream *flv, unsigned int  val) //u_int32_t
+{
 	putChar(flv, (val >> 24));
 	putUI24(flv, val);
 }
 
 
 
-void writeTagData(FLVStream *flv, struct FLVDataTag *tagData) {
+void writeTagData(FLVStream *flv, struct FLVDataTag *tagData) 
+{
 	if(!tagData)
 		return;
 	
@@ -131,17 +159,22 @@ FLVStream *newFLVStream(unsigned char version, unsigned char flags) {
 	return flv;
 }
 
-int FLVStream_write(FLVStream *flv, const char *name) {
+/*
+int FLVStream_write(FLVStream *flv, const char *name) 
+{
 	int fd;
 
-	fd = open(name, O_WRONLY | O_CREAT | O_TRUNC, S_IRWXU);
-	if(fd < 0) {
+	fd = open(name, O_WRONLY | O_CREAT | O_TRUNC); //, S_IRWXU
+	
+	if(fd < 0) 
+	{
 		perror("Write failed");
 		return -1;
 	}
 
 	return (int)write(fd, flv->data, flv->pos);
 }
+*/
 
 
 inline unsigned char getChar(FLVStream *flv) {
@@ -274,12 +307,15 @@ int dumpFLVTag(FLVStream *flv) {
 }
 
 
-void dumpFLVFile(const char *name) {
+/*
+void dumpFLVFile(const char *name) 
+{
 	struct stat buf;
 	FLVStream *flv;
 	int fd, tagCount = 0;
 	
-	if(stat(name, &buf) < 0) {
+	if(stat(name, &buf) < 0) 
+	{
 		perror("Can not open flv-file");
 		return;
 	}
@@ -290,16 +326,19 @@ void dumpFLVFile(const char *name) {
 	
 	fd = open(name, O_RDONLY, 0);
 	flv->data = mmap(flv->data, flv->length, PROT_READ, MAP_PRIVATE, fd, 0);
-	if((int)flv->data < 0) {
+	
+	if((int)flv->data < 0) 
+	{
 		perror("Can not open file");
 		return;
 	}
 
 	dumpHeader(flv);
 
-	do {
+	do 
+	{
 		printf("TAG: %i \n", tagCount++);
 	} while (dumpFLVTag(flv));
 }		
-
+*/
 

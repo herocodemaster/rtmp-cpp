@@ -113,14 +113,7 @@ int ScreenVideo_setCompression(ScreenVideo *video, int level);
  * @pixelData struct PixelData *
  * @timestamp timestamp in msec
  */
-int
-ScreenVideo_addFrame(
-		ScreenVideo *video, 
-		FLVStream *flv, 
-		struct PixelData *pixelData,
-		unsigned int timeStamp
-		);
-
+int ScreenVideo_addFrame (ScreenVideo *video, FLVStream *flv, struct PixelData *pixelData, unsigned int timeStamp );
 
 
 #endif

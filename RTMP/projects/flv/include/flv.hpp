@@ -19,7 +19,7 @@
 #ifndef _FLV_H
 #define _FLV_H
 
-#include <libflv.h>
+#include <libflv.hpp>
 
 #define FLVTAGTYPE_AUDIO 8
 #define FLVTAGTYPE_VIDEO 9
