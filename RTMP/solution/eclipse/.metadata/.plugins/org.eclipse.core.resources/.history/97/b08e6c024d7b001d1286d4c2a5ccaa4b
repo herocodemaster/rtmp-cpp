@@ -1,0 +1,44 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+C_SRCS += \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libpostproc/postprocess.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libpostproc/postprocess_altivec_template.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libpostproc/postprocess_template.c 
+
+OBJS += \
+./src/libpostproc/postprocess.o \
+./src/libpostproc/postprocess_altivec_template.o \
+./src/libpostproc/postprocess_template.o 
+
+C_DEPS += \
+./src/libpostproc/postprocess.d \
+./src/libpostproc/postprocess_altivec_template.d \
+./src/libpostproc/postprocess_template.d 
+
+
+# Each subdirectory must supply rules for building sources it contributes
+src/libpostproc/postprocess.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libpostproc/postprocess.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libpostproc/postprocess_altivec_template.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libpostproc/postprocess_altivec_template.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libpostproc/postprocess_template.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libpostproc/postprocess_template.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+

@@ -1,0 +1,122 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+C_SRCS += \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavdevice/alldevices.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavdevice/audio.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavdevice/bktr.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavdevice/dv1394.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavdevice/libdc1394.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavdevice/v4l.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavdevice/v4l2.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavdevice/vfwcap.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavdevice/x11grab.c 
+
+CPP_SRCS += \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavdevice/beosaudio.cpp 
+
+O_SRCS += \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavdevice/alldevices.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavdevice/vfwcap.o 
+
+OBJS += \
+./src/libavdevice/alldevices.o \
+./src/libavdevice/audio.o \
+./src/libavdevice/beosaudio.o \
+./src/libavdevice/bktr.o \
+./src/libavdevice/dv1394.o \
+./src/libavdevice/libdc1394.o \
+./src/libavdevice/v4l.o \
+./src/libavdevice/v4l2.o \
+./src/libavdevice/vfwcap.o \
+./src/libavdevice/x11grab.o 
+
+C_DEPS += \
+./src/libavdevice/alldevices.d \
+./src/libavdevice/audio.d \
+./src/libavdevice/bktr.d \
+./src/libavdevice/dv1394.d \
+./src/libavdevice/libdc1394.d \
+./src/libavdevice/v4l.d \
+./src/libavdevice/v4l2.d \
+./src/libavdevice/vfwcap.d \
+./src/libavdevice/x11grab.d 
+
+CPP_DEPS += \
+./src/libavdevice/beosaudio.d 
+
+
+# Each subdirectory must supply rules for building sources it contributes
+src/libavdevice/alldevices.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavdevice/alldevices.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavdevice/audio.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavdevice/audio.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavdevice/beosaudio.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavdevice/beosaudio.cpp
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C++ Compiler'
+	g++ -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavdevice/bktr.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavdevice/bktr.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavdevice/dv1394.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavdevice/dv1394.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavdevice/libdc1394.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavdevice/libdc1394.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavdevice/v4l.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavdevice/v4l.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavdevice/v4l2.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavdevice/v4l2.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavdevice/vfwcap.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavdevice/vfwcap.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavdevice/x11grab.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavdevice/x11grab.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+

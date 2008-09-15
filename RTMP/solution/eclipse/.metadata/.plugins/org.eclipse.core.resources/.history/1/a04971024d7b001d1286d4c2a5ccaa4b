@@ -1,0 +1,64 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+C_SRCS += \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/tests/audiogen.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/tests/rotozoom.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/tests/seek_test.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/tests/tiny_psnr.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/tests/videogen.c 
+
+OBJS += \
+./src/tests/audiogen.o \
+./src/tests/rotozoom.o \
+./src/tests/seek_test.o \
+./src/tests/tiny_psnr.o \
+./src/tests/videogen.o 
+
+C_DEPS += \
+./src/tests/audiogen.d \
+./src/tests/rotozoom.d \
+./src/tests/seek_test.d \
+./src/tests/tiny_psnr.d \
+./src/tests/videogen.d 
+
+
+# Each subdirectory must supply rules for building sources it contributes
+src/tests/audiogen.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/tests/audiogen.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/tests/rotozoom.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/tests/rotozoom.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/tests/seek_test.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/tests/seek_test.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/tests/tiny_psnr.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/tests/tiny_psnr.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/tests/videogen.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/tests/videogen.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+

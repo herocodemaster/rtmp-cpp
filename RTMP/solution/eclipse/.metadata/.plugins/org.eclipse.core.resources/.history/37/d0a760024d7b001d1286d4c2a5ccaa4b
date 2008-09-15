@@ -1,0 +1,34 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+C_SRCS += \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavcodec/sparc/dsputil_vis.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavcodec/sparc/simple_idct_vis.c 
+
+OBJS += \
+./src/libavcodec/sparc/dsputil_vis.o \
+./src/libavcodec/sparc/simple_idct_vis.o 
+
+C_DEPS += \
+./src/libavcodec/sparc/dsputil_vis.d \
+./src/libavcodec/sparc/simple_idct_vis.d 
+
+
+# Each subdirectory must supply rules for building sources it contributes
+src/libavcodec/sparc/dsputil_vis.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavcodec/sparc/dsputil_vis.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavcodec/sparc/simple_idct_vis.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavcodec/sparc/simple_idct_vis.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+

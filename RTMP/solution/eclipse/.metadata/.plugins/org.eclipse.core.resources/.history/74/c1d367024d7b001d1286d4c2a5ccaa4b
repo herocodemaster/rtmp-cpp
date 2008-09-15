@@ -1,0 +1,1421 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+C_SRCS += \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/4xm.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/adtsenc.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/aiff.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/allformats.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/amr.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/apc.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/ape.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/asf-enc.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/asf.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/asfcrypt.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/au.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/avc.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/avidec.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/avienc.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/avio.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/aviobuf.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/avisynth.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/avs.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/bethsoftvid.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/bfi.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/c93.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/crcenc.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/cutils.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/daud.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/dsicin.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/dv.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/dvenc.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/dxa.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/eacdata.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/electronicarts.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/ffmdec.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/ffmenc.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/file.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/flic.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/flvdec.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/flvenc.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/framecrcenc.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/framehook.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/gif.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/gxf.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/gxfenc.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/http.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/idcin.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/idroq.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/iff.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/img2.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/ipmovie.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/isom.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/libnut.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/lmlm4.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/matroska.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/matroskadec.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/matroskaenc.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mm.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mmf.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mov.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/movenc.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mp3.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mpc.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mpc8.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mpeg.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mpegenc.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mpegts.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mpegtsenc.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mpjpeg.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/msnwc_tcp.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mtv.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mvi.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mxf.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mxfdec.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mxfenc.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/nsvdec.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/nut.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/nutdec.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/nutenc.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/nuv.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/oggdec.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/oggenc.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/oggparseflac.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/oggparseogm.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/oggparsespeex.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/oggparsetheora.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/oggparsevorbis.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/oma.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/os_support.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/psxstr.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/pva.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/raw.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/riff.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rl2.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rmdec.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rmenc.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rpl.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rtp.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rtp_aac.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rtp_h264.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rtp_mpv.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rtpdec.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rtpenc.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rtpenc_h264.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rtpproto.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rtsp.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/sdp.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/segafilm.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/sierravmd.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/siff.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/smacker.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/sol.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/swfdec.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/swfenc.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/tcp.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/thp.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/tiertexseq.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/tta.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/txd.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/udp.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/utils.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/vc1test.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/vc1testenc.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/voc.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/vocdec.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/vocenc.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/wav.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/wc3movie.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/westwood.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/wv.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/xa.c \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/yuv4mpeg.c 
+
+O_SRCS += \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/4xm.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/adtsenc.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/aiff.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/allformats.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/amr.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/apc.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/ape.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/asf-enc.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/asf.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/asfcrypt.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/au.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/avc.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/avidec.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/avienc.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/avio.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/aviobuf.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/avs.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/bethsoftvid.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/bfi.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/c93.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/crcenc.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/cutils.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/daud.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/dsicin.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/dv.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/dvenc.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/dxa.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/eacdata.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/electronicarts.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/ffmdec.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/ffmenc.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/file.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/flic.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/flvdec.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/flvenc.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/framecrcenc.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/gif.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/gxf.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/gxfenc.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/http.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/idcin.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/idroq.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/iff.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/img2.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/ipmovie.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/isom.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/lmlm4.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/matroska.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/matroskadec.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/matroskaenc.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mm.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mmf.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mov.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/movenc.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mp3.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mpc.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mpc8.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mpeg.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mpegenc.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mpegts.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mpegtsenc.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mpjpeg.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/msnwc_tcp.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mtv.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mvi.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mxf.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mxfdec.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mxfenc.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/nsvdec.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/nut.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/nutdec.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/nutenc.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/nuv.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/oggdec.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/oggenc.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/oggparseflac.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/oggparseogm.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/oggparsespeex.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/oggparsetheora.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/oggparsevorbis.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/oma.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/os_support.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/psxstr.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/pva.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/raw.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/riff.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rl2.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rmdec.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rmenc.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rpl.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rtp.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rtp_aac.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rtp_h264.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rtp_mpv.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rtpdec.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rtpenc.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rtpenc_h264.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rtpproto.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rtsp.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/sdp.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/segafilm.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/sierravmd.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/siff.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/smacker.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/sol.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/swfdec.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/swfenc.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/tcp.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/thp.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/tiertexseq.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/tta.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/txd.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/udp.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/utils.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/vc1test.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/vc1testenc.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/voc.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/vocdec.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/vocenc.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/wav.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/wc3movie.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/westwood.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/wv.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/xa.o \
+C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/yuv4mpeg.o 
+
+OBJS += \
+./src/libavformat/4xm.o \
+./src/libavformat/adtsenc.o \
+./src/libavformat/aiff.o \
+./src/libavformat/allformats.o \
+./src/libavformat/amr.o \
+./src/libavformat/apc.o \
+./src/libavformat/ape.o \
+./src/libavformat/asf-enc.o \
+./src/libavformat/asf.o \
+./src/libavformat/asfcrypt.o \
+./src/libavformat/au.o \
+./src/libavformat/avc.o \
+./src/libavformat/avidec.o \
+./src/libavformat/avienc.o \
+./src/libavformat/avio.o \
+./src/libavformat/aviobuf.o \
+./src/libavformat/avisynth.o \
+./src/libavformat/avs.o \
+./src/libavformat/bethsoftvid.o \
+./src/libavformat/bfi.o \
+./src/libavformat/c93.o \
+./src/libavformat/crcenc.o \
+./src/libavformat/cutils.o \
+./src/libavformat/daud.o \
+./src/libavformat/dsicin.o \
+./src/libavformat/dv.o \
+./src/libavformat/dvenc.o \
+./src/libavformat/dxa.o \
+./src/libavformat/eacdata.o \
+./src/libavformat/electronicarts.o \
+./src/libavformat/ffmdec.o \
+./src/libavformat/ffmenc.o \
+./src/libavformat/file.o \
+./src/libavformat/flic.o \
+./src/libavformat/flvdec.o \
+./src/libavformat/flvenc.o \
+./src/libavformat/framecrcenc.o \
+./src/libavformat/framehook.o \
+./src/libavformat/gif.o \
+./src/libavformat/gxf.o \
+./src/libavformat/gxfenc.o \
+./src/libavformat/http.o \
+./src/libavformat/idcin.o \
+./src/libavformat/idroq.o \
+./src/libavformat/iff.o \
+./src/libavformat/img2.o \
+./src/libavformat/ipmovie.o \
+./src/libavformat/isom.o \
+./src/libavformat/libnut.o \
+./src/libavformat/lmlm4.o \
+./src/libavformat/matroska.o \
+./src/libavformat/matroskadec.o \
+./src/libavformat/matroskaenc.o \
+./src/libavformat/mm.o \
+./src/libavformat/mmf.o \
+./src/libavformat/mov.o \
+./src/libavformat/movenc.o \
+./src/libavformat/mp3.o \
+./src/libavformat/mpc.o \
+./src/libavformat/mpc8.o \
+./src/libavformat/mpeg.o \
+./src/libavformat/mpegenc.o \
+./src/libavformat/mpegts.o \
+./src/libavformat/mpegtsenc.o \
+./src/libavformat/mpjpeg.o \
+./src/libavformat/msnwc_tcp.o \
+./src/libavformat/mtv.o \
+./src/libavformat/mvi.o \
+./src/libavformat/mxf.o \
+./src/libavformat/mxfdec.o \
+./src/libavformat/mxfenc.o \
+./src/libavformat/nsvdec.o \
+./src/libavformat/nut.o \
+./src/libavformat/nutdec.o \
+./src/libavformat/nutenc.o \
+./src/libavformat/nuv.o \
+./src/libavformat/oggdec.o \
+./src/libavformat/oggenc.o \
+./src/libavformat/oggparseflac.o \
+./src/libavformat/oggparseogm.o \
+./src/libavformat/oggparsespeex.o \
+./src/libavformat/oggparsetheora.o \
+./src/libavformat/oggparsevorbis.o \
+./src/libavformat/oma.o \
+./src/libavformat/os_support.o \
+./src/libavformat/psxstr.o \
+./src/libavformat/pva.o \
+./src/libavformat/raw.o \
+./src/libavformat/riff.o \
+./src/libavformat/rl2.o \
+./src/libavformat/rmdec.o \
+./src/libavformat/rmenc.o \
+./src/libavformat/rpl.o \
+./src/libavformat/rtp.o \
+./src/libavformat/rtp_aac.o \
+./src/libavformat/rtp_h264.o \
+./src/libavformat/rtp_mpv.o \
+./src/libavformat/rtpdec.o \
+./src/libavformat/rtpenc.o \
+./src/libavformat/rtpenc_h264.o \
+./src/libavformat/rtpproto.o \
+./src/libavformat/rtsp.o \
+./src/libavformat/sdp.o \
+./src/libavformat/segafilm.o \
+./src/libavformat/sierravmd.o \
+./src/libavformat/siff.o \
+./src/libavformat/smacker.o \
+./src/libavformat/sol.o \
+./src/libavformat/swfdec.o \
+./src/libavformat/swfenc.o \
+./src/libavformat/tcp.o \
+./src/libavformat/thp.o \
+./src/libavformat/tiertexseq.o \
+./src/libavformat/tta.o \
+./src/libavformat/txd.o \
+./src/libavformat/udp.o \
+./src/libavformat/utils.o \
+./src/libavformat/vc1test.o \
+./src/libavformat/vc1testenc.o \
+./src/libavformat/voc.o \
+./src/libavformat/vocdec.o \
+./src/libavformat/vocenc.o \
+./src/libavformat/wav.o \
+./src/libavformat/wc3movie.o \
+./src/libavformat/westwood.o \
+./src/libavformat/wv.o \
+./src/libavformat/xa.o \
+./src/libavformat/yuv4mpeg.o 
+
+C_DEPS += \
+./src/libavformat/4xm.d \
+./src/libavformat/adtsenc.d \
+./src/libavformat/aiff.d \
+./src/libavformat/allformats.d \
+./src/libavformat/amr.d \
+./src/libavformat/apc.d \
+./src/libavformat/ape.d \
+./src/libavformat/asf-enc.d \
+./src/libavformat/asf.d \
+./src/libavformat/asfcrypt.d \
+./src/libavformat/au.d \
+./src/libavformat/avc.d \
+./src/libavformat/avidec.d \
+./src/libavformat/avienc.d \
+./src/libavformat/avio.d \
+./src/libavformat/aviobuf.d \
+./src/libavformat/avisynth.d \
+./src/libavformat/avs.d \
+./src/libavformat/bethsoftvid.d \
+./src/libavformat/bfi.d \
+./src/libavformat/c93.d \
+./src/libavformat/crcenc.d \
+./src/libavformat/cutils.d \
+./src/libavformat/daud.d \
+./src/libavformat/dsicin.d \
+./src/libavformat/dv.d \
+./src/libavformat/dvenc.d \
+./src/libavformat/dxa.d \
+./src/libavformat/eacdata.d \
+./src/libavformat/electronicarts.d \
+./src/libavformat/ffmdec.d \
+./src/libavformat/ffmenc.d \
+./src/libavformat/file.d \
+./src/libavformat/flic.d \
+./src/libavformat/flvdec.d \
+./src/libavformat/flvenc.d \
+./src/libavformat/framecrcenc.d \
+./src/libavformat/framehook.d \
+./src/libavformat/gif.d \
+./src/libavformat/gxf.d \
+./src/libavformat/gxfenc.d \
+./src/libavformat/http.d \
+./src/libavformat/idcin.d \
+./src/libavformat/idroq.d \
+./src/libavformat/iff.d \
+./src/libavformat/img2.d \
+./src/libavformat/ipmovie.d \
+./src/libavformat/isom.d \
+./src/libavformat/libnut.d \
+./src/libavformat/lmlm4.d \
+./src/libavformat/matroska.d \
+./src/libavformat/matroskadec.d \
+./src/libavformat/matroskaenc.d \
+./src/libavformat/mm.d \
+./src/libavformat/mmf.d \
+./src/libavformat/mov.d \
+./src/libavformat/movenc.d \
+./src/libavformat/mp3.d \
+./src/libavformat/mpc.d \
+./src/libavformat/mpc8.d \
+./src/libavformat/mpeg.d \
+./src/libavformat/mpegenc.d \
+./src/libavformat/mpegts.d \
+./src/libavformat/mpegtsenc.d \
+./src/libavformat/mpjpeg.d \
+./src/libavformat/msnwc_tcp.d \
+./src/libavformat/mtv.d \
+./src/libavformat/mvi.d \
+./src/libavformat/mxf.d \
+./src/libavformat/mxfdec.d \
+./src/libavformat/mxfenc.d \
+./src/libavformat/nsvdec.d \
+./src/libavformat/nut.d \
+./src/libavformat/nutdec.d \
+./src/libavformat/nutenc.d \
+./src/libavformat/nuv.d \
+./src/libavformat/oggdec.d \
+./src/libavformat/oggenc.d \
+./src/libavformat/oggparseflac.d \
+./src/libavformat/oggparseogm.d \
+./src/libavformat/oggparsespeex.d \
+./src/libavformat/oggparsetheora.d \
+./src/libavformat/oggparsevorbis.d \
+./src/libavformat/oma.d \
+./src/libavformat/os_support.d \
+./src/libavformat/psxstr.d \
+./src/libavformat/pva.d \
+./src/libavformat/raw.d \
+./src/libavformat/riff.d \
+./src/libavformat/rl2.d \
+./src/libavformat/rmdec.d \
+./src/libavformat/rmenc.d \
+./src/libavformat/rpl.d \
+./src/libavformat/rtp.d \
+./src/libavformat/rtp_aac.d \
+./src/libavformat/rtp_h264.d \
+./src/libavformat/rtp_mpv.d \
+./src/libavformat/rtpdec.d \
+./src/libavformat/rtpenc.d \
+./src/libavformat/rtpenc_h264.d \
+./src/libavformat/rtpproto.d \
+./src/libavformat/rtsp.d \
+./src/libavformat/sdp.d \
+./src/libavformat/segafilm.d \
+./src/libavformat/sierravmd.d \
+./src/libavformat/siff.d \
+./src/libavformat/smacker.d \
+./src/libavformat/sol.d \
+./src/libavformat/swfdec.d \
+./src/libavformat/swfenc.d \
+./src/libavformat/tcp.d \
+./src/libavformat/thp.d \
+./src/libavformat/tiertexseq.d \
+./src/libavformat/tta.d \
+./src/libavformat/txd.d \
+./src/libavformat/udp.d \
+./src/libavformat/utils.d \
+./src/libavformat/vc1test.d \
+./src/libavformat/vc1testenc.d \
+./src/libavformat/voc.d \
+./src/libavformat/vocdec.d \
+./src/libavformat/vocenc.d \
+./src/libavformat/wav.d \
+./src/libavformat/wc3movie.d \
+./src/libavformat/westwood.d \
+./src/libavformat/wv.d \
+./src/libavformat/xa.d \
+./src/libavformat/yuv4mpeg.d 
+
+
+# Each subdirectory must supply rules for building sources it contributes
+src/libavformat/4xm.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/4xm.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/adtsenc.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/adtsenc.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/aiff.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/aiff.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/allformats.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/allformats.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/amr.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/amr.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/apc.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/apc.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/ape.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/ape.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/asf-enc.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/asf-enc.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/asf.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/asf.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/asfcrypt.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/asfcrypt.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/au.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/au.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/avc.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/avc.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/avidec.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/avidec.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/avienc.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/avienc.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/avio.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/avio.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/aviobuf.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/aviobuf.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/avisynth.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/avisynth.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/avs.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/avs.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/bethsoftvid.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/bethsoftvid.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/bfi.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/bfi.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/c93.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/c93.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/crcenc.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/crcenc.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/cutils.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/cutils.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/daud.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/daud.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/dsicin.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/dsicin.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/dv.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/dv.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/dvenc.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/dvenc.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/dxa.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/dxa.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/eacdata.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/eacdata.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/electronicarts.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/electronicarts.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/ffmdec.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/ffmdec.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/ffmenc.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/ffmenc.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/file.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/file.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/flic.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/flic.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/flvdec.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/flvdec.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/flvenc.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/flvenc.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/framecrcenc.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/framecrcenc.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/framehook.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/framehook.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/gif.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/gif.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/gxf.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/gxf.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/gxfenc.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/gxfenc.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/http.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/http.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/idcin.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/idcin.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/idroq.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/idroq.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/iff.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/iff.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/img2.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/img2.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/ipmovie.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/ipmovie.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/isom.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/isom.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/libnut.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/libnut.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/lmlm4.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/lmlm4.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/matroska.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/matroska.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/matroskadec.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/matroskadec.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/matroskaenc.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/matroskaenc.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/mm.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mm.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/mmf.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mmf.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/mov.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mov.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/movenc.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/movenc.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/mp3.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mp3.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/mpc.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mpc.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/mpc8.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mpc8.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/mpeg.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mpeg.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/mpegenc.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mpegenc.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/mpegts.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mpegts.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/mpegtsenc.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mpegtsenc.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/mpjpeg.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mpjpeg.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/msnwc_tcp.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/msnwc_tcp.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/mtv.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mtv.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/mvi.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mvi.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/mxf.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mxf.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/mxfdec.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mxfdec.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/mxfenc.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/mxfenc.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/nsvdec.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/nsvdec.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/nut.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/nut.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/nutdec.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/nutdec.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/nutenc.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/nutenc.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/nuv.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/nuv.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/oggdec.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/oggdec.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/oggenc.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/oggenc.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/oggparseflac.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/oggparseflac.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/oggparseogm.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/oggparseogm.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/oggparsespeex.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/oggparsespeex.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/oggparsetheora.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/oggparsetheora.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/oggparsevorbis.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/oggparsevorbis.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/oma.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/oma.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/os_support.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/os_support.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/psxstr.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/psxstr.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/pva.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/pva.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/raw.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/raw.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/riff.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/riff.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/rl2.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rl2.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/rmdec.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rmdec.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/rmenc.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rmenc.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/rpl.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rpl.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/rtp.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rtp.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/rtp_aac.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rtp_aac.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/rtp_h264.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rtp_h264.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/rtp_mpv.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rtp_mpv.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/rtpdec.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rtpdec.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/rtpenc.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rtpenc.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/rtpenc_h264.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rtpenc_h264.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/rtpproto.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rtpproto.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/rtsp.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/rtsp.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/sdp.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/sdp.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/segafilm.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/segafilm.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/sierravmd.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/sierravmd.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/siff.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/siff.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/smacker.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/smacker.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/sol.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/sol.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/swfdec.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/swfdec.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/swfenc.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/swfenc.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/tcp.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/tcp.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/thp.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/thp.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/tiertexseq.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/tiertexseq.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/tta.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/tta.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/txd.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/txd.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/udp.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/udp.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/utils.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/utils.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/vc1test.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/vc1test.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/vc1testenc.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/vc1testenc.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/voc.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/voc.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/vocdec.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/vocdec.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/vocenc.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/vocenc.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/wav.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/wav.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/wc3movie.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/wc3movie.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/westwood.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/westwood.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/wv.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/wv.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/xa.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/xa.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/libavformat/yuv4mpeg.o: C:/Documents\ and\ Settings/TR-ARG03-NewEmp/My\ Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src/libavformat/yuv4mpeg.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+

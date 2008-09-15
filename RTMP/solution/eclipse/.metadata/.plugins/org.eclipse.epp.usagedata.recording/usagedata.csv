@@ -1,0 +1,13 @@
+what,kind,bundleId,bundleVersion,description,time
+activated,workbench,org.eclipse.ui.workbench,3.4.0.I20080606-1300,,1221071309891
+deactivated,workbench,org.eclipse.ui.workbench,3.4.0.I20080606-1300,,1221071311438
+activated,workbench,org.eclipse.ui.workbench,3.4.0.I20080606-1300,,1221071312281
+closed,workbench,org.eclipse.ui.workbench,3.4.0.I20080606-1300,,1221071312687
+stopped,bundle,org.eclipse.cdt.debug.mi.ui,5.0.0.200806171202,org.eclipse.cdt.debug.mi.ui,1221071314265
+stopped,bundle,org.eclipse.cdt.launch,5.0.0.200806171202,org.eclipse.cdt.launch,1221071314265
+stopped,bundle,org.eclipse.cdt.debug.ui,5.0.0.200806171202,org.eclipse.cdt.debug.ui,1221071314265
+stopped,bundle,org.eclipse.cdt.managedbuilder.ui,5.0.0.200806171202,org.eclipse.cdt.managedbuilder.ui,1221071314468
+stopped,bundle,org.eclipse.cdt.make.ui,5.0.0.200806171202,org.eclipse.cdt.make.ui,1221071314468
+stopped,bundle,org.eclipse.cdt.mylyn.ui,1.0.0.200806171202,org.eclipse.cdt.mylyn.ui,1221071314468
+stopped,bundle,org.eclipse.cdt.ui,5.0.0.200806171202,org.eclipse.cdt.ui,1221071314468
+stopped,bundle,org.eclipse.mylyn.bugzilla.ui,3.0.0.v20080619-1900,org.eclipse.mylyn.bugzilla.ui,1221071314468
