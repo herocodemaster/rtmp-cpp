@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlib", "zlib\zlib.vcproj", "{627F9E8A-18A9-4D7C-B6E4-7404120D9341}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zip_stream_test", "zip_stream_test\zip_stream_test.vcproj", "{FF75D500-7CFF-479F-B47F-50A5129D8B70}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libbz2", "bzip2\libbz2.vcproj", "{8168ABD5-B080-49CC-B14C-C936D66B71B8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{627F9E8A-18A9-4D7C-B6E4-7404120D9341}.Debug|Win32.ActiveCfg = Debug|Win32
+		{627F9E8A-18A9-4D7C-B6E4-7404120D9341}.Debug|Win32.Build.0 = Debug|Win32
+		{627F9E8A-18A9-4D7C-B6E4-7404120D9341}.Release|Win32.ActiveCfg = Release|Win32
+		{627F9E8A-18A9-4D7C-B6E4-7404120D9341}.Release|Win32.Build.0 = Release|Win32
+		{FF75D500-7CFF-479F-B47F-50A5129D8B70}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FF75D500-7CFF-479F-B47F-50A5129D8B70}.Debug|Win32.Build.0 = Debug|Win32
+		{FF75D500-7CFF-479F-B47F-50A5129D8B70}.Release|Win32.ActiveCfg = Release|Win32
+		{FF75D500-7CFF-479F-B47F-50A5129D8B70}.Release|Win32.Build.0 = Release|Win32
+		{8168ABD5-B080-49CC-B14C-C936D66B71B8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8168ABD5-B080-49CC-B14C-C936D66B71B8}.Release|Win32.ActiveCfg = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

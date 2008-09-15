@@ -1,0 +1,17 @@
+libflv version 0.1. 
+
+In order to use libflv you need zlib header-files and .so files installed. 
+Compile:
+	cd src/
+	make 
+Install:
+	set LIBDIR and INCLUDEDIR as you like
+	make install (as root)
+
+In order to use the library #include <libflv.h> and link your program with -lflv.
+
+
+For examples and documentation visit: http://klaus.geekserver.net/libflv/
+If you find bugs or have sugestions please mail to: klaus{At}rechert.de.
+
+26.7.2004
