@@ -1,11 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RTMP", "RTMP\RTMP.vcproj", "{2498D680-DA9D-44F1-B988-206E2B72AA4D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RTMP", "..\..\projects\RTMP\projects\vs2008\RTMP.vcproj", "{2498D680-DA9D-44F1-B988-206E2B72AA4D}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HTTP_Server", "HTTP_Server\HTTP_Server.vcproj", "{6CC36E75-B515-4D58-90CA-BE44868F44FF}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HTTP_Server", "..\..\projects\HTTP_Server\projects\vs2008\HTTP_Server.vcproj", "{6CC36E75-B515-4D58-90CA-BE44868F44FF}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HttpPseudoStreaming", "HttpPseudoStreaming\HttpPseudoStreaming.vcproj", "{9B35BE34-6656-4430-A95B-611D94B6DA21}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HttpPseudoStreaming", "..\..\projects\HttpPseudoStreaming\projects\vs2008\HttpPseudoStreaming.vcproj", "{9B35BE34-6656-4430-A95B-611D94B6DA21}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "flv", "..\..\projects\flv\projects\vs2008\flv.vcproj", "{6D8578CC-4972-4B4B-A7B6-CB92771FA2EB}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlib", "..\..\projects\zlib\projects\vs2008\zlib.vcproj", "{627F9E8A-18A9-4D7C-B6E4-7404120D9341}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "images", "..\..\projects\images\projects\vs2008\images.vcproj", "{E066C797-EE94-417A-8628-D3E6C0EB7742}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
@@ -29,6 +35,18 @@ Global
 		{9B35BE34-6656-4430-A95B-611D94B6DA21}.Debug|Win32.Build.0 = Debug|Win32
 		{9B35BE34-6656-4430-A95B-611D94B6DA21}.Release|Win32.ActiveCfg = Release|Win32
 		{9B35BE34-6656-4430-A95B-611D94B6DA21}.Release|Win32.Build.0 = Release|Win32
+		{6D8578CC-4972-4B4B-A7B6-CB92771FA2EB}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6D8578CC-4972-4B4B-A7B6-CB92771FA2EB}.Debug|Win32.Build.0 = Debug|Win32
+		{6D8578CC-4972-4B4B-A7B6-CB92771FA2EB}.Release|Win32.ActiveCfg = Release|Win32
+		{6D8578CC-4972-4B4B-A7B6-CB92771FA2EB}.Release|Win32.Build.0 = Release|Win32
+		{627F9E8A-18A9-4D7C-B6E4-7404120D9341}.Debug|Win32.ActiveCfg = Debug|Win32
+		{627F9E8A-18A9-4D7C-B6E4-7404120D9341}.Debug|Win32.Build.0 = Debug|Win32
+		{627F9E8A-18A9-4D7C-B6E4-7404120D9341}.Release|Win32.ActiveCfg = Release|Win32
+		{627F9E8A-18A9-4D7C-B6E4-7404120D9341}.Release|Win32.Build.0 = Release|Win32
+		{E066C797-EE94-417A-8628-D3E6C0EB7742}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E066C797-EE94-417A-8628-D3E6C0EB7742}.Debug|Win32.Build.0 = Debug|Win32
+		{E066C797-EE94-417A-8628-D3E6C0EB7742}.Release|Win32.ActiveCfg = Release|Win32
+		{E066C797-EE94-417A-8628-D3E6C0EB7742}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
