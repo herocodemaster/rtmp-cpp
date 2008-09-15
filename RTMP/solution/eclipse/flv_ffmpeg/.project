@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>ffmpeg</name>
+	<name>flv_ffmpeg</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -10,10 +10,6 @@
 			<triggers>clean,full,incremental,</triggers>
 			<arguments>
 				<dictionary>
-					<key>?children?</key>
-					<value>?name?=outputEntries\|?children?=?name?=entry\\\\\\\\\\\\\\\|\\\\\\\|?name?=entry\\\\\\\\\\\\\\\|\\\\\\\|\||</value>
-				</dictionary>
-				<dictionary>
 					<key>?name?</key>
 					<value></value>
 				</dictionary>
@@ -22,24 +18,16 @@
 					<value>true</value>
 				</dictionary>
 				<dictionary>
-					<key>org.eclipse.cdt.make.core.autoBuildTarget</key>
-					<value>all</value>
-				</dictionary>
-				<dictionary>
 					<key>org.eclipse.cdt.make.core.buildArguments</key>
-					<value>--directory=&quot;${workspace_loc:/ffmpeg/src}&quot;</value>
+					<value></value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.buildCommand</key>
-					<value>mingw32-make.exe</value>
+					<value>make</value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.buildLocation</key>
-					<value>${workspace_loc:/ffmpeg/bin}</value>
-				</dictionary>
-				<dictionary>
-					<key>org.eclipse.cdt.make.core.cleanBuildTarget</key>
-					<value>clean</value>
+					<value>${workspace_loc:/flv_ffmpeg/Debug}</value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.contents</key>
@@ -58,16 +46,12 @@
 					<value>true</value>
 				</dictionary>
 				<dictionary>
-					<key>org.eclipse.cdt.make.core.fullBuildTarget</key>
-					<value>all</value>
-				</dictionary>
-				<dictionary>
 					<key>org.eclipse.cdt.make.core.stopOnError</key>
 					<value>true</value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.useDefaultBuildCmd</key>
-					<value>false</value>
+					<value>true</value>
 				</dictionary>
 			</arguments>
 		</buildCommand>
@@ -78,21 +62,21 @@
 		</buildCommand>
 	</buildSpec>
 	<natures>
-		<nature>org.eclipse.cdt.core.cnature</nature>
-		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 		<nature>org.eclipse.cdt.core.ccnature</nature>
+		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
+		<nature>org.eclipse.cdt.core.cnature</nature>
 	</natures>
 	<linkedResources>
 		<link>
-			<name>bin</name>
+			<name>include</name>
 			<type>2</type>
-			<location>F:/Development/CPP/RTMP/projects/ffmpeg/bin</location>
+			<location>F:/Development/CPP/RTMP/projects/flv_ffmpeg/include</location>
 		</link>
 		<link>
 			<name>src</name>
 			<type>2</type>
-			<location>F:/Development/CPP/RTMP/projects/ffmpeg/src</location>
+			<location>F:/Development/CPP/RTMP/projects/flv_ffmpeg/src</location>
 		</link>
 	</linkedResources>
 </projectDescription>
