@@ -31,6 +31,8 @@
 
 //#include <stdint.h>
 #include <vector>
+#include <iostream>
+#include <fstream>
 
 
 
@@ -159,11 +161,12 @@ FLVStream *newFLVStream(unsigned char version, unsigned char flags) {
 	return flv;
 }
 
-/*
+
 int FLVStream_write(FLVStream *flv, const char *name) 
 {
+	/*
 	int fd;
-
+	
 	fd = open(name, O_WRONLY | O_CREAT | O_TRUNC); //, S_IRWXU
 	
 	if(fd < 0) 
@@ -173,8 +176,21 @@ int FLVStream_write(FLVStream *flv, const char *name)
 	}
 
 	return (int)write(fd, flv->data, flv->pos);
+	*/
+
+	std::ofstream file (name, std::ios::out | std::ios::binary); //std::ios::app | 
+
+	if (file.is_open()) 
+	{ 
+		file.write((char*)flv->data, flv->pos);
+	}
+
+	file.close();
+	return 0;
+
+
 }
-*/
+
 
 
 inline unsigned char getChar(FLVStream *flv) {

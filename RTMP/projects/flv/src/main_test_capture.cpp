@@ -6,6 +6,9 @@
 #include <fcntl.h>
 #include <libflv.hpp>
 
+#include <iostream>
+
+
 static int is_recording;
 //static GdkWindow *window;
 //static GdkPixbuf *pixbuf;
@@ -145,9 +148,28 @@ static GdkNativeWindow select_window(GdkScreen *screen)
 //}
 
 
+void generateBytes(unsigned char* data, unsigned char chr)
+{
+	for (int j=0; j<240; ++j)
+	{
+		for (int i=0; i<960; i=i+3)
+		{
+			data[(961*j)+i] = chr; //0x99;
+			data[(961*j)+i+1] = chr; //0x99;
+			data[(961*j)+i+2] = chr; //0x99;
+
+			if (i>=957)
+			{
+				i = i;
+			}
+		}
+		data[(961*(j+1))-1] = 0x00;
+	}
+
+}
 
 
-int capture() 
+int capture(unsigned char chr) 
 {
 	//gint x,y;
 	//GdkRectangle rect, screen_rect;
@@ -162,14 +184,14 @@ int capture()
 	rowstride =  1; //gdk_pixbuf_get_rowstride(pixbuf); //Queries the rowstride of a pixbuf, which is the number of bytes between the start of a row and the start of the next row.
 
 
-	//unsigned char *data;// = {'FF', 'FF'};
-	//unsigned char data[24] = { 0xFF, 0xFF};
 
+	unsigned char data[230640];// = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00};
+	generateBytes(data, chr);
 
 	/* preparing pixeldata */
-	pixelData.width = 2; //gdk_pixbuf_get_width (pixbuf);
-	pixelData.height = 2; //gdk_pixbuf_get_height (pixbuf);
-	//pixelData.data = data; //gdk_pixbuf_get_pixels (pixbuf);
+	pixelData.width = 320; //gdk_pixbuf_get_width (pixbuf);
+	pixelData.height = 240; //gdk_pixbuf_get_height (pixbuf);
+	pixelData.data = data; //gdk_pixbuf_get_pixels (pixbuf);
 	pixelData.rowOrder = TOPDOWN;
 	pixelData.n_channels = n_channels;
 	pixelData.rowPadding = rowstride - pixelData.width * n_channels;
@@ -201,6 +223,13 @@ int capture()
 //	is_recording = 0;
 //	FLVStream_write(flv, "/tmp/test.flv");
 //}
+
+void stop_recording() 
+{
+	is_recording = 0;
+	FLVStream_write(flv, "test.flv");
+}
+
 
 //void start_recording(GtkWidget *widget, gpointer data) 
 //{
@@ -290,13 +319,16 @@ int main( int   argc, char *argv[] )
 	//----------------------------------------------------------------------------------------------------------------
 	start_recording();
     
-	for (int i=0; i<10; ++i)
+	for (int i=0; i<254; ++i)
 	{
-		capture();
+		capture(255);
+		capture(150);
+		capture(50);
 	}
 
-	//stop_recording();
+	stop_recording();
 	//----------------------------------------------------------------------------------------------------------------
 
+	std::cin.get();
     return 0;
 }

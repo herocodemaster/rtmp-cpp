@@ -23,7 +23,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-//#include <zlib.h>
+#include <zlib.h>
 #include <flv.hpp>
 #include <assert.h>
 #include <screen.hpp>
@@ -309,37 +309,48 @@ int ScreenVideo_addFrame(ScreenVideo *video, FLVStream *flv, struct PixelData *p
 	int rowstride;
 	
 	if(!pixelData || !video || !flv)
+	{
 		return -1;
+	}
 
-	if(video->frame == 0) {
+	if(video->frame == 0) 
+	{
 		video->timeOffset = timeStamp;
 		_timeStamp = 0;
 		markAllBlocks(video);
 	}
-	else {
+	else 
+	{
 		_timeStamp = timeStamp - video->timeOffset;
 	}
 	
-	if(video->imageWidth != pixelData->width ||
-			video->imageHeight != pixelData->height) {
+	if(video->imageWidth != pixelData->width || video->imageHeight != pixelData->height) 
+	{
 		printf("resize not supported\n");
 		return -1;
 	}	
 
 	
 	rowstride = pixelData->width * pixelData->n_channels + pixelData->rowPadding;
-	for( y = 0; y < pixelData->height; y++) {
+	
+	for( y = 0; y < pixelData->height; y++) 
+	{
 		if(pixelData->rowOrder == TOPDOWN)
+		{
 			row = (pixelData->height - y - 1) * rowstride;
+		}
 		else if (pixelData->rowOrder == BOTTOMUP) 
+		{
 			row = y * rowstride;
+		}
 		
 		for( x = 0; x < pixelData->width; x++) 
 		{	
 			rgb = (struct RGB*)(pixelData->data + row + x * pixelData->n_channels);
 			bgr = video->image + size++;
 			
-			if(compareRGB_BGR(rgb, bgr)) {
+			if(compareRGB_BGR(rgb, bgr)) 
+			{
 				RGB2GBR(rgb, bgr);
 				markBlock(video, x, y);
 			}
