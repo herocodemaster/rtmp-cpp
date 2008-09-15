@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "io_old", "io_old", "{0CA7BCAF-4C86-48CF-81DF-9E25F5DB91F6}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\..\boost\boost\gil\extension\io\dynamic_io.hpp = ..\..\..\..\..\boost\boost\gil\extension\io\dynamic_io.hpp
+		..\..\..\..\..\boost\boost\gil\extension\io\io_error.hpp = ..\..\..\..\..\boost\boost\gil\extension\io\io_error.hpp
+		..\..\..\..\..\boost\boost\gil\extension\io\jpeg_dynamic_io.hpp = ..\..\..\..\..\boost\boost\gil\extension\io\jpeg_dynamic_io.hpp
+		..\..\..\..\..\boost\boost\gil\extension\io\jpeg_io.hpp = ..\..\..\..\..\boost\boost\gil\extension\io\jpeg_io.hpp
+		..\..\..\..\..\boost\boost\gil\extension\io\jpeg_io_private.hpp = ..\..\..\..\..\boost\boost\gil\extension\io\jpeg_io_private.hpp
+		..\..\..\..\..\boost\boost\gil\extension\io\png_dynamic_io.hpp = ..\..\..\..\..\boost\boost\gil\extension\io\png_dynamic_io.hpp
+		..\..\..\..\..\boost\boost\gil\extension\io\png_io.hpp = ..\..\..\..\..\boost\boost\gil\extension\io\png_io.hpp
+		..\..\..\..\..\boost\boost\gil\extension\io\png_io_private.hpp = ..\..\..\..\..\boost\boost\gil\extension\io\png_io_private.hpp
+		..\..\..\..\..\boost\boost\gil\extension\io\tiff_dynamic_io.hpp = ..\..\..\..\..\boost\boost\gil\extension\io\tiff_dynamic_io.hpp
+		..\..\..\..\..\boost\boost\gil\extension\io\tiff_io.hpp = ..\..\..\..\..\boost\boost\gil\extension\io\tiff_io.hpp
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "io_new_vc8", "io_new_vc8.vcproj", "{23F24AE1-C7C6-454E-8B23-593BB0ACA3E2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "unit_test", "unit_test\unit_test.vcproj", "{A5C510F6-DAA5-4830-B339-03D02E4845A7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{23F24AE1-C7C6-454E-8B23-593BB0ACA3E2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{23F24AE1-C7C6-454E-8B23-593BB0ACA3E2}.Debug|Win32.Build.0 = Debug|Win32
+		{23F24AE1-C7C6-454E-8B23-593BB0ACA3E2}.Release|Win32.ActiveCfg = Release|Win32
+		{23F24AE1-C7C6-454E-8B23-593BB0ACA3E2}.Release|Win32.Build.0 = Release|Win32
+		{A5C510F6-DAA5-4830-B339-03D02E4845A7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A5C510F6-DAA5-4830-B339-03D02E4845A7}.Debug|Win32.Build.0 = Debug|Win32
+		{A5C510F6-DAA5-4830-B339-03D02E4845A7}.Release|Win32.ActiveCfg = Release|Win32
+		{A5C510F6-DAA5-4830-B339-03D02E4845A7}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

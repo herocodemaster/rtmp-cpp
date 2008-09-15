@@ -1,0 +1,161 @@
+Hi there, over the past few months I have been working on a new version of gil's io extension. In this release I've added support for:
+
+* more image formats, most importantly bit_aligned images ( like 1bit images ),
+* reading of subimages like one row at a time for huge images,
+* reading image information, only.
+* having a unified interface for all sorts of devices, subimages, and converter objects.
+ 
+So far, png, jpeg, and tiff images are supported. In the not so distant future there will be bmp and pnm images added.
+
+You can grab the current version via subversion from:
+
+https://gil-contributions.googlecode.com/svn/trunk/gil_2/boost/gil/extension/io_new
+
+If desired I can supply a zip file to the vault.
+
+The images libraries can be grabbed from:
+
+ftp://ftp.uu.net/graphics/jpeg/jpegsrc.v6b.tar.gz ( www.ijg.org isn't responding )
+http://www.libpng.org/pub/png/libpng.html
+http://www.libtiff.org/
+
+It's highly advised to built your own version of the image lib you need. I installed the GNU's binaries for Windows, but unfortunately, I only had problems with them.
+
+The library is still header-only. When using boost::filesystem's paths, of course, you add a dependency to the filesystem lib.
+
+
+The Read Interface
+------------------------
+
+Reading an image can be done in multiple ways depending on what your need is. Like the old io lib there are 4 different ways of reading images. As there are:
+
+* read_image: Read image, the right amount of memory will be allocated beforehand. The supplied image type needs to be compatible with actual image file.
+
+* read_view: Read image, the image's memory must be already allocated.  The supplied image type needs to be compatible with actual image file.
+
+* read_and_convert_image: Same as read_image, but the user can specify an color converter.
+
+* read_and_convert_view: Same as read_view, but the user can specify an color converter.
+
+There is a new function for reading image information. Since every image format has it's own set of tags, the library defines seperate image_read_info<format_tag> structures. Please see, for instance, the jpeg_tags.hpp header.
+
+As for the function parameters the following sections in the same order.
+
+1. String for file name ( std::string, std::wstring, char*, boost::filesystem::path ) OR devices ( FILE*, TIFF*, std::ifstream )
+
+2. Image or view type
+
+3. Optional: Subimage definition ( top_left corner + dimensions )
+
+4. Optional: Color converter. This parameter is only valid for converting functions. The default parameter is gil's default_color_converter
+
+5. Format Tag.
+
+Reading the image information only takes parameter 1 and 5.
+
+Here are some examples for reading images:
+
+#include <boost/gil/extension/io_new/jpeg_read.hpp>
+
+// Read image information
+std::string filename( "..\\test_images\\jpg\\found online\\test.jpg" );
+image_read_info< jpeg_tag > info = read_image_info( filename, tag_t() );
+
+// Read image
+FILE* file = fopen( filename.c_str(), "rb" );
+rgb8_image_t img;
+read_image( file, img, tag_t() );
+
+// Read image
+ifstream in( filename.c_str(), ios::in | ios::binary );
+rgb8_image_t img( 136, 98 );
+read_view( in, view( img ), tag_t() );
+
+// Read and convert image, use gil's default converter.
+rgb8_image_t img;
+read_and_convert_image( filename, img, tag_t() );
+
+// Read a 10x10 subimage, starting from the top_left corner.
+rgb8_image_t img;
+read_image( filename, img, point_t( 0,0 ), point_t( 10, 10 ), tag_t() );
+
+
+I have created some header files to support the old read interface. For example:
+
+#include <boost/gil/extension/io_new/jpeg_io_old.hpp>
+
+std::string filename( "..\\test_images\\jpg\\found online\\test.jpg" );
+rgb8_image_t img( 136, 98 );
+jpeg_read_view( filename, view( img ) );
+
+
+
+The Write Interface
+---------------------------
+The write interface is a much simpler than the read interface. Here, we only have write_view as the entry point. As for parameters the following sections are supported:
+
+1. String for file name ( std::string, std::wstring, char*, boost::filesystem::path ) or devices ( FILE*, TIFF*, std::ofstream )
+
+2. View type
+
+3. Optional: image_write_info< FormatTag >
+
+4. Format type
+
+The image_write_info<...> structure defines a format specific properties which can be used when writing an image. A good example is jpeg's image quality value.
+
+Examples:
+
+#include <boost/gil/extension/io_new/tiff_write.hpp>
+
+// Write image
+string filename( "..\\test\\tiff\\test1.tif" );
+gray8_image_t img( 320, 240 );
+write_view( filename, view( img ), tiff_tag() );
+
+// Write image
+string filename( "..\\test\\tiff\\test2.tif" );
+TIFF* file = TIFFOpen( filename.c_str(), "w" );
+rgb8_image_t img( 320, 240 );
+write_view( file, view( img ), tag_t() );
+
+
+I have created some header files to support the old write interface. For example:
+
+#include <boost/gil/extension/io_new/tiff_io_old.hpp>
+
+string filename( "..\\test\\tiff\\test3.tif" );
+gray8_image_t img( 320, 240 );
+tiff_write_view( filename, view( img ) );
+
+
+
+Supported image formats
+-------------------------------------
+
+In the process of developing the new version I tried to include as many formats as possible. One consequence is a much higher compilation time. Hopefully, a design review by the community can hint me better ways to reduce it. Also, there are still holes in the support. Most noteably is TIFF, since it can support almost everything. This makes it very hard not to have code explosion during compilation. Here is a list of list of supported formats:
+
+TIFF:
+* Number of samples: 1, 3, 4 ( eg. RGB would be 3 )
+* Bits per sample: 1, 2, 4, 8, 16, 32, 64
+* planar and interleaved images
+* indexed images. Indices can be of 1, 2, 4, 8, or 16 bit depth, whereas the palette must a rgb16_image_t.
+
+PNG:
+* gray, gray_alpha, rgb, rgba
+* bit_depth can be 1, 2, 4, 8, 16
+
+JPEG:
+* gray, rgb, cmyk, ycck ( will be read as cymk )
+
+Please note, that I'm still in process of testing all these different formats.
+
+
+The primary goal of this new version is to eventually replace the old io library which is part of boost's distribution. Do I need to apply for a review? I'm not sure how to go from here.
+
+I know there is still some work to do before a possible review. Documentation is lacking and support for dynamic image needs to be added. But what I want for now is to get some feedback on design and implementation.
+
+I would like to thank Lubomir Bourdev and Andreas Pokorny for their most valueable input.
+
+Thanks,
+Christian

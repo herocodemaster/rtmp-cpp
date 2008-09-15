@@ -1,0 +1,15 @@
+todo list
+
+* move all potential core gil stuff into a single header
+* add doxygen comments to library interface
+
+* ask people to compile on linux
+
+* add bmp support
+* add dynamic io
+* consider run-time dispatching for minimizing code bloat 
+* fix read_and_convert_view( ... ) compilation issue
+* add planar bit_aligned image support - not so easy
+* when reading an indexed tiff image, it's better to use a virtual view.
+* incorporate Phil Endecott suggestions ( email 04/27/2008 )
+* also add John Femiani suggestions ( same time )
