@@ -1387,15 +1387,13 @@ int ff_mjpeg_decode_frame( AVCodecContext *avctx, void *data, int *data_size, co
             }
             else
             {
-                av_log(avctx, AV_LOG_DEBUG, "marker=%x avail_size_in_buf=%td\n", start_code, buf_end
-                        - buf_ptr);
+                av_log(avctx, AV_LOG_DEBUG, "marker=%x avail_size_in_buf=%td\n", start_code, buf_end - buf_ptr);
 
                 if ((buf_end - buf_ptr) > s->buffer_size)
                 {
                     av_free(s->buffer);
                     s->buffer_size = buf_end - buf_ptr;
-                    s->buffer = av_malloc(s->buffer_size
-                            + FF_INPUT_BUFFER_PADDING_SIZE);
+                    s->buffer = av_malloc(s->buffer_size + FF_INPUT_BUFFER_PADDING_SIZE);
                     av_log(avctx, AV_LOG_DEBUG, "buffer too small, expanding to %d bytes\n", s->buffer_size);
                 }
 
@@ -1415,19 +1413,24 @@ int ff_mjpeg_decode_frame( AVCodecContext *avctx, void *data, int *data_size, co
                             if (x == 0xff)
                             {
                                 while (src < buf_end && x == 0xff)
+                                {
                                     x = *(src++);
+                                }
 
                                 if (x >= 0xd0 && x <= 0xd7)
+                                {
                                     *(dst++) = x;
+                                }
                                 else if (x)
+                                {
                                     break;
+                                }
                             }
                         }
                     }
                     init_get_bits(&s->gb, s->buffer, (dst - s->buffer) * 8);
 
-                    av_log(avctx, AV_LOG_DEBUG, "escaping removed %td bytes\n", (buf_end
-                            - buf_ptr) - (dst - s->buffer));
+                    av_log(avctx, AV_LOG_DEBUG, "escaping removed %td bytes\n", (buf_end - buf_ptr) - (dst - s->buffer));
                 }
                 else if (start_code == SOS && s->ls)
                 {
@@ -1446,7 +1449,10 @@ int ff_mjpeg_decode_frame( AVCodecContext *avctx, void *data, int *data_size, co
                         if (x == 0xff)
                         {
                             while ((src + t < buf_end) && x == 0xff)
+                            {
                                 x = src[t++];
+                            }
+
                             if (x & 0x80)
                             {
                                 t -= 2;
@@ -1475,7 +1481,9 @@ int ff_mjpeg_decode_frame( AVCodecContext *avctx, void *data, int *data_size, co
                     init_get_bits(&s->gb, dst, bit_count);
                 }
                 else
+                {
                     init_get_bits(&s->gb, buf_ptr, (buf_end - buf_ptr) * 8);
+                }
 
                 s->start_code = start_code;
                 if (s->avctx->debug & FF_DEBUG_STARTCODE)
@@ -1486,8 +1494,7 @@ int ff_mjpeg_decode_frame( AVCodecContext *avctx, void *data, int *data_size, co
                 /* process markers */
                 if (start_code >= 0xd0 && start_code <= 0xd7)
                 {
-                    av_log(avctx, AV_LOG_DEBUG, "restart marker: %d\n", start_code
-                            & 0x0f);
+                    av_log(avctx, AV_LOG_DEBUG, "restart marker: %d\n", start_code & 0x0f);
                     /* APP fields */
                 }
                 else if (start_code >= APP0 && start_code <= APP15)
@@ -1580,21 +1587,23 @@ int ff_mjpeg_decode_frame( AVCodecContext *avctx, void *data, int *data_size, co
                                 s->bottom_field ^= 1;
                                 /* if not bottom field, do not output image yet */
                                 if (s->bottom_field == !s->interlace_polarity)
+                                {
                                     goto not_the_end;
+                                }
                             }
                             *picture = s->picture;
                             *data_size = sizeof(AVFrame);
 
                             if (!s->lossless)
                             {
-                                picture->quality
-                                        = FFMAX3(s->qscale[0], s->qscale[1], s->qscale[2]);
+                                picture->quality = FFMAX3(s->qscale[0], s->qscale[1], s->qscale[2]);
                                 picture->qstride = 0;
                                 picture->qscale_table = s->qscale_table;
-                                memset(picture->qscale_table, picture->quality, (s->width
-                                        + 15) / 16);
+                                memset(picture->qscale_table, picture->quality, (s->width + 15) / 16);
                                 if (avctx->debug & FF_DEBUG_QP)
+                                {
                                     av_log(avctx, AV_LOG_DEBUG, "QP: %d\n", picture->quality);
+                                }
                                 picture->quality *= FF_QP2LAMBDA;
                             }
 
@@ -1605,9 +1614,10 @@ int ff_mjpeg_decode_frame( AVCodecContext *avctx, void *data, int *data_size, co
                         ff_mjpeg_decode_sos(s);
                         /* buggy avid puts EOI every 10-20th frame */
                         /* if restart period is over process EOI */
-                        if ((s->buggy_avid && !s->interlaced)
-                                || s->restart_interval)
+                        if ((s->buggy_avid && !s->interlaced) || s->restart_interval)
+                        {
                             goto eoi_parser;
+                        }
                         break;
                     case DRI:
                         mjpeg_decode_dri(s);
@@ -1633,13 +1643,11 @@ int ff_mjpeg_decode_frame( AVCodecContext *avctx, void *data, int *data_size, co
                 not_the_end:
                 /* eof process start code */
                 buf_ptr += (get_bits_count(&s->gb) + 7) / 8;
-                av_log(avctx, AV_LOG_DEBUG, "marker parser used %d bytes (%d bits)\n", (get_bits_count(&s->gb)
-                        + 7) / 8, get_bits_count(&s->gb));
+                av_log(avctx, AV_LOG_DEBUG, "marker parser used %d bytes (%d bits)\n", (get_bits_count(&s->gb) + 7) / 8, get_bits_count(&s->gb));
             }
         }
     }
-    the_end: av_log(avctx, AV_LOG_DEBUG, "mjpeg decode frame unused %td bytes\n", buf_end
-            - buf_ptr);
+    the_end: av_log(avctx, AV_LOG_DEBUG, "mjpeg decode frame unused %td bytes\n", buf_end - buf_ptr);
     //    return buf_end - buf_ptr;
 
     LogStr("Exit");
