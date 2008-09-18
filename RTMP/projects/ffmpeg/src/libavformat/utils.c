@@ -880,9 +880,15 @@ static AVPacket *add_to_pktbuf( AVPacketList **packet_buffer, AVPacket *pkt, AVP
     }
 
     if (*packet_buffer)
+    {
+        LogStr ("if (*packet_buffer)");
         (*plast_pktl)->next = pktl;
+    }
     else
+    {
+        LogStr ("else");
         *packet_buffer = pktl;
+    }
 
     /* add the packet in the buffered packet list */
     *plast_pktl = pktl;
@@ -925,23 +931,31 @@ int av_read_packet( AVFormatContext *s, AVPacket *pkt )
 
         st = s->streams[pkt->stream_index];
 
+        LogStr ("switch (st->codec->codec_type)");
+
         switch (st->codec->codec_type)
         {
             case CODEC_TYPE_VIDEO:
+                LogStr ("case CODEC_TYPE_VIDEO:");
                 if (s->video_codec_id)
                 {
+                    LogStr ("if (s->video_codec_id)");
                     st->codec->codec_id = s->video_codec_id;
                 }
                 break;
             case CODEC_TYPE_AUDIO:
+                LogStr ("case CODEC_TYPE_AUDIO:");
                 if (s->audio_codec_id)
                 {
+                    LogStr ("if (s->audio_codec_id)");
                     st->codec->codec_id = s->audio_codec_id;
                 }
                 break;
             case CODEC_TYPE_SUBTITLE:
+                LogStr ("case CODEC_TYPE_SUBTITLE:");
                 if (s->subtitle_codec_id)
                 {
+                    LogStr ("if (s->subtitle_codec_id)");
                     st->codec->codec_id = s->subtitle_codec_id;
                 }
                 break;
@@ -1339,14 +1353,21 @@ static int av_read_frame_internal( AVFormatContext *s, AVPacket *pkt )
 
     av_init_packet(pkt);
 
+    LogStr("_____________________ 1");
     for (;;)
     {
+        LogStr("_____________________ 2");
+
         /* select current input stream component */
         st = s->cur_st;
         if (st)
         {
+            LogStr("_____________________ 3");
+
             if (!st->need_parsing || !st->parser)
             {
+                LogStr("_____________________ 4");
+
                 /* no parsing needed: we just output the packet as is raw data support */
                 *pkt = s->cur_pkt;
                 compute_pkt_fields(s, st, NULL, pkt);
@@ -1355,6 +1376,8 @@ static int av_read_frame_internal( AVFormatContext *s, AVPacket *pkt )
             }
             else if (s->cur_len > 0 && st->discard < AVDISCARD_ALL)
             {
+                LogStr("_____________________ 5");
+
                 len = av_parser_parse(st->parser, st->codec, &pkt->data, &pkt->size, s->cur_ptr, s->cur_len, s->cur_pkt.pts, s->cur_pkt.dts);
                 s->cur_pkt.pts = AV_NOPTS_VALUE;
                 s->cur_pkt.dts = AV_NOPTS_VALUE;
@@ -1365,6 +1388,8 @@ static int av_read_frame_internal( AVFormatContext *s, AVPacket *pkt )
                 /* return packet if any */
                 if (pkt->size)
                 {
+                    LogStr("_____________________ 6");
+
                     got_packet: pkt->pos = s->cur_pkt.pos; // Isn't quite accurate but close.
                     pkt->duration = 0;
                     pkt->stream_index = st->index;
@@ -1375,6 +1400,8 @@ static int av_read_frame_internal( AVFormatContext *s, AVPacket *pkt )
 
                     if ((s->iformat->flags & AVFMT_GENERIC_INDEX) && pkt->flags & PKT_FLAG_KEY)
                     {
+                        LogStr("_____________________ 7");
+
                         ff_reduce_index(s, st->index);
                         av_add_index_entry(st, st->parser->frame_offset, pkt->dts, 0, 0, AVINDEX_KEYFRAME);
                     }
@@ -1384,6 +1411,8 @@ static int av_read_frame_internal( AVFormatContext *s, AVPacket *pkt )
             }
             else
             {
+                LogStr("_____________________ 8");
+
                 /* free packet */
                 av_free_packet(&s->cur_pkt);
                 s->cur_st = NULL;
@@ -1391,12 +1420,18 @@ static int av_read_frame_internal( AVFormatContext *s, AVPacket *pkt )
         }
         else
         {
+            LogStr("_____________________ 9");
+
             /* read next packet */
             ret = av_read_packet(s, &s->cur_pkt);
             if (ret < 0)
             {
+                LogStr("_____________________ 10");
+
                 if (ret == AVERROR(EAGAIN))
                 {
+                    LogStr("_____________________ 11");
+
                     LogStr ("Exit");
                     return ret;
                 }
@@ -1404,12 +1439,18 @@ static int av_read_frame_internal( AVFormatContext *s, AVPacket *pkt )
                 /* return the last frames, if any */
                 for (i = 0; i < s->nb_streams; i++)
                 {
+                    LogStr("_____________________ 12");
+
                     st = s->streams[i];
                     if (st->parser && st->need_parsing)
                     {
+                        LogStr("_____________________ 13");
+
                         av_parser_parse(st->parser, st->codec, &pkt->data, &pkt->size, NULL, 0, AV_NOPTS_VALUE, AV_NOPTS_VALUE);
                         if (pkt->size)
                         {
+                            LogStr("_____________________ 14");
+
                             goto got_packet;
                         }
                     }
@@ -1421,42 +1462,58 @@ static int av_read_frame_internal( AVFormatContext *s, AVPacket *pkt )
 
             if (s->cur_pkt.pts != AV_NOPTS_VALUE && s->cur_pkt.dts != AV_NOPTS_VALUE && s->cur_pkt.pts < s->cur_pkt.dts)
             {
+                LogStr("_____________________ 15");
+
                 av_log(s, AV_LOG_WARNING, "Invalid timestamps stream=%d, pts=%"PRId64", dts=%"PRId64", size=%d\n", s->cur_pkt.stream_index, s->cur_pkt.pts, s->cur_pkt.dts, s->cur_pkt.size);
                 //                av_free_packet(&s->cur_pkt);
                 //                return -1;
             }
 
+            LogStr("_____________________ 16");
+
             st = s->streams[s->cur_pkt.stream_index];
             if (s->debug & FF_FDEBUG_TS)
             {
+                LogStr("_____________________ 17");
+
                 av_log(s , AV_LOG_DEBUG, "av_read_packet stream=%d, pts=%"PRId64", dts=%"PRId64", size=%d,  flags=%d\n", s->cur_pkt.stream_index, s->cur_pkt.pts, s->cur_pkt.dts, s->cur_pkt.size, s->cur_pkt.flags);
             }
+
+            LogStr("_____________________ 18");
 
             s->cur_st = st;
             s->cur_ptr = s->cur_pkt.data;
             s->cur_len = s->cur_pkt.size;
             if (st->need_parsing && !st->parser)
             {
+                LogStr("_____________________ 19");
+
                 st->parser = av_parser_init(st->codec->codec_id);
                 if (!st->parser)
                 {
+                    LogStr("_____________________ 2");
+
                     /* no parser available: just output the raw packets */
                     st->need_parsing = AVSTREAM_PARSE_NONE;
                 }
                 else if (st->need_parsing == AVSTREAM_PARSE_HEADERS)
                 {
+                    LogStr("_____________________ 21");
                     st->parser->flags |= PARSER_FLAG_COMPLETE_FRAMES;
                 }
                 if (st->parser && (s->iformat->flags & AVFMT_GENERIC_INDEX))
                 {
+                    LogStr("_____________________ 22");
                     st->parser->next_frame_offset = st->parser->cur_offset = s->cur_pkt.pos;
                 }
             }
         }
     }
 
+    LogStr("_____________________ 23");
     if (s->debug & FF_FDEBUG_TS)
     {
+        LogStr("_____________________ 24");
         av_log(s, AV_LOG_DEBUG, "av_read_frame_internal stream=%d, pts=%"PRId64", dts=%"PRId64", size=%d, flags=%d\n", pkt->stream_index, pkt->pts, pkt->dts, pkt->size, pkt->flags);
     }
 
@@ -1473,20 +1530,31 @@ int av_read_frame( AVFormatContext *s, AVPacket *pkt )
     int eof = 0;
     const int genpts = s->flags & AVFMT_FLAG_GENPTS;
 
+    LogStr("||||||||||||||||||||||||||||||||||||||||||| 1");
+
     for (;;)
     {
+        LogStr("||||||||||||||||||||||||||||||||||||||||||| 2");
         pktl = s->packet_buffer;
         if (pktl)
         {
+            LogStr("||||||||||||||||||||||||||||||||||||||||||| 3");
+
             AVPacket *next_pkt = &pktl->pkt;
 
             if (genpts && next_pkt->dts != AV_NOPTS_VALUE)
             {
+                LogStr("||||||||||||||||||||||||||||||||||||||||||| 4");
+
                 while (pktl && next_pkt->pts == AV_NOPTS_VALUE)
                 {
+                    LogStr("||||||||||||||||||||||||||||||||||||||||||| 5");
+
                     if (pktl->pkt.stream_index == next_pkt->stream_index && next_pkt->dts < pktl->pkt.dts && pktl->pkt.pts != pktl->pkt.dts //not b frame
                     /*&& pktl->pkt.dts != AV_NOPTS_VALUE*/)
                     {
+                        LogStr("||||||||||||||||||||||||||||||||||||||||||| 6");
+
                         next_pkt->pts = pktl->pkt.dts;
                     }
                     pktl = pktl->next;
@@ -1494,8 +1562,12 @@ int av_read_frame( AVFormatContext *s, AVPacket *pkt )
                 pktl = s->packet_buffer;
             }
 
+            LogStr("||||||||||||||||||||||||||||||||||||||||||| 7");
+
             if (next_pkt->pts != AV_NOPTS_VALUE || next_pkt->dts == AV_NOPTS_VALUE || !genpts || eof)
             {
+                LogStr("||||||||||||||||||||||||||||||||||||||||||| 8");
+
                 /* read packet from packet buffer, if there is data */
                 *pkt = *next_pkt;
                 s->packet_buffer = pktl->next;
@@ -1504,18 +1576,28 @@ int av_read_frame( AVFormatContext *s, AVPacket *pkt )
                 return 0;
             }
         }
+        LogStr("||||||||||||||||||||||||||||||||||||||||||| 9");
+
         if (genpts)
         {
+            LogStr("||||||||||||||||||||||||||||||||||||||||||| 10");
+
             int ret = av_read_frame_internal(s, pkt);
             if (ret < 0)
             {
+                LogStr("||||||||||||||||||||||||||||||||||||||||||| 11");
+
                 if (pktl && ret != AVERROR(EAGAIN))
                 {
+                    LogStr("||||||||||||||||||||||||||||||||||||||||||| 12");
+
                     eof = 1;
                     continue;
                 }
                 else
                 {
+                    LogStr("||||||||||||||||||||||||||||||||||||||||||| 13");
+
                     LogStr ("Exit");
                     return ret;
                 }
@@ -1523,17 +1605,24 @@ int av_read_frame( AVFormatContext *s, AVPacket *pkt )
 
             if (av_dup_packet(add_to_pktbuf(&s->packet_buffer, pkt, &s->packet_buffer_end)) < 0)
             {
+                LogStr("||||||||||||||||||||||||||||||||||||||||||| 14");
+
                 LogStr ("Exit");
                 return AVERROR(ENOMEM);
             }
         }
         else
         {
+            LogStr("||||||||||||||||||||||||||||||||||||||||||| 15");
+
             assert(!s->packet_buffer);
             LogStr ("Exit");
             return av_read_frame_internal(s, pkt);
         }
     }
+
+    LogStr("||||||||||||||||||||||||||||||||||||||||||| 16");
+
 
     LogStr ("Exit");
 }

@@ -509,41 +509,63 @@ static void fill_buffer( ByteIOContext *s )
     if (s->eof_reached)
     {
         LogStr ("Exit");
-
-
         return;
     }
 
     if (s->update_checksum)
     {
+        LogStr ("-*-*-*-*-* 1 -*-*-*-*-*");
         if (s->buf_end > s->checksum_ptr)
         {
+            LogStr ("-*-*-*-*-* 2 -*-*-*-*-*");
             s->checksum = s->update_checksum(s->checksum, s->checksum_ptr, s->buf_end - s->checksum_ptr);
+            LogStr ("-*-*-*-*-* 2 -*-*-*-*-*");
         }
+        LogStr ("-*-*-*-*-* 3 -*-*-*-*-*");
+
         s->checksum_ptr = s->buffer;
     }
 
+    LogStr ("-*-*-*-*-* 4 -*-*-*-*-*");
+
     if (s->read_packet)
     {
+        LogStr ("-*-*-*-*-* 5 -*-*-*-*-*");
+
         len = s->read_packet(s->opaque, s->buffer, s->buffer_size);
     }
 
+    LogStr ("-*-*-*-*-* 6 -*-*-*-*-*");
+
     if (len <= 0)
     {
+        LogStr ("-*-*-*-*-* 7 -*-*-*-*-*");
+
         /* do not modify buffer if EOF reached so that a seek back can
          be done without rereading data */
         s->eof_reached = 1;
         if (len < 0)
         {
+
+            LogStr ("-*-*-*-*-* 8 -*-*-*-*-*");
+
             s->error = len;
         }
+
+        LogStr ("-*-*-*-*-* 9 -*-*-*-*-*");
+
     }
     else
     {
+        LogStr ("-*-*-*-*-* 10 -*-*-*-*-*");
+
         s->pos += len;
         s->buf_ptr = s->buffer;
         s->buf_end = s->buffer + len;
     }
+
+    LogStr ("-*-*-*-*-* 11 -*-*-*-*-*");
+
 
     LogStr ("Exit");
 

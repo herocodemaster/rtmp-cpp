@@ -2278,8 +2278,7 @@ typedef struct AVCodec {
     int (*init)(AVCodecContext *);
     int (*encode)(AVCodecContext *, uint8_t *buf, int buf_size, void *data);
     int (*close)(AVCodecContext *);
-    int (*decode)(AVCodecContext *, void *outdata, int *outdata_size,
-                  const uint8_t *buf, int buf_size);
+    int (*decode)(AVCodecContext *, void *outdata, int *outdata_size, const uint8_t *buf, int buf_size);
     /**
      * Codec capabilities.
      * see CODEC_CAP_*

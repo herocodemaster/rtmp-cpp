@@ -309,8 +309,18 @@ static int img_read_packet( AVFormatContext *s1, AVPacket *pkt )
             return AVERROR(EIO);
         }
 
+
+        //Fernando: 20080909
+        char temp[1024];
+        av_strlcpy(temp, "filename: ", sizeof(temp));
+        av_strlcat(temp, filename, sizeof(temp));
+        LogStr (temp);
+
+
         for (i = 0; i < 3; i++)
         {
+            LogStr("FOR - First line");
+
             if (url_fopen(&f[i], filename, URL_RDONLY) < 0)
             {
                 LogStr("Exit");
@@ -320,10 +330,15 @@ static int img_read_packet( AVFormatContext *s1, AVPacket *pkt )
 
             if (codec->codec_id != CODEC_ID_RAWVIDEO)
             {
+                LogStr("FOR - salio por break");
                 break;
             }
             filename[strlen(filename) - 1] = 'U' + i;
+
+            LogStr("FOR - last line");
         }
+
+        LogStr("FUERA DEL FOR");
 
         if (codec->codec_id == CODEC_ID_RAWVIDEO && !codec->width)
         {
