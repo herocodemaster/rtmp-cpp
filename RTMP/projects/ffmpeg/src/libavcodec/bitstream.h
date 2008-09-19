@@ -54,17 +54,19 @@ extern const uint8_t ff_reverse[256];
 
 #if defined(ARCH_X86)
 // avoid +32 for shift optimization (gcc should do that ...)
-static inline  int32_t NEG_SSR32( int32_t a, int8_t s){
+static inline int32_t NEG_SSR32( int32_t a, int8_t s )
+{
     asm ("sarl %1, %0\n\t"
-         : "+r" (a)
-         : "ic" ((uint8_t)(-s))
+        : "+r" (a)
+        : "ic" ((uint8_t)(-s))
     );
     return a;
 }
-static inline uint32_t NEG_USR32(uint32_t a, int8_t s){
+static inline uint32_t NEG_USR32( uint32_t a, int8_t s )
+{
     asm ("shrl %1, %0\n\t"
-         : "+r" (a)
-         : "ic" ((uint8_t)(-s))
+        : "+r" (a)
+        : "ic" ((uint8_t)(-s))
     );
     return a;
 }
@@ -76,7 +78,8 @@ static inline uint32_t NEG_USR32(uint32_t a, int8_t s){
 /* bit output */
 
 /* buf and buf_end must be present and used by every alternative writer. */
-typedef struct PutBitContext {
+typedef struct PutBitContext
+{
 #ifdef ALT_BITSTREAM_WRITER
     uint8_t *buf, *buf_end;
     int index;
@@ -87,9 +90,12 @@ typedef struct PutBitContext {
 #endif
 } PutBitContext;
 
-static inline void init_put_bits(PutBitContext *s, uint8_t *buffer, int buffer_size)
+static inline void init_put_bits( PutBitContext *s, uint8_t *buffer, int buffer_size )
 {
-    if(buffer_size < 0) {
+    LogStr("Init");
+
+    if (buffer_size < 0)
+    {
         buffer_size = 0;
         buffer = NULL;
     }
@@ -99,17 +105,20 @@ static inline void init_put_bits(PutBitContext *s, uint8_t *buffer, int buffer_s
 #ifdef ALT_BITSTREAM_WRITER
     s->index=0;
     ((uint32_t*)(s->buf))[0]=0;
-//    memset(buffer, 0, buffer_size);
+    //    memset(buffer, 0, buffer_size);
 #else
     s->buf_ptr = s->buf;
-    s->bit_left=32;
-    s->bit_buf=0;
+    s->bit_left = 32;
+    s->bit_buf = 0;
 #endif
 }
 
 /* return the number of bits output */
-static inline int put_bits_count(PutBitContext *s)
+static inline int put_bits_count( PutBitContext *s )
 {
+    LogStr("Init");
+    LogStr("Exit");
+
 #ifdef ALT_BITSTREAM_WRITER
     return s->index;
 #else
@@ -118,37 +127,41 @@ static inline int put_bits_count(PutBitContext *s)
 }
 
 /* pad the end of the output stream with zeros */
-static inline void flush_put_bits(PutBitContext *s)
+static inline void flush_put_bits( PutBitContext *s )
 {
+    LogStr("Init");
+
 #ifdef ALT_BITSTREAM_WRITER
     align_put_bits(s);
 #else
 #ifndef BITSTREAM_WRITER_LE
-    s->bit_buf<<= s->bit_left;
+    s->bit_buf <<= s->bit_left;
 #endif
-    while (s->bit_left < 32) {
+    while (s->bit_left < 32)
+    {
         /* XXX: should test end of buffer */
 #ifdef BITSTREAM_WRITER_LE
         *s->buf_ptr++=s->bit_buf;
         s->bit_buf>>=8;
 #else
-        *s->buf_ptr++=s->bit_buf >> 24;
-        s->bit_buf<<=8;
+        *s->buf_ptr++ = s->bit_buf >> 24;
+        s->bit_buf <<= 8;
 #endif
-        s->bit_left+=8;
+        s->bit_left += 8;
     }
-    s->bit_left=32;
-    s->bit_buf=0;
+    s->bit_left = 32;
+    s->bit_buf = 0;
 #endif
 }
 
-void align_put_bits(PutBitContext *s);
-void ff_put_string(PutBitContext * pbc, const char *s, int put_zero);
-void ff_copy_bits(PutBitContext *pb, const uint8_t *src, int length);
+void align_put_bits( PutBitContext *s );
+void ff_put_string( PutBitContext * pbc, const char *s, int put_zero );
+void ff_copy_bits( PutBitContext *pb, const uint8_t *src, int length );
 
 /* bit input */
 /* buffer, buffer_end and size_in_bits must be present and used by every reader */
-typedef struct GetBitContext {
+typedef struct GetBitContext
+{
     const uint8_t *buffer, *buffer_end;
 #ifdef ALT_BITSTREAM_READER
     int index;
@@ -167,13 +180,15 @@ typedef struct GetBitContext {
 
 #define VLC_TYPE int16_t
 
-typedef struct VLC {
+typedef struct VLC
+{
     int bits;
     VLC_TYPE (*table)[2]; ///< code, bits
     int table_size, table_allocated;
 } VLC;
 
-typedef struct RL_VLC_ELEM {
+typedef struct RL_VLC_ELEM
+{
     int16_t level;
     int8_t len;
     uint8_t run;
@@ -184,8 +199,10 @@ typedef struct RL_VLC_ELEM {
 #endif
 
 #ifndef ALT_BITSTREAM_WRITER
-static inline void put_bits(PutBitContext *s, int n, unsigned int value)
+static inline void put_bits( PutBitContext *s, int n, unsigned int value )
 {
+    LogStr("Init");
+
     unsigned int bit_buf;
     int bit_left;
 
@@ -199,14 +216,17 @@ static inline void put_bits(PutBitContext *s, int n, unsigned int value)
     /* XXX: optimize */
 #ifdef BITSTREAM_WRITER_LE
     bit_buf |= value << (32 - bit_left);
-    if (n >= bit_left) {
+    if (n >= bit_left)
+    {
 #ifdef UNALIGNED_STORES_ARE_BAD
-        if (3 & (intptr_t) s->buf_ptr) {
-            s->buf_ptr[0] = bit_buf      ;
-            s->buf_ptr[1] = bit_buf >>  8;
+        if (3 & (intptr_t) s->buf_ptr)
+        {
+            s->buf_ptr[0] = bit_buf;
+            s->buf_ptr[1] = bit_buf >> 8;
             s->buf_ptr[2] = bit_buf >> 16;
             s->buf_ptr[3] = bit_buf >> 24;
-        } else
+        }
+        else
 #endif
         *(uint32_t *)s->buf_ptr = le2me_32(bit_buf);
         s->buf_ptr+=4;
@@ -215,24 +235,29 @@ static inline void put_bits(PutBitContext *s, int n, unsigned int value)
     }
     bit_left-=n;
 #else
-    if (n < bit_left) {
-        bit_buf = (bit_buf<<n) | value;
-        bit_left-=n;
-    } else {
-        bit_buf<<=bit_left;
+    if (n < bit_left)
+    {
+        bit_buf = (bit_buf << n) | value;
+        bit_left -= n;
+    }
+    else
+    {
+        bit_buf <<= bit_left;
         bit_buf |= value >> (n - bit_left);
 #ifdef UNALIGNED_STORES_ARE_BAD
-        if (3 & (intptr_t) s->buf_ptr) {
+        if (3 & (intptr_t) s->buf_ptr)
+        {
             s->buf_ptr[0] = bit_buf >> 24;
             s->buf_ptr[1] = bit_buf >> 16;
-            s->buf_ptr[2] = bit_buf >>  8;
-            s->buf_ptr[3] = bit_buf      ;
-        } else
+            s->buf_ptr[2] = bit_buf >> 8;
+            s->buf_ptr[3] = bit_buf;
+        }
+        else
 #endif
-        *(uint32_t *)s->buf_ptr = be2me_32(bit_buf);
+        *(uint32_t *) s->buf_ptr = be2me_32(bit_buf);
         //printf("bitbuf = %08x\n", bit_buf);
-        s->buf_ptr+=4;
-        bit_left+=32 - n;
+        s->buf_ptr += 4;
+        bit_left += 32 - n;
         bit_buf = value;
     }
 #endif
@@ -241,7 +266,6 @@ static inline void put_bits(PutBitContext *s, int n, unsigned int value)
     s->bit_left = bit_left;
 }
 #endif
-
 
 #ifdef ALT_BITSTREAM_WRITER
 static inline void put_bits(PutBitContext *s, int n, unsigned int value)
@@ -272,8 +296,8 @@ static inline void put_bits(PutBitContext *s, int n, unsigned int value)
     value<<= 32-n;
 
     ptr[0] |= be2me_32(value>>(index&31));
-    ptr[1]  = be2me_32(value<<(32-(index&31)));
-//if(n>24) printf("%d %d\n", n, value);
+    ptr[1] = be2me_32(value<<(32-(index&31)));
+    //if(n>24) printf("%d %d\n", n, value);
     index+= n;
     s->index= index;
 #        endif
@@ -301,7 +325,7 @@ static inline void put_bits(PutBitContext *s, int n, unsigned int value)
 
     ptr[0] |= be2me_32(value<<(32-n-(index&7) ));
     ptr[1] = 0;
-//if(n>24) printf("%d %d\n", n, value);
+    //if(n>24) printf("%d %d\n", n, value);
     index+= n;
     s->index= index;
 #        endif
@@ -309,20 +333,24 @@ static inline void put_bits(PutBitContext *s, int n, unsigned int value)
 }
 #endif
 
-static inline void put_sbits(PutBitContext *pb, int bits, int32_t val)
+static inline void put_sbits( PutBitContext *pb, int bits, int32_t val )
 {
+    LogStr("Init");
+
     assert(bits >= 0 && bits <= 31);
 
-    put_bits(pb, bits, val & ((1<<bits)-1));
+    put_bits(pb, bits, val & ((1 << bits) - 1));
 }
 
-
-static inline uint8_t* pbBufPtr(PutBitContext *s)
+static inline uint8_t* pbBufPtr( PutBitContext *s )
 {
+    LogStr("Init");
+    LogStr("Exit");
+
 #ifdef ALT_BITSTREAM_WRITER
-        return s->buf + (s->index>>3);
+    return s->buf + (s->index>>3);
 #else
-        return s->buf_ptr;
+    return s->buf_ptr;
 #endif
 }
 
@@ -330,14 +358,17 @@ static inline uint8_t* pbBufPtr(PutBitContext *s)
  *
  * PutBitContext must be flushed & aligned to a byte boundary before calling this.
  */
-static inline void skip_put_bytes(PutBitContext *s, int n){
-        assert((put_bits_count(s)&7)==0);
+static inline void skip_put_bytes( PutBitContext *s, int n )
+{
+    LogStr("Init");
+
+    assert((put_bits_count(s)&7)==0);
 #ifdef ALT_BITSTREAM_WRITER
-        FIXME may need some cleaning of the buffer
-        s->index += n<<3;
+    FIXME may need some cleaning of the buffer
+    s->index += n<<3;
 #else
-        assert(s->bit_left==32);
-        s->buf_ptr += n;
+    assert(s->bit_left==32);
+    s->buf_ptr += n;
 #endif
 }
 
@@ -345,12 +376,15 @@ static inline void skip_put_bytes(PutBitContext *s, int n){
  * Skips the given number of bits.
  * Must only be used if the actual values in the bitstream do not matter.
  */
-static inline void skip_put_bits(PutBitContext *s, int n){
+static inline void skip_put_bits( PutBitContext *s, int n )
+{
+    LogStr("Init");
+
 #ifdef ALT_BITSTREAM_WRITER
     s->index += n;
 #else
     s->bit_left -= n;
-    s->buf_ptr-= s->bit_left>>5;
+    s->buf_ptr -= s->bit_left >> 5;
     s->bit_left &= 31;
 #endif
 }
@@ -358,54 +392,57 @@ static inline void skip_put_bits(PutBitContext *s, int n){
 /**
  * Changes the end of the buffer.
  */
-static inline void set_put_bits_buffer_size(PutBitContext *s, int size){
-    s->buf_end= s->buf + size;
+static inline void set_put_bits_buffer_size( PutBitContext *s, int size )
+{
+    LogStr("Init");
+
+    s->buf_end = s->buf + size;
 }
 
 /* Bitstream reader API docs:
-name
-    arbitrary name which is used as prefix for the internal variables
+ name
+ arbitrary name which is used as prefix for the internal variables
 
-gb
-    getbitcontext
+ gb
+ getbitcontext
 
-OPEN_READER(name, gb)
-    loads gb into local variables
+ OPEN_READER(name, gb)
+ loads gb into local variables
 
-CLOSE_READER(name, gb)
-    stores local vars in gb
+ CLOSE_READER(name, gb)
+ stores local vars in gb
 
-UPDATE_CACHE(name, gb)
-    refills the internal cache from the bitstream
-    after this call at least MIN_CACHE_BITS will be available,
+ UPDATE_CACHE(name, gb)
+ refills the internal cache from the bitstream
+ after this call at least MIN_CACHE_BITS will be available,
 
-GET_CACHE(name, gb)
-    will output the contents of the internal cache, next bit is MSB of 32 or 64 bit (FIXME 64bit)
+ GET_CACHE(name, gb)
+ will output the contents of the internal cache, next bit is MSB of 32 or 64 bit (FIXME 64bit)
 
-SHOW_UBITS(name, gb, num)
-    will return the next num bits
+ SHOW_UBITS(name, gb, num)
+ will return the next num bits
 
-SHOW_SBITS(name, gb, num)
-    will return the next num bits and do sign extension
+ SHOW_SBITS(name, gb, num)
+ will return the next num bits and do sign extension
 
-SKIP_BITS(name, gb, num)
-    will skip over the next num bits
-    note, this is equivalent to SKIP_CACHE; SKIP_COUNTER
+ SKIP_BITS(name, gb, num)
+ will skip over the next num bits
+ note, this is equivalent to SKIP_CACHE; SKIP_COUNTER
 
-SKIP_CACHE(name, gb, num)
-    will remove the next num bits from the cache (note SKIP_COUNTER MUST be called before UPDATE_CACHE / CLOSE_READER)
+ SKIP_CACHE(name, gb, num)
+ will remove the next num bits from the cache (note SKIP_COUNTER MUST be called before UPDATE_CACHE / CLOSE_READER)
 
-SKIP_COUNTER(name, gb, num)
-    will increment the internal bit counter (see SKIP_CACHE & SKIP_BITS)
+ SKIP_COUNTER(name, gb, num)
+ will increment the internal bit counter (see SKIP_CACHE & SKIP_BITS)
 
-LAST_SKIP_CACHE(name, gb, num)
-    will remove the next num bits from the cache if it is needed for UPDATE_CACHE otherwise it will do nothing
+ LAST_SKIP_CACHE(name, gb, num)
+ will remove the next num bits from the cache if it is needed for UPDATE_CACHE otherwise it will do nothing
 
-LAST_SKIP_BITS(name, gb, num)
-    is equivalent to SKIP_LAST_CACHE; SKIP_COUNTER
+ LAST_SKIP_BITS(name, gb, num)
+ is equivalent to SKIP_LAST_CACHE; SKIP_COUNTER
 
-for examples see get_bits, show_bits, skip_bits, get_vlc
-*/
+ for examples see get_bits, show_bits, skip_bits, get_vlc
+ */
 
 #ifdef ALT_BITSTREAM_READER
 #   define MIN_CACHE_BITS 25
@@ -461,11 +498,17 @@ for examples see get_bits, show_bits, skip_bits, get_vlc
 #   define GET_CACHE(name, gb)\
         ((uint32_t)name##_cache)
 
-static inline int get_bits_count(GetBitContext *s){
+static inline int get_bits_count( GetBitContext *s )
+{
+    LogStr("Init");
+    LogStr("Exit");
     return s->index;
 }
 
-static inline void skip_bits_long(GetBitContext *s, int n){
+static inline void skip_bits_long( GetBitContext *s, int n )
+{
+    LogStr("Init");
+
     s->index += n;
 }
 
@@ -515,11 +558,13 @@ static inline void skip_bits_long(GetBitContext *s, int n){
 #   define GET_CACHE(name, gb)\
         ((uint32_t)name##_cache)
 
-static inline int get_bits_count(GetBitContext *s){
+static inline int get_bits_count(GetBitContext *s)
+{
     return (s->buffer_ptr - s->buffer)*8 - 16 + s->bit_count;
 }
 
-static inline void skip_bits_long(GetBitContext *s, int n){
+static inline void skip_bits_long(GetBitContext *s, int n)
+{
     OPEN_READER(re, s)
     re_bit_count += n;
     re_buffer_ptr += 2*(re_bit_count>>4);
@@ -590,11 +635,13 @@ static inline void skip_bits_long(GetBitContext *s, int n){
 #   define GET_CACHE(name, gb)\
         (name##_cache0)
 
-static inline int get_bits_count(GetBitContext *s){
+static inline int get_bits_count(GetBitContext *s)
+{
     return ((uint8_t*)s->buffer_ptr - s->buffer)*8 - 32 + s->bit_count;
 }
 
-static inline void skip_bits_long(GetBitContext *s, int n){
+static inline void skip_bits_long(GetBitContext *s, int n)
+{
     OPEN_READER(re, s)
     re_bit_count += n;
     re_buffer_ptr += re_bit_count>>5;
@@ -613,25 +660,35 @@ static inline void skip_bits_long(GetBitContext *s, int n){
  * @param n length in bits
  * @author BERO
  */
-static inline int get_xbits(GetBitContext *s, int n){
+static inline int get_xbits( GetBitContext *s, int n )
+{
+    LogStr("Init");
+
     register int sign;
     register int32_t cache;
     OPEN_READER(re, s)
     UPDATE_CACHE(re, s)
     cache = GET_CACHE(re,s);
-    sign=(~cache)>>31;
+    sign = (~cache) >> 31;
     LAST_SKIP_BITS(re, s, n)
     CLOSE_READER(re, s)
+
+    LogStr("Exit");
     return (NEG_USR32(sign ^ cache, n) ^ sign) - sign;
 }
 
-static inline int get_sbits(GetBitContext *s, int n){
+static inline int get_sbits( GetBitContext *s, int n )
+{
+    LogStr("Init");
+
     register int tmp;
     OPEN_READER(re, s)
     UPDATE_CACHE(re, s)
-    tmp= SHOW_SBITS(re, s, n);
+    tmp = SHOW_SBITS(re, s, n);
     LAST_SKIP_BITS(re, s, n)
     CLOSE_READER(re, s)
+
+    LogStr("Exit");
     return tmp;
 }
 
@@ -639,13 +696,18 @@ static inline int get_sbits(GetBitContext *s, int n){
  * reads 1-17 bits.
  * Note, the alt bitstream reader can read up to 25 bits, but the libmpeg2 reader can't
  */
-static inline unsigned int get_bits(GetBitContext *s, int n){
+static inline unsigned int get_bits( GetBitContext *s, int n )
+{
+    LogStr("Init");
+
     register int tmp;
     OPEN_READER(re, s)
     UPDATE_CACHE(re, s)
-    tmp= SHOW_UBITS(re, s, n);
+    tmp = SHOW_UBITS(re, s, n);
     LAST_SKIP_BITS(re, s, n)
     CLOSE_READER(re, s)
+
+    LogStr("Exit");
     return tmp;
 }
 
@@ -653,63 +715,89 @@ static inline unsigned int get_bits(GetBitContext *s, int n){
  * shows 1-17 bits.
  * Note, the alt bitstream reader can read up to 25 bits, but the libmpeg2 reader can't
  */
-static inline unsigned int show_bits(GetBitContext *s, int n){
+static inline unsigned int show_bits( GetBitContext *s, int n )
+{
+    LogStr("Init");
+
     register int tmp;
     OPEN_READER(re, s)
     UPDATE_CACHE(re, s)
-    tmp= SHOW_UBITS(re, s, n);
-//    CLOSE_READER(re, s)
+    tmp = SHOW_UBITS(re, s, n);
+    //    CLOSE_READER(re, s)
+
+    LogStr("Exit");
     return tmp;
 }
 
-static inline void skip_bits(GetBitContext *s, int n){
- //Note gcc seems to optimize this to s->index+=n for the ALT_READER :))
+static inline void skip_bits( GetBitContext *s, int n )
+{
+    LogStr("Init");
+
+    //Note gcc seems to optimize this to s->index+=n for the ALT_READER :))
     OPEN_READER(re, s)
     UPDATE_CACHE(re, s)
     LAST_SKIP_BITS(re, s, n)
     CLOSE_READER(re, s)
 }
 
-static inline unsigned int get_bits1(GetBitContext *s){
+static inline unsigned int get_bits1( GetBitContext *s )
+{
 #ifdef ALT_BITSTREAM_READER
-    int index= s->index;
-    uint8_t result= s->buffer[ index>>3 ];
+    int index = s->index;
+    uint8_t result = s->buffer[index >> 3];
 #ifdef ALT_BITSTREAM_READER_LE
     result>>= (index&0x07);
     result&= 1;
 #else
-    result<<= (index&0x07);
-    result>>= 8 - 1;
+    result <<= (index & 0x07);
+    result >>= 8 - 1;
 #endif
     index++;
-    s->index= index;
+    s->index = index;
 
+    LogStr("Exit");
     return result;
 #else
     return get_bits(s, 1);
 #endif
 }
 
-static inline unsigned int show_bits1(GetBitContext *s){
+static inline unsigned int show_bits1( GetBitContext *s )
+{
+    LogStr("Init");
+    LogStr("Exit");
     return show_bits(s, 1);
 }
 
-static inline void skip_bits1(GetBitContext *s){
+static inline void skip_bits1( GetBitContext *s )
+{
+    LogStr("Init");
+
     skip_bits(s, 1);
 }
 
 /**
  * reads 0-32 bits.
  */
-static inline unsigned int get_bits_long(GetBitContext *s, int n){
-    if(n<=17) return get_bits(s, n);
-    else{
+static inline unsigned int get_bits_long( GetBitContext *s, int n )
+{
+    LogStr("Init");
+
+    if (n <= 17)
+    {
+        LogStr("Exit");
+        return get_bits(s, n);
+    }
+    else
+    {
 #ifdef ALT_BITSTREAM_READER_LE
         int ret= get_bits(s, 16);
+        LogStr("Exit");
         return ret | (get_bits(s, n-16) << 16);
 #else
-        int ret= get_bits(s, 16) << (n-16);
-        return ret | get_bits(s, n-16);
+        int ret = get_bits(s, 16) << (n - 16);
+        LogStr("Exit");
+        return ret | get_bits(s, n - 16);
 #endif
     }
 }
@@ -717,22 +805,37 @@ static inline unsigned int get_bits_long(GetBitContext *s, int n){
 /**
  * shows 0-32 bits.
  */
-static inline unsigned int show_bits_long(GetBitContext *s, int n){
-    if(n<=17) return show_bits(s, n);
-    else{
-        GetBitContext gb= *s;
-        int ret= get_bits_long(s, n);
-        *s= gb;
+static inline unsigned int show_bits_long( GetBitContext *s, int n )
+{
+
+    LogStr("Init");
+
+    if (n <= 17)
+    {
+        LogStr("Exit");
+        return show_bits(s, n);
+    }
+    else
+    {
+        GetBitContext gb = *s;
+        int ret = get_bits_long(s, n);
+        *s = gb;
+        LogStr("Exit");
         return ret;
     }
 }
 
-static inline int check_marker(GetBitContext *s, const char *msg)
+static inline int check_marker( GetBitContext *s, const char *msg )
 {
-    int bit= get_bits1(s);
-    if(!bit)
-        av_log(NULL, AV_LOG_INFO, "Marker bit missing %s\n", msg);
+    LogStr("Init");
 
+    int bit = get_bits1(s);
+    if (!bit)
+    {
+        av_log(NULL, AV_LOG_INFO, "Marker bit missing %s\n", msg);
+    }
+
+    LogStr("Exit");
     return bit;
 }
 
@@ -742,20 +845,22 @@ static inline int check_marker(GetBitContext *s, const char *msg)
  * because some optimized bitstream readers read 32 or 64 bit at once and could read over the end
  * @param bit_size the size of the buffer in bits
  */
-static inline void init_get_bits(GetBitContext *s,
-                   const uint8_t *buffer, int bit_size)
+static inline void init_get_bits( GetBitContext *s, const uint8_t *buffer, int bit_size )
 {
-    int buffer_size= (bit_size+7)>>3;
-    if(buffer_size < 0 || bit_size < 0) {
+    LogStr("Init");
+
+    int buffer_size = (bit_size + 7) >> 3;
+    if (buffer_size < 0 || bit_size < 0)
+    {
         buffer_size = bit_size = 0;
         buffer = NULL;
     }
 
-    s->buffer= buffer;
-    s->size_in_bits= bit_size;
-    s->buffer_end= buffer + buffer_size;
+    s->buffer = buffer;
+    s->size_in_bits = bit_size;
+    s->buffer_end = buffer + buffer_size;
 #ifdef ALT_BITSTREAM_READER
-    s->index=0;
+    s->index = 0;
 #elif defined LIBMPEG2_BITSTREAM_READER
     s->buffer_ptr = (uint8_t*)((intptr_t)buffer&(~1));
     s->bit_count = 16 + 8*((intptr_t)buffer&1);
@@ -765,12 +870,17 @@ static inline void init_get_bits(GetBitContext *s,
     s->bit_count = 32 + 8*((intptr_t)buffer&3);
     skip_bits_long(s, 0);
 #endif
+
+    LogStr("Exit");
 }
 
-static inline void align_get_bits(GetBitContext *s)
+static inline void align_get_bits( GetBitContext *s )
 {
-    int n= (-get_bits_count(s)) & 7;
-    if(n) skip_bits(s, n);
+    LogStr("Init");
+
+    int n = (-get_bits_count(s)) & 7;
+    if (n)
+        skip_bits(s, n);
 }
 
 #define init_vlc(vlc, nb_bits, nb_codes,\
@@ -782,15 +892,11 @@ static inline void align_get_bits(GetBitContext *s)
                  codes, codes_wrap, codes_size,\
                  NULL, 0, 0, flags)
 
-int init_vlc_sparse(VLC *vlc, int nb_bits, int nb_codes,
-             const void *bits, int bits_wrap, int bits_size,
-             const void *codes, int codes_wrap, int codes_size,
-             const void *symbols, int symbols_wrap, int symbols_size,
-             int flags);
+int init_vlc_sparse( VLC *vlc, int nb_bits, int nb_codes, const void *bits, int bits_wrap, int bits_size, const void *codes, int codes_wrap, int codes_size, const void *symbols, int symbols_wrap, int symbols_size, int flags );
 #define INIT_VLC_USE_STATIC 1 ///< VERY strongly deprecated and forbidden
 #define INIT_VLC_LE         2
 #define INIT_VLC_USE_NEW_STATIC 4
-void free_vlc(VLC *vlc);
+void free_vlc( VLC *vlc );
 
 #define INIT_VLC_STATIC(vlc, bits, a,b,c,d,e,f,g, static_size)\
 {\
@@ -799,7 +905,6 @@ void free_vlc(VLC *vlc);
     (vlc)->table_allocated= static_size;\
     init_vlc(vlc, bits, a,b,c,d,e,f,g, INIT_VLC_USE_NEW_STATIC);\
 }
-
 
 /**
  *
@@ -862,7 +967,6 @@ void free_vlc(VLC *vlc);
     SKIP_BITS(name, gb, n)\
 }
 
-
 /**
  * parses a vlc code, faster then get_vlc()
  * @param bits is the number of bits which will be read at once, must be
@@ -871,9 +975,10 @@ void free_vlc(VLC *vlc);
  *                  read the longest vlc code
  *                  = (max_vlc_length + bits - 1) / bits
  */
-static av_always_inline int get_vlc2(GetBitContext *s, VLC_TYPE (*table)[2],
-                                  int bits, int max_depth)
+static av_always_inline int get_vlc2( GetBitContext *s, VLC_TYPE(*table)[2], int bits, int max_depth )
 {
+    LogStr("Init");
+
     int code;
 
     OPEN_READER(re, s)
@@ -882,30 +987,36 @@ static av_always_inline int get_vlc2(GetBitContext *s, VLC_TYPE (*table)[2],
     GET_VLC(code, re, s, table, bits, max_depth)
 
     CLOSE_READER(re, s)
+
+    LogStr("Exit");
     return code;
 }
 
 //#define TRACE
 
 #ifdef TRACE
-static inline void print_bin(int bits, int n){
+static inline void print_bin(int bits, int n)
+{
     int i;
 
-    for(i=n-1; i>=0; i--){
+    for(i=n-1; i>=0; i--)
+    {
         av_log(NULL, AV_LOG_DEBUG, "%d", (bits>>i)&1);
     }
     for(i=n; i<24; i++)
-        av_log(NULL, AV_LOG_DEBUG, " ");
+    av_log(NULL, AV_LOG_DEBUG, " ");
 }
 
-static inline int get_bits_trace(GetBitContext *s, int n, char *file, const char *func, int line){
+static inline int get_bits_trace(GetBitContext *s, int n, char *file, const char *func, int line)
+{
     int r= get_bits(s, n);
 
     print_bin(r, n);
     av_log(NULL, AV_LOG_DEBUG, "%5d %2d %3d bit @%5d in %s %s:%d\n", r, n, r, get_bits_count(s)-n, file, func, line);
     return r;
 }
-static inline int get_vlc_trace(GetBitContext *s, VLC_TYPE (*table)[2], int bits, int max_depth, char *file, const char *func, int line){
+static inline int get_vlc_trace(GetBitContext *s, VLC_TYPE (*table)[2], int bits, int max_depth, char *file, const char *func, int line)
+{
     int show= show_bits(s, 24);
     int pos= get_bits_count(s);
     int r= get_vlc2(s, table, bits, max_depth);
@@ -917,7 +1028,8 @@ static inline int get_vlc_trace(GetBitContext *s, VLC_TYPE (*table)[2], int bits
     av_log(NULL, AV_LOG_DEBUG, "%5d %2d %3d vlc @%5d in %s %s:%d\n", bits2, len, r, pos, file, func, line);
     return r;
 }
-static inline int get_xbits_trace(GetBitContext *s, int n, char *file, const char *func, int line){
+static inline int get_xbits_trace(GetBitContext *s, int n, char *file, const char *func, int line)
+{
     int show= show_bits(s, n);
     int r= get_xbits(s, n);
 
@@ -938,20 +1050,38 @@ static inline int get_xbits_trace(GetBitContext *s, int n, char *file, const cha
 #define tprintf(p, ...) {}
 #endif
 
-static inline int decode012(GetBitContext *gb){
+static inline int decode012( GetBitContext *gb )
+{
+    LogStr("Init");
+
     int n;
     n = get_bits1(gb);
     if (n == 0)
+    {
+        LogStr("Exit");
         return 0;
+    }
     else
+    {
+        LogStr("Exit");
         return get_bits1(gb) + 1;
+    }
 }
 
-static inline int decode210(GetBitContext *gb){
+static inline int decode210( GetBitContext *gb )
+{
+    LogStr("Init");
+
     if (get_bits1(gb))
+    {
+        LogStr("Exit");
         return 0;
+    }
     else
+    {
+        LogStr("Exit");
         return 2 - get_bits1(gb);
+    }
 }
 
 #endif /* AVCODEC_BITSTREAM_H */

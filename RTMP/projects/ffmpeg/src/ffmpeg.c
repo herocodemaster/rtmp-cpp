@@ -1421,6 +1421,7 @@ static int output_packet( AVInputStream *ist, int ist_index, AVOutputStream **os
 
         if (len && len != pkt->size && verbose > 0)
         {
+            LogStr ("??????????????????????? 6-2");
             fprintf(stderr, "Multiple frames in a packet from stream %d\n", pkt->stream_index);
         }
 
