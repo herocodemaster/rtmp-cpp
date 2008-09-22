@@ -1361,6 +1361,7 @@ static int find_marker( const uint8_t **pbuf_ptr, const uint8_t *buf_end )
     return val;
 }
 
+/*
 //Fernando: 20080919
 void hex_dump(const uint8_t *buf, int buf_size)
 {
@@ -1384,6 +1385,7 @@ void hex_dump(const uint8_t *buf, int buf_size)
     LogStr("--------------------------------------------------------------------");
 
 }
+*/
 
 int ff_mjpeg_decode_frame( AVCodecContext *avctx, void *data, int *data_size, const uint8_t *buf, int buf_size )
 {
@@ -1460,11 +1462,11 @@ int ff_mjpeg_decode_frame( AVCodecContext *avctx, void *data, int *data_size, co
 
                             if (x == 0xff)
                             {
-                                LogStr("$$$$$$$$$$$$$$$$$$$ 10");
+                                //LogStr("$$$$$$$$$$$$$$$$$$$ 10");
 
                                 while (src < buf_end && x == 0xff)
                                 {
-                                    LogStr("$$$$$$$$$$$$$$$$$$$ 11");
+                                    //LogStr("$$$$$$$$$$$$$$$$$$$ 11");
 
                                     x = *(src++);
                                 }

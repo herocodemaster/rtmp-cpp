@@ -110,7 +110,7 @@ static void flush_buffer( ByteIOContext *s )
 
 void put_byte( ByteIOContext *s, int b )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
     *(s->buf_ptr)++ = b;
 
@@ -119,7 +119,7 @@ void put_byte( ByteIOContext *s, int b )
         flush_buffer(s);
     }
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
 }

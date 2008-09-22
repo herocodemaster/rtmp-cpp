@@ -103,7 +103,7 @@ AVCodec *av_codec_next( AVCodec *c )
 
 void register_avcodec( AVCodec *format )
 {
-    LogStr("Init");
+    //LogStr("Init");
 
     AVCodec **p;
     p = &first_avcodec;
@@ -112,7 +112,7 @@ void register_avcodec( AVCodec *format )
     *p = format;
     format->next = NULL;
 
-    LogStr("Exit");
+    //LogStr("Exit");
 }
 
 void avcodec_set_dimensions( AVCodecContext *s, int width, int height )
@@ -936,7 +936,9 @@ int attribute_align_arg avcodec_open( AVCodecContext *avctx, AVCodec *codec )
     }
 
     if (avctx->codec || !codec)
+    {
         goto end;
+    }
 
     if (codec->priv_data_size > 0)
     {
@@ -953,12 +955,15 @@ int attribute_align_arg avcodec_open( AVCodecContext *avctx, AVCodec *codec )
     }
 
     if (avctx->coded_width && avctx->coded_height)
+    {
         avcodec_set_dimensions(avctx, avctx->coded_width, avctx->coded_height);
+    }
     else if (avctx->width && avctx->height)
+    {
         avcodec_set_dimensions(avctx, avctx->width, avctx->height);
+    }
 
-    if ((avctx->coded_width || avctx->coded_height)
-            && avcodec_check_dimensions(avctx, avctx->coded_width, avctx->coded_height))
+    if ((avctx->coded_width || avctx->coded_height) && avcodec_check_dimensions(avctx, avctx->coded_width, avctx->coded_height))
     {
         av_freep(&avctx->priv_data);
         ret = AVERROR(EINVAL);

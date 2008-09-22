@@ -360,13 +360,18 @@ static int flv_write_packet( AVFormatContext *s, AVPacket *pkt )
 
     //    av_log(s, AV_LOG_DEBUG, "type:%d pts: %"PRId64" size:%d\n", enc->codec_type, timestamp, size);
 
-    if (enc->codec_id == CODEC_ID_VP6 || enc->codec_id == CODEC_ID_VP6F
-            || enc->codec_id == CODEC_ID_AAC)
+    if (enc->codec_id == CODEC_ID_VP6 || enc->codec_id == CODEC_ID_VP6F || enc->codec_id == CODEC_ID_AAC)
+    {
         flags_size = 2;
+    }
     else if (enc->codec_id == CODEC_ID_H264)
+    {
         flags_size = 5;
+    }
     else
+    {
         flags_size = 1;
+    }
 
     if (enc->codec_type == CODEC_TYPE_VIDEO)
     {
@@ -405,7 +410,9 @@ static int flv_write_packet( AVFormatContext *s, AVPacket *pkt )
         size = pkt->size;
         /* cast needed to get negative value */
         if (!flv->delay && pkt->dts < 0)
+        {
             flv->delay = -pkt->dts;
+        }
     }
 
     ts = pkt->dts + flv->delay; // add delay to force positive dts
@@ -414,12 +421,20 @@ static int flv_write_packet( AVFormatContext *s, AVPacket *pkt )
     put_byte(pb, (ts >> 24) & 0x7F); // timestamps are 32bits _signed_
     put_be24(pb, flv->reserved);
     put_byte(pb, flags);
+
     if (enc->codec_id == CODEC_ID_VP6)
+    {
         put_byte(pb, 0);
+    }
+
     if (enc->codec_id == CODEC_ID_VP6F)
+    {
         put_byte(pb, enc->extradata_size ? enc->extradata[0] : 0);
+    }
     else if (enc->codec_id == CODEC_ID_AAC)
+    {
         put_byte(pb, 1); // AAC raw
+    }
     else if (enc->codec_id == CODEC_ID_H264)
     {
         put_byte(pb, 1); // AVC NALU
@@ -434,8 +449,7 @@ static int flv_write_packet( AVFormatContext *s, AVPacket *pkt )
     return 0;
 }
 
-AVOutputFormat
-        flv_muxer = { "flv", NULL_IF_CONFIG_SMALL("FLV format"), "video/x-flv", "flv", sizeof(FLVContext),
+AVOutputFormat flv_muxer = { "flv", NULL_IF_CONFIG_SMALL("FLV format"), "video/x-flv", "flv", sizeof(FLVContext),
 #ifdef CONFIG_LIBMP3LAME
                 CODEC_ID_MP3,
 #else // CONFIG_LIBMP3LAME

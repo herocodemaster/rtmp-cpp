@@ -1030,6 +1030,12 @@ void ffm_set_write_index(AVFormatContext *s, offset_t pos, offset_t file_size);
  */
 int find_info_tag(char *arg, int arg_size, const char *tag1, const char *info);
 
+
+
+
+//Fernando:
+int modoManual;
+
 /**
  * Returns in 'buf' the path with '%d' replaced by number.
 

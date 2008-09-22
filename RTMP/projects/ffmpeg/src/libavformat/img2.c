@@ -309,6 +309,13 @@ static int img_read_packet( AVFormatContext *s1, AVPacket *pkt )
             return AVERROR(EIO);
         }
 
+        //Fernando:
+        if (modoManual == 1)
+        {
+            strcpy(filename, "img\\A003.jpg");
+        }
+
+
 
         //Fernando: 20080909
         char temp[1024];

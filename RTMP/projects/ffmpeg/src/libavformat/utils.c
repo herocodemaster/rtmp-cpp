@@ -483,58 +483,58 @@ static AVInputFormat *av_probe_input_format2( AVProbeData *pd, int is_opened, in
     fmt = NULL;
     for (fmt1 = first_iformat; fmt1 != NULL; fmt1 = fmt1->next)
     {
-        LogStr("---- 1");
+        //LogStr("---- 1");
 
-        LogStr(fmt1->name);
+        //LogStr(fmt1->name);
 
 
         if (!is_opened == !(fmt1->flags & AVFMT_NOFILE))
         {
-            LogStr("---- 2");
+            //LogStr("---- 2");
             continue;
         }
-        LogStr("---- 3");
+        //LogStr("---- 3");
 
         score = 0;
         if (fmt1->read_probe)
         {
-            LogStr("---- 4");
+            //LogStr("---- 4");
 
             score = fmt1->read_probe(pd);
         }
         else if (fmt1->extensions)
         {
-            LogStr("---- 6");
+            //LogStr("---- 6");
 
             if (match_ext(pd->filename, fmt1->extensions))
             {
-                LogStr("---- 7");
+                //LogStr("---- 7");
 
                 score = 50;
             }
-            LogStr("---- 8");
+            //LogStr("---- 8");
 
         }
-        LogStr("---- 9");
+        //LogStr("---- 9");
 
         if (score > *score_max)
         {
-            LogStr("---- 10");
+            //LogStr("---- 10");
 
             *score_max = score;
             fmt = fmt1;
         }
         else if (score == *score_max)
         {
-            LogStr("---- 11");
+            //LogStr("---- 11");
 
             fmt = NULL;
         }
-        LogStr("---- 12");
+        //LogStr("---- 12");
 
     }
 
-    LogStr("---- 13");
+    //LogStr("---- 13");
 
 
     LogStr ("Exit");
@@ -1226,7 +1226,9 @@ static void compute_pkt_fields( AVFormatContext *s, AVStream *st, AVCodecParserC
             pkt->duration = av_rescale(1, num * (int64_t) st->time_base.den, den * (int64_t) st->time_base.num);
 
             if (pkt->duration != 0 && s->packet_buffer)
+            {
                 update_initial_durations(s, st, pkt);
+            }
         }
     }
 
@@ -3049,7 +3051,7 @@ int av_find_stream_info( AVFormatContext *ic )
 
                 for (i = 1; i < MAX_STD_TIMEBASES; i++)
                 {
-                    LogStr ("-*-*-*--* --48--");
+                    //LogStr ("-*-*-*--* --48--");
 
                     int framerate = get_std_framerate(i);
                     int ticks = lrintf(dur * framerate / (1001 * 12));

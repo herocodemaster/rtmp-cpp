@@ -74,6 +74,7 @@
 //Fernando: 20080911
 #include <inttypes.h>
 
+
 const char program_name[] = "FFmpeg";
 const int program_birth_year = 2000;
 
@@ -4927,256 +4928,466 @@ static const OptionDef
 
 
 
-void dump_AVFormatContext(struct AVFormatContext **formatContextArray, int lenght)
+//Fernando: 20080919
+void hex_dump(const uint8_t *buf, int buf_size)
+{
+    LogStr("--------------------------------------------------------------------");
+    LogStr("First 256 bytes");
+    LogStr("--------------------------------------------------------------------");
+
+
+    for (int i=0; i<buf_size && i<255; ++i)
+    {
+        printf("%02x ", buf[i]);
+
+        if ((i+1) % 32 == 0 )
+        {
+            printf("\n");
+        }
+    }
+
+    printf("\n");
+
+    LogStr("--------------------------------------------------------------------");
+
+}
+
+
+void dumpPacketBuffer(AVPacketList *packet_buffer)
 {
 
-    for (int i=0; i < lenght; ++i)
+    AVPacketList *pktl = packet_buffer;
+
+    for (; pktl; pktl = pktl->next)
     {
-        printf("%s: %d\n", "formatContextArray[i]->year",                   formatContextArray[i]->year);
-        printf("%s: %d\n", "formatContextArray[i]->track",                  formatContextArray[i]->track);
-        printf("%s: %d\n", "formatContextArray[i]->ctx_flags",              formatContextArray[i]->ctx_flags);
-        printf("%s: %d\n", "formatContextArray[i]->bit_rate",               formatContextArray[i]->bit_rate);
-        printf("%s: %d\n", "formatContextArray[i]->cur_len",                formatContextArray[i]->cur_len);
-        printf("%s: %d\n", "formatContextArray[i]->index_built",            formatContextArray[i]->index_built);
-        printf("%s: %d\n", "formatContextArray[i]->mux_rate",               formatContextArray[i]->mux_rate);
-        printf("%s: %d\n", "formatContextArray[i]->packet_size",            formatContextArray[i]->packet_size);
-        printf("%s: %d\n", "formatContextArray[i]->preload",                formatContextArray[i]->preload);
-        printf("%s: %d\n", "formatContextArray[i]->max_delay",              formatContextArray[i]->max_delay);
-        printf("%s: %d\n", "formatContextArray[i]->loop_output",            formatContextArray[i]->loop_output);
-        printf("%s: %d\n", "formatContextArray[i]->flags",                  formatContextArray[i]->flags);
-        printf("%s: %d\n", "formatContextArray[i]->loop_input",             formatContextArray[i]->loop_input);
-        printf("%s: %d\n", "formatContextArray[i]->debug",                  formatContextArray[i]->debug);
-        printf("%s: %d\n", "formatContextArray[i]->max_analyze_duration",   formatContextArray[i]->max_analyze_duration);
-        printf("%s: %d\n", "formatContextArray[i]->keylen",                 formatContextArray[i]->keylen);
+        printf("%s: %d\n", "pktl->pkt.size: ", pktl->pkt.size);
+        printf("%s: %d\n", "pktl->pkt.pts: ", pktl->pkt.pts);
+        printf("%s: %d\n", "pktl->pkt.dts: ", pktl->pkt.dts);
+        printf("%s: %d\n", "pktl->pkt.stream_index: ", pktl->pkt.stream_index);
+        printf("%s: %d\n", "pktl->pkt.flags: ", pktl->pkt.flags);
+        printf("%s: %d\n", "pktl->pkt.duration: ", pktl->pkt.duration);
+        printf("%s: %d\n", "pktl->pkt.pos: ", pktl->pkt.pos);
+        printf("%s:\n", "Buffer: ");
 
+//        void  *priv;
+//        void  (*destruct)(struct AVPacket *);
 
-        printf("%s: %u\n", "formatContextArray[i]->nb_streams", formatContextArray[i]->nb_streams);
-        printf("%s: %u\n", "formatContextArray[i]->probesize", formatContextArray[i]->probesize);
-        printf("%s: %u\n", "formatContextArray[i]->nb_programs", formatContextArray[i]->nb_programs);
-        printf("%s: %u\n", "formatContextArray[i]->max_index_size", formatContextArray[i]->max_index_size);
-        printf("%s: %u\n", "formatContextArray[i]->max_picture_buffer", formatContextArray[i]->max_picture_buffer);
-        printf("%s: %u\n", "formatContextArray[i]->nb_chapters", formatContextArray[i]->nb_chapters);
 
+        hex_dump(pktl->pkt.data, pktl->pkt.size);
 
-
-        printf("%s: %lld\n", "formatContextArray[i]->timestamp", formatContextArray[i]->timestamp);
-        printf("%s: %lld\n", "formatContextArray[i]->start_time", formatContextArray[i]->start_time);
-        printf("%s: %lld\n", "formatContextArray[i]->duration", formatContextArray[i]->duration);
-        printf("%s: %lld\n", "formatContextArray[i]->file_size", formatContextArray[i]->file_size);
-        printf("%s: %lld\n", "formatContextArray[i]->data_offset", formatContextArray[i]->data_offset);
-
-
-        printf("%s: %d\n", "formatContextArray[i]->cur_ptr", formatContextArray[i]->cur_ptr);
-        printf("%s: %d\n", "formatContextArray[i]->key", formatContextArray[i]->key);
-
-        /*
-        printf("%s: %x\n", "formatContextArray[i]->*cur_ptr", *(formatContextArray[i]->cur_ptr));
-        printf("%s: %x\n", "formatContextArray[i]->*key", *(formatContextArray[i]->key));
-        */
-
-
-
-        printf("%s: %s\n", "formatContextArray[i]->filename", formatContextArray[i]->filename);
-        printf("%s: %s\n", "formatContextArray[i]->title", formatContextArray[i]->title);
-        printf("%s: %s\n", "formatContextArray[i]->author", formatContextArray[i]->author);
-        printf("%s: %s\n", "formatContextArray[i]->copyright", formatContextArray[i]->copyright);
-        printf("%s: %s\n", "formatContextArray[i]->comment", formatContextArray[i]->comment);
-        printf("%s: %s\n", "formatContextArray[i]->album", formatContextArray[i]->album);
-        printf("%s: %s\n", "formatContextArray[i]->genre", formatContextArray[i]->genre);
-
-
-
-        printf("%s: %d\n", "formatContextArray[i]->video_codec_id", formatContextArray[i]->video_codec_id);
-        printf("%s: %d\n", "formatContextArray[i]->audio_codec_id", formatContextArray[i]->audio_codec_id);
-        printf("%s: %d\n", "formatContextArray[i]->subtitle_codec_id", formatContextArray[i]->subtitle_codec_id);
-
-        printf("%s: %d\n", "formatContextArray[i]->iformat", formatContextArray[i]->iformat);
-        printf("%s: %d\n", "formatContextArray[i]->oformat", formatContextArray[i]->oformat);
-
-        if (formatContextArray[i]->oformat != 0)
-        {
-            printf("%s: %d\n", "formatContextArray[i]->oformat->priv_data_size      ", formatContextArray[i]->oformat->priv_data_size       );
-            printf("%s: %d\n", "formatContextArray[i]->oformat->flags               ", formatContextArray[i]->oformat->flags                );
-            printf("%s: %d\n", "formatContextArray[i]->oformat->audio_codec         ", formatContextArray[i]->oformat->audio_codec          );
-            printf("%s: %d\n", "formatContextArray[i]->oformat->video_codec         ", formatContextArray[i]->oformat->video_codec          );
-            printf("%s: %d\n", "formatContextArray[i]->oformat->subtitle_codec      ", formatContextArray[i]->oformat->subtitle_codec       );
-            printf("%s: %s\n", "formatContextArray[i]->oformat->name                ", formatContextArray[i]->oformat->name                 );
-            printf("%s: %s\n", "formatContextArray[i]->oformat->long_name           ", formatContextArray[i]->oformat->long_name            );
-            printf("%s: %s\n", "formatContextArray[i]->oformat->mime_type           ", formatContextArray[i]->oformat->mime_type            );
-            printf("%s: %s\n", "formatContextArray[i]->oformat->extensions          ", formatContextArray[i]->oformat->extensions           );
-            //printf("%s: %d\n", "formatContextArray[i]->oformat->next", formatContextArray[i]->oformat->next);
-            printf("%s: %d\n", "formatContextArray[i]->oformat->codec_tag", formatContextArray[i]->oformat->codec_tag);
-
-            if (formatContextArray[i]->oformat->codec_tag != 0)
-            {
-
-                /*
-                struct AVCodecTag **codecTag = formatContextArray[i]->oformat->codec_tag;
-
-                while (codecTag != 0)
-                {
-
-                    printf("%s: %d\n", "formatContextArray[i]->oformat->codec_tag->id", codecTag->id);
-                    printf("%s: %u\n", "formatContextArray[i]->oformat->codec_tag->tag", codecTag->tag);
-
-                    if (codecTag->id == CODEC_ID_NONE)
-                    {
-                        break;
-                    }
-                    codecTag++;
-                }
-                */
-
-
-            }
-
-        }
-
-
-        if (formatContextArray[i]->iformat != 0)
-        {
-            printf("%s: %d\n", "formatContextArray[i]->iformat->priv_data_size      ", formatContextArray[i]->iformat->priv_data_size       );
-            printf("%s: %d\n", "formatContextArray[i]->iformat->flags               ", formatContextArray[i]->iformat->flags                );
-            printf("%s: %s\n", "formatContextArray[i]->iformat->name                ", formatContextArray[i]->iformat->name                 );
-            printf("%s: %s\n", "formatContextArray[i]->iformat->long_name           ", formatContextArray[i]->iformat->long_name            );
-            printf("%s: %s\n", "formatContextArray[i]->iformat->extensions          ", formatContextArray[i]->iformat->extensions           );
-            //printf("%s: %d\n", "formatContextArray[i]->iformat->next", formatContextArray[i]->iformat->next);
-            printf("%s: %d\n", "formatContextArray[i]->iformat->codec_tag", formatContextArray[i]->iformat->codec_tag);
-
-            if (formatContextArray[i]->iformat->codec_tag != 0)
-            {
-
-                /*
-                struct AVCodecTag **codecTag = formatContextArray[i]->iformat->codec_tag;
-
-                while (codecTag != 0)
-                {
-
-                    printf("%s: %d\n", "formatContextArray[i]->iformat->codec_tag->id", codecTag->id);
-                    printf("%s: %u\n", "formatContextArray[i]->iformat->codec_tag->tag", codecTag->tag);
-
-                    if (codecTag->id == CODEC_ID_NONE)
-                    {
-                        break;
-                    }
-                    codecTag++;
-                }
-                */
-
-
-            }
-
-        }
-
-        printf("%s: %d\n", "formatContextArray[i]->av_class", formatContextArray[i]->av_class);
-        /*
-        formatContextArray[i]->av_class->class_name;
-        formatContextArray[i]->av_class->item_name;
-        formatContextArray[i]->av_class->option;
-        formatContextArray[i]->av_class->option->
-        */
-
-        printf("%s: %d\n", "formatContextArray[i]->pb", formatContextArray[i]->pb);
-
-        printf("%s: %d\n", "formatContextArray[i]->streams", formatContextArray[i]->streams);
-
-        formatContextArray[i]->streams;
-
-
-        if (formatContextArray[i]->streams != 0)
-        {
-
-
-
-            for (int j=0; j < formatContextArray[i]->nb_streams; ++j)
-            {
-                AVStream *stream = formatContextArray[i]->streams[j];
-
-                if (stream != 0)
-                {
-
-                    printf("%s: %d\n", "stream->index      ", stream->index       );
-                    printf("%s: %d\n", "stream->id      ", stream->id       );
-                    printf("%s: %d\n", "stream->pts_wrap_bits      ", stream->pts_wrap_bits       );
-                    printf("%s: %d\n", "stream->stream_copy      ", stream->stream_copy       );
-                    printf("%s: %d\n", "stream->disposition      ", stream->disposition       );
-                    printf("%s: %d\n", "stream->last_IP_duration      ", stream->last_IP_duration       );
-                    printf("%s: %d\n", "stream->nb_index_entries      ", stream->nb_index_entries       );
-                    printf("%s: %u\n", "stream->index_entries_allocated_size      ", stream->index_entries_allocated_size       );
-
-                    printf("%s: %s\n", "stream->language      ", stream->language       );
-                    printf("%s: %s\n", "stream->filename      ", stream->filename       );
-
-                    printf("%s: %lld\n", "stream->cur_dts      ", stream->cur_dts       );
-                    printf("%s: %lld\n", "stream->last_IP_pts      ", stream->last_IP_pts       );
-                    printf("%s: %lld\n", "stream->first_dts      ", stream->first_dts       );
-                    printf("%s: %lld\n", "stream->start_time      ", stream->start_time       );
-                    printf("%s: %lld\n", "stream->duration      ", stream->duration       );
-                    printf("%s: %lld\n", "stream->nb_frames      ", stream->nb_frames       );
-                }
-
-
-            }
-
-
-
-
-
-        }
-
-        /*
-        typedef struct AVStream
-        {
-
-            float quality;
-
-            int64_t unused[4+1];
-            int64_t pts_buffer[MAX_REORDER_DELAY+1];
-
-            void *priv_data;
-
-            enum AVDiscard discard;
-            struct AVCodecParserContext *parser;
-            enum AVStreamParseType need_parsing;
-            struct AVFrac pts;
-            AVRational time_base;
-            AVIndexEntry *index_entries;
-            AVCodecContext *codec;
-            AVRational r_frame_rate;
-            AVProbeData probe_data;
-            AVRational sample_aspect_ratio;
-        } AVStream;
-        */
-
-        printf("%s: %d\n", "formatContextArray[i]->packet_buffer", formatContextArray[i]->packet_buffer);
-        printf("%s: %d\n", "formatContextArray[i]->cur_st", formatContextArray[i]->cur_st);
-        printf("%s: %d\n", "formatContextArray[i]->programs", formatContextArray[i]->programs);
-        printf("%s: %d\n", "formatContextArray[i]->chapters", formatContextArray[i]->chapters);
-        printf("%s: %d\n", "formatContextArray[i]->raw_packet_buffer", formatContextArray[i]->raw_packet_buffer);
-        printf("%s: %d\n", "formatContextArray[i]->raw_packet_buffer_end", formatContextArray[i]->raw_packet_buffer_end);
-        printf("%s: %d\n", "formatContextArray[i]->packet_buffer_end", formatContextArray[i]->packet_buffer_end);
-
-
-        /*
-        formatContextArray[i]->av_class->class_name;
-        formatContextArray[i]->av_class->item_name;
-        formatContextArray[i]->av_class->option->
-        */
-
-
-
-        /*
-        formatContextArray[i]->bit_rate;
-        formatContextArray[i]->
-        */
     }
 
 }
 
 
+void dump_AVOutputFormat(struct AVOutputFormat *outputFormat)
+{
+
+    printf("%s: %d\n", "outputFormat->priv_data_size      ", outputFormat->priv_data_size       );
+    printf("%s: %d\n", "outputFormat->flags               ", outputFormat->flags                );
+    printf("%s: %d\n", "outputFormat->audio_codec         ", outputFormat->audio_codec          );
+    printf("%s: %d\n", "outputFormat->video_codec         ", outputFormat->video_codec          );
+    printf("%s: %d\n", "outputFormat->subtitle_codec      ", outputFormat->subtitle_codec       );
+    printf("%s: %s\n", "outputFormat->name                ", outputFormat->name                 );
+    printf("%s: %s\n", "outputFormat->long_name           ", outputFormat->long_name            );
+    printf("%s: %s\n", "outputFormat->mime_type           ", outputFormat->mime_type            );
+    printf("%s: %s\n", "outputFormat->extensions          ", outputFormat->extensions           );
+    //printf("%s: %d\n", "outputFormat->next", outputFormat->next);
+    printf("%s: %d\n", "outputFormat->codec_tag", outputFormat->codec_tag);
+
+    if (outputFormat->codec_tag != 0)
+    {
+
+        /*
+        struct AVCodecTag **codecTag = outputFormat->codec_tag;
+
+        while (codecTag != 0)
+        {
+
+            printf("%s: %d\n", "outputFormat->codec_tag->id", codecTag->id);
+            printf("%s: %u\n", "outputFormat->codec_tag->tag", codecTag->tag);
+
+            if (codecTag->id == CODEC_ID_NONE)
+            {
+                break;
+            }
+            codecTag++;
+        }
+        */
+
+
+    }
+}
+
+
+void dump_AVInputFormat(struct AVInputFormat *inputFormat)
+{
+
+
+    printf("%s: %d\n", "inputFormat->priv_data_size      ", inputFormat->priv_data_size       );
+    printf("%s: %d\n", "inputFormat->flags               ", inputFormat->flags                );
+    printf("%s: %s\n", "inputFormat->name                ", inputFormat->name                 );
+    printf("%s: %s\n", "inputFormat->long_name           ", inputFormat->long_name            );
+    printf("%s: %s\n", "inputFormat->extensions          ", inputFormat->extensions           );
+    //printf("%s: %d\n", "inputFormat->next", inputFormat->next);
+    printf("%s: %d\n", "inputFormat->codec_tag", inputFormat->codec_tag);
+
+    if (inputFormat->codec_tag != 0)
+    {
+
+        /*
+        struct AVCodecTag **codecTag = inputFormat->codec_tag;
+
+        while (codecTag != 0)
+        {
+
+            printf("%s: %d\n", "inputFormat->codec_tag->id", codecTag->id);
+            printf("%s: %u\n", "inputFormat->codec_tag->tag", codecTag->tag);
+
+            if (codecTag->id == CODEC_ID_NONE)
+            {
+                break;
+            }
+            codecTag++;
+        }
+        */
+
+
+    }
+
+}
+
+void dump_AVFormatContext(struct AVFormatContext *formatContext)
+{
+
+    printf("%s: %d\n", "formatContext->year",                   formatContext->year);
+    printf("%s: %d\n", "formatContext->track",                  formatContext->track);
+    printf("%s: %d\n", "formatContext->ctx_flags",              formatContext->ctx_flags);
+    printf("%s: %d\n", "formatContext->bit_rate",               formatContext->bit_rate);
+    printf("%s: %d\n", "formatContext->cur_len",                formatContext->cur_len);
+    printf("%s: %d\n", "formatContext->index_built",            formatContext->index_built);
+    printf("%s: %d\n", "formatContext->mux_rate",               formatContext->mux_rate);
+    printf("%s: %d\n", "formatContext->packet_size",            formatContext->packet_size);
+    printf("%s: %d\n", "formatContext->preload",                formatContext->preload);
+    printf("%s: %d\n", "formatContext->max_delay",              formatContext->max_delay);
+    printf("%s: %d\n", "formatContext->loop_output",            formatContext->loop_output);
+    printf("%s: %d\n", "formatContext->flags",                  formatContext->flags);
+    printf("%s: %d\n", "formatContext->loop_input",             formatContext->loop_input);
+    printf("%s: %d\n", "formatContext->debug",                  formatContext->debug);
+    printf("%s: %d\n", "formatContext->max_analyze_duration",   formatContext->max_analyze_duration);
+    printf("%s: %d\n", "formatContext->keylen",                 formatContext->keylen);
+
+
+    printf("%s: %u\n", "formatContext->nb_streams", formatContext->nb_streams);
+    printf("%s: %u\n", "formatContext->probesize", formatContext->probesize);
+    printf("%s: %u\n", "formatContext->nb_programs", formatContext->nb_programs);
+    printf("%s: %u\n", "formatContext->max_index_size", formatContext->max_index_size);
+    printf("%s: %u\n", "formatContext->max_picture_buffer", formatContext->max_picture_buffer);
+    printf("%s: %u\n", "formatContext->nb_chapters", formatContext->nb_chapters);
+
+
+
+    printf("%s: %lld\n", "formatContext->timestamp", formatContext->timestamp);
+    printf("%s: %lld\n", "formatContext->start_time", formatContext->start_time);
+    printf("%s: %lld\n", "formatContext->duration", formatContext->duration);
+    printf("%s: %lld\n", "formatContext->file_size", formatContext->file_size);
+    printf("%s: %lld\n", "formatContext->data_offset", formatContext->data_offset);
+
+
+    printf("%s: %d\n", "formatContext->cur_ptr", formatContext->cur_ptr);
+    printf("%s: %d\n", "formatContext->key", formatContext->key);
+
+    /*
+    printf("%s: %x\n", "formatContext->*cur_ptr", *(formatContext->cur_ptr));
+    printf("%s: %x\n", "formatContext->*key", *(formatContext->key));
+    */
+
+
+
+    printf("%s: %s\n", "formatContext->filename", formatContext->filename);
+    printf("%s: %s\n", "formatContext->title", formatContext->title);
+    printf("%s: %s\n", "formatContext->author", formatContext->author);
+    printf("%s: %s\n", "formatContext->copyright", formatContext->copyright);
+    printf("%s: %s\n", "formatContext->comment", formatContext->comment);
+    printf("%s: %s\n", "formatContextformatContext->album", formatContext->album);
+    printf("%s: %s\n", "formatContext->genre", formatContext->genre);
+
+
+
+    printf("%s: %d\n", "formatContext->video_codec_id", formatContext->video_codec_id);
+    printf("%s: %d\n", "formatContext->audio_codec_id", formatContext->audio_codec_id);
+    printf("%s: %d\n", "formatContext->subtitle_codec_id", formatContext->subtitle_codec_id);
+
+    printf("%s: %d\n", "formatContext->iformat", formatContext->iformat);
+    printf("%s: %d\n", "formatContext->oformat", formatContext->oformat);
+
+
+    if (formatContext->oformat != 0)
+    {
+        dump_AVOutputFormat(formatContext->oformat);
+    }
+
+
+    if (formatContext->iformat != 0)
+    {
+        dump_AVInputFormat(formatContext->iformat);
+
+    }
+
+
+    printf("%s: %d\n", "formatContext->av_class", formatContext->av_class);
+    /*
+    formatContext->av_class->class_name;
+    formatContext->av_class->item_name;
+    formatContext->av_class->option;
+    formatContext->av_class->option->
+    */
+
+    printf("%s: %d\n", "formatContext->pb", formatContext->pb);
+
+    printf("%s: %d\n", "formatContext->streams", formatContext->streams);
+
+    formatContext->streams;
+
+
+
+
+    if (formatContext->streams != 0)
+    {
+
+
+
+        for (int j=0; j < formatContext->nb_streams; ++j)
+        {
+            AVStream *stream = formatContext->streams[j];
+
+            if (stream != 0)
+            {
+
+                printf("%s: %d\n", "stream->index      ", stream->index       );
+                printf("%s: %d\n", "stream->id      ", stream->id       );
+                printf("%s: %d\n", "stream->pts_wrap_bits      ", stream->pts_wrap_bits       );
+                printf("%s: %d\n", "stream->stream_copy      ", stream->stream_copy       );
+                printf("%s: %d\n", "stream->disposition      ", stream->disposition       );
+                printf("%s: %d\n", "stream->last_IP_duration      ", stream->last_IP_duration       );
+                printf("%s: %d\n", "stream->nb_index_entries      ", stream->nb_index_entries       );
+                printf("%s: %u\n", "stream->index_entries_allocated_size      ", stream->index_entries_allocated_size       );
+
+                printf("%s: %s\n", "stream->language      ", stream->language       );
+                printf("%s: %s\n", "stream->filename      ", stream->filename       );
+
+                printf("%s: %lld\n", "stream->cur_dts      ", stream->cur_dts       );
+                printf("%s: %lld\n", "stream->last_IP_pts      ", stream->last_IP_pts       );
+                printf("%s: %lld\n", "stream->first_dts      ", stream->first_dts       );
+                printf("%s: %lld\n", "stream->start_time      ", stream->start_time       );
+                printf("%s: %lld\n", "stream->duration      ", stream->duration       );
+                printf("%s: %lld\n", "stream->nb_frames      ", stream->nb_frames       );
+            }
+
+
+        }
+
+
+
+
+
+    }
+
+    /*
+    typedef struct AVStream
+    {
+
+        float quality;
+
+        int64_t unused[4+1];
+        int64_t pts_buffer[MAX_REORDER_DELAY+1];
+
+        void *priv_data;
+
+        enum AVDiscard discard;
+        struct AVCodecParserContext *parser;
+        enum AVStreamParseType need_parsing;
+        struct AVFrac pts;
+        AVRational time_base;
+        AVIndexEntry *index_entries;
+        AVCodecContext *codec;
+        AVRational r_frame_rate;
+        AVProbeData probe_data;
+        AVRational sample_aspect_ratio;
+    } AVStream;
+    */
+
+    printf("%s: %d\n", "formatContext->packet_buffer", formatContext->packet_buffer);
+    printf("%s: %d\n", "formatContext->packet_buffer_end", formatContext->packet_buffer_end);
+
+
+
+    if (formatContext->packet_buffer != 0)
+    {
+        printf("--------------------------------------------------------------------------\n");
+        printf("packet_buffer\n");
+        printf("--------------------------------------------------------------------------\n");
+
+        dumpPacketBuffer(formatContext->packet_buffer);
+        //printf("%s: %d\n", "formatContext->packet_buffer_end", formatContext->packet_buffer_end);
+        printf("--------------------------------------------------------------------------\n");
+        printf("--------------------------------------------------------------------------\n");
+
+    }
+
+    printf("%s: %d\n", "formatContext->raw_packet_buffer", formatContext->raw_packet_buffer);
+    printf("%s: %d\n", "formatContext->raw_packet_buffer_end", formatContext->raw_packet_buffer_end);
+
+    if (formatContext->raw_packet_buffer != 0)
+    {
+
+        printf("--------------------------------------------------------------------------\n");
+        printf("raw_packet_buffer\n");
+        printf("--------------------------------------------------------------------------\n");
+
+        dumpPacketBuffer(formatContext->raw_packet_buffer);
+        //printf("%s: %d\n", "formatContext->raw_packet_buffer_end", formatContext->raw_packet_buffer_end);
+
+        printf("--------------------------------------------------------------------------\n");
+        printf("--------------------------------------------------------------------------\n");
+
+    }
+
+
+    printf("%s: %d\n", "formatContext->cur_st", formatContext->cur_st);
+    printf("%s: %d\n", "formatContext->programs", formatContext->programs);
+    printf("%s: %d\n", "formatContext->chapters", formatContext->chapters);
+
+
+    /*
+    formatContext->av_class->class_name;
+    formatContext->av_class->item_name;
+    formatContext->av_class->option->
+    */
+
+
+
+    /*
+    formatContext->bit_rate;
+    formatContext->
+    */
+}
+
+
+
+void dump_AVFormatContextArray(struct AVFormatContext **formatContextArray, int lenght)
+{
+    for (int i=0; i < lenght; ++i)
+    {
+        printf("****** %s: %d\n", "i: ", i);
+        dump_AVFormatContext(formatContextArray[i]);
+    }
+
+}
+
+
+
+
+//Fernando:
+static AVPacket *add_to_pktbuf( AVPacketList **packet_buffer, AVPacket *pkt, AVPacketList **plast_pktl )
+{
+    LogStr("Init");
+
+    AVPacketList *pktl = av_mallocz(sizeof(AVPacketList));
+    if (!pktl)
+    {
+        LogStr ("Exit");
+        return NULL;
+    }
+
+    if (*packet_buffer)
+    {
+        LogStr ("if (*packet_buffer)");
+        (*plast_pktl)->next = pktl;
+    }
+    else
+    {
+        LogStr ("else");
+        *packet_buffer = pktl;
+    }
+
+    /* add the packet in the buffered packet list */
+    *plast_pktl = pktl;
+    pktl->pkt = *pkt;
+
+    LogStr ("Exit");
+    return &pktl->pkt;
+}
+
+
+
+
+void addAnotherImage()
+{
+
+    //Fernando: modificamos los archivos de entrada y agregamos un archivo más a mano.
+
+    //input_files[0].packet_buffer
+    modoManual = 1;
+
+    AVFormatContext *s; //, *ic; //TODO:
+    AVPacket pkt1;
+    AVPacket *pkt;
+
+    s = input_files[0];
+
+    pkt = &s->cur_pkt;
+    av_init_packet(pkt);
+
+
+    int ret;
+    ret = s->iformat->read_packet(s, pkt); //img_read_packet
+    if (ret < 0)
+    {
+        LogStr ("Exit");
+        return ret;
+    }
+
+
+    AVStream *st = s->streams[s->cur_pkt.stream_index];
+
+    s->cur_st = st;
+    s->cur_ptr = s->cur_pkt.data;
+    s->cur_len = s->cur_pkt.size;
+
+    //compute_pkt_fields(s, st, NULL, pkt);
+
+
+
+    pkt->duration = 1;
+    pkt->pts = 3;
+    pkt->dts = 3;
+
+    //pkt = add_to_pktbuf(&ic->packet_buffer, &pkt1, &ic->packet_buffer_end);
+    pkt = add_to_pktbuf(&s->packet_buffer, pkt, &s->packet_buffer_end);
+//    if (av_dup_packet(pkt) < 0)
+//    {
+//        av_free(duration_error);
+//        LogStr ("Exit");
+//        return AVERROR(ENOMEM);
+//    }
+
+
+
+
+    modoManual = 0;
+
+}
+
+
+
 int main( int argc, char **argv )
 {
     LogStr ("Init");
+
+    //Fernando:
+    modoManual = 0;
+
 
     int i;
     int64_t ti;
@@ -5291,27 +5502,27 @@ int main( int argc, char **argv )
 
 
 
-    printf("------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    printf("------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    printf("------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    printf("------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    printf("------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    printf("------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    printf("------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    printf("------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    printf("------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("-------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("-------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("-------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("-------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("-------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("-------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("-------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("-------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("-------------------------------------------------------------------------------------------------------------------------------\n");
 
     printf("%s: %d\n", "nb_output_files", nb_output_files);
     printf("%s: %d\n", "nb_input_files", nb_input_files);
     printf("%s: %d\n", "nb_stream_maps", nb_stream_maps);
 
 
-    dump_AVFormatContext(output_files, nb_output_files);
+    //dump_AVFormatContextArray(output_files, nb_output_files);
 
-    printf("------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    printf("------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("-------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("-------------------------------------------------------------------------------------------------------------------------------\n");
 
-    dump_AVFormatContext(input_files, nb_input_files);
+    dump_AVFormatContextArray(input_files, nb_input_files);
 
 
     /*
@@ -5322,15 +5533,34 @@ int main( int argc, char **argv )
 
 
 
-    printf("------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    printf("------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    printf("------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    printf("------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    printf("------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    printf("------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    printf("------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    printf("------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    printf("------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("-------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("-------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("-------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("-------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("-------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("-------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("-------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("-------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("-------------------------------------------------------------------------------------------------------------------------------\n");
+
+
+    //Fernando:
+    addAnotherImage();
+
+
+
+
+    dump_AVFormatContextArray(input_files, nb_input_files);
+
+    printf("-------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("-------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("-------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("-------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("-------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("-------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("-------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("-------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("-------------------------------------------------------------------------------------------------------------------------------\n");
 
 
     //ti = getutime();
