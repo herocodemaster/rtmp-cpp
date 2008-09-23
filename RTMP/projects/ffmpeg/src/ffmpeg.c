@@ -1944,6 +1944,33 @@ static int stream_index_from_inputs( AVFormatContext **input_files, int nb_input
     return -1;
 }
 
+
+
+
+
+//Fernando:
+void dumpPacket(AVPacket *pkt)
+{
+
+    printf("%s: %d\n", "pkt.size: ", pkt.size);
+    printf("%s: %d\n", "pkt.pts: ", pkt.pts);
+    printf("%s: %d\n", "pkt.dts: ", pkt.dts);
+    printf("%s: %d\n", "pkt.stream_index: ", pkt.stream_index);
+    printf("%s: %d\n", "pkt.flags: ", pkt.flags);
+    printf("%s: %d\n", "pkt.duration: ", pkt.duration);
+    printf("%s: %d\n", "pkt.pos: ", pkt.pos);
+    printf("%s:\n", "Buffer: ");
+
+//        void  *priv;
+//        void  (*destruct)(struct AVPacket *);
+
+
+    hex_dump(pkt.data, pkt.size);
+
+}
+
+
+
 /*
  * The following code is the main loop of the file converter
  */
@@ -2621,6 +2648,18 @@ static int av_encode( AVFormatContext **output_files, int nb_output_files, AVFor
             LogStr("%%%%%%%%%%%%%%%%%%%%%%% 5");
             av_pkt_dump_log(NULL, AV_LOG_DEBUG, &pkt, do_hex_dump);
         }
+
+
+
+        printf("--------------------------------------------------------------------------\n");
+        printf("--------------------------------------------------------------------------\n");
+
+        //Fernando:
+        dumpPacket(&pkt);
+
+        printf("--------------------------------------------------------------------------\n");
+        printf("--------------------------------------------------------------------------\n");
+
 
         LogStr("%%%%%%%%%%%%%%%%%%%%%%% 6");
         /* the following test is needed in case new streams appear  dynamically in stream : we ignore them */
@@ -4973,6 +5012,8 @@ static const OptionDef
 //}
 
 
+
+
 void dumpPacketBuffer(AVPacketList *packet_buffer)
 {
 
@@ -4980,21 +5021,7 @@ void dumpPacketBuffer(AVPacketList *packet_buffer)
 
     for (; pktl; pktl = pktl->next)
     {
-        printf("%s: %d\n", "pktl->pkt.size: ", pktl->pkt.size);
-        printf("%s: %d\n", "pktl->pkt.pts: ", pktl->pkt.pts);
-        printf("%s: %d\n", "pktl->pkt.dts: ", pktl->pkt.dts);
-        printf("%s: %d\n", "pktl->pkt.stream_index: ", pktl->pkt.stream_index);
-        printf("%s: %d\n", "pktl->pkt.flags: ", pktl->pkt.flags);
-        printf("%s: %d\n", "pktl->pkt.duration: ", pktl->pkt.duration);
-        printf("%s: %d\n", "pktl->pkt.pos: ", pktl->pkt.pos);
-        printf("%s:\n", "Buffer: ");
-
-//        void  *priv;
-//        void  (*destruct)(struct AVPacket *);
-
-
-        hex_dump(pktl->pkt.data, pktl->pkt.size);
-
+        dumpPacket(&pktl->pkt);
     }
 
 }
@@ -5573,9 +5600,9 @@ int main( int argc, char **argv )
 
 
     //Fernando:
-    addAnotherImage("img\\A003.jpg");
-    addAnotherImage("img\\004.jpg");
-    addAnotherImage("img\\005.jpg");
+    //addAnotherImage("img\\A003.jpg");
+    //addAnotherImage("img\\004.jpg");
+    //addAnotherImage("img\\005.jpg");
 
 
 
