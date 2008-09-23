@@ -2595,7 +2595,8 @@ static int av_encode( AVFormatContext **output_files, int nb_output_files, AVFor
 
         /* read a frame from it and output it in the fifo */
         is = input_files[file_index];
-        if (av_read_frame(is, &pkt) < 0)
+        //if (av_read_frame(is, &pkt) < 0)
+        if (av_read_frame_2(is, &pkt) < 0)
         {
             LogStr("%%%%%%%%%%%%%%%%%%%%%%% 1 ");
             file_table[file_index].eof_reached = 1;
@@ -2622,8 +2623,7 @@ static int av_encode( AVFormatContext **output_files, int nb_output_files, AVFor
         }
 
         LogStr("%%%%%%%%%%%%%%%%%%%%%%% 6");
-        /* the following test is needed in case new streams appear
-         dynamically in stream : we ignore them */
+        /* the following test is needed in case new streams appear  dynamically in stream : we ignore them */
         if (pkt.stream_index >= file_table[file_index].nb_streams)
         {
             LogStr("%%%%%%%%%%%%%%%%%%%%%%% 7");
@@ -5341,7 +5341,7 @@ static AVPacket *add_to_pktbuf( AVPacketList **packet_buffer, AVPacket *pkt, AVP
 
 
 
-
+//Fernando:
 void addAnotherImage(char* fileName)
 {
 

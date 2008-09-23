@@ -1524,6 +1524,31 @@ static int av_read_frame_internal( AVFormatContext *s, AVPacket *pkt )
     return 0;
 }
 
+//Fernando: 20080919
+void hex_dump(const uint8_t *buf, int buf_size)
+{
+    LogStr("--------------------------------------------------------------------");
+    LogStr("First 256 bytes");
+    LogStr("--------------------------------------------------------------------");
+
+
+    for (int i=0; i<buf_size && i<255; ++i)
+    {
+        printf("%02x ", buf[i]);
+
+        if ((i+1) % 32 == 0 )
+        {
+            printf("\n");
+        }
+    }
+
+    printf("\n");
+
+    LogStr("--------------------------------------------------------------------");
+
+}
+
+
 int av_read_frame( AVFormatContext *s, AVPacket *pkt )
 {
     LogStr ("Init");
@@ -1543,6 +1568,9 @@ int av_read_frame( AVFormatContext *s, AVPacket *pkt )
             LogStr("||||||||||||||||||||||||||||||||||||||||||| 3");
 
             AVPacket *next_pkt = &pktl->pkt;
+
+            //Fernando:
+            //hex_dump(next_pkt->data, next_pkt->size);
 
             if (genpts && next_pkt->dts != AV_NOPTS_VALUE)
             {
@@ -1628,6 +1656,51 @@ int av_read_frame( AVFormatContext *s, AVPacket *pkt )
 
     LogStr ("Exit");
 }
+
+
+
+//Fernando:
+void getNextImageFromFile(char* fileName, AVFormatContext *s, AVPacket *pkt)
+{
+    modoManual = 1;
+    globalFileName = fileName;
+
+    //AVFormatContext *s; //, *ic; //TODO:
+    //AVPacket pkt1;
+    //s = input_files[0]; //TODO:
+
+    pkt = &s->cur_pkt;
+    av_init_packet(pkt);
+
+    int ret;
+    ret = s->iformat->read_packet(s, pkt); //img_read_packet
+    if (ret < 0)
+    {
+        LogStr ("Exit");
+        return ret;
+    }
+
+    //compute_pkt_fields(s, st, NULL, pkt);
+    pkt->duration = 1;
+    //pkt->pts = 3;
+    //pkt->dts = 3;
+
+
+    modoManual = 0;
+    globalFileName = "";
+
+}
+
+//Fernando:
+int av_read_frame_2( AVFormatContext *s, AVPacket *pkt )
+{
+    LogStr ("Init");
+
+    getNextImageFromFile("img\\A003.jpg", s, pkt);
+
+    LogStr ("Exit");
+}
+
 
 /* XXX: suppress the packet queue */
 static void flush_packet_queue( AVFormatContext *s )
