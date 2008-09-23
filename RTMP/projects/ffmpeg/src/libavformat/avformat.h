@@ -1035,6 +1035,7 @@ int find_info_tag(char *arg, int arg_size, const char *tag1, const char *info);
 
 //Fernando:
 int modoManual;
+char *globalFileName;
 
 /**
  * Returns in 'buf' the path with '%d' replaced by number.
