@@ -25,9 +25,9 @@
 #include <stdarg.h>
 
 //Fernando: 20080908
-#undef printf
-#define LogStr(str)  printf ( "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__)
-
+//#undef printf
+//#define LogStr(str)  printf ( "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__)
+#define LogStr(str) av_log(NULL, AV_LOG_ERROR, "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__);
 
 #define IO_BUFFER_SIZE 32768
 
@@ -35,7 +35,7 @@ static void fill_buffer( ByteIOContext *s );
 
 int init_put_byte( ByteIOContext *s, unsigned char *buffer, int buffer_size, int write_flag, void *opaque, int(*read_packet)( void *opaque, uint8_t *buf, int buf_size ), int(*write_packet)( void *opaque, uint8_t *buf, int buf_size ), offset_t(*seek)( void *opaque, offset_t offset, int whence ) )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
     s->buffer = buffer;
     s->buffer_size = buffer_size;
@@ -62,19 +62,19 @@ int init_put_byte( ByteIOContext *s, unsigned char *buffer, int buffer_size, int
     s->read_pause = NULL;
     s->read_seek = NULL;
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
     return 0;
 }
 
 ByteIOContext *av_alloc_put_byte( unsigned char *buffer, int buffer_size, int write_flag, void *opaque, int(*read_packet)( void *opaque, uint8_t *buf, int buf_size ), int(*write_packet)( void *opaque, uint8_t *buf, int buf_size ), offset_t(*seek)( void *opaque, offset_t offset, int whence ) )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
     ByteIOContext *s = av_mallocz(sizeof(ByteIOContext));
     init_put_byte(s, buffer, buffer_size, write_flag, opaque, read_packet, write_packet, seek);
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return s;
@@ -82,7 +82,7 @@ ByteIOContext *av_alloc_put_byte( unsigned char *buffer, int buffer_size, int wr
 
 static void flush_buffer( ByteIOContext *s )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
     if (s->buf_ptr > s->buffer)
     {
@@ -103,14 +103,14 @@ static void flush_buffer( ByteIOContext *s )
     }
     s->buf_ptr = s->buffer;
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
 }
 
 void put_byte( ByteIOContext *s, int b )
 {
-    //LogStr ("Init");
+    ////LogStr ("Init");
 
     *(s->buf_ptr)++ = b;
 
@@ -119,14 +119,14 @@ void put_byte( ByteIOContext *s, int b )
         flush_buffer(s);
     }
 
-    //LogStr ("Exit");
+    ////LogStr ("Exit");
 
 
 }
 
 void put_buffer( ByteIOContext *s, const unsigned char *buf, int size )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
     int len;
 
@@ -150,33 +150,33 @@ void put_buffer( ByteIOContext *s, const unsigned char *buf, int size )
         size -= len;
     }
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
 }
 
 void put_flush_packet( ByteIOContext *s )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
     flush_buffer(s);
     s->must_flush = 0;
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
 }
 
 offset_t url_fseek( ByteIOContext *s, offset_t offset, int whence )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
     offset_t offset1;
     offset_t pos;
 
     if (!s)
     {
-        LogStr ("Exit");
+        //LogStr ("Exit");
 
 
         return AVERROR(EINVAL);
@@ -186,7 +186,7 @@ offset_t url_fseek( ByteIOContext *s, offset_t offset, int whence )
 
     if (whence != SEEK_CUR && whence != SEEK_SET)
     {
-        LogStr ("Exit");
+        //LogStr ("Exit");
 
 
         return AVERROR(EINVAL);
@@ -197,7 +197,7 @@ offset_t url_fseek( ByteIOContext *s, offset_t offset, int whence )
         offset1 = pos + (s->buf_ptr - s->buffer);
         if (offset == 0)
         {
-            LogStr ("Exit");
+            //LogStr ("Exit");
 
 
             return offset1;
@@ -220,7 +220,7 @@ offset_t url_fseek( ByteIOContext *s, offset_t offset, int whence )
 
         if (s->eof_reached)
         {
-            LogStr ("Exit");
+            //LogStr ("Exit");
 
 
             return AVERROR(EPIPE);
@@ -240,7 +240,7 @@ offset_t url_fseek( ByteIOContext *s, offset_t offset, int whence )
 #endif /* defined(CONFIG_MUXERS) || defined(CONFIG_NETWORK) */
         if (!s->seek || (res = s->seek(s->opaque, offset, SEEK_SET)) < 0)
         {
-            LogStr ("Exit");
+            //LogStr ("Exit");
 
 
             return res;
@@ -255,7 +255,7 @@ offset_t url_fseek( ByteIOContext *s, offset_t offset, int whence )
     }
 
     s->eof_reached = 0;
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return offset;
@@ -263,20 +263,20 @@ offset_t url_fseek( ByteIOContext *s, offset_t offset, int whence )
 
 void url_fskip( ByteIOContext *s, offset_t offset )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
     url_fseek(s, offset, SEEK_CUR);
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
 }
 
 offset_t url_ftell( ByteIOContext *s )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return url_fseek(s, 0, SEEK_CUR);
@@ -284,14 +284,14 @@ offset_t url_ftell( ByteIOContext *s )
 
 offset_t url_fsize( ByteIOContext *s )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     offset_t size;
 
     if (!s)
     {
-        LogStr ("Exit");
+        //LogStr ("Exit");
 
 
         return AVERROR(EINVAL);
@@ -299,7 +299,7 @@ offset_t url_fsize( ByteIOContext *s )
 
     if (!s->seek)
     {
-        LogStr ("Exit");
+        //LogStr ("Exit");
 
 
         return AVERROR(EPIPE);
@@ -310,7 +310,7 @@ offset_t url_fsize( ByteIOContext *s )
     {
         if ((size = s->seek(s->opaque, -1, SEEK_END)) < 0)
         {
-            LogStr ("Exit");
+            //LogStr ("Exit");
 
 
             return size;
@@ -319,7 +319,7 @@ offset_t url_fsize( ByteIOContext *s )
         s->seek(s->opaque, s->pos, SEEK_SET);
     }
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return size;
@@ -327,34 +327,34 @@ offset_t url_fsize( ByteIOContext *s )
 
 int url_feof( ByteIOContext *s )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     if (!s)
     {
-        LogStr ("Exit");
+        //LogStr ("Exit");
 
 
         return 0;
     }
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
     return s->eof_reached;
 }
 
 int url_ferror( ByteIOContext *s )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     if (!s)
     {
-        LogStr ("Exit");
+        //LogStr ("Exit");
 
 
         return 0;
     }
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return s->error;
@@ -362,35 +362,35 @@ int url_ferror( ByteIOContext *s )
 
 void put_le32( ByteIOContext *s, unsigned int val )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     put_byte(s, val);
     put_byte(s, val >> 8);
     put_byte(s, val >> 16);
     put_byte(s, val >> 24);
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
 }
 
 void put_be32( ByteIOContext *s, unsigned int val )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     put_byte(s, val >> 24);
     put_byte(s, val >> 16);
     put_byte(s, val >> 8);
     put_byte(s, val);
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
 }
 
 void put_strz( ByteIOContext *s, const char *str )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     if (str)
@@ -401,90 +401,90 @@ void put_strz( ByteIOContext *s, const char *str )
     {
         put_byte(s, 0);
     }
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
 }
 
 void put_le64( ByteIOContext *s, uint64_t val )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     put_le32(s, (uint32_t) (val & 0xffffffff));
     put_le32(s, (uint32_t) (val >> 32));
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
 }
 
 void put_be64( ByteIOContext *s, uint64_t val )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     put_be32(s, (uint32_t) (val >> 32));
     put_be32(s, (uint32_t) (val & 0xffffffff));
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
 }
 
 void put_le16( ByteIOContext *s, unsigned int val )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     put_byte(s, val);
     put_byte(s, val >> 8);
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
 }
 
 void put_be16( ByteIOContext *s, unsigned int val )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     put_byte(s, val >> 8);
     put_byte(s, val);
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
 }
 
 void put_le24( ByteIOContext *s, unsigned int val )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
     put_le16(s, val & 0xffff);
     put_byte(s, val >> 16);
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
 }
 
 void put_be24( ByteIOContext *s, unsigned int val )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
     put_be16(s, val >> 8);
     put_byte(s, val);
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
 }
 
 void put_tag( ByteIOContext *s, const char *tag )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     while (*tag)
@@ -492,7 +492,7 @@ void put_tag( ByteIOContext *s, const char *tag )
         put_byte(s, *tag++);
     }
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
 }
@@ -501,45 +501,45 @@ void put_tag( ByteIOContext *s, const char *tag )
 
 static void fill_buffer( ByteIOContext *s )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
     int len = 0;
 
     /* no need to do anything if EOF already reached */
     if (s->eof_reached)
     {
-        LogStr ("Exit");
+        //LogStr ("Exit");
         return;
     }
 
     if (s->update_checksum)
     {
-        LogStr ("-*-*-*-*-* 1 -*-*-*-*-*");
+        //LogStr ("-*-*-*-*-* 1 -*-*-*-*-*");
         if (s->buf_end > s->checksum_ptr)
         {
-            LogStr ("-*-*-*-*-* 2 -*-*-*-*-*");
+            //LogStr ("-*-*-*-*-* 2 -*-*-*-*-*");
             s->checksum = s->update_checksum(s->checksum, s->checksum_ptr, s->buf_end - s->checksum_ptr);
-            LogStr ("-*-*-*-*-* 2 -*-*-*-*-*");
+            //LogStr ("-*-*-*-*-* 2 -*-*-*-*-*");
         }
-        LogStr ("-*-*-*-*-* 3 -*-*-*-*-*");
+        //LogStr ("-*-*-*-*-* 3 -*-*-*-*-*");
 
         s->checksum_ptr = s->buffer;
     }
 
-    LogStr ("-*-*-*-*-* 4 -*-*-*-*-*");
+    //LogStr ("-*-*-*-*-* 4 -*-*-*-*-*");
 
     if (s->read_packet)
     {
-        LogStr ("-*-*-*-*-* 5 -*-*-*-*-*");
+        //LogStr ("-*-*-*-*-* 5 -*-*-*-*-*");
 
         len = s->read_packet(s->opaque, s->buffer, s->buffer_size);
     }
 
-    LogStr ("-*-*-*-*-* 6 -*-*-*-*-*");
+    //LogStr ("-*-*-*-*-* 6 -*-*-*-*-*");
 
     if (len <= 0)
     {
-        LogStr ("-*-*-*-*-* 7 -*-*-*-*-*");
+        //LogStr ("-*-*-*-*-* 7 -*-*-*-*-*");
 
         /* do not modify buffer if EOF reached so that a seek back can
          be done without rereading data */
@@ -547,36 +547,36 @@ static void fill_buffer( ByteIOContext *s )
         if (len < 0)
         {
 
-            LogStr ("-*-*-*-*-* 8 -*-*-*-*-*");
+            //LogStr ("-*-*-*-*-* 8 -*-*-*-*-*");
 
             s->error = len;
         }
 
-        LogStr ("-*-*-*-*-* 9 -*-*-*-*-*");
+        //LogStr ("-*-*-*-*-* 9 -*-*-*-*-*");
 
     }
     else
     {
-        LogStr ("-*-*-*-*-* 10 -*-*-*-*-*");
+        //LogStr ("-*-*-*-*-* 10 -*-*-*-*-*");
 
         s->pos += len;
         s->buf_ptr = s->buffer;
         s->buf_end = s->buffer + len;
     }
 
-    LogStr ("-*-*-*-*-* 11 -*-*-*-*-*");
+    //LogStr ("-*-*-*-*-* 11 -*-*-*-*-*");
 
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
 }
 
 unsigned long ff_crc04C11DB7_update( unsigned long checksum, const uint8_t *buf, unsigned int len )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return av_crc(av_crc_get_table(AV_CRC_32_IEEE), checksum, buf, len);
@@ -584,13 +584,13 @@ unsigned long ff_crc04C11DB7_update( unsigned long checksum, const uint8_t *buf,
 
 unsigned long get_checksum( ByteIOContext *s )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     s->checksum = s->update_checksum(s->checksum, s->checksum_ptr, s->buf_ptr - s->checksum_ptr);
     s->update_checksum = NULL;
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return s->checksum;
@@ -598,7 +598,7 @@ unsigned long get_checksum( ByteIOContext *s )
 
 void init_checksum( ByteIOContext *s, unsigned long(*update_checksum)( unsigned long c, const uint8_t *p, unsigned int len ), unsigned long checksum )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     s->update_checksum = update_checksum;
@@ -612,12 +612,12 @@ void init_checksum( ByteIOContext *s, unsigned long(*update_checksum)( unsigned 
 /* XXX: put an inline version */
 int get_byte( ByteIOContext *s )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     if (s->buf_ptr < s->buf_end)
     {
-        LogStr ("Exit");
+        //LogStr ("Exit");
 
 
         return *s->buf_ptr++;
@@ -627,33 +627,33 @@ int get_byte( ByteIOContext *s )
         fill_buffer(s);
         if (s->buf_ptr < s->buf_end)
         {
-            LogStr ("Exit");
+            //LogStr ("Exit");
 
 
             return *s->buf_ptr++;
         }
         else
         {
-            LogStr ("Exit");
+            //LogStr ("Exit");
 
 
             return 0;
         }
     }
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
 }
 
 int url_fgetc( ByteIOContext *s )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     if (s->buf_ptr < s->buf_end)
     {
-        LogStr ("Exit");
+        //LogStr ("Exit");
 
 
         return *s->buf_ptr++;
@@ -663,28 +663,28 @@ int url_fgetc( ByteIOContext *s )
         fill_buffer(s);
         if (s->buf_ptr < s->buf_end)
         {
-            LogStr ("Exit");
+            //LogStr ("Exit");
 
 
             return *s->buf_ptr++;
         }
         else
         {
-            LogStr ("Exit");
+            //LogStr ("Exit");
 
 
             return URL_EOF;
         }
     }
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
 }
 
 int get_buffer( ByteIOContext *s, unsigned char *buf, int size )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     int len, size1;
@@ -747,7 +747,7 @@ int get_buffer( ByteIOContext *s, unsigned char *buf, int size )
         }
     }
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return size1 - size;
@@ -755,14 +755,14 @@ int get_buffer( ByteIOContext *s, unsigned char *buf, int size )
 
 int get_partial_buffer( ByteIOContext *s, unsigned char *buf, int size )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     int len;
 
     if (size < 0)
     {
-        LogStr ("Exit");
+        //LogStr ("Exit");
 
 
         return -1;
@@ -783,7 +783,7 @@ int get_partial_buffer( ByteIOContext *s, unsigned char *buf, int size )
     memcpy(buf, s->buf_ptr, len);
     s->buf_ptr += len;
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return len;
@@ -791,14 +791,14 @@ int get_partial_buffer( ByteIOContext *s, unsigned char *buf, int size )
 
 unsigned int get_le16( ByteIOContext *s )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     unsigned int val;
     val = get_byte(s);
     val |= get_byte(s) << 8;
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return val;
@@ -806,14 +806,14 @@ unsigned int get_le16( ByteIOContext *s )
 
 unsigned int get_le24( ByteIOContext *s )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     unsigned int val;
     val = get_le16(s);
     val |= get_byte(s) << 16;
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return val;
@@ -821,14 +821,14 @@ unsigned int get_le24( ByteIOContext *s )
 
 unsigned int get_le32( ByteIOContext *s )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     unsigned int val;
     val = get_le16(s);
     val |= get_le16(s) << 16;
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return val;
@@ -836,14 +836,14 @@ unsigned int get_le32( ByteIOContext *s )
 
 uint64_t get_le64( ByteIOContext *s )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     uint64_t val;
     val = (uint64_t) get_le32(s);
     val |= (uint64_t) get_le32(s) << 32;
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return val;
@@ -851,14 +851,14 @@ uint64_t get_le64( ByteIOContext *s )
 
 unsigned int get_be16( ByteIOContext *s )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     unsigned int val;
     val = get_byte(s) << 8;
     val |= get_byte(s);
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return val;
@@ -866,28 +866,28 @@ unsigned int get_be16( ByteIOContext *s )
 
 unsigned int get_be24( ByteIOContext *s )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     unsigned int val;
     val = get_be16(s) << 8;
     val |= get_byte(s);
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return val;
 }
 unsigned int get_be32( ByteIOContext *s )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     unsigned int val;
     val = get_be16(s) << 16;
     val |= get_be16(s);
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return val;
@@ -895,7 +895,7 @@ unsigned int get_be32( ByteIOContext *s )
 
 char *get_strz( ByteIOContext *s, char *buf, int maxlen )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     int i = 0;
@@ -911,7 +911,7 @@ char *get_strz( ByteIOContext *s, char *buf, int maxlen )
 
     buf[i] = 0; /* Ensure null terminated, but may be truncated */
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return buf;
@@ -919,14 +919,14 @@ char *get_strz( ByteIOContext *s, char *buf, int maxlen )
 
 uint64_t get_be64( ByteIOContext *s )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     uint64_t val;
     val = (uint64_t) get_be32(s) << 32;
     val |= (uint64_t) get_be32(s);
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return val;
@@ -934,7 +934,7 @@ uint64_t get_be64( ByteIOContext *s )
 
 uint64_t ff_get_v( ByteIOContext *bc )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     uint64_t val = 0;
@@ -946,7 +946,7 @@ uint64_t ff_get_v( ByteIOContext *bc )
         val = (val << 7) + (tmp & 127);
     } while (tmp & 128);
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return val;
@@ -954,7 +954,7 @@ uint64_t ff_get_v( ByteIOContext *bc )
 
 int url_fdopen( ByteIOContext **s, URLContext *h )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     uint8_t *buffer;
@@ -975,7 +975,7 @@ int url_fdopen( ByteIOContext **s, URLContext *h )
     if (!buffer)
     {
 
-        LogStr ("Exit");
+        //LogStr ("Exit");
 
 
         return AVERROR(ENOMEM);
@@ -985,7 +985,7 @@ int url_fdopen( ByteIOContext **s, URLContext *h )
     if (!*s)
     {
         av_free(buffer);
-        LogStr ("Exit");
+        //LogStr ("Exit");
 
 
         return AVERROR(ENOMEM);
@@ -995,7 +995,7 @@ int url_fdopen( ByteIOContext **s, URLContext *h )
     {
         av_free(buffer);
         av_freep(s);
-        LogStr ("Exit");
+        //LogStr ("Exit");
 
 
         return AVERROR(EIO);
@@ -1010,7 +1010,7 @@ int url_fdopen( ByteIOContext **s, URLContext *h )
         (*s)->read_seek = (offset_t(*)( void *, int, int64_t, int )) h->prot->url_read_seek;
     }
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return 0;
@@ -1018,7 +1018,7 @@ int url_fdopen( ByteIOContext **s, URLContext *h )
 
 int url_setbufsize( ByteIOContext *s, int buf_size )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     uint8_t *buffer;
@@ -1027,7 +1027,7 @@ int url_setbufsize( ByteIOContext *s, int buf_size )
     if (!buffer)
     {
 
-        LogStr ("Exit");
+        //LogStr ("Exit");
 
 
         return AVERROR(ENOMEM);
@@ -1039,7 +1039,7 @@ int url_setbufsize( ByteIOContext *s, int buf_size )
     s->buf_ptr = buffer;
     url_resetbuf(s, s->write_flag ? URL_WRONLY : URL_RDONLY);
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return 0;
@@ -1047,7 +1047,7 @@ int url_setbufsize( ByteIOContext *s, int buf_size )
 
 int url_resetbuf( ByteIOContext *s, int flags )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     URLContext *h = s->opaque;
@@ -1055,7 +1055,7 @@ int url_resetbuf( ByteIOContext *s, int flags )
     if ((flags & URL_RDWR) || (h && h->flags != flags && !h->flags & URL_RDWR))
     {
 
-        LogStr ("Exit");
+        //LogStr ("Exit");
 
 
         return AVERROR(EINVAL);
@@ -1072,7 +1072,7 @@ int url_resetbuf( ByteIOContext *s, int flags )
         s->write_flag = 0;
     }
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return 0;
@@ -1080,7 +1080,7 @@ int url_resetbuf( ByteIOContext *s, int flags )
 
 int url_fopen( ByteIOContext **s, const char *filename, int flags )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     URLContext *h;
@@ -1089,7 +1089,7 @@ int url_fopen( ByteIOContext **s, const char *filename, int flags )
     err = url_open(&h, filename, flags);
     if (err < 0)
     {
-        LogStr ("Exit");
+        //LogStr ("Exit");
 
 
         return err;
@@ -1099,13 +1099,13 @@ int url_fopen( ByteIOContext **s, const char *filename, int flags )
     if (err < 0)
     {
         url_close(h);
-        LogStr ("Exit");
+        //LogStr ("Exit");
 
 
         return err;
     }
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return 0;
@@ -1113,7 +1113,7 @@ int url_fopen( ByteIOContext **s, const char *filename, int flags )
 
 int url_fclose( ByteIOContext *s )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     URLContext *h = s->opaque;
@@ -1121,7 +1121,7 @@ int url_fclose( ByteIOContext *s )
     av_free(s->buffer);
     av_free(s);
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return url_close(h);
@@ -1129,9 +1129,9 @@ int url_fclose( ByteIOContext *s )
 
 URLContext *url_fileno( ByteIOContext *s )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return s->opaque;
@@ -1140,7 +1140,7 @@ URLContext *url_fileno( ByteIOContext *s )
 #ifdef CONFIG_MUXERS
 int url_fprintf(ByteIOContext *s, const char *fmt, ...)
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     va_list ap;
@@ -1152,7 +1152,7 @@ int url_fprintf(ByteIOContext *s, const char *fmt, ...)
     va_end(ap);
     put_buffer(s, buf, strlen(buf));
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return ret;
@@ -1161,7 +1161,7 @@ int url_fprintf(ByteIOContext *s, const char *fmt, ...)
 
 char *url_fgets( ByteIOContext *s, char *buf, int buf_size )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     int c;
@@ -1171,7 +1171,7 @@ char *url_fgets( ByteIOContext *s, char *buf, int buf_size )
 
     if (c == EOF)
     {
-        LogStr ("Exit");
+        //LogStr ("Exit");
 
 
         return NULL;
@@ -1198,7 +1198,7 @@ char *url_fgets( ByteIOContext *s, char *buf, int buf_size )
         *q = '\0';
     }
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return buf;
@@ -1206,9 +1206,9 @@ char *url_fgets( ByteIOContext *s, char *buf, int buf_size )
 
 int url_fget_max_packet_size( ByteIOContext *s )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return s->max_packet_size;
@@ -1216,17 +1216,17 @@ int url_fget_max_packet_size( ByteIOContext *s )
 
 int av_url_read_fpause( ByteIOContext *s, int pause )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     if (!s->read_pause)
     {
-        LogStr ("Exit");
+        //LogStr ("Exit");
 
 
         return AVERROR(ENOSYS);
     }
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return s->read_pause(s->opaque, pause);
@@ -1234,7 +1234,7 @@ int av_url_read_fpause( ByteIOContext *s, int pause )
 
 offset_t av_url_read_fseek( ByteIOContext *s, int stream_index, int64_t timestamp, int flags )
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     URLContext *h = s->opaque;
@@ -1242,7 +1242,7 @@ offset_t av_url_read_fseek( ByteIOContext *s, int stream_index, int64_t timestam
 
     if (!s->read_seek)
     {
-        LogStr ("Exit");
+        //LogStr ("Exit");
 
 
         return AVERROR(ENOSYS);
@@ -1255,7 +1255,7 @@ offset_t av_url_read_fseek( ByteIOContext *s, int stream_index, int64_t timestam
         s->pos = s->seek(h, 0, SEEK_CUR);
     }
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return ret;
@@ -1267,14 +1267,14 @@ offset_t av_url_read_fseek( ByteIOContext *s, int stream_index, int64_t timestam
 /* buffer handling */
 int url_open_buf(ByteIOContext **s, uint8_t *buf, int buf_size, int flags)
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     int ret;
     *s = av_mallocz(sizeof(ByteIOContext));
     if(!*s)
     {
-        LogStr ("Exit");
+        //LogStr ("Exit");
 
 
         return AVERROR(ENOMEM);
@@ -1288,7 +1288,7 @@ int url_open_buf(ByteIOContext **s, uint8_t *buf, int buf_size, int flags)
         av_freep(s);
     }
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return ret;
@@ -1296,12 +1296,12 @@ int url_open_buf(ByteIOContext **s, uint8_t *buf, int buf_size, int flags)
 
 int url_close_buf(ByteIOContext *s)
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     put_flush_packet(s);
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return s->buf_ptr - s->buffer;
@@ -1319,7 +1319,7 @@ typedef struct DynBuffer
 
 static int dyn_buf_write(void *opaque, uint8_t *buf, int buf_size)
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     DynBuffer *d = opaque;
@@ -1330,7 +1330,7 @@ static int dyn_buf_write(void *opaque, uint8_t *buf, int buf_size)
     new_allocated_size = d->allocated_size;
     if(new_size < d->pos || new_size> INT_MAX/2)
     {
-        LogStr ("Exit");
+        //LogStr ("Exit");
 
 
         return -1;
@@ -1348,7 +1348,7 @@ static int dyn_buf_write(void *opaque, uint8_t *buf, int buf_size)
         d->buffer = av_realloc(d->buffer, new_allocated_size);
         if(d->buffer == NULL)
         {
-            LogStr ("Exit");
+            //LogStr ("Exit");
 
 
             return -1234;
@@ -1361,7 +1361,7 @@ static int dyn_buf_write(void *opaque, uint8_t *buf, int buf_size)
     d->size = d->pos;
 
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return buf_size;
@@ -1369,7 +1369,7 @@ static int dyn_buf_write(void *opaque, uint8_t *buf, int buf_size)
 
 static int dyn_packet_buf_write(void *opaque, uint8_t *buf, int buf_size)
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     unsigned char buf1[4];
@@ -1383,13 +1383,13 @@ static int dyn_packet_buf_write(void *opaque, uint8_t *buf, int buf_size)
     ret= dyn_buf_write(opaque, buf1, 4);
     if(ret < 0)
     {
-        LogStr ("Exit");
+        //LogStr ("Exit");
 
 
         return ret;
     }
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     /* then the data */
@@ -1398,7 +1398,7 @@ static int dyn_packet_buf_write(void *opaque, uint8_t *buf, int buf_size)
 
 static offset_t dyn_buf_seek(void *opaque, offset_t offset, int whence)
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     DynBuffer *d = opaque;
@@ -1410,14 +1410,14 @@ static offset_t dyn_buf_seek(void *opaque, offset_t offset, int whence)
 
     if (offset < 0 || offset> 0x7fffffffLL)
     {
-        LogStr ("Exit");
+        //LogStr ("Exit");
 
 
         return -1;
     }
 
     d->pos = offset;
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return 0;
@@ -1425,7 +1425,7 @@ static offset_t dyn_buf_seek(void *opaque, offset_t offset, int whence)
 
 static int url_open_dyn_buf_internal(ByteIOContext **s, int max_packet_size)
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     DynBuffer *d;
@@ -1438,14 +1438,14 @@ static int url_open_dyn_buf_internal(ByteIOContext **s, int max_packet_size)
 
     if(sizeof(DynBuffer) + io_buffer_size < io_buffer_size)
     {
-        LogStr ("Exit");
+        //LogStr ("Exit");
         return -1;
     }
 
     d = av_malloc(sizeof(DynBuffer) + io_buffer_size);
     if (!d)
     {
-        LogStr ("Exit");
+        //LogStr ("Exit");
         return -1;
     }
 
@@ -1453,7 +1453,7 @@ static int url_open_dyn_buf_internal(ByteIOContext **s, int max_packet_size)
     if(!*s)
     {
         av_free(d);
-        LogStr ("Exit");
+        //LogStr ("Exit");
         return AVERROR(ENOMEM);
     }
     d->io_buffer_size = io_buffer_size;
@@ -1475,7 +1475,7 @@ static int url_open_dyn_buf_internal(ByteIOContext **s, int max_packet_size)
         av_freep(s);
     }
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return ret;
@@ -1483,9 +1483,9 @@ static int url_open_dyn_buf_internal(ByteIOContext **s, int max_packet_size)
 
 int url_open_dyn_buf(ByteIOContext **s)
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return url_open_dyn_buf_internal(s, 0);
@@ -1493,23 +1493,23 @@ int url_open_dyn_buf(ByteIOContext **s)
 
 int url_open_dyn_packet_buf(ByteIOContext **s, int max_packet_size)
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     if (max_packet_size <= 0)
     {
-        LogStr ("Exit");
+        //LogStr ("Exit");
         return -1;
     }
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
     return url_open_dyn_buf_internal(s, max_packet_size);
 }
 
 int url_close_dyn_buf(ByteIOContext *s, uint8_t **pbuffer)
 {
-    LogStr ("Init");
+    //LogStr ("Init");
 
 
     DynBuffer *d = s->opaque;
@@ -1522,7 +1522,7 @@ int url_close_dyn_buf(ByteIOContext *s, uint8_t **pbuffer)
     av_free(d);
     av_free(s);
 
-    LogStr ("Exit");
+    //LogStr ("Exit");
 
 
     return size;

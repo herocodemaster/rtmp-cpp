@@ -118,12 +118,14 @@ static uint8_t static_rl_table_store[5][2][2 * MAX_RUN + MAX_LEVEL + 3];
 
 
 //Fernando: 20080908
-#undef printf
-#define LogStr(str)  printf ( "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__)
-
+//#undef printf
+//#define LogStr(str)  printf ( "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__)
+#define LogStr(str) av_log(NULL, AV_LOG_ERROR, "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__);
 
 int h263_get_picture_format( int width, int height )
 {
+    LogStr("Init");
+
     int format;
 
     if (width == 128 && height == 96)
@@ -138,6 +140,12 @@ int h263_get_picture_format( int width, int height )
         format = 5;
     else
         format = 7;
+
+
+
+    LogStr("Exit");
+
+
     return format;
 }
 
@@ -150,26 +158,34 @@ static void show_pict_info( MpegEncContext *s )
 
 static void aspect_to_info( MpegEncContext * s, AVRational aspect )
 {
+    LogStr("Init");
+
     int i;
 
     if (aspect.num == 0)
-        aspect = (AVRational)
-            {   1,1};
+    {
+        aspect = (AVRational) {   1,1};
+    }
 
-            for(i=1; i<6; i++)
-            {
-                if(av_cmp_q(pixel_aspect[i], aspect) == 0)
-                {
-                    s->aspect_ratio_info=i;
-                    return;
-                }
-            }
-
-            s->aspect_ratio_info= FF_ASPECT_EXTENDED;
+    for(i=1; i<6; i++)
+    {
+        if(av_cmp_q(pixel_aspect[i], aspect) == 0)
+        {
+            s->aspect_ratio_info=i;
+            LogStr("Exit");
+            return;
         }
+    }
+
+    s->aspect_ratio_info= FF_ASPECT_EXTENDED;
+
+    LogStr("Exit");
+}
 
 void ff_flv_encode_picture_header( MpegEncContext * s, int picture_number )
 {
+    LogStr("Init");
+
     int format;
 
     align_put_bits(&s->pb);
@@ -216,10 +232,15 @@ void ff_flv_encode_picture_header( MpegEncContext * s, int picture_number )
     {
         s->y_dc_scale_table = s->c_dc_scale_table = ff_mpeg1_dc_scale_table;
     }
+
+    LogStr("Exit");
+
 }
 
 void h263_encode_picture_header( MpegEncContext * s, int picture_number )
 {
+    LogStr("Init");
+
     int format, coded_frame_rate, coded_frame_rate_base, i, temp_ref;
     int best_clock_code = 1;
     int best_divisor = 60;
@@ -370,6 +391,8 @@ void h263_encode_picture_header( MpegEncContext * s, int picture_number )
     {
         s->y_dc_scale_table = s->c_dc_scale_table = ff_mpeg1_dc_scale_table;
     }
+
+    LogStr("Exit");
 }
 
 /**
@@ -377,6 +400,9 @@ void h263_encode_picture_header( MpegEncContext * s, int picture_number )
  */
 void h263_encode_gob_header( MpegEncContext * s, int mb_line )
 {
+
+    LogStr("Init");
+
     put_bits(&s->pb, 17, 1); /* GBSC */
 
     if (s->h263_slice_structured)
@@ -399,10 +425,16 @@ void h263_encode_gob_header( MpegEncContext * s, int mb_line )
         put_bits(&s->pb, 2, s->pict_type == FF_I_TYPE); /* GFID */
         put_bits(&s->pb, 5, s->qscale); /* GQUANT */
     }
+
+    LogStr("Exit");
 }
 
 static inline int get_block_rate( MpegEncContext * s, DCTELEM block[64], int block_last_index, uint8_t scantable[64] )
 {
+
+    LogStr("Init");
+
+
     int last = 0;
     int j;
     int rate = 0;
@@ -429,11 +461,15 @@ static inline int get_block_rate( MpegEncContext * s, DCTELEM block[64], int blo
         }
     }
 
+    LogStr("Exit");
     return rate;
 }
 
 static inline int decide_ac_pred( MpegEncContext * s, DCTELEM block[6][64], int dir[6], uint8_t *st[6], int zigzag_last_index[6] )
 {
+    LogStr("Init");
+
+
     int score = 0;
     int i, n;
     int8_t * const qscale_table = s->current_picture.qscale_table;
@@ -516,11 +552,15 @@ static inline int decide_ac_pred( MpegEncContext * s, DCTELEM block[6][64], int 
         score += get_block_rate(s, block[n], s->block_last_index[n], st[n]);
     }
 
+    LogStr("Exit");
     return score < 0;
 }
 
 static inline void restore_ac_coeffs( MpegEncContext * s, DCTELEM block[6][64], int dir[6], uint8_t *st[6], int zigzag_last_index[6] )
 {
+    LogStr("Init");
+
+
     int i, n;
     memcpy(s->block_last_index, zigzag_last_index, sizeof(int) * 6);
 
@@ -546,6 +586,8 @@ static inline void restore_ac_coeffs( MpegEncContext * s, DCTELEM block[6][64], 
             }
         }
     }
+
+    LogStr("Exit");
 }
 
 /**
@@ -553,6 +595,9 @@ static inline void restore_ac_coeffs( MpegEncContext * s, DCTELEM block[6][64], 
  */
 static void ff_init_qscale_tab( MpegEncContext *s )
 {
+    LogStr("Init");
+
+
     int8_t * const qscale_table = s->current_picture.qscale_table;
     int i;
 
@@ -562,6 +607,8 @@ static void ff_init_qscale_tab( MpegEncContext *s )
         int qp = (lam * 139 + FF_LAMBDA_SCALE * 64) >> (FF_LAMBDA_SHIFT + 7);
         qscale_table[s->mb_index2xy[i]] = av_clip(qp, s->avctx->qmin, s->avctx->qmax);
     }
+
+    LogStr("Exit");
 }
 
 /**
@@ -569,6 +616,9 @@ static void ff_init_qscale_tab( MpegEncContext *s )
  */
 void ff_clean_h263_qscales( MpegEncContext *s )
 {
+    LogStr("Init");
+
+
     int i;
     int8_t * const qscale_table = s->current_picture.qscale_table;
 
@@ -597,6 +647,8 @@ void ff_clean_h263_qscales( MpegEncContext *s )
             }
         }
     }
+
+    LogStr("Exit");
 }
 
 /**
@@ -604,6 +656,9 @@ void ff_clean_h263_qscales( MpegEncContext *s )
  */
 void ff_clean_mpeg4_qscales( MpegEncContext *s )
 {
+    LogStr("Init");
+
+
     int i;
     int8_t * const qscale_table = s->current_picture.qscale_table;
 
@@ -643,6 +698,8 @@ void ff_clean_mpeg4_qscales( MpegEncContext *s )
             }
         }
     }
+
+    LogStr("Exit");
 }
 
 #endif //CONFIG_ENCODERS
@@ -651,16 +708,24 @@ void ff_clean_mpeg4_qscales( MpegEncContext *s )
 
 void ff_mpeg4_init_direct_mv( MpegEncContext *s )
 {
+    LogStr("Init");
+
+
     int i;
     for (i = 0; i < tab_size; i++)
     {
         s->direct_scale_mv[0][i] = (i - tab_bias) * s->pb_time / s->pp_time;
         s->direct_scale_mv[1][i] = (i - tab_bias) * (s->pb_time - s->pp_time) / s->pp_time;
     }
+
+    LogStr("Exit");
 }
 
 static inline void ff_mpeg4_set_one_direct_mv( MpegEncContext *s, int mx, int my, int i )
 {
+    LogStr("Init");
+
+
     int xy = s->block_index[i];
     uint16_t time_pp = s->pp_time;
     uint16_t time_pb = s->pb_time;
@@ -688,6 +753,8 @@ static inline void ff_mpeg4_set_one_direct_mv( MpegEncContext *s, int mx, int my
         s->mv[0][i][1] = p_my * time_pb / time_pp + my;
         s->mv[1][i][1] = my ? s->mv[0][i][1] - p_my : p_my * (time_pb - time_pp) / time_pp;
     }
+
+    LogStr("Exit");
 }
 
 #undef tab_size
@@ -699,6 +766,9 @@ static inline void ff_mpeg4_set_one_direct_mv( MpegEncContext *s, int mx, int my
  */
 int ff_mpeg4_set_direct_mv( MpegEncContext *s, int mx, int my )
 {
+    LogStr("Init");
+
+
     const int mb_index = s->mb_x + s->mb_y * s->mb_stride;
     const int colocated_mb_type = s->next_picture.mb_type[mb_index];
     uint16_t time_pp = s->pp_time;
@@ -715,6 +785,7 @@ int ff_mpeg4_set_direct_mv( MpegEncContext *s, int mx, int my )
         {
             ff_mpeg4_set_one_direct_mv(s, mx, my, i);
         }
+        LogStr("Exit");
         return MB_TYPE_DIRECT2 | MB_TYPE_8x8 | MB_TYPE_L0L1;
     }
     else if (IS_INTERLACED(colocated_mb_type))
@@ -740,6 +811,7 @@ int ff_mpeg4_set_direct_mv( MpegEncContext *s, int mx, int my )
             s->mv[1][i][0] = mx ? s->mv[0][i][0] - s->p_field_mv_table[i][0][mb_index][0] : s->p_field_mv_table[i][0][mb_index][0] * (time_pb - time_pp) / time_pp;
             s->mv[1][i][1] = my ? s->mv[0][i][1] - s->p_field_mv_table[i][0][mb_index][1] : s->p_field_mv_table[i][0][mb_index][1] * (time_pb - time_pp) / time_pp;
         }
+        LogStr("Exit");
         return MB_TYPE_DIRECT2 | MB_TYPE_16x8 | MB_TYPE_L0L1 | MB_TYPE_INTERLACED;
     }
     else
@@ -750,15 +822,25 @@ int ff_mpeg4_set_direct_mv( MpegEncContext *s, int mx, int my )
         s->mv[1][1][0] = s->mv[1][2][0] = s->mv[1][3][0] = s->mv[1][0][0];
         s->mv[1][1][1] = s->mv[1][2][1] = s->mv[1][3][1] = s->mv[1][0][1];
         if ((s->avctx->workaround_bugs & FF_BUG_DIRECT_BLOCKSIZE) || !s->quarter_sample)
+        {
             s->mv_type = MV_TYPE_16X16;
+        }
         else
+        {
             s->mv_type = MV_TYPE_8X8;
+        }
+        LogStr("Exit");
         return MB_TYPE_DIRECT2 | MB_TYPE_16x16 | MB_TYPE_L0L1; //Note see prev line
     }
+
+    LogStr("Exit");
 }
 
 void ff_h263_update_motion_val( MpegEncContext * s )
 {
+    LogStr("Init");
+
+
     const int mb_xy = s->mb_y * s->mb_stride + s->mb_x;
     //FIXME a lot of that is only needed for !low_delay
     const int wrap = s->b8_stride;
@@ -814,16 +896,22 @@ void ff_h263_update_motion_val( MpegEncContext * s )
         else
             s->current_picture.mb_type[mb_xy] = MB_TYPE_L0 | MB_TYPE_16x16;
     }
+
+    LogStr("Exit");
 }
 
 #ifdef CONFIG_ENCODERS
 
 static inline int h263_get_motion_length( MpegEncContext * s, int val, int f_code )
 {
+    LogStr("Init");
+
+
     int l, bit_size, code;
 
     if (val == 0)
     {
+        LogStr("Exit");
         return mvtab[0][1];
     }
     else
@@ -835,12 +923,18 @@ static inline int h263_get_motion_length( MpegEncContext * s, int val, int f_cod
         val--;
         code = (val >> bit_size) + 1;
 
+        LogStr("Exit");
         return mvtab[code][1] + 1 + bit_size;
     }
+
+    LogStr("Exit");
 }
 
 static inline void ff_h263_encode_motion_vector( MpegEncContext * s, int x, int y, int f_code )
 {
+    LogStr("Init");
+
+
     if (s->flags2 & CODEC_FLAG2_NO_OUTPUT)
     {
         skip_put_bits(&s->pb, h263_get_motion_length(s, x, f_code) + h263_get_motion_length(s, y, f_code));
@@ -850,10 +944,15 @@ static inline void ff_h263_encode_motion_vector( MpegEncContext * s, int x, int 
         ff_h263_encode_motion(s, x, f_code);
         ff_h263_encode_motion(s, y, f_code);
     }
+
+    LogStr("Exit");
 }
 
 static inline int get_p_cbp( MpegEncContext * s, DCTELEM block[6][64], int motion_x, int motion_y )
 {
+    LogStr("Init");
+
+
     int cbp, i;
 
     if (s->flags & CODEC_FLAG_CBP_RD)
@@ -922,11 +1021,16 @@ static inline int get_p_cbp( MpegEncContext * s, DCTELEM block[6][64], int motio
                 cbp |= 1 << (5 - i);
         }
     }
+
+    LogStr("Exit");
     return cbp;
 }
 
 static inline int get_b_cbp( MpegEncContext * s, DCTELEM block[6][64], int motion_x, int motion_y, int mb_type )
 {
+    LogStr("Init");
+
+
     int cbp = 0, i;
 
     if (s->flags & CODEC_FLAG_CBP_RD)
@@ -975,11 +1079,16 @@ static inline int get_b_cbp( MpegEncContext * s, DCTELEM block[6][64], int motio
                 cbp |= 1 << (5 - i);
         }
     }
+
+    LogStr("Exit");
     return cbp;
 }
 
 static inline void mpeg4_encode_blocks( MpegEncContext * s, DCTELEM block[6][64], int intra_dc[6], uint8_t **scan_table, PutBitContext *dc_pb, PutBitContext *ac_pb )
 {
+    LogStr("Init");
+
+
     int i;
 
     if (scan_table)
@@ -1018,10 +1127,15 @@ static inline void mpeg4_encode_blocks( MpegEncContext * s, DCTELEM block[6][64]
             }
         }
     }
+
+    LogStr("Exit");
 }
 
 void mpeg4_encode_mb( MpegEncContext * s, DCTELEM block[6][64], int motion_x, int motion_y )
 {
+    LogStr("Init");
+
+
     int cbpc, cbpy, pred_x, pred_y;
     PutBitContext * const pb2 = s->data_partitioning ? &s->pb2 : &s->pb;
     PutBitContext * const tex_pb = s->data_partitioning && s->pict_type != FF_B_TYPE ? &s->tex_pb : &s->pb;
@@ -1060,6 +1174,7 @@ void mpeg4_encode_mb( MpegEncContext * s, DCTELEM block[6][64], int motion_x, in
                 s->qscale -= s->dquant;
                 //                s->mb_skipped=1;
 
+                LogStr("Exit");
                 return;
             }
 
@@ -1078,6 +1193,8 @@ void mpeg4_encode_mb( MpegEncContext * s, DCTELEM block[6][64], int motion_x, in
                     s->last_bits++;
                 }
                 s->skip_count++;
+
+                LogStr("Exit");
                 return;
             }
 
@@ -1245,6 +1362,7 @@ void mpeg4_encode_mb( MpegEncContext * s, DCTELEM block[6][64], int motion_x, in
                     }
                     s->skip_count++;
 
+                    LogStr("Exit");
                     return;
                 }
             }
@@ -1426,10 +1544,14 @@ void mpeg4_encode_mb( MpegEncContext * s, DCTELEM block[6][64], int motion_x, in
         if (s->ac_pred)
             restore_ac_coeffs(s, block, dir, scan_table, zigzag_last_index);
     }
+
+    LogStr("Exit");
 }
 
 void h263_encode_mb( MpegEncContext * s, DCTELEM block[6][64], int motion_x, int motion_y )
 {
+    LogStr("Init");
+
     int cbpc, cbpy, i, cbp, pred_x, pred_y;
     int16_t pred_dc;
     int16_t rec_intradc[6];
@@ -1454,6 +1576,7 @@ void h263_encode_mb( MpegEncContext * s, DCTELEM block[6][64], int motion_x, int
             }
             s->skip_count++;
 
+            LogStr("Exit");
             return;
         }
         put_bits(&s->pb, 1, 0); /* mb coded */
@@ -1655,11 +1778,15 @@ void h263_encode_mb( MpegEncContext * s, DCTELEM block[6][64], int motion_x, int
             s->i_count++;
         }
     }
+
+    LogStr("Exit");
 }
 #endif
 
 void ff_h263_loop_filter( MpegEncContext * s )
 {
+    LogStr("Init");
+
     int qp_c;
     const int linesize = s->linesize;
     const int uvlinesize = s->uvlinesize;
@@ -1754,11 +1881,15 @@ void ff_h263_loop_filter( MpegEncContext * s )
             }
         }
     }
+
+    LogStr("Exit");
 }
 
 #ifdef CONFIG_ENCODERS
 static int h263_pred_dc( MpegEncContext * s, int n, int16_t **dc_val_ptr )
 {
+    LogStr("Init");
+
     int x, y, wrap, a, c, pred_dc, scale;
     int16_t *dc_val;
 
@@ -1805,12 +1936,16 @@ static int h263_pred_dc( MpegEncContext * s, int n, int16_t **dc_val_ptr )
     /* we assume pred is positive */
     //pred_dc = (pred_dc + (scale >> 1)) / scale;
     *dc_val_ptr = &dc_val[x + y * wrap];
+
+    LogStr("Exit");
     return pred_dc;
 }
 #endif /* CONFIG_ENCODERS */
 
 static void h263_pred_acdc( MpegEncContext * s, DCTELEM *block, int n )
 {
+    LogStr("Init");
+
     int x, y, wrap, a, c, pred_dc, scale, i;
     int16_t *dc_val, *ac_val, *ac_val1;
 
@@ -1910,10 +2045,15 @@ static void h263_pred_acdc( MpegEncContext * s, DCTELEM *block, int n )
     /* top copy */
     for (i = 1; i < 8; i++)
         ac_val1[8 + i] = block[s->dsp.idct_permutation[i]];
+
+
+    LogStr("Exit");
 }
 
 int16_t *h263_pred_motion( MpegEncContext * s, int block, int dir, int *px, int *py )
 {
+    LogStr("Init");
+
     int wrap;
     int16_t *A, *B, *C, (*mot_val)[2];
     static const int off[4] = { 2, 1, 1, -1 };
@@ -1985,12 +2125,16 @@ int16_t *h263_pred_motion( MpegEncContext * s, int block, int dir, int *px, int 
         *px = mid_pred(A[0], B[0], C[0]);
         *py = mid_pred(A[1], B[1], C[1]);
     }
+
+    LogStr("Exit");
     return *mot_val;
 }
 
 #ifdef CONFIG_ENCODERS
 void ff_h263_encode_motion( MpegEncContext * s, int val, int f_code )
 {
+    LogStr("Init");
+
     int range, l, bit_size, sign, code, bits;
 
     if (val == 0)
@@ -2020,11 +2164,15 @@ void ff_h263_encode_motion( MpegEncContext * s, int val, int f_code )
             put_bits(&s->pb, bit_size, bits);
         }
     }
+
+    LogStr("Exit");
 }
 
 /* Encode MV differences on H.263+ with Unrestricted MV mode */
 static void h263p_encode_umotion( MpegEncContext * s, int val )
 {
+    LogStr("Init");
+
     short sval = 0;
     short i = 0;
     short n_bits = 0;
@@ -2062,10 +2210,14 @@ static void h263p_encode_umotion( MpegEncContext * s, int val )
         put_bits(&s->pb, (2 * n_bits) + 1, code);
         //printf("\nVal = %d\tCode = %d", sval, code);
     }
+
+    LogStr("Exit");
 }
 
 static void init_mv_penalty_and_fcode( MpegEncContext *s )
 {
+    LogStr("Init");
+
     int f_code;
     int mv;
 
@@ -2115,10 +2267,14 @@ static void init_mv_penalty_and_fcode( MpegEncContext *s )
     {
         umv_fcode_tab[mv] = 1;
     }
+
+    LogStr("Exit");
 }
 
 static void init_uni_dc_tab( void )
 {
+    LogStr("Init");
+
     int level, uni_code, uni_len;
 
     for (level = -256; level < 256; level++)
@@ -2177,10 +2333,15 @@ static void init_uni_dc_tab( void )
         uni_DCtab_chrom_len[level + 256] = uni_len;
 
     }
+
+
+    LogStr("Exit");
 }
 
 static void init_uni_mpeg4_rl_tab( RLTable *rl, uint32_t *bits_tab, uint8_t *len_tab )
 {
+    LogStr("Init");
+
     int slevel, run, last;
 
     assert(MAX_LEVEL >= 64);
@@ -2284,10 +2445,14 @@ static void init_uni_mpeg4_rl_tab( RLTable *rl, uint32_t *bits_tab, uint8_t *len
             }
         }
     }
+
+    LogStr("Exit");
 }
 
 static void init_uni_h263_rl_tab( RLTable *rl, uint32_t *bits_tab, uint8_t *len_tab )
 {
+    LogStr("Init");
+
     int slevel, run, last;
 
     assert(MAX_LEVEL >= 64);
@@ -2340,6 +2505,8 @@ static void init_uni_h263_rl_tab( RLTable *rl, uint32_t *bits_tab, uint8_t *len_
             }
         }
     }
+
+    LogStr("Exit");
 }
 
 void h263_encode_init( MpegEncContext *s )
@@ -2455,6 +2622,8 @@ void h263_encode_init( MpegEncContext *s )
  */
 static void h263_encode_block( MpegEncContext * s, DCTELEM * block, int n )
 {
+    LogStr("Init");
+
     int level, run, last, i, j, last_index, last_non_zero, sign, slevel, code;
     RLTable *rl;
 
@@ -2599,6 +2768,8 @@ static void h263_encode_block( MpegEncContext * s, DCTELEM * block, int n )
             last_non_zero = i;
         }
     }
+
+    LogStr("Exit");
 }
 
 /***************************************************/
@@ -2607,16 +2778,23 @@ static void h263_encode_block( MpegEncContext * s, DCTELEM * block, int n )
  */
 void ff_mpeg4_stuffing( PutBitContext * pbc )
 {
+    LogStr("Init");
+
     int length;
     put_bits(pbc, 1, 0);
     length = (-put_bits_count(pbc)) & 7;
     if (length)
         put_bits(pbc, length, (1 << length) - 1);
+
+
+    LogStr("Exit");
 }
 
 /* must be called before writing the header */
 void ff_set_mpeg4_time( MpegEncContext * s )
 {
+    LogStr("Init");
+
     if (s->pict_type == FF_B_TYPE)
     {
         ff_mpeg4_init_direct_mv(s);
@@ -2626,10 +2804,14 @@ void ff_set_mpeg4_time( MpegEncContext * s )
         s->last_time_base = s->time_base;
         s->time_base = s->time / s->avctx->time_base.den;
     }
+
+    LogStr("Exit");
 }
 
 static void mpeg4_encode_gop_header( MpegEncContext * s )
 {
+    LogStr("Init");
+
     int hours, minutes, seconds;
     int64_t time;
 
@@ -2659,10 +2841,14 @@ static void mpeg4_encode_gop_header( MpegEncContext * s )
     s->last_time_base = time / s->avctx->time_base.den;
 
     ff_mpeg4_stuffing(&s->pb);
+
+    LogStr("Exit");
 }
 
 static void mpeg4_encode_visual_object_header( MpegEncContext * s )
 {
+    LogStr("Init");
+
     int profile_and_level_indication;
     int vo_ver_id;
 
@@ -2716,14 +2902,21 @@ static void mpeg4_encode_visual_object_header( MpegEncContext * s )
     put_bits(&s->pb, 1, 0); //video signal type == no clue //FIXME
 
     ff_mpeg4_stuffing(&s->pb);
+
+    LogStr("Exit");
 }
 
 static void mpeg4_encode_vol_header( MpegEncContext * s, int vo_number, int vol_number )
 {
+    LogStr("Init");
+
     int vo_ver_id;
 
     if (!ENABLE_MPEG4_ENCODER)
+    {
+        LogStr("Exit");
         return;
+    }
 
     if (s->max_b_frames || s->quarter_sample)
     {
@@ -2835,11 +3028,16 @@ static void mpeg4_encode_vol_header( MpegEncContext * s, int vo_number, int vol_
         put_bits(&s->pb, 16, 0x1B2); /* user_data */
         ff_put_string(&s->pb, LIBAVCODEC_IDENT, 0);
     }
+
+
+    LogStr("Exit");
 }
 
 /* write mpeg4 VOP header */
 void mpeg4_encode_picture_header( MpegEncContext * s, int picture_number )
 {
+    LogStr("Init");
+
     int time_incr;
     int time_div, time_mod;
 
@@ -2897,6 +3095,9 @@ void mpeg4_encode_picture_header( MpegEncContext * s, int picture_number )
     if (s->pict_type == FF_B_TYPE)
         put_bits(&s->pb, 3, s->b_code); /* fcode_back */
     //    printf("****frame %d\n", picture_number);
+
+
+    LogStr("Exit");
 }
 
 #endif //CONFIG_ENCODERS
@@ -2909,6 +3110,9 @@ void mpeg4_encode_picture_header( MpegEncContext * s, int picture_number )
  */
 static inline int ff_mpeg4_pred_dc( MpegEncContext * s, int n, int level, int *dir_ptr, int encoding )
 {
+    LogStr("Init");
+
+
     int a, b, c, wrap, pred, scale, ret;
     int16_t *dc_val;
 
@@ -2974,11 +3178,13 @@ static inline int ff_mpeg4_pred_dc( MpegEncContext * s, int n, int level, int *d
             if (level < 0)
             {
                 av_log(s->avctx, AV_LOG_ERROR, "dc<0 at %dx%d\n", s->mb_x, s->mb_y);
+                LogStr("Exit");
                 return -1;
             }
             if (level * scale > 2048 + scale)
             {
                 av_log(s->avctx, AV_LOG_ERROR, "dc overflow at %dx%d\n", s->mb_x, s->mb_y);
+                LogStr("Exit");
                 return -1;
             }
         }
@@ -2993,6 +3199,7 @@ static inline int ff_mpeg4_pred_dc( MpegEncContext * s, int n, int level, int *d
     }
     dc_val[0] = level;
 
+    LogStr("Exit");
     return ret;
 }
 
@@ -3003,6 +3210,9 @@ static inline int ff_mpeg4_pred_dc( MpegEncContext * s, int n, int level, int *d
  */
 void mpeg4_pred_ac( MpegEncContext * s, DCTELEM *block, int n, int dir )
 {
+    LogStr("Init");
+
+
     int i;
     int16_t *ac_val, *ac_val1;
     int8_t * const qscale_table = s->current_picture.qscale_table;
@@ -3067,6 +3277,9 @@ void mpeg4_pred_ac( MpegEncContext * s, DCTELEM *block, int n, int dir )
     for (i = 1; i < 8; i++)
         ac_val1[8 + i] = block[s->dsp.idct_permutation[i]];
 
+
+    LogStr("Exit");
+
 }
 
 #ifdef CONFIG_ENCODERS
@@ -3077,6 +3290,8 @@ void mpeg4_pred_ac( MpegEncContext * s, DCTELEM *block, int n, int dir )
  */
 static inline void mpeg4_encode_dc( PutBitContext * s, int level, int n )
 {
+    LogStr("Init");
+
 #if 1
     //    if(level<-255 || level>255) printf("dc overflow\n");
     level += 256;
@@ -3122,18 +3337,28 @@ static inline void mpeg4_encode_dc( PutBitContext * s, int level, int n )
         put_bits(&s->pb, 1, 1);
     }
 #endif
+
+
+    LogStr("Exit");
 }
 
 static inline int mpeg4_get_dc_length( int level, int n )
 {
+    LogStr("Init");
+
     if (n < 4)
     {
+        LogStr("Exit");
         return uni_DCtab_lum_len[level + 256];
     }
     else
     {
+        LogStr("Exit");
         return uni_DCtab_chrom_len[level + 256];
     }
+
+
+    LogStr("Exit");
 }
 
 /**
@@ -3142,6 +3367,8 @@ static inline int mpeg4_get_dc_length( int level, int n )
  */
 static inline void mpeg4_encode_block( MpegEncContext * s, DCTELEM * block, int n, int intra_dc, uint8_t *scan_table, PutBitContext *dc_pb, PutBitContext *ac_pb )
 {
+    LogStr("Init");
+
     int i, last_non_zero;
 #if 0 //variables for the outcommented version
     int code, sign, last;
@@ -3155,8 +3382,13 @@ static inline void mpeg4_encode_block( MpegEncContext * s, DCTELEM * block, int 
     { //Note gcc (3.2.1 at least) will optimize this away
         /* mpeg4 based DC predictor */
         mpeg4_encode_dc(dc_pb, intra_dc, n);
+
         if (last_index < 1)
+        {
+            LogStr("Exit");
             return;
+        }
+
         i = 1;
         rl = &rl_intra;
         bits_tab = uni_mpeg4_intra_rl_bits;
@@ -3165,7 +3397,11 @@ static inline void mpeg4_encode_block( MpegEncContext * s, DCTELEM * block, int 
     else
     {
         if (last_index < 0)
+        {
+            LogStr("Exit");
             return;
+        }
+
         i = 0;
         rl = &rl_inter;
         bits_tab = uni_mpeg4_inter_rl_bits;
@@ -3279,10 +3515,16 @@ static inline void mpeg4_encode_block( MpegEncContext * s, DCTELEM * block, int 
         }
     }
 #endif
+
+
+    LogStr("Exit");
 }
 
 static int mpeg4_get_block_length( MpegEncContext * s, DCTELEM * block, int n, int intra_dc, uint8_t *scan_table )
 {
+
+    LogStr("Init");
+
     int i, last_non_zero;
     const RLTable *rl;
     uint8_t *len_tab;
@@ -3294,7 +3536,10 @@ static int mpeg4_get_block_length( MpegEncContext * s, DCTELEM * block, int n, i
         /* mpeg4 based DC predictor */
         len += mpeg4_get_dc_length(intra_dc, n);
         if (last_index < 1)
+        {
+            LogStr("Exit");
             return len;
+        }
         i = 1;
         rl = &rl_intra;
         len_tab = uni_mpeg4_intra_rl_len;
@@ -3302,7 +3547,10 @@ static int mpeg4_get_block_length( MpegEncContext * s, DCTELEM * block, int n, i
     else
     {
         if (last_index < 0)
+        {
+            LogStr("Exit");
             return 0;
+        }
         i = 0;
         rl = &rl_inter;
         len_tab = uni_mpeg4_inter_rl_len;
@@ -3345,6 +3593,7 @@ static int mpeg4_get_block_length( MpegEncContext * s, DCTELEM * block, int n, i
         }
     }
 
+    LogStr("Exit");
     return len;
 }
 
@@ -3368,6 +3617,9 @@ static VLC cbpc_b_vlc;
 /* XXX: find a better solution to handle static init */
 void h263_decode_init_vlc( MpegEncContext *s )
 {
+    LogStr("Init");
+
+
     static int done = 0;
 
     if (!done)
@@ -3415,6 +3667,9 @@ void h263_decode_init_vlc( MpegEncContext *s )
             &cbpc_b_tab[0][1], 2, 1,
             &cbpc_b_tab[0][0], 2, 1, 8);
     }
+
+
+    LogStr("Exit");
 }
 
 /**
@@ -3422,16 +3677,34 @@ void h263_decode_init_vlc( MpegEncContext *s )
  */
 int ff_h263_get_gob_height( MpegEncContext *s )
 {
+    LogStr("Init");
+
+
     if (s->height <= 400)
+    {
+        LogStr("Exit");
         return 1;
+    }
     else if (s->height <= 800)
+    {
+        LogStr("Exit");
         return 2;
+    }
     else
+    {
+        LogStr("Exit");
         return 4;
+    }
+
+
+    LogStr("Exit");
 }
 
 int ff_h263_decode_mba( MpegEncContext *s )
 {
+    LogStr("Init");
+
+
     int i, mb_pos;
 
     for (i = 0; i < 6; i++)
@@ -3443,11 +3716,16 @@ int ff_h263_decode_mba( MpegEncContext *s )
     s->mb_x = mb_pos % s->mb_width;
     s->mb_y = mb_pos / s->mb_width;
 
+
+    LogStr("Exit");
     return mb_pos;
 }
 
 void ff_h263_encode_mba( MpegEncContext *s )
 {
+    LogStr("Init");
+
+
     int i, mb_pos;
 
     for (i = 0; i < 6; i++)
@@ -3457,6 +3735,9 @@ void ff_h263_encode_mba( MpegEncContext *s )
     }
     mb_pos = s->mb_x + s->mb_width * s->mb_y;
     put_bits(&s->pb, ff_mba_length[i], mb_pos);
+
+
+    LogStr("Exit");
 }
 
 /**
@@ -3465,13 +3746,19 @@ void ff_h263_encode_mba( MpegEncContext *s )
  */
 static int h263_decode_gob_header( MpegEncContext *s )
 {
+    LogStr("Init");
+
+
     unsigned int val, gfid, gob_number;
     int left;
 
     /* Check for GOB Start Code */
     val = show_bits(&s->gb, 16);
     if (val)
+    {
+        LogStr("Exit");
         return -1;
+    }
 
     /* We have a GBSC probably with GSTUFF */
     skip_bits(&s->gb, 16); /* Drop the zeros */
@@ -3483,22 +3770,36 @@ static int h263_decode_gob_header( MpegEncContext *s )
             break; /* Seek the '1' bit */
     }
     if (left <= 13)
+    {
+        LogStr("Exit");
         return -1;
+    }
 
     if (s->h263_slice_structured)
     {
         if (get_bits1(&s->gb) == 0)
+        {
+            LogStr("Exit");
             return -1;
+        }
 
         ff_h263_decode_mba(s);
 
         if (s->mb_num > 1583)
+        {
             if (get_bits1(&s->gb) == 0)
+            {
+                LogStr("Exit");
                 return -1;
+            }
+        }
 
         s->qscale = get_bits(&s->gb, 5); /* SQUANT */
         if (get_bits1(&s->gb) == 0)
+        {
+            LogStr("Exit");
             return -1;
+        }
         gfid = get_bits(&s->gb, 2); /* GFID */
     }
     else
@@ -3511,25 +3812,41 @@ static int h263_decode_gob_header( MpegEncContext *s )
     }
 
     if (s->mb_y >= s->mb_height)
+    {
+        LogStr("Exit");
         return -1;
+    }
 
     if (s->qscale == 0)
+    {
+        LogStr("Exit");
         return -1;
+    }
 
+    LogStr("Exit");
     return 0;
 }
 
 static inline void memsetw( short *tab, int val, int n )
 {
+    LogStr("Init");
+
+
     int i;
     for (i = 0; i < n; i++)
         tab[i] = val;
+
+
+    LogStr("Exit");
 }
 
 #ifdef CONFIG_ENCODERS
 
 void ff_mpeg4_init_partitions( MpegEncContext *s )
 {
+    LogStr("Init");
+
+
     uint8_t *start = pbBufPtr(&s->pb);
     uint8_t *end = s->pb.buf_end;
     int size = end - start;
@@ -3539,10 +3856,15 @@ void ff_mpeg4_init_partitions( MpegEncContext *s )
     set_put_bits_buffer_size(&s->pb, pb_size);
     init_put_bits(&s->tex_pb, start + pb_size, tex_size);
     init_put_bits(&s->pb2, start + pb_size + tex_size, pb_size);
+
+    LogStr("Exit");
 }
 
 void ff_mpeg4_merge_partitions( MpegEncContext *s )
 {
+    LogStr("Init");
+
+
     const int pb2_len = put_bits_count(&s->pb2);
     const int tex_pb_len = put_bits_count(&s->tex_pb);
     const int bits = put_bits_count(&s->pb);
@@ -3568,29 +3890,45 @@ void ff_mpeg4_merge_partitions( MpegEncContext *s )
     ff_copy_bits(&s->pb, s->pb2.buf, pb2_len);
     ff_copy_bits(&s->pb, s->tex_pb.buf, tex_pb_len);
     s->last_bits = put_bits_count(&s->pb);
+
+
+    LogStr("Exit");
 }
 
 #endif //CONFIG_ENCODERS
 int ff_mpeg4_get_video_packet_prefix_length( MpegEncContext *s )
 {
+    LogStr("Init");
+
+
     switch (s->pict_type)
     {
         case FF_I_TYPE:
+            LogStr("Exit");
             return 16;
         case FF_P_TYPE:
         case FF_S_TYPE:
+            LogStr("Exit");
             return s->f_code + 15;
         case FF_B_TYPE:
+            LogStr("Exit");
             return FFMAX3(s->f_code, s->b_code, 2) + 15;
         default:
+            LogStr("Exit");
             return -1;
     }
+
+
+    LogStr("Exit");
 }
 
 #ifdef CONFIG_ENCODERS
 
 void ff_mpeg4_encode_video_packet_header( MpegEncContext *s )
 {
+    LogStr("Init");
+
+
     int mb_num_bits = av_log2(s->mb_num - 1) + 1;
 
     put_bits(&s->pb, ff_mpeg4_get_video_packet_prefix_length(s), 0);
@@ -3599,6 +3937,9 @@ void ff_mpeg4_encode_video_packet_header( MpegEncContext *s )
     put_bits(&s->pb, mb_num_bits, s->mb_x + s->mb_y * s->mb_width);
     put_bits(&s->pb, s->quant_precision, s->qscale);
     put_bits(&s->pb, 1, 0); /* no HEC */
+
+
+    LogStr("Exit");
 }
 
 #endif //CONFIG_ENCODERS
@@ -3608,11 +3949,15 @@ void ff_mpeg4_encode_video_packet_header( MpegEncContext *s )
  */
 static inline int mpeg4_is_resync( MpegEncContext *s )
 {
+    LogStr("Init");
+
+
     int bits_count = get_bits_count(&s->gb);
     int v = show_bits(&s->gb, 16);
 
     if (s->workaround_bugs & FF_BUG_NO_PADDING)
     {
+        LogStr("Exit");
         return 0;
     }
 
@@ -3631,7 +3976,10 @@ static inline int mpeg4_is_resync( MpegEncContext *s )
         v |= 0x7F >> (7 - (bits_count & 7));
 
         if (v == 0x7F)
+        {
+            LogStr("Exit");
             return 1;
+        }
     }
     else
     {
@@ -3652,9 +4000,14 @@ static inline int mpeg4_is_resync( MpegEncContext *s )
             s->gb = gb;
 
             if (len >= ff_mpeg4_get_video_packet_prefix_length(s))
+            {
+                LogStr("Exit");
                 return 1;
+            }
         }
     }
+
+    LogStr("Exit");
     return 0;
 }
 
@@ -3664,12 +4017,18 @@ static inline int mpeg4_is_resync( MpegEncContext *s )
  */
 static int mpeg4_decode_video_packet_header( MpegEncContext *s )
 {
+    LogStr("Init");
+
+
     int mb_num_bits = av_log2(s->mb_num - 1) + 1;
     int header_extension = 0, mb_num, len;
 
     /* is there enough space left for a video packet + header */
     if (get_bits_count(&s->gb) > s->gb.size_in_bits - 20)
+    {
+        LogStr("Exit");
         return -1;
+    }
 
     for (len = 0; len < 32; len++)
     {
@@ -3680,6 +4039,7 @@ static int mpeg4_decode_video_packet_header( MpegEncContext *s )
     if (len != ff_mpeg4_get_video_packet_prefix_length(s))
     {
         av_log(s->avctx, AV_LOG_ERROR, "marker does not match f_code\n");
+        LogStr("Exit");
         return -1;
     }
 
@@ -3693,6 +4053,7 @@ static int mpeg4_decode_video_packet_header( MpegEncContext *s )
     if (mb_num >= s->mb_num)
     {
         av_log(s->avctx, AV_LOG_ERROR, "illegal mb_num in video packet (%d %d) \n", mb_num, s->mb_num);
+        LogStr("Exit");
         return -1;
     }
     if (s->pict_type == FF_B_TYPE)
@@ -3700,7 +4061,10 @@ static int mpeg4_decode_video_packet_header( MpegEncContext *s )
         while (s->next_picture.mbskip_table[s->mb_index2xy[mb_num]])
             mb_num++;
         if (mb_num >= s->mb_num)
+        {
+            LogStr("Exit");
             return -1; // slice contains just skipped MBs which where already decoded
+        }
     }
 
     s->mb_x = mb_num % s->mb_width;
@@ -3766,11 +4130,15 @@ static int mpeg4_decode_video_packet_header( MpegEncContext *s )
 
     //printf("parse ok %d %d %d %d\n", mb_num, s->mb_x + s->mb_y*s->mb_width, get_bits_count(gb), get_bits_count(&s->gb));
 
+    LogStr("Exit");
     return 0;
 }
 
 void ff_mpeg4_clean_buffers( MpegEncContext *s )
 {
+    LogStr("Init");
+
+
     int c_wrap, c_xy, l_wrap, l_xy;
 
     l_wrap = s->b8_stride;
@@ -3795,6 +4163,9 @@ void ff_mpeg4_clean_buffers( MpegEncContext *s )
     //    memset(s->motion_val + l_xy, 0, (l_wrap*2+1)*2*sizeof(int16_t));
     //    memset(s->motion_val, 0, 2*sizeof(int16_t)*(2 + s->mb_width*2)*(2 + s->mb_height*2));
     s->last_mv[0][0][0] = s->last_mv[0][0][1] = s->last_mv[1][0][0] = s->last_mv[1][0][1] = 0;
+
+
+    LogStr("Exit");
 }
 
 /**
@@ -3803,6 +4174,9 @@ void ff_mpeg4_clean_buffers( MpegEncContext *s )
  */
 int ff_h263_resync( MpegEncContext *s )
 {
+    LogStr("Init");
+
+
     int left, ret;
 
     if (s->codec_id == CODEC_ID_MPEG4)
@@ -3817,8 +4191,12 @@ int ff_h263_resync( MpegEncContext *s )
             ret = mpeg4_decode_video_packet_header(s);
         else
             ret = h263_decode_gob_header(s);
+
         if (ret >= 0)
+        {
+            LogStr("Exit");
             return 0;
+        }
     }
     //OK, it's not where it is supposed to be ...
     s->gb = s->last_resync_gb;
@@ -3836,13 +4214,17 @@ int ff_h263_resync( MpegEncContext *s )
             else
                 ret = h263_decode_gob_header(s);
             if (ret >= 0)
+            {
+                LogStr("Exit");
                 return 0;
+            }
 
             s->gb = bak;
         }
         skip_bits(&s->gb, 8);
     }
 
+    LogStr("Exit");
     return -1;
 }
 
@@ -3853,6 +4235,9 @@ int ff_h263_resync( MpegEncContext *s )
  */
 static inline int get_amv( MpegEncContext *s, int n )
 {
+    LogStr("Init");
+
+
     int x, y, mb_v, sum, dx, dy, shift;
     int len = 1 << (s->f_code + 4);
     const int a = s->sprite_warping_accuracy;
@@ -3899,6 +4284,7 @@ static inline int get_amv( MpegEncContext *s, int n )
     else if (sum >= len)
         sum = len - 1;
 
+    LogStr("Exit");
     return sum;
 }
 
@@ -3908,6 +4294,9 @@ static inline int get_amv( MpegEncContext *s, int n )
  */
 static int mpeg4_decode_partition_a( MpegEncContext *s )
 {
+    LogStr("Init");
+
+
     int mb_num;
     static const int8_t quant_tab[4] = { -1, -2, 1, 2 };
 
@@ -3936,6 +4325,7 @@ static int mpeg4_decode_partition_a( MpegEncContext *s )
                 {
                     if (show_bits_long(&s->gb, 19) == DC_MARKER)
                     {
+                        LogStr("Exit");
                         return mb_num - 1;
                     }
 
@@ -3943,6 +4333,7 @@ static int mpeg4_decode_partition_a( MpegEncContext *s )
                     if (cbpc < 0)
                     {
                         av_log(s->avctx, AV_LOG_ERROR, "cbpc corrupted at %d %d\n", s->mb_x, s->mb_y);
+                        LogStr("Exit");
                         return -1;
                     }
                 } while (cbpc == 8);
@@ -3965,6 +4356,7 @@ static int mpeg4_decode_partition_a( MpegEncContext *s )
                     if (dc < 0)
                     {
                         av_log(s->avctx, AV_LOG_ERROR, "DC corrupted at %d %d\n", s->mb_x, s->mb_y);
+                        LogStr("Exit");
                         return -1;
                     }
                     dir <<= 1;
@@ -3982,6 +4374,7 @@ static int mpeg4_decode_partition_a( MpegEncContext *s )
                 try_again: bits = show_bits(&s->gb, 17);
                 if (bits == MOTION_MARKER)
                 {
+                    LogStr("Exit");
                     return mb_num - 1;
                 }
                 skip_bits1(&s->gb);
@@ -4011,6 +4404,7 @@ static int mpeg4_decode_partition_a( MpegEncContext *s )
                 if (cbpc < 0)
                 {
                     av_log(s->avctx, AV_LOG_ERROR, "cbpc corrupted at %d %d\n", s->mb_x, s->mb_y);
+                    LogStr("Exit");
                     return -1;
                 }
                 if (cbpc == 20)
@@ -4046,11 +4440,17 @@ static int mpeg4_decode_partition_a( MpegEncContext *s )
                         {
                             mx = h263_decode_motion(s, pred_x, s->f_code);
                             if (mx >= 0xffff)
+                            {
+                                LogStr("Exit");
                                 return -1;
+                            }
 
                             my = h263_decode_motion(s, pred_y, s->f_code);
                             if (my >= 0xffff)
+                            {
+                                LogStr("Exit");
                                 return -1;
+                            }
                             s->current_picture.mb_type[xy] = MB_TYPE_16x16 | MB_TYPE_L0;
                         }
                         else
@@ -4072,11 +4472,17 @@ static int mpeg4_decode_partition_a( MpegEncContext *s )
                             int16_t *mot_val = h263_pred_motion(s, i, 0, &pred_x, &pred_y);
                             mx = h263_decode_motion(s, pred_x, s->f_code);
                             if (mx >= 0xffff)
+                            {
+                                LogStr("Exit");
                                 return -1;
+                            }
 
                             my = h263_decode_motion(s, pred_y, s->f_code);
                             if (my >= 0xffff)
+                            {
+                                LogStr("Exit");
                                 return -1;
+                            }
                             mot_val[0] = mx;
                             mot_val[1] = my;
                         }
@@ -4087,6 +4493,7 @@ static int mpeg4_decode_partition_a( MpegEncContext *s )
         s->mb_x = 0;
     }
 
+    LogStr("Exit");
     return mb_num;
 }
 
@@ -4096,6 +4503,9 @@ static int mpeg4_decode_partition_a( MpegEncContext *s )
  */
 static int mpeg4_decode_partition_b( MpegEncContext *s, int mb_count )
 {
+    LogStr("Init");
+
+
     int mb_num = 0;
     static const int8_t quant_tab[4] = { -1, -2, 1, 2 };
 
@@ -4120,6 +4530,7 @@ static int mpeg4_decode_partition_b( MpegEncContext *s, int mb_count )
                 if (cbpy < 0)
                 {
                     av_log(s->avctx, AV_LOG_ERROR, "cbpy corrupted at %d %d\n", s->mb_x, s->mb_y);
+                    LogStr("Exit");
                     return -1;
                 }
 
@@ -4137,6 +4548,7 @@ static int mpeg4_decode_partition_b( MpegEncContext *s, int mb_count )
                     if (cbpy < 0)
                     {
                         av_log(s->avctx, AV_LOG_ERROR, "I cbpy corrupted at %d %d\n", s->mb_x, s->mb_y);
+                        LogStr("Exit");
                         return -1;
                     }
 
@@ -4153,6 +4565,7 @@ static int mpeg4_decode_partition_b( MpegEncContext *s, int mb_count )
                         if (dc < 0)
                         {
                             av_log(s->avctx, AV_LOG_ERROR, "DC corrupted at %d %d\n", s->mb_x, s->mb_y);
+                            LogStr("Exit");
                             return -1;
                         }
                         dir <<= 1;
@@ -4176,6 +4589,7 @@ static int mpeg4_decode_partition_b( MpegEncContext *s, int mb_count )
                     if (cbpy < 0)
                     {
                         av_log(s->avctx, AV_LOG_ERROR, "P cbpy corrupted at %d %d\n", s->mb_x, s->mb_y);
+                        LogStr("Exit");
                         return -1;
                     }
 
@@ -4191,9 +4605,14 @@ static int mpeg4_decode_partition_b( MpegEncContext *s, int mb_count )
             }
         }
         if (mb_num >= mb_count)
+        {
+            LogStr("Exit");
             return 0;
+        }
         s->mb_x = 0;
     }
+
+    LogStr("Exit");
     return 0;
 }
 
@@ -4203,6 +4622,9 @@ static int mpeg4_decode_partition_b( MpegEncContext *s, int mb_count )
  */
 int ff_mpeg4_decode_partitions( MpegEncContext *s )
 {
+    LogStr("Init");
+
+
     int mb_num;
     const int part_a_error = s->pict_type == FF_I_TYPE ? (DC_ERROR | MV_ERROR) : MV_ERROR;
     const int part_a_end = s->pict_type == FF_I_TYPE ? (DC_END | MV_END) : MV_END;
@@ -4211,6 +4633,7 @@ int ff_mpeg4_decode_partitions( MpegEncContext *s )
     if (mb_num < 0)
     {
         ff_er_add_slice(s, s->resync_mb_x, s->resync_mb_y, s->mb_x, s->mb_y, part_a_error);
+        LogStr("Exit");
         return -1;
     }
 
@@ -4218,6 +4641,7 @@ int ff_mpeg4_decode_partitions( MpegEncContext *s )
     {
         av_log(s->avctx, AV_LOG_ERROR, "slice below monitor ...\n");
         ff_er_add_slice(s, s->resync_mb_x, s->resync_mb_y, s->mb_x, s->mb_y, part_a_error);
+        LogStr("Exit");
         return -1;
     }
 
@@ -4230,6 +4654,7 @@ int ff_mpeg4_decode_partitions( MpegEncContext *s )
         if (get_bits_long(&s->gb, 19) != DC_MARKER)
         {
             av_log(s->avctx, AV_LOG_ERROR, "marker missing after first I partition at %d %d\n", s->mb_x, s->mb_y);
+            LogStr("Exit");
             return -1;
         }
     }
@@ -4240,6 +4665,7 @@ int ff_mpeg4_decode_partitions( MpegEncContext *s )
         if (get_bits(&s->gb, 17) != MOTION_MARKER)
         {
             av_log(s->avctx, AV_LOG_ERROR, "marker missing after first P partition at %d %d\n", s->mb_x, s->mb_y);
+            LogStr("Exit");
             return -1;
         }
     }
@@ -4248,7 +4674,11 @@ int ff_mpeg4_decode_partitions( MpegEncContext *s )
     if (mpeg4_decode_partition_b(s, mb_num) < 0)
     {
         if (s->pict_type == FF_P_TYPE)
+        {
             ff_er_add_slice(s, s->resync_mb_x, s->resync_mb_y, s->mb_x, s->mb_y, DC_ERROR);
+        }
+
+        LogStr("Exit");
         return -1;
     }
     else
@@ -4257,6 +4687,7 @@ int ff_mpeg4_decode_partitions( MpegEncContext *s )
             ff_er_add_slice(s, s->resync_mb_x, s->resync_mb_y, s->mb_x - 1, s->mb_y, DC_END);
     }
 
+    LogStr("Exit");
     return 0;
 }
 
@@ -4266,6 +4697,9 @@ int ff_mpeg4_decode_partitions( MpegEncContext *s )
  */
 static int mpeg4_decode_partitioned_mb( MpegEncContext *s, DCTELEM block[6][64] )
 {
+    LogStr("Init");
+
+
     int cbp, mb_type;
     const int xy = s->mb_x + s->mb_y * s->mb_stride;
 
@@ -4342,6 +4776,7 @@ static int mpeg4_decode_partitioned_mb( MpegEncContext *s, DCTELEM block[6][64] 
             if (mpeg4_decode_block(s, block[i], i, cbp & 32, s->mb_intra, s->rvlc) < 0)
             {
                 av_log(s->avctx, AV_LOG_ERROR, "texture corrupted at %d %d %d\n", s->mb_x, s->mb_y, s->mb_intra);
+                LogStr("Exit");
                 return -1;
             }
             cbp += cbp;
@@ -4354,9 +4789,15 @@ static int mpeg4_decode_partitioned_mb( MpegEncContext *s, DCTELEM block[6][64] 
     {
         //printf("%06X %d\n", show_bits(&s->gb, 24), s->gb.size_in_bits - get_bits_count(&s->gb));
         if (mpeg4_is_resync(s))
+        {
+            LogStr("Exit");
             return SLICE_END;
+        }
         else
+        {
+            LogStr("Exit");
             return SLICE_NOEND;
+        }
     }
     else
     {
@@ -4364,10 +4805,17 @@ static int mpeg4_decode_partitioned_mb( MpegEncContext *s, DCTELEM block[6][64] 
         {
             const int delta = s->mb_x + 1 == s->mb_width ? 2 : 1;
             if (s->cbp_table[xy + delta])
+            {
+                LogStr("Exit");
                 return SLICE_END;
+            }
         }
+        LogStr("Exit");
         return SLICE_OK;
     }
+
+
+    LogStr("Exit");
 }
 
 /**
@@ -4375,6 +4823,9 @@ static int mpeg4_decode_partitioned_mb( MpegEncContext *s, DCTELEM block[6][64] 
  */
 static void preview_obmc( MpegEncContext *s )
 {
+    LogStr("Init");
+
+
     GetBitContext gb = s->gb;
 
     int cbpc, i, pred_x, pred_y, mx, my;
@@ -4474,10 +4925,16 @@ static void preview_obmc( MpegEncContext *s )
     s->mb_x--;
 
     s->gb = gb;
+
+
+    LogStr("Exit");
 }
 
 static void h263_decode_dquant( MpegEncContext *s )
 {
+    LogStr("Init");
+
+
     static const int8_t quant_tab[4] = { -1, -2, 1, 2 };
 
     if (s->modified_quant)
@@ -4490,10 +4947,16 @@ static void h263_decode_dquant( MpegEncContext *s )
     else
         s->qscale += quant_tab[get_bits(&s->gb, 2)];
     ff_set_qscale(s, s->qscale);
+
+
+    LogStr("Exit");
 }
 
 int ff_h263_decode_mb( MpegEncContext *s, DCTELEM block[6][64] )
 {
+    LogStr("Init");
+
+
     int cbpc, cbpy, i, cbp, pred_x, pred_y, mx, my, dquant;
     int16_t *mot_val;
     const int xy = s->mb_x + s->mb_y * s->mb_stride;
@@ -4523,6 +4986,7 @@ int ff_h263_decode_mb( MpegEncContext *s, DCTELEM block[6][64] )
             if (cbpc < 0)
             {
                 av_log(s->avctx, AV_LOG_ERROR, "cbpc damaged at %d %d\n", s->mb_x, s->mb_y);
+                LogStr("Exit");
                 return -1;
             }
         } while (cbpc == 20);
@@ -4558,7 +5022,10 @@ int ff_h263_decode_mb( MpegEncContext *s, DCTELEM block[6][64] )
                 mx = h263_decode_motion(s, pred_x, 1);
 
             if (mx >= 0xffff)
+            {
+                LogStr("Exit");
                 return -1;
+            }
 
             if (s->umvplus)
                 my = h263p_decode_umotion(s, pred_y);
@@ -4566,7 +5033,10 @@ int ff_h263_decode_mb( MpegEncContext *s, DCTELEM block[6][64] )
                 my = h263_decode_motion(s, pred_y, 1);
 
             if (my >= 0xffff)
+            {
+                LogStr("Exit");
                 return -1;
+            }
             s->mv[0][0][0] = mx;
             s->mv[0][0][1] = my;
 
@@ -4585,14 +5055,20 @@ int ff_h263_decode_mb( MpegEncContext *s, DCTELEM block[6][64] )
                 else
                     mx = h263_decode_motion(s, pred_x, 1);
                 if (mx >= 0xffff)
+                {
+                    LogStr("Exit");
                     return -1;
+                }
 
                 if (s->umvplus)
                     my = h263p_decode_umotion(s, pred_y);
                 else
                     my = h263_decode_motion(s, pred_y, 1);
                 if (my >= 0xffff)
+                {
+                    LogStr("Exit");
                     return -1;
+                }
                 s->mv[0][i][0] = mx;
                 s->mv[0][i][1] = my;
                 if (s->umvplus && (mx - pred_x) == 1 && (my - pred_y) == 1)
@@ -4606,7 +5082,10 @@ int ff_h263_decode_mb( MpegEncContext *s, DCTELEM block[6][64] )
         for (i = 0; i < 6; i++)
         {
             if (h263_decode_block(s, block[i], i, cbp & 32) < 0)
+            {
+                LogStr("Exit");
                 return -1;
+            }
             cbp += cbp;
         }
 
@@ -4633,6 +5112,7 @@ int ff_h263_decode_mb( MpegEncContext *s, DCTELEM block[6][64] )
             if (mb_type < 0)
             {
                 av_log(s->avctx, AV_LOG_ERROR, "b mb_type damaged at %d %d\n", s->mb_x, s->mb_y);
+                LogStr("Exit");
                 return -1;
             }
 
@@ -4655,6 +5135,7 @@ int ff_h263_decode_mb( MpegEncContext *s, DCTELEM block[6][64] )
             if (cbpy < 0)
             {
                 av_log(s->avctx, AV_LOG_ERROR, "b cbpy damaged at %d %d\n", s->mb_x, s->mb_y);
+                LogStr("Exit");
                 return -1;
             }
 
@@ -4719,7 +5200,10 @@ int ff_h263_decode_mb( MpegEncContext *s, DCTELEM block[6][64] )
         for (i = 0; i < 6; i++)
         {
             if (h263_decode_block(s, block[i], i, cbp & 32) < 0)
+            {
+                LogStr("Exit");
                 return -1;
+            }
             cbp += cbp;
         }
     }
@@ -4731,6 +5215,7 @@ int ff_h263_decode_mb( MpegEncContext *s, DCTELEM block[6][64] )
             if (cbpc < 0)
             {
                 av_log(s->avctx, AV_LOG_ERROR, "I cbpc damaged at %d %d\n", s->mb_x, s->mb_y);
+                LogStr("Exit");
                 return -1;
             }
         } while (cbpc == 8);
@@ -4757,6 +5242,7 @@ int ff_h263_decode_mb( MpegEncContext *s, DCTELEM block[6][64] )
         if (cbpy < 0)
         {
             av_log(s->avctx, AV_LOG_ERROR, "I cbpy damaged at %d %d\n", s->mb_x, s->mb_y);
+            LogStr("Exit");
             return -1;
         }
         cbp = (cbpc & 3) | (cbpy << 2);
@@ -4769,7 +5255,10 @@ int ff_h263_decode_mb( MpegEncContext *s, DCTELEM block[6][64] )
         for (i = 0; i < 6; i++)
         {
             if (h263_decode_block(s, block[i], i, cbp & 32) < 0)
+            {
+                LogStr("Exit");
                 return -1;
+            }
             cbp += cbp;
         }
     }
@@ -4785,14 +5274,21 @@ int ff_h263_decode_mb( MpegEncContext *s, DCTELEM block[6][64] )
         }
 
         if (v == 0)
+        {
+            LogStr("Exit");
             return SLICE_END;
+        }
     }
 
+    LogStr("Exit");
     return SLICE_OK;
 }
 
 int ff_mpeg4_decode_mb( MpegEncContext *s, DCTELEM block[6][64] )
 {
+    LogStr("Init");
+
+
     int cbpc, cbpy, i, cbp, pred_x, pred_y, mx, my, dquant;
     int16_t *mot_val;
     static int8_t quant_tab[4] = { -1, -2, 1, 2 };
@@ -4836,6 +5332,7 @@ int ff_mpeg4_decode_mb( MpegEncContext *s, DCTELEM block[6][64] )
             if (cbpc < 0)
             {
                 av_log(s->avctx, AV_LOG_ERROR, "cbpc damaged at %d %d\n", s->mb_x, s->mb_y);
+                LogStr("Exit");
                 return -1;
             }
         } while (cbpc == 20);
@@ -4888,11 +5385,17 @@ int ff_mpeg4_decode_mb( MpegEncContext *s, DCTELEM block[6][64] )
                 {
                     mx = h263_decode_motion(s, pred_x, s->f_code);
                     if (mx >= 0xffff)
+                    {
+                        LogStr("Exit");
                         return -1;
+                    }
 
                     my = h263_decode_motion(s, pred_y / 2, s->f_code);
                     if (my >= 0xffff)
+                    {
+                        LogStr("Exit");
                         return -1;
+                    }
 
                     s->mv[0][i][0] = mx;
                     s->mv[0][i][1] = my;
@@ -4907,12 +5410,19 @@ int ff_mpeg4_decode_mb( MpegEncContext *s, DCTELEM block[6][64] )
                 mx = h263_decode_motion(s, pred_x, s->f_code);
 
                 if (mx >= 0xffff)
+                {
+                    LogStr("Exit");
                     return -1;
+                }
 
                 my = h263_decode_motion(s, pred_y, s->f_code);
 
                 if (my >= 0xffff)
+                {
+                    LogStr("Exit");
                     return -1;
+                }
+
                 s->mv[0][0][0] = mx;
                 s->mv[0][0][1] = my;
             }
@@ -4926,11 +5436,18 @@ int ff_mpeg4_decode_mb( MpegEncContext *s, DCTELEM block[6][64] )
                 mot_val = h263_pred_motion(s, i, 0, &pred_x, &pred_y);
                 mx = h263_decode_motion(s, pred_x, s->f_code);
                 if (mx >= 0xffff)
+                {
+                    LogStr("Exit");
                     return -1;
+                }
 
                 my = h263_decode_motion(s, pred_y, s->f_code);
                 if (my >= 0xffff)
+                {
+                    LogStr("Exit");
                     return -1;
+                }
+
                 s->mv[0][i][0] = mx;
                 s->mv[0][i][1] = my;
                 mot_val[0] = mx;
@@ -4987,6 +5504,7 @@ int ff_mpeg4_decode_mb( MpegEncContext *s, DCTELEM block[6][64] )
             if (mb_type < 0)
             {
                 av_log(s->avctx, AV_LOG_ERROR, "illegal MB_type\n");
+                LogStr("Exit");
                 return -1;
             }
             mb_type = mb_type_b_map[mb_type];
@@ -5109,6 +5627,7 @@ int ff_mpeg4_decode_mb( MpegEncContext *s, DCTELEM block[6][64] )
             if (cbpc < 0)
             {
                 av_log(s->avctx, AV_LOG_ERROR, "I cbpc damaged at %d %d\n", s->mb_x, s->mb_y);
+                LogStr("Exit");
                 return -1;
             }
         } while (cbpc == 8);
@@ -5125,6 +5644,7 @@ int ff_mpeg4_decode_mb( MpegEncContext *s, DCTELEM block[6][64] )
         if (cbpy < 0)
         {
             av_log(s->avctx, AV_LOG_ERROR, "I cbpy damaged at %d %d\n", s->mb_x, s->mb_y);
+            LogStr("Exit");
             return -1;
         }
         cbp = (cbpc & 3) | (cbpy << 2);
@@ -5144,7 +5664,10 @@ int ff_mpeg4_decode_mb( MpegEncContext *s, DCTELEM block[6][64] )
         for (i = 0; i < 6; i++)
         {
             if (mpeg4_decode_block(s, block[i], i, cbp & 32, 1, 0) < 0)
+            {
+                LogStr("Exit");
                 return -1;
+            }
             cbp += cbp;
         }
         goto end;
@@ -5154,7 +5677,10 @@ int ff_mpeg4_decode_mb( MpegEncContext *s, DCTELEM block[6][64] )
     for (i = 0; i < 6; i++)
     {
         if (mpeg4_decode_block(s, block[i], i, cbp & 32, 0, 0) < 0)
+        {
+            LogStr("Exit");
             return -1;
+        }
         cbp += cbp;
     }
     end:
@@ -5166,23 +5692,38 @@ int ff_mpeg4_decode_mb( MpegEncContext *s, DCTELEM block[6][64] )
         {
             const int delta = s->mb_x + 1 == s->mb_width ? 2 : 1;
             if (s->pict_type == FF_B_TYPE && s->next_picture.mbskip_table[xy + delta])
+            {
+                LogStr("Exit");
                 return SLICE_OK;
+            }
+            LogStr("Exit");
             return SLICE_END;
         }
     }
 
+    LogStr("Exit");
     return SLICE_OK;
 }
 
 static int h263_decode_motion( MpegEncContext * s, int pred, int f_code )
 {
+    LogStr("Init");
+
+
     int code, val, sign, shift, l;
     code = get_vlc2(&s->gb, mv_vlc.table, MV_VLC_BITS, 2);
 
     if (code == 0)
+    {
+        LogStr("Exit");
         return pred;
+    }
+
     if (code < 0)
+    {
+        LogStr("Exit");
         return 0xffff;
+    }
 
     sign = get_bits1(&s->gb);
     shift = f_code - 1;
@@ -5212,16 +5753,24 @@ static int h263_decode_motion( MpegEncContext * s, int pred, int f_code )
             val -= 64;
 
     }
+
+    LogStr("Exit");
     return val;
 }
 
 /* Decodes RVLC of H.263+ UMV */
 static int h263p_decode_umotion( MpegEncContext * s, int pred )
 {
+    LogStr("Init");
+
+
     int code = 0, sign;
 
     if (get_bits1(&s->gb)) /* Motion difference = 0 */
+    {
+        LogStr("Exit");
         return pred;
+    }
 
     code = 2 + get_bits1(&s->gb);
 
@@ -5237,12 +5786,17 @@ static int h263p_decode_umotion( MpegEncContext * s, int pred )
 #ifdef DEBUG
     av_log( s->avctx, AV_LOG_DEBUG,"H.263+ UMV Motion = %d\n", code);
 #endif
+
+    LogStr("Exit");
     return code;
 
 }
 
 static int h263_decode_block( MpegEncContext * s, DCTELEM * block, int n, int coded )
 {
+    LogStr("Init");
+
+
     int code, level, i, j, last, run;
     RLTable *rl = &rl_inter;
     const uint8_t *scan_table;
@@ -5276,7 +5830,11 @@ static int h263_decode_block( MpegEncContext * s, DCTELEM * block, int n, int co
                 {
                     diff = rv_decode_dc(s, n);
                     if (diff == 0xffff)
+                    {
+                        LogStr("Exit");
                         return -1;
+                    }
+
                     level += diff;
                     level = level & 0xff; /* handle wrap round */
                     s->last_dc[component] = level;
@@ -5301,7 +5859,10 @@ static int h263_decode_block( MpegEncContext * s, DCTELEM * block, int n, int co
             {
                 av_log(s->avctx, AV_LOG_ERROR, "illegal dc %d at %d %d\n", level, s->mb_x, s->mb_y);
                 if (s->error_resilience >= FF_ER_COMPLIANT)
+                {
+                    LogStr("Exit");
                     return -1;
+                }
             }
             if (level == 255)
                 level = 128;
@@ -5316,8 +5877,12 @@ static int h263_decode_block( MpegEncContext * s, DCTELEM * block, int n, int co
     if (!coded)
     {
         if (s->mb_intra && s->h263_aic)
+        {
             goto not_coded;
+        }
         s->block_last_index[n] = i - 1;
+
+        LogStr("Exit");
         return 0;
     }
     retry: for (;;)
@@ -5326,6 +5891,7 @@ static int h263_decode_block( MpegEncContext * s, DCTELEM * block, int n, int co
         if (code < 0)
         {
             av_log(s->avctx, AV_LOG_ERROR, "illegal ac vlc code at %dx%d\n", s->mb_x, s->mb_y);
+            LogStr("Exit");
             return -1;
         }
         if (code == rl->n)
@@ -5386,6 +5952,8 @@ static int h263_decode_block( MpegEncContext * s, DCTELEM * block, int n, int co
                 goto retry;
             }
             av_log(s->avctx, AV_LOG_ERROR, "run overflow at %dx%d i:%d\n", s->mb_x, s->mb_y, s->mb_intra);
+
+            LogStr("Exit");
             return -1;
         }
         j = scan_table[i];
@@ -5400,6 +5968,8 @@ static int h263_decode_block( MpegEncContext * s, DCTELEM * block, int n, int co
         i = 63;
     }
     s->block_last_index[n] = i;
+
+    LogStr("Exit");
     return 0;
 }
 
@@ -5411,6 +5981,9 @@ static int h263_decode_block( MpegEncContext * s, DCTELEM * block, int n, int co
  */
 static inline int mpeg4_decode_dc( MpegEncContext * s, int n, int *dir_ptr )
 {
+    LogStr("Init");
+
+
     int level, code;
 
     if (n < 4)
@@ -5420,8 +5993,10 @@ static inline int mpeg4_decode_dc( MpegEncContext * s, int n, int *dir_ptr )
     if (code < 0 || code > 9 /* && s->nbit<9 */)
     {
         av_log(s->avctx, AV_LOG_ERROR, "illegal dc vlc\n");
+        LogStr("Exit");
         return -1;
     }
+
     if (code == 0)
     {
         level = 0;
@@ -5452,12 +6027,14 @@ static inline int mpeg4_decode_dc( MpegEncContext * s, int n, int *dir_ptr )
                 if (s->error_resilience >= 2)
                 {
                     av_log(s->avctx, AV_LOG_ERROR, "dc marker bit missing\n");
+                    LogStr("Exit");
                     return -1;
                 }
             }
         }
     }
 
+    LogStr("Exit");
     return ff_mpeg4_pred_dc(s, n, level, dir_ptr, 0);
 }
 
@@ -5467,6 +6044,9 @@ static inline int mpeg4_decode_dc( MpegEncContext * s, int n, int *dir_ptr )
  */
 static inline int mpeg4_decode_block( MpegEncContext * s, DCTELEM * block, int n, int coded, int intra, int rvlc )
 {
+    LogStr("Init");
+
+
     int level, i, last, run;
     int dc_pred_dir;
     RLTable * rl;
@@ -5494,7 +6074,10 @@ static inline int mpeg4_decode_block( MpegEncContext * s, DCTELEM * block, int n
             {
                 level = mpeg4_decode_dc(s, n, &dc_pred_dir);
                 if (level < 0)
+                {
+                    LogStr("Exit");
                     return -1;
+                }
             }
             block[0] = level;
             i = 0;
@@ -5537,6 +6120,7 @@ static inline int mpeg4_decode_block( MpegEncContext * s, DCTELEM * block, int n
         if (!coded)
         {
             s->block_last_index[n] = i;
+            LogStr("Exit");
             return 0;
         }
         if (rvlc)
@@ -5587,6 +6171,7 @@ static inline int mpeg4_decode_block( MpegEncContext * s, DCTELEM * block, int n
                     if (SHOW_UBITS(re, &s->gb, 1) == 0)
                     {
                         av_log(s->avctx, AV_LOG_ERROR, "1. marker bit missing in rvlc esc\n");
+                        LogStr("Exit");
                         return -1;
                     };SKIP_CACHE(re, &s->gb, 1);
 
@@ -5598,6 +6183,7 @@ static inline int mpeg4_decode_block( MpegEncContext * s, DCTELEM * block, int n
                     if (SHOW_UBITS(re, &s->gb, 1) == 0)
                     {
                         av_log(s->avctx, AV_LOG_ERROR, "2. marker bit missing in rvlc esc\n");
+                        LogStr("Exit");
                         return -1;
                     };SKIP_CACHE(re, &s->gb, 1);
 
@@ -5606,6 +6192,7 @@ static inline int mpeg4_decode_block( MpegEncContext * s, DCTELEM * block, int n
                     if (SHOW_UBITS(re, &s->gb, 5) != 0x10)
                     {
                         av_log(s->avctx, AV_LOG_ERROR, "reverse esc missing\n");
+                        LogStr("Exit");
                         return -1;
                     };SKIP_CACHE(re, &s->gb, 5);
 
@@ -5645,6 +6232,7 @@ static inline int mpeg4_decode_block( MpegEncContext * s, DCTELEM * block, int n
                                 if (SHOW_UBITS(re, &s->gb, 1) == 0)
                                 {
                                     av_log(s->avctx, AV_LOG_ERROR, "1. marker bit missing in 3. esc\n");
+                                    LogStr("Exit");
                                     return -1;
                                 };SKIP_CACHE(re, &s->gb, 1);
 
@@ -5653,6 +6241,7 @@ static inline int mpeg4_decode_block( MpegEncContext * s, DCTELEM * block, int n
                                 if (SHOW_UBITS(re, &s->gb, 1) == 0)
                                 {
                                     av_log(s->avctx, AV_LOG_ERROR, "2. marker bit missing in 3. esc\n");
+                                    LogStr("Exit");
                                     return -1;
                                 };LAST_SKIP_CACHE(re, &s->gb, 1);
 
@@ -5669,6 +6258,7 @@ static inline int mpeg4_decode_block( MpegEncContext * s, DCTELEM * block, int n
                                     if(abs_level <= rl->max_level[last][run])
                                     {
                                         av_log(s->avctx, AV_LOG_ERROR, "illegal 3. esc, vlc encoding possible\n");
+                                        LogStr("Exit");
                                         return -1;
                                     }
                                     if(s->error_resilience> FF_ER_COMPLIANT)
@@ -5676,11 +6266,13 @@ static inline int mpeg4_decode_block( MpegEncContext * s, DCTELEM * block, int n
                                         if(abs_level <= rl->max_level[last][run]*2)
                                         {
                                             av_log(s->avctx, AV_LOG_ERROR, "illegal 3. esc, esc 1 encoding possible\n");
+                                            LogStr("Exit");
                                             return -1;
                                         }
                                         if(run1 >= 0 && abs_level <= rl->max_level[last][run1])
                                         {
                                             av_log(s->avctx, AV_LOG_ERROR, "illegal 3. esc, esc 2 encoding possible\n");
+                                            LogStr("Exit");
                                             return -1;
                                         }
                                     }
@@ -5699,6 +6291,7 @@ static inline int mpeg4_decode_block( MpegEncContext * s, DCTELEM * block, int n
                                     if (level > 2560 || level < -2560)
                                     {
                                         av_log(s->avctx, AV_LOG_ERROR, "|level| overflow in 3. esc, qp=%d\n", s->qscale);
+                                        LogStr("Exit");
                                         return -1;
                                     }
                                 }
@@ -5753,6 +6346,7 @@ static inline int mpeg4_decode_block( MpegEncContext * s, DCTELEM * block, int n
                 if (i & (~63))
                 {
                     av_log(s->avctx, AV_LOG_ERROR, "ac-tex damaged at %d %d\n", s->mb_x, s->mb_y);
+                    LogStr("Exit");
                     return -1;
                 }
 
@@ -5780,12 +6374,17 @@ static inline int mpeg4_decode_block( MpegEncContext * s, DCTELEM * block, int n
         }
     }
     s->block_last_index[n] = i;
+
+    LogStr("Exit");
     return 0;
 }
 
 /* most is hardcoded. should extend to handle all h263 streams */
 int h263_decode_picture_header( MpegEncContext *s )
 {
+    LogStr("Init");
+
+
     int format, width, height, i;
     uint32_t startcode;
 
@@ -5804,6 +6403,7 @@ int h263_decode_picture_header( MpegEncContext *s )
     if (startcode != 0x20)
     {
         av_log(s->avctx, AV_LOG_ERROR, "Bad picture start code\n");
+        LogStr("Exit");
         return -1;
     }
     /* temporal reference */
@@ -5817,11 +6417,13 @@ int h263_decode_picture_header( MpegEncContext *s )
     {
         /* marker */
         av_log(s->avctx, AV_LOG_ERROR, "Bad marker\n");
+        LogStr("Exit");
         return -1;
     }
     if (get_bits1(&s->gb) != 0)
     {
         av_log(s->avctx, AV_LOG_ERROR, "Bad H263 id\n");
+        LogStr("Exit");
         return -1; /* h263 id */
     }
     skip_bits1(&s->gb); /* split screen off */
@@ -5843,7 +6445,10 @@ int h263_decode_picture_header( MpegEncContext *s )
         width = h263_format[format][0];
         height = h263_format[format][1];
         if (!width)
+        {
+            LogStr("Exit");
             return -1;
+        }
 
         s->pict_type = FF_I_TYPE + get_bits1(&s->gb);
 
@@ -5852,6 +6457,7 @@ int h263_decode_picture_header( MpegEncContext *s )
         if (get_bits1(&s->gb) != 0)
         {
             av_log(s->avctx, AV_LOG_ERROR, "H263 SAC not supported\n");
+            LogStr("Exit");
             return -1; /* SAC: off */
         }
         s->obmc = get_bits1(&s->gb); /* Advanced prediction mode */
@@ -5860,6 +6466,7 @@ int h263_decode_picture_header( MpegEncContext *s )
         if (get_bits1(&s->gb) != 0)
         {
             av_log(s->avctx, AV_LOG_ERROR, "H263 PB frame not supported\n");
+            LogStr("Exit");
             return -1; /* not PB frame */
         }
         s->chroma_qscale = s->qscale = get_bits(&s->gb, 5);
@@ -5918,6 +6525,7 @@ int h263_decode_picture_header( MpegEncContext *s )
             else if (ufep != 0)
             {
                 av_log(s->avctx, AV_LOG_ERROR, "Bad UFEP type (%d)\n", ufep);
+                LogStr("Exit");
                 return -1;
             }
 
@@ -5930,7 +6538,8 @@ int h263_decode_picture_header( MpegEncContext *s )
                 case 3: s->pict_type= FF_B_TYPE;break;
                 case 7: s->pict_type= FF_I_TYPE;break; //ZYGO
             default:
-            return -1;
+                LogStr("Exit");
+                return -1;
         }
         skip_bits(&s->gb, 2);
         s->no_rounding = get_bits1(&s->gb);
@@ -5976,7 +6585,10 @@ int h263_decode_picture_header( MpegEncContext *s )
                 {   12,11};
             }
             if ((width == 0) || (height == 0))
-            return -1;
+            {
+                LogStr("Exit");
+                return -1;
+            }
             s->width = width;
             s->height = height;
 
@@ -5989,6 +6601,7 @@ int h263_decode_picture_header( MpegEncContext *s )
                 if(s->avctx->time_base.num == 0)
                 {
                     av_log(s, AV_LOG_ERROR, "zero framerate\n");
+                    LogStr("Exit");
                     return -1;
                 }
                 gcd= ff_gcd(s->avctx->time_base.den, s->avctx->time_base.num);
@@ -6046,6 +6659,7 @@ int h263_decode_picture_header( MpegEncContext *s )
         if (get_bits1(&s->gb) != 1)
         {
             av_log(s->avctx, AV_LOG_ERROR, "SEPB1 marker missing\n");
+            LogStr("Exit");
             return -1;
         }
 
@@ -6054,6 +6668,7 @@ int h263_decode_picture_header( MpegEncContext *s )
         if (get_bits1(&s->gb) != 1)
         {
             av_log(s->avctx, AV_LOG_ERROR, "SEPB2 marker missing\n");
+            LogStr("Exit");
             return -1;
         }
     }
@@ -6094,11 +6709,15 @@ int h263_decode_picture_header( MpegEncContext *s )
             }
 #endif
 
+            LogStr("Exit");
             return 0;
         }
 
 static void mpeg4_decode_sprite_trajectory( MpegEncContext * s, GetBitContext *gb )
 {
+    LogStr("Init");
+
+
     int i;
     int a = 2 << s->sprite_warping_accuracy;
     int rho = 3 - s->sprite_warping_accuracy;
@@ -6280,10 +6899,16 @@ static void mpeg4_decode_sprite_trajectory( MpegEncContext * s, GetBitContext *g
         s->sprite_shift[0]
     );
 #endif
+
+
+    LogStr("Exit");
 }
 
 static int mpeg4_decode_gop_header( MpegEncContext * s, GetBitContext *gb )
 {
+    LogStr("Init");
+
+
     int hours, minutes, seconds;
 
     hours = get_bits(gb, 5);
@@ -6296,11 +6921,15 @@ static int mpeg4_decode_gop_header( MpegEncContext * s, GetBitContext *gb )
     skip_bits1(gb);
     skip_bits1(gb);
 
+    LogStr("Exit");
     return 0;
 }
 
 static int decode_vol_header( MpegEncContext *s, GetBitContext *gb )
 {
+    LogStr("Init");
+
+
     int width, height, vo_ver_id;
 
     /* vol header */
@@ -6372,6 +7001,7 @@ static int decode_vol_header( MpegEncContext *s, GetBitContext *gb )
     if (!s->avctx->time_base.den)
     {
         av_log(s->avctx, AV_LOG_ERROR, "time_base.den==0\n");
+        LogStr("Exit");
         return -1;
     }
 
@@ -6439,6 +7069,7 @@ static int decode_vol_header( MpegEncContext *s, GetBitContext *gb )
             {
                 av_log(s->avctx, AV_LOG_ERROR, "%d sprite_warping_points\n", s->num_sprite_warping_points);
                 s->num_sprite_warping_points = 0;
+                LogStr("Exit");
                 return -1;
             }
             s->sprite_warping_accuracy = get_bits(gb, 2);
@@ -6605,6 +7236,8 @@ static int decode_vol_header( MpegEncContext *s, GetBitContext *gb )
             // bin shape stuff FIXME
         }
     }
+
+    LogStr("Exit");
     return 0;
 }
 
@@ -6614,6 +7247,9 @@ static int decode_vol_header( MpegEncContext *s, GetBitContext *gb )
  */
 static int decode_user_data( MpegEncContext *s, GetBitContext *gb )
 {
+    LogStr("Init");
+
+
     char buf[256];
     int i;
     int e;
@@ -6671,11 +7307,16 @@ static int decode_user_data( MpegEncContext *s, GetBitContext *gb )
     }
 
     //printf("User Data: %s\n", buf);
+
+    LogStr("Exit");
     return 0;
 }
 
 static int decode_vop_header( MpegEncContext *s, GetBitContext *gb )
 {
+    LogStr("Init");
+
+
     int time_incr, time_increment;
 
     s->pict_type = get_bits(gb, 2) + FF_I_TYPE; /* pict type: I = 0 , P = 1 */
@@ -6741,6 +7382,8 @@ static int decode_vop_header( MpegEncContext *s, GetBitContext *gb )
         if (s->pp_time <= s->pb_time || s->pp_time <= s->pp_time - s->pb_time || s->pp_time <= 0)
         {
             //            printf("messed up order, maybe after seeking? skipping current b frame\n");
+
+            LogStr("Exit");
             return FRAME_SKIPPED;
         }
         ff_mpeg4_init_direct_mv(s);
@@ -6754,7 +7397,10 @@ static int decode_vop_header( MpegEncContext *s, GetBitContext *gb )
         if (!s->progressive_sequence)
         {
             if (s->pp_field_time <= s->pb_field_time || s->pb_field_time <= 1)
+            {
+                LogStr("Exit");
                 return FRAME_SKIPPED;
+            }
         }
     }
     //av_log(s->avctx, AV_LOG_DEBUG, "last nonb %"PRId64" last_base %d time %"PRId64" pp %d pb %d t %d ppf %d pbf %d\n", s->last_non_b_time, s->last_time_base, s->time, s->pp_time, s->pb_time, s->t_frame, s->pp_field_time, s->pb_field_time);
@@ -6772,7 +7418,11 @@ static int decode_vop_header( MpegEncContext *s, GetBitContext *gb )
     if (get_bits1(gb) != 1)
     {
         if (s->avctx->debug & FF_DEBUG_PICT_INFO)
+        {
             av_log(s->avctx, AV_LOG_ERROR, "vop not coded\n");
+        }
+
+        LogStr("Exit");
         return FRAME_SKIPPED;
     }
     //printf("time %d %d %d || %"PRId64" %"PRId64" %"PRId64"\n", s->time_increment_bits, s->avctx->time_base.den, s->time_base,
@@ -6853,6 +7503,7 @@ static int decode_vop_header( MpegEncContext *s, GetBitContext *gb )
         if (s->qscale == 0)
         {
             av_log(s->avctx, AV_LOG_ERROR, "Error, header damaged or not MPEG4 header (qscale=0)\n");
+            LogStr("Exit");
             return -1; // makes no sense to continue, as there is nothing left from the image then
         }
 
@@ -6862,6 +7513,7 @@ static int decode_vop_header( MpegEncContext *s, GetBitContext *gb )
             if (s->f_code == 0)
             {
                 av_log(s->avctx, AV_LOG_ERROR, "Error, header damaged or not MPEG4 header (f_code=0)\n");
+                LogStr("Exit");
                 return -1; // makes no sense to continue, as the MV decoding will break very quickly
             }
         }
@@ -6918,6 +7570,8 @@ static int decode_vop_header( MpegEncContext *s, GetBitContext *gb )
         s->h_edge_pos = s->width;
         s->v_edge_pos = s->height;
     }
+
+    LogStr("Exit");
     return 0;
 }
 
@@ -6929,6 +7583,9 @@ static int decode_vop_header( MpegEncContext *s, GetBitContext *gb )
  */
 int ff_mpeg4_decode_picture_header( MpegEncContext * s, GetBitContext *gb )
 {
+    LogStr("Init");
+
+
     int startcode, v;
 
     /* search next start code */
@@ -6938,7 +7595,10 @@ int ff_mpeg4_decode_picture_header( MpegEncContext * s, GetBitContext *gb )
     {
         skip_bits(gb, 24);
         if (get_bits(gb, 8) == 0xF0)
+        {
+            LogStr("Exit");
             return decode_vop_header(s, gb);
+        }
     }
 
     startcode = 0xff;
@@ -6949,10 +7609,14 @@ int ff_mpeg4_decode_picture_header( MpegEncContext * s, GetBitContext *gb )
             if (gb->size_in_bits == 8 && (s->divx_version || s->xvid_build))
             {
                 av_log(s->avctx, AV_LOG_ERROR, "frame skip %d\n", gb->size_in_bits);
+                LogStr("Exit");
                 return FRAME_SKIPPED; //divx bug
             }
             else
+            {
+                LogStr("Exit");
                 return -1; //end of stream
+            }
         }
 
         /* use the bits after the test */
@@ -7025,7 +7689,10 @@ int ff_mpeg4_decode_picture_header( MpegEncContext * s, GetBitContext *gb )
         if (startcode >= 0x120 && startcode <= 0x12F)
         {
             if (decode_vol_header(s, gb) < 0)
+            {
+                LogStr("Exit");
                 return -1;
+            }
         }
         else if (startcode == USER_DATA_STARTCODE)
         {
@@ -7037,23 +7704,31 @@ int ff_mpeg4_decode_picture_header( MpegEncContext * s, GetBitContext *gb )
         }
         else if (startcode == VOP_STARTCODE)
         {
+            LogStr("Exit");
             return decode_vop_header(s, gb);
         }
 
         align_get_bits(gb);
         startcode = 0xff;
     }
+
+
+    LogStr("Exit");
 }
 
 /* don't understand why they choose a different header ! */
 int intel_h263_decode_picture_header( MpegEncContext *s )
 {
+    LogStr("Init");
+
+
     int format;
 
     /* picture header */
     if (get_bits_long(&s->gb, 22) != 0x20)
     {
         av_log(s->avctx, AV_LOG_ERROR, "Bad picture start code\n");
+        LogStr("Exit");
         return -1;
     }
     s->picture_number = get_bits(&s->gb, 8); /* picture timestamp */
@@ -7061,11 +7736,13 @@ int intel_h263_decode_picture_header( MpegEncContext *s )
     if (get_bits1(&s->gb) != 1)
     {
         av_log(s->avctx, AV_LOG_ERROR, "Bad marker\n");
+        LogStr("Exit");
         return -1; /* marker */
     }
     if (get_bits1(&s->gb) != 0)
     {
         av_log(s->avctx, AV_LOG_ERROR, "Bad H263 id\n");
+        LogStr("Exit");
         return -1; /* h263 id */
     }
     skip_bits1(&s->gb); /* split screen off */
@@ -7076,6 +7753,7 @@ int intel_h263_decode_picture_header( MpegEncContext *s )
     if (format != 7)
     {
         av_log(s->avctx, AV_LOG_ERROR, "Intel H263 free format not supported\n");
+        LogStr("Exit");
         return -1;
     }
     s->h263_plus = 0;
@@ -7088,12 +7766,14 @@ int intel_h263_decode_picture_header( MpegEncContext *s )
     if (get_bits1(&s->gb) != 0)
     {
         av_log(s->avctx, AV_LOG_ERROR, "SAC not supported\n");
+        LogStr("Exit");
         return -1; /* SAC: off */
     }
     s->obmc = get_bits1(&s->gb);
     if (get_bits1(&s->gb) != 0)
     {
         av_log(s->avctx, AV_LOG_ERROR, "PB frame mode no supported\n");
+        LogStr("Exit");
         return -1; /* PB frame mode */
     }
 
@@ -7115,23 +7795,29 @@ int intel_h263_decode_picture_header( MpegEncContext *s )
     if (s->avctx->debug & FF_DEBUG_PICT_INFO)
         show_pict_info(s);
 
+    LogStr("Exit");
     return 0;
 }
 
 int flv_h263_decode_picture_header( MpegEncContext *s )
 {
+    LogStr("Init");
+
+
     int format, width, height;
 
     /* picture header */
     if (get_bits_long(&s->gb, 17) != 1)
     {
         av_log(s->avctx, AV_LOG_ERROR, "Bad picture start code\n");
+        LogStr("Exit");
         return -1;
     }
     format = get_bits(&s->gb, 5);
     if (format != 0 && format != 1)
     {
         av_log(s->avctx, AV_LOG_ERROR, "Bad picture format\n");
+        LogStr("Exit");
         return -1;
     }
     s->h263_flv = format + 1;
@@ -7172,7 +7858,10 @@ int flv_h263_decode_picture_header( MpegEncContext *s )
             break;
     }
     if (avcodec_check_dimensions(s->avctx, width, height))
+    {
+        LogStr("Exit");
         return -1;
+    }
     s->width = width;
     s->height = height;
 
@@ -7203,5 +7892,6 @@ int flv_h263_decode_picture_header( MpegEncContext *s )
 
     s->y_dc_scale_table = s->c_dc_scale_table = ff_mpeg1_dc_scale_table;
 
+    LogStr("Exit");
     return 0;
 }

@@ -40,14 +40,15 @@
 #include "jpeglsdec.h"
 
 //Fernando: 20080908
-#undef printf
-#define LogStr(str)  printf ( "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__)
+//#undef printf
+//#define LogStr(str)  printf ( "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__)
+#define LogStr(str) av_log(NULL, AV_LOG_ERROR, "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__);
 
 
 static int build_vlc( VLC *vlc, const uint8_t *bits_table, const uint8_t *val_table, int nb_codes, int use_static, int is_ac )
 {
 
-    LogStr("Init");
+    //LogStr("Init");
     uint8_t huff_size[256 + 16];
     uint16_t huff_code[256 + 16];
 
@@ -65,7 +66,7 @@ static int build_vlc( VLC *vlc, const uint8_t *bits_table, const uint8_t *val_ta
         nb_codes += 16;
     }
 
-    LogStr("Exit");
+    //LogStr("Exit");
     return init_vlc(vlc, 9, nb_codes, huff_size, 1, 1, huff_code, 2, 2, use_static);
 }
 
@@ -123,7 +124,7 @@ av_cold int ff_mjpeg_decode_init( AVCodecContext *avctx )
 /* quantize tables */
 int ff_mjpeg_decode_dqt( MJpegDecodeContext *s )
 {
-    LogStr("Init");
+    //LogStr("Init");
 
     int len, index, i, j;
 
@@ -135,14 +136,14 @@ int ff_mjpeg_decode_dqt( MJpegDecodeContext *s )
         if (get_bits(&s->gb, 4) != 0)
         {
             av_log(s->avctx, AV_LOG_ERROR, "dqt: 16bit precision\n");
-            LogStr("Exit");
+            //LogStr("Exit");
             return -1;
         }
 
         index = get_bits(&s->gb, 4);
         if (index >= 4)
         {
-            LogStr("Exit");
+            //LogStr("Exit");
             return -1;
         }
 
@@ -162,14 +163,14 @@ int ff_mjpeg_decode_dqt( MJpegDecodeContext *s )
         len -= 65;
     }
 
-    LogStr("Exit");
+    //LogStr("Exit");
     return 0;
 }
 
 /* decode huffman tables and build VLC decoders */
 int ff_mjpeg_decode_dht( MJpegDecodeContext *s )
 {
-    LogStr("Init");
+    //LogStr("Init");
 
     int len, index, i, class, n, v, code_max;
     uint8_t bits_table[17];
@@ -181,19 +182,19 @@ int ff_mjpeg_decode_dht( MJpegDecodeContext *s )
     {
         if (len < 17)
         {
-            LogStr("Exit");
+            //LogStr("Exit");
             return -1;
         }
         class = get_bits(&s->gb, 4);
         if (class >= 2)
         {
-            LogStr("Exit");
+            //LogStr("Exit");
             return -1;
         }
         index = get_bits(&s->gb, 4);
         if (index >= 4)
         {
-            LogStr("Exit");
+            //LogStr("Exit");
             return -1;
         }
         n = 0;
@@ -205,7 +206,7 @@ int ff_mjpeg_decode_dht( MJpegDecodeContext *s )
         len -= 17;
         if (len < n || n > 256)
         {
-            LogStr("Exit");
+            //LogStr("Exit");
             return -1;
         }
         code_max = 0;
@@ -225,18 +226,18 @@ int ff_mjpeg_decode_dht( MJpegDecodeContext *s )
         if (build_vlc(&s->vlcs[class][index], bits_table, val_table, code_max
                 + 1, 0, class > 0) < 0)
         {
-            LogStr("Exit");
+            //LogStr("Exit");
             return -1;
         }
     }
-    LogStr("Exit");
+    //LogStr("Exit");
     return 0;
 }
 
 int ff_mjpeg_decode_sof( MJpegDecodeContext *s )
 {
 
-    LogStr("Init");
+    //LogStr("Init");
 
     int len, nb_components, i, width, height, pix_fmt_id;
 
@@ -252,7 +253,7 @@ int ff_mjpeg_decode_sof( MJpegDecodeContext *s )
     if (s->bits != 8 && !s->lossless)
     {
         av_log(s->avctx, AV_LOG_ERROR, "only 8 bits/component accepted\n");
-        LogStr("Exit");
+        //LogStr("Exit");
         return -1;
     }
 
@@ -266,20 +267,20 @@ int ff_mjpeg_decode_sof( MJpegDecodeContext *s )
     av_log(s->avctx, AV_LOG_DEBUG, "sof0: picture: %dx%d\n", width, height);
     if (avcodec_check_dimensions(s->avctx, width, height))
     {
-        LogStr("Exit");
+        //LogStr("Exit");
         return -1;
     }
 
     nb_components = get_bits(&s->gb, 8);
     if (nb_components <= 0 || nb_components > MAX_COMPONENTS)
     {
-        LogStr("Exit");
+        //LogStr("Exit");
         return -1;
     }
     if (s->ls && !(s->bits <= 8 || nb_components == 1))
     {
         av_log(s->avctx, AV_LOG_ERROR, "only <= 8 bits/component or 16-bit gray accepted for JPEG-LS\n");
-        LogStr("Exit");
+        //LogStr("Exit");
         return -1;
     }
     s->nb_components = nb_components;
@@ -299,7 +300,7 @@ int ff_mjpeg_decode_sof( MJpegDecodeContext *s )
         s->quant_index[i] = get_bits(&s->gb, 8);
         if (s->quant_index[i] >= 4)
         {
-            LogStr("Exit");
+            //LogStr("Exit");
             return -1;
         }
         av_log(s->avctx, AV_LOG_DEBUG, "component %d %d:%d id: %d quant:%d\n", i, s->h_count[i], s->v_count[i], s->component_id[i], s->quant_index[i]);
@@ -308,7 +309,7 @@ int ff_mjpeg_decode_sof( MJpegDecodeContext *s )
     if (s->ls && (s->h_max > 1 || s->v_max > 1))
     {
         av_log(s->avctx, AV_LOG_ERROR, "Subsampling in JPEG-LS is not supported.\n");
-        LogStr("Exit");
+        //LogStr("Exit");
         return -1;
     }
 
@@ -345,7 +346,7 @@ int ff_mjpeg_decode_sof( MJpegDecodeContext *s )
 
     if (s->interlaced && (s->bottom_field == !s->interlace_polarity))
     {
-        LogStr("Exit");
+        //LogStr("Exit");
         return 0;
     }
 
@@ -386,7 +387,7 @@ int ff_mjpeg_decode_sof( MJpegDecodeContext *s )
             break;
         default:
             av_log(s->avctx, AV_LOG_ERROR, "Unhandled pixel format 0x%x\n", pix_fmt_id);
-            LogStr("Exit");
+            //LogStr("Exit");
             return -1;
     }
     if (s->ls)
@@ -406,7 +407,7 @@ int ff_mjpeg_decode_sof( MJpegDecodeContext *s )
     if (s->avctx->get_buffer(s->avctx, &s->picture) < 0)
     {
         av_log(s->avctx, AV_LOG_ERROR, "get_buffer() failed\n");
-        LogStr("Exit");
+        //LogStr("Exit");
         return -1;
     }
     s->picture.pict_type = FF_I_TYPE;
@@ -433,7 +434,7 @@ int ff_mjpeg_decode_sof( MJpegDecodeContext *s )
         memset(s->picture.data[2], 0, s->picture.linesize[2] * s->height
                 >> (s->v_max - s->v_count[2]));
     }
-    LogStr("Exit");
+    //LogStr("Exit");
     return 0;
 }
 
@@ -1393,7 +1394,7 @@ int ff_mjpeg_decode_frame( AVCodecContext *avctx, void *data, int *data_size, co
     LogStr("Init");
 
 
-    LogStr("$$$$$$$$$$$$$$$$$$$ 1");
+    //LogStr("$$$$$$$$$$$$$$$$$$$ 1");
 
 
     //Fernando: 20080919
@@ -1409,11 +1410,11 @@ int ff_mjpeg_decode_frame( AVCodecContext *avctx, void *data, int *data_size, co
     buf_end = buf + buf_size;
 
 
-    LogStr("$$$$$$$$$$$$$$$$$$$ 2");
+    //LogStr("$$$$$$$$$$$$$$$$$$$ 2");
 
     while (buf_ptr < buf_end)
     {
-        LogStr("$$$$$$$$$$$$$$$$$$$ 3");
+        //LogStr("$$$$$$$$$$$$$$$$$$$ 3");
 
         /* find start next marker */
         start_code = find_marker(&buf_ptr, buf_end);
@@ -1421,19 +1422,19 @@ int ff_mjpeg_decode_frame( AVCodecContext *avctx, void *data, int *data_size, co
             /* EOF */
             if (start_code < 0)
             {
-                LogStr("$$$$$$$$$$$$$$$$$$$ 4");
+                //LogStr("$$$$$$$$$$$$$$$$$$$ 4");
 
                 goto the_end;
             }
             else
             {
-                LogStr("$$$$$$$$$$$$$$$$$$$ 5");
+                //LogStr("$$$$$$$$$$$$$$$$$$$ 5");
 
                 av_log(avctx, AV_LOG_DEBUG, "marker=%x avail_size_in_buf=%td\n", start_code, buf_end - buf_ptr);
 
                 if ((buf_end - buf_ptr) > s->buffer_size)
                 {
-                    LogStr("$$$$$$$$$$$$$$$$$$$ 6");
+                    //LogStr("$$$$$$$$$$$$$$$$$$$ 6");
 
                     av_free(s->buffer);
                     s->buffer_size = buf_end - buf_ptr;
@@ -1444,12 +1445,12 @@ int ff_mjpeg_decode_frame( AVCodecContext *avctx, void *data, int *data_size, co
                 /* unescape buffer of SOS, use special treatment for JPEG-LS */
                 if (start_code == SOS && !s->ls)
                 {
-                    LogStr("$$$$$$$$$$$$$$$$$$$ 7");
+                    //LogStr("$$$$$$$$$$$$$$$$$$$ 7");
 
                     const uint8_t *src = buf_ptr;
                     uint8_t *dst = s->buffer;
-                    LogStr("$$$$$$$$$$$$$$$$$$$ 8");
-                    LogStr("$$$$$$$$$$$$$$$$$$$ 9");
+                    //LogStr("$$$$$$$$$$$$$$$$$$$ 8");
+                    //LogStr("$$$$$$$$$$$$$$$$$$$ 9");
 
                     while (src < buf_end)
                     {
@@ -1462,24 +1463,24 @@ int ff_mjpeg_decode_frame( AVCodecContext *avctx, void *data, int *data_size, co
 
                             if (x == 0xff)
                             {
-                                //LogStr("$$$$$$$$$$$$$$$$$$$ 10");
+                                ////LogStr("$$$$$$$$$$$$$$$$$$$ 10");
 
                                 while (src < buf_end && x == 0xff)
                                 {
-                                    //LogStr("$$$$$$$$$$$$$$$$$$$ 11");
+                                    ////LogStr("$$$$$$$$$$$$$$$$$$$ 11");
 
                                     x = *(src++);
                                 }
 
                                 if (x >= 0xd0 && x <= 0xd7)
                                 {
-                                    LogStr("$$$$$$$$$$$$$$$$$$$ 12");
+                                    //LogStr("$$$$$$$$$$$$$$$$$$$ 12");
 
                                     *(dst++) = x;
                                 }
                                 else if (x)
                                 {
-                                    LogStr("$$$$$$$$$$$$$$$$$$$ 13");
+                                    //LogStr("$$$$$$$$$$$$$$$$$$$ 13");
 
                                     break;
                                 }
@@ -1487,7 +1488,7 @@ int ff_mjpeg_decode_frame( AVCodecContext *avctx, void *data, int *data_size, co
                         }
                     }
 
-                    LogStr("$$$$$$$$$$$$$$$$$$$ 14");
+                    //LogStr("$$$$$$$$$$$$$$$$$$$ 14");
 
                     init_get_bits(&s->gb, s->buffer, (dst - s->buffer) * 8);
 
@@ -1495,7 +1496,7 @@ int ff_mjpeg_decode_frame( AVCodecContext *avctx, void *data, int *data_size, co
                 }
                 else if (start_code == SOS && s->ls)
                 {
-                    LogStr("$$$$$$$$$$$$$$$$$$$ 15");
+                    //LogStr("$$$$$$$$$$$$$$$$$$$ 15");
 
                     const uint8_t *src = buf_ptr;
                     uint8_t *dst = s->buffer;
@@ -1508,23 +1509,23 @@ int ff_mjpeg_decode_frame( AVCodecContext *avctx, void *data, int *data_size, co
                     /* find marker */
                     while (src + t < buf_end)
                     {
-                        LogStr("$$$$$$$$$$$$$$$$$$$ 16");
+                        //LogStr("$$$$$$$$$$$$$$$$$$$ 16");
 
                         uint8_t x = src[t++];
                         if (x == 0xff)
                         {
-                            LogStr("$$$$$$$$$$$$$$$$$$$ 17");
+                            //LogStr("$$$$$$$$$$$$$$$$$$$ 17");
 
                             while ((src + t < buf_end) && x == 0xff)
                             {
-                                LogStr("$$$$$$$$$$$$$$$$$$$ 18");
+                                //LogStr("$$$$$$$$$$$$$$$$$$$ 18");
 
                                 x = src[t++];
                             }
 
                             if (x & 0x80)
                             {
-                                LogStr("$$$$$$$$$$$$$$$$$$$ 19");
+                                //LogStr("$$$$$$$$$$$$$$$$$$$ 19");
 
                                 t -= 2;
                                 break;
@@ -1532,7 +1533,7 @@ int ff_mjpeg_decode_frame( AVCodecContext *avctx, void *data, int *data_size, co
                         }
                     }
 
-                    LogStr("$$$$$$$$$$$$$$$$$$$ 20");
+                    //LogStr("$$$$$$$$$$$$$$$$$$$ 20");
 
                     bit_count = t * 8;
 
@@ -1541,13 +1542,13 @@ int ff_mjpeg_decode_frame( AVCodecContext *avctx, void *data, int *data_size, co
                     /* unescape bitstream */
                     while (b < t)
                     {
-                        LogStr("$$$$$$$$$$$$$$$$$$$ 21");
+                        //LogStr("$$$$$$$$$$$$$$$$$$$ 21");
 
                         uint8_t x = src[b++];
                         put_bits(&pb, 8, x);
                         if (x == 0xFF)
                         {
-                            LogStr("$$$$$$$$$$$$$$$$$$$ 22");
+                            //LogStr("$$$$$$$$$$$$$$$$$$$ 22");
                             x = src[b++];
                             put_bits(&pb, 7, x);
                             bit_count--;
@@ -1555,142 +1556,142 @@ int ff_mjpeg_decode_frame( AVCodecContext *avctx, void *data, int *data_size, co
                     }
                     flush_put_bits(&pb);
 
-                    LogStr("$$$$$$$$$$$$$$$$$$$ 23");
+                    //LogStr("$$$$$$$$$$$$$$$$$$$ 23");
                     init_get_bits(&s->gb, dst, bit_count);
                 }
                 else
                 {
-                    LogStr("$$$$$$$$$$$$$$$$$$$ 24");
+                    //LogStr("$$$$$$$$$$$$$$$$$$$ 24");
                     init_get_bits(&s->gb, buf_ptr, (buf_end - buf_ptr) * 8);
                 }
 
                 s->start_code = start_code;
                 if (s->avctx->debug & FF_DEBUG_STARTCODE)
                 {
-                    LogStr("$$$$$$$$$$$$$$$$$$$ 25");
+                    //LogStr("$$$$$$$$$$$$$$$$$$$ 25");
                     av_log(avctx, AV_LOG_DEBUG, "startcode: %X\n", start_code);
                 }
 
                 /* process markers */
                 if (start_code >= 0xd0 && start_code <= 0xd7)
                 {
-                    LogStr("$$$$$$$$$$$$$$$$$$$ 26");
+                    //LogStr("$$$$$$$$$$$$$$$$$$$ 26");
                     av_log(avctx, AV_LOG_DEBUG, "restart marker: %d\n", start_code & 0x0f);
                     /* APP fields */
                 }
                 else if (start_code >= APP0 && start_code <= APP15)
                 {
-                    LogStr("$$$$$$$$$$$$$$$$$$$ 27");
+                    //LogStr("$$$$$$$$$$$$$$$$$$$ 27");
                     mjpeg_decode_app(s);
                     /* Comment */
                 }
                 else if (start_code == COM)
                 {
-                    LogStr("$$$$$$$$$$$$$$$$$$$ 28");
+                    //LogStr("$$$$$$$$$$$$$$$$$$$ 28");
                     mjpeg_decode_com(s);
                 }
 
-                LogStr("$$$$$$$$$$$$$$$$$$$ 29");
+                //LogStr("$$$$$$$$$$$$$$$$$$$ 29");
                 switch (start_code)
                 {
                     case SOI:
-                        LogStr("$$$$$$$$$$$$$$$$$$$ 30");
+                        //LogStr("$$$$$$$$$$$$$$$$$$$ 30");
                         s->restart_interval = 0;
 
                         s->restart_count = 0;
                         /* nothing to do on SOI */
                         break;
                     case DQT:
-                        LogStr("$$$$$$$$$$$$$$$$$$$ 31");
+                        //LogStr("$$$$$$$$$$$$$$$$$$$ 31");
                         ff_mjpeg_decode_dqt(s);
                         break;
                     case DHT:
-                        LogStr("$$$$$$$$$$$$$$$$$$$ 32");
+                        //LogStr("$$$$$$$$$$$$$$$$$$$ 32");
                         if (ff_mjpeg_decode_dht(s) < 0)
                         {
-                            LogStr("$$$$$$$$$$$$$$$$$$$ 33");
+                            //LogStr("$$$$$$$$$$$$$$$$$$$ 33");
                             av_log(avctx, AV_LOG_ERROR, "huffman table decode error\n");
-                            LogStr("Exit");
+                            //LogStr("Exit");
                             return -1;
                         }
                         break;
                     case SOF0:
-                        LogStr("$$$$$$$$$$$$$$$$$$$ 34");
+                        //LogStr("$$$$$$$$$$$$$$$$$$$ 34");
                         s->lossless = 0;
                         s->ls = 0;
                         s->progressive = 0;
                         if (ff_mjpeg_decode_sof(s) < 0)
                         {
-                            LogStr("$$$$$$$$$$$$$$$$$$$ 35");
-                            LogStr("Exit");
+                            //LogStr("$$$$$$$$$$$$$$$$$$$ 35");
+                            //LogStr("Exit");
                             return -1;
                         }
                         break;
                     case SOF2:
-                        LogStr("$$$$$$$$$$$$$$$$$$$ 36");
+                        //LogStr("$$$$$$$$$$$$$$$$$$$ 36");
                         s->lossless = 0;
                         s->ls = 0;
                         s->progressive = 1;
                         if (ff_mjpeg_decode_sof(s) < 0)
                         {
-                            LogStr("$$$$$$$$$$$$$$$$$$$ 37");
-                            LogStr("Exit");
+                            //LogStr("$$$$$$$$$$$$$$$$$$$ 37");
+                            //LogStr("Exit");
                             return -1;
                         }
                         break;
                     case SOF3:
-                        LogStr("$$$$$$$$$$$$$$$$$$$ 38");
+                        //LogStr("$$$$$$$$$$$$$$$$$$$ 38");
                         s->lossless = 1;
                         s->ls = 0;
                         s->progressive = 0;
                         if (ff_mjpeg_decode_sof(s) < 0)
                         {
-                            LogStr("$$$$$$$$$$$$$$$$$$$ 39");
-                            LogStr("Exit");
+                            //LogStr("$$$$$$$$$$$$$$$$$$$ 39");
+                            //LogStr("Exit");
                             return -1;
                         }
                         break;
                     case SOF48:
-                        LogStr("$$$$$$$$$$$$$$$$$$$ 40");
+                        //LogStr("$$$$$$$$$$$$$$$$$$$ 40");
                         s->lossless = 1;
                         s->ls = 1;
                         s->progressive = 0;
                         if (ff_mjpeg_decode_sof(s) < 0)
                         {
-                            LogStr("$$$$$$$$$$$$$$$$$$$ 41");
-                            LogStr("Exit");
+                            //LogStr("$$$$$$$$$$$$$$$$$$$ 41");
+                            //LogStr("Exit");
                             return -1;
                         }
                         break;
                     case LSE:
-                        LogStr("$$$$$$$$$$$$$$$$$$$ 42");
+                        //LogStr("$$$$$$$$$$$$$$$$$$$ 42");
                         if (!ENABLE_JPEGLS_DECODER || ff_jpegls_decode_lse(s) < 0)
                         {
-                            LogStr("$$$$$$$$$$$$$$$$$$$ 43");
-                            LogStr("Exit");
+                            //LogStr("$$$$$$$$$$$$$$$$$$$ 43");
+                            //LogStr("Exit");
                             return -1;
                         }
                         break;
                     case EOI:
-                        LogStr("$$$$$$$$$$$$$$$$$$$ 44");
+                        //LogStr("$$$$$$$$$$$$$$$$$$$ 44");
                         s->cur_scan = 0;
                         if ((s->buggy_avid && !s->interlaced) || s->restart_interval)
                         {
-                            LogStr("$$$$$$$$$$$$$$$$$$$ 45");
-                            LogStr("Exit");
+                            //LogStr("$$$$$$$$$$$$$$$$$$$ 45");
+                            //LogStr("Exit");
                             break;
                         }
                         eoi_parser:
                         {
-                            LogStr("$$$$$$$$$$$$$$$$$$$ 46");
+                            //LogStr("$$$$$$$$$$$$$$$$$$$ 46");
                             if (s->interlaced)
                             {
-                                LogStr("$$$$$$$$$$$$$$$$$$$ 47");
+                                //LogStr("$$$$$$$$$$$$$$$$$$$ 47");
                                 s->bottom_field ^= 1;
                                 /* if not bottom field, do not output image yet */
                                 if (s->bottom_field == !s->interlace_polarity)
                                 {
-                                    LogStr("$$$$$$$$$$$$$$$$$$$ 48");
+                                    //LogStr("$$$$$$$$$$$$$$$$$$$ 48");
                                     goto not_the_end;
                                 }
                             }
@@ -1699,14 +1700,14 @@ int ff_mjpeg_decode_frame( AVCodecContext *avctx, void *data, int *data_size, co
 
                             if (!s->lossless)
                             {
-                                LogStr("$$$$$$$$$$$$$$$$$$$ 49");
+                                //LogStr("$$$$$$$$$$$$$$$$$$$ 49");
                                 picture->quality = FFMAX3(s->qscale[0], s->qscale[1], s->qscale[2]);
                                 picture->qstride = 0;
                                 picture->qscale_table = s->qscale_table;
                                 memset(picture->qscale_table, picture->quality, (s->width + 15) / 16);
                                 if (avctx->debug & FF_DEBUG_QP)
                                 {
-                                    LogStr("$$$$$$$$$$$$$$$$$$$ 50");
+                                    //LogStr("$$$$$$$$$$$$$$$$$$$ 50");
                                     av_log(avctx, AV_LOG_DEBUG, "QP: %d\n", picture->quality);
                                 }
                                 picture->quality *= FF_QP2LAMBDA;
@@ -1716,18 +1717,18 @@ int ff_mjpeg_decode_frame( AVCodecContext *avctx, void *data, int *data_size, co
                         }
                         break;
                     case SOS:
-                        LogStr("$$$$$$$$$$$$$$$$$$$ 51");
+                        //LogStr("$$$$$$$$$$$$$$$$$$$ 51");
                         ff_mjpeg_decode_sos(s);
                         /* buggy avid puts EOI every 10-20th frame */
                         /* if restart period is over process EOI */
                         if ((s->buggy_avid && !s->interlaced) || s->restart_interval)
                         {
-                            LogStr("$$$$$$$$$$$$$$$$$$$ 52");
+                            //LogStr("$$$$$$$$$$$$$$$$$$$ 52");
                             goto eoi_parser;
                         }
                         break;
                     case DRI:
-                        LogStr("$$$$$$$$$$$$$$$$$$$ 53");
+                        //LogStr("$$$$$$$$$$$$$$$$$$$ 53");
                         mjpeg_decode_dri(s);
                         break;
                     case SOF1:
@@ -1741,7 +1742,7 @@ int ff_mjpeg_decode_frame( AVCodecContext *avctx, void *data, int *data_size, co
                     case SOF14:
                     case SOF15:
                     case JPG:
-                        LogStr("$$$$$$$$$$$$$$$$$$$ 54");
+                        //LogStr("$$$$$$$$$$$$$$$$$$$ 54");
                         av_log(avctx, AV_LOG_ERROR, "mjpeg: unsupported coding type (%x)\n", start_code);
                         break;
                         //                default:
@@ -1749,7 +1750,7 @@ int ff_mjpeg_decode_frame( AVCodecContext *avctx, void *data, int *data_size, co
                         //                    break;
                 }
 
-                LogStr("$$$$$$$$$$$$$$$$$$$ 55");
+                //LogStr("$$$$$$$$$$$$$$$$$$$ 55");
                 not_the_end:
                 /* eof process start code */
                 buf_ptr += (get_bits_count(&s->gb) + 7) / 8;
@@ -1758,12 +1759,12 @@ int ff_mjpeg_decode_frame( AVCodecContext *avctx, void *data, int *data_size, co
         }
     }
 
-    LogStr("$$$$$$$$$$$$$$$$$$$ 56");
+    //LogStr("$$$$$$$$$$$$$$$$$$$ 56");
 
     the_end: av_log(avctx, AV_LOG_DEBUG, "mjpeg decode frame unused %td bytes\n", buf_end - buf_ptr);
     //    return buf_end - buf_ptr;
 
-    LogStr("$$$$$$$$$$$$$$$$$$$ 57");
+    //LogStr("$$$$$$$$$$$$$$$$$$$ 57");
     LogStr("Exit");
     return buf_ptr - buf;
 }

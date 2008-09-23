@@ -20,8 +20,8 @@
  */
 
 //Fernando: 20080908
-#define LogStr(str)  printf ( "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__)
-
+//#define LogStr(str)  printf ( "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__)
+#define LogStr(str) av_log(NULL, AV_LOG_ERROR, "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__);
 
 #include "avformat.h"
 #include "internal.h"
@@ -4368,13 +4368,13 @@ int av_get_frame_filename( char *buf, int buf_size, const char *path, int number
 
         if (c == '\0')
         {
-            LogStr ("if \\0");
+            //LogStr ("if \\0");
             break;
         }
 
         if (c == '%')
         {
-            LogStr ("if %");
+            //LogStr ("if %");
             do
             {
                 nd = 0;
@@ -4411,7 +4411,7 @@ int av_get_frame_filename( char *buf, int buf_size, const char *path, int number
         }
         else
         {
-            LogStr ("else");
+            //LogStr ("else");
 
             addchar:
             if ((q - buf) < buf_size - 1)
@@ -4432,7 +4432,7 @@ int av_get_frame_filename( char *buf, int buf_size, const char *path, int number
 
     fail:
 
-    LogStr ("FAIL");
+    //LogStr ("FAIL");
     *q = '\0';
 
 

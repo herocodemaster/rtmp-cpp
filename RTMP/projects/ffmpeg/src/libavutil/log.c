@@ -28,25 +28,26 @@
 
 int av_log_level = AV_LOG_INFO;
 
-void av_log_default_callback(void* ptr, int level, const char* fmt, va_list vl)
+void av_log_default_callback( void* ptr, int level, const char* fmt, va_list vl )
 {
-    static int print_prefix=1;
-    AVClass* avc= ptr ? *(AVClass**)ptr : NULL;
-    if(level>av_log_level)
+    static int print_prefix = 1;
+    AVClass* avc = ptr ? *(AVClass**) ptr : NULL;
+    if (level > av_log_level)
         return;
 #undef fprintf
-    if(print_prefix && avc) {
+    if (print_prefix && avc)
+    {
         fprintf(stderr, "[%s @ %p]", avc->item_name(ptr), ptr);
     }
 
-    print_prefix= strstr(fmt, "\n") != NULL;
+    print_prefix = strstr(fmt, "\n") != NULL;
 
     vfprintf(stderr, fmt, vl);
 }
 
-static void (*av_log_callback)(void*, int, const char*, va_list) = av_log_default_callback;
+static void (*av_log_callback)( void*, int, const char*, va_list ) = av_log_default_callback;
 
-void av_log(void* avcl, int level, const char *fmt, ...)
+void av_log( void* avcl, int level, const char *fmt, ... )
 {
     va_list vl;
     va_start(vl, fmt);
@@ -54,22 +55,22 @@ void av_log(void* avcl, int level, const char *fmt, ...)
     va_end(vl);
 }
 
-void av_vlog(void* avcl, int level, const char *fmt, va_list vl)
+void av_vlog( void* avcl, int level, const char *fmt, va_list vl )
 {
     av_log_callback(avcl, level, fmt, vl);
 }
 
-int av_log_get_level(void)
+int av_log_get_level( void )
 {
     return av_log_level;
 }
 
-void av_log_set_level(int level)
+void av_log_set_level( int level )
 {
     av_log_level = level;
 }
 
-void av_log_set_callback(void (*callback)(void*, int, const char*, va_list))
+void av_log_set_callback( void(*callback)( void*, int, const char*, va_list ) )
 {
     av_log_callback = callback;
 }

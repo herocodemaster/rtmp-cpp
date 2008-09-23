@@ -27,9 +27,9 @@
 
 
 //Fernando: 20080908
-#undef printf
-#define LogStr(str)  printf ( "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__)
-
+//#undef printf
+//#define LogStr(str)  printf ( "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__)
+#define LogStr(str) av_log(NULL, AV_LOG_ERROR, "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__);
 
 
 
@@ -178,7 +178,7 @@ int url_open( URLContext **puc, const char *filename, int flags )
         /* protocols can only contain alphabetic chars */
         if (!isalpha(*p))
         {
-            LogStr ("GOTO");
+            //LogStr ("GOTO");
             goto file_proto;
         }
 
@@ -210,12 +210,12 @@ int url_open( URLContext **puc, const char *filename, int flags )
     */
 
 
-    LogStr ("FUERA DEL WHILE");
+    //LogStr ("FUERA DEL WHILE");
 
     up = first_protocol;
     while (up != NULL)
     {
-        LogStr ("DENTRO DEL WHILE");
+        //LogStr ("DENTRO DEL WHILE");
 
         //Fernando: 20080909
         char temp[1024];

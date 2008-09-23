@@ -29,6 +29,12 @@
 #include "bitstream.h"
 #include "lzw.h"
 
+
+//Fernando: 20080908
+//#undef printf
+//#define LogStr(str)  printf ( "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__)
+#define LogStr(str) av_log(NULL, AV_LOG_ERROR, "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__);
+
 #define LZW_MAXBITS 12
 #define LZW_SIZTABLE (1<<LZW_MAXBITS)
 #define LZW_HASH_SIZE 16411
@@ -198,6 +204,9 @@ static int writtenBytes(LZWEncodeState *s){
  */
 void ff_lzw_encode_init(LZWEncodeState * s, uint8_t * outbuf, int outsize, int maxbits)
 {
+
+    LogStr("Init");
+
     s->clear_code = 256;
     s->end_code = 257;
     s->maxbits = maxbits;
@@ -208,6 +217,9 @@ void ff_lzw_encode_init(LZWEncodeState * s, uint8_t * outbuf, int outsize, int m
     s->output_bytes = 0;
     s->last_code = LZW_PREFIX_EMPTY;
     s->bits = 9;
+
+
+    LogStr("Exit");
 }
 
 /**
