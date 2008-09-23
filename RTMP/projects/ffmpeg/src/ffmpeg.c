@@ -1952,20 +1952,20 @@ static int stream_index_from_inputs( AVFormatContext **input_files, int nb_input
 void dumpPacket(AVPacket *pkt)
 {
 
-    printf("%s: %d\n", "pkt.size: ", pkt.size);
-    printf("%s: %d\n", "pkt.pts: ", pkt.pts);
-    printf("%s: %d\n", "pkt.dts: ", pkt.dts);
-    printf("%s: %d\n", "pkt.stream_index: ", pkt.stream_index);
-    printf("%s: %d\n", "pkt.flags: ", pkt.flags);
-    printf("%s: %d\n", "pkt.duration: ", pkt.duration);
-    printf("%s: %d\n", "pkt.pos: ", pkt.pos);
+    printf("%s: %d\n", "pkt->size: ", pkt->size);
+    printf("%s: %d\n", "pkt->pts: ", pkt->pts);
+    printf("%s: %d\n", "pkt->dts: ", pkt->dts);
+    printf("%s: %d\n", "pkt->stream_index: ", pkt->stream_index);
+    printf("%s: %d\n", "pkt->flags: ", pkt->flags);
+    printf("%s: %d\n", "pkt->duration: ", pkt->duration);
+    printf("%s: %d\n", "pkt->pos: ", pkt->pos);
     printf("%s:\n", "Buffer: ");
 
 //        void  *priv;
 //        void  (*destruct)(struct AVPacket *);
 
 
-    hex_dump(pkt.data, pkt.size);
+    hex_dump(pkt->data, pkt->size);
 
 }
 
