@@ -5372,7 +5372,7 @@ static AVPacket *add_to_pktbuf( AVPacketList **packet_buffer, AVPacket *pkt, AVP
 void addAnotherImage(char* fileName)
 {
 
-    //Fernando: modificamos los archivos de entrada y agregamos un archivo más a mano.
+    //Fernando: modificamos los archivos de entrada y agregamos un archivo ms a mano.
 
     //input_files[0].packet_buffer
     modoManual = 1;
