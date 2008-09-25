@@ -1,3 +1,12 @@
+PASOS A SEGUIR - HITOS:
+	- Usar ffmpeg para convertir varias imagenes JPG's en un archivo FLV
+	- "Streamear" un archivo FLV vía RTMP
+	- Eliminar funcionalidad innecesaria de ffmpeg --> El nuevo nombre será "mjpeg2flv"
+	- Convertir el código de "mjpeg2flv" de C a ISO C++
+	- Hacer que "mjpeg2flv" funcione en multiples compiladores y plataformas
+	- 
+
+
 TODO List:
 
 	- Crear un FLV Player en Flex 3 (Bajar y probar)
