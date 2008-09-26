@@ -49,10 +49,10 @@ AVCodecParser* av_parser_next( AVCodecParser *p )
 
 void av_register_codec_parser( AVCodecParser *parser )
 {
-    LogStr("Init");
+    //LogStr("Init");
     parser->next = av_first_parser;
     av_first_parser = parser;
-    LogStr("Exit");
+    //LogStr("Exit");
 }
 
 AVCodecParserContext *av_parser_init( int codec_id )

@@ -314,6 +314,7 @@ static int img_read_packet( AVFormatContext *s1, AVPacket *pkt )
         //Fernando:
         if (modoManual == 1)
         {
+            LogStr("if (modoManual == 1)");
             //strcpy(filename, "img\\A003.jpg");
             strcpy(filename, globalFileName);
         }

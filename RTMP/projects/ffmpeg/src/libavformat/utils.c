@@ -1527,6 +1527,8 @@ static int av_read_frame_internal( AVFormatContext *s, AVPacket *pkt )
 //Fernando: 20080919
 void hex_dump(const uint8_t *buf, int buf_size)
 {
+    LogStr ("Init");
+
     LogStr("--------------------------------------------------------------------");
     LogStr("First 256 bytes");
     LogStr("--------------------------------------------------------------------");
@@ -1536,7 +1538,7 @@ void hex_dump(const uint8_t *buf, int buf_size)
     {
         printf("%02x ", buf[i]);
 
-        if ((i+1) % 32 == 0 )
+        if ((i+1) % 16 == 0 )
         {
             printf("\n");
         }
@@ -1546,8 +1548,34 @@ void hex_dump(const uint8_t *buf, int buf_size)
 
     LogStr("--------------------------------------------------------------------");
 
+    LogStr ("Exit");
+
 }
 
+
+//Fernando:
+void dumpPacket(AVPacket *pkt)
+{
+    LogStr ("Init");
+
+    printf("%s: %d\n", "pkt->size: ", pkt->size);
+    printf("%s: %d\n", "pkt->pts: ", pkt->pts);
+    printf("%s: %d\n", "pkt->dts: ", pkt->dts);
+    printf("%s: %d\n", "pkt->stream_index: ", pkt->stream_index);
+    printf("%s: %d\n", "pkt->flags: ", pkt->flags);
+    printf("%s: %d\n", "pkt->duration: ", pkt->duration);
+    printf("%s: %d\n", "pkt->pos: ", pkt->pos);
+    printf("%s:\n", "Buffer: ");
+
+//        void  *priv;
+//        void  (*destruct)(struct AVPacket *);
+
+
+    hex_dump(pkt->data, pkt->size);
+
+
+    LogStr ("Exit");
+}
 
 int av_read_frame( AVFormatContext *s, AVPacket *pkt )
 {
@@ -1662,6 +1690,8 @@ int av_read_frame( AVFormatContext *s, AVPacket *pkt )
 //Fernando:
 void getNextImageFromFile(char* fileName, AVFormatContext *s, AVPacket *pkt)
 {
+    LogStr ("Init");
+
     modoManual = 1;
     globalFileName = fileName;
 
@@ -1669,7 +1699,7 @@ void getNextImageFromFile(char* fileName, AVFormatContext *s, AVPacket *pkt)
     //AVPacket pkt1;
     //s = input_files[0]; //TODO:
 
-    pkt = &s->cur_pkt;
+    //pkt = &s->cur_pkt;
     av_init_packet(pkt);
 
     int ret;
@@ -1680,8 +1710,16 @@ void getNextImageFromFile(char* fileName, AVFormatContext *s, AVPacket *pkt)
         return ret;
     }
 
+
+//    printf("*********************************************************\n");
+//    printf("*********************************************************\n");
+//    printf("pkt: %d\n", pkt);
+//    dumpPacket(pkt);
+//    printf("*********************************************************\n");
+//    printf("*********************************************************\n");
+
     //compute_pkt_fields(s, st, NULL, pkt);
-    pkt->duration = 1;
+    //pkt->duration = 1;
     //pkt->pts = 3;
     //pkt->dts = 3;
 
@@ -1689,16 +1727,65 @@ void getNextImageFromFile(char* fileName, AVFormatContext *s, AVPacket *pkt)
     modoManual = 0;
     globalFileName = "";
 
+    LogStr ("Exit");
+
 }
 
 //Fernando:
 int av_read_frame_2( AVFormatContext *s, AVPacket *pkt )
 {
     LogStr ("Init");
+    LogStr ("1");
 
-    getNextImageFromFile("img\\A003.jpg", s, pkt);
 
+    if (imageNumber+1 >= 5)
+    {
+        LogStr ("2");
+        LogStr ("Exit");
+        return -1;
+    }
+
+    LogStr ("3");
+
+    char fileIndex[50] = "";
+    LogStr ("4");
+
+    itoa(imageNumber+1, fileIndex, 10);
+    LogStr ("5");
+
+    char fileName[255];
+    LogStr ("6");
+
+    av_strlcpy(fileName, "img\\A00", 255);
+    LogStr ("7");
+
+    av_strlcat(fileName, fileIndex, 255);
+    LogStr ("8");
+
+    av_strlcat(fileName, ".jpg", 255);
+    LogStr ("9");
+
+
+    printf("*********** fileName: %s\n", fileName);
+    LogStr ("10");
+    getNextImageFromFile(fileName, s, pkt);
+
+//    printf("*********************************************************\n");
+//    printf("*********************************************************\n");
+//    printf("pkt: %d\n", pkt);
+//    dumpPacket(pkt);
+//    printf("*********************************************************\n");
+//    printf("*********************************************************\n");
+
+    pkt->pts = 1;
+    pkt->dts = 1;
+
+    LogStr ("11");
+
+
+    imageNumber++;
     LogStr ("Exit");
+    return 0;
 }
 
 
