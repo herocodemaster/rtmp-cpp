@@ -356,6 +356,14 @@ static int flv_write_packet( AVFormatContext *s, AVPacket *pkt )
 
     LogStr("Init");
 
+
+    //Fernando:
+    //printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
+    //printf("************* proc: %s - line: %d\n", __func__, __LINE__);
+    //dumpPacket(&pkt);
+    //getchar();
+
+
     ByteIOContext *pb = s->pb;
     AVCodecContext *enc = s->streams[pkt->stream_index]->codec;
     FLVContext *flv = s->priv_data;

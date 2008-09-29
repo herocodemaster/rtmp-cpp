@@ -544,6 +544,11 @@ static void write_frame( AVFormatContext *s, AVPacket *pkt, AVCodecContext *avct
 {
     LogStr ("Init");
 
+    //Fernando:
+    //printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
+    //printf("************* proc: %s - line: %d\n", __func__, __LINE__);
+    //getchar();
+
     int ret;
 
     while (bsfc)
@@ -553,6 +558,10 @@ static void write_frame( AVFormatContext *s, AVPacket *pkt, AVCodecContext *avct
 
         if (a > 0)
         {
+            //Fernando:
+            //printf("************* av_free_packet(pkt) - proc: %s - line: %d\n", __func__, __LINE__);
+            //dumpPacket(pkt);
+            //getchar();
             av_free_packet(pkt);
             new_pkt.destruct = av_destruct_packet;
         }
@@ -955,6 +964,12 @@ static uint8_t *bit_buffer = NULL;
 static void do_video_out( AVFormatContext *s, AVOutputStream *ost, AVInputStream *ist, AVFrame *in_picture, int *frame_size )
 {
     LogStr ("Init");
+
+
+    //Fernando:
+    //printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
+    //printf("************* proc: %s - line: %d\n", __func__, __LINE__);
+    //getchar();
 
     int nb_frames, i, ret;
     AVFrame *final_picture, *formatted_picture, *resampling_dst, *padding_src;
@@ -1753,7 +1768,13 @@ static int output_packet( AVInputStream *ist, int ist_index, AVOutputStream **os
                         write_frame(os, &opkt, ost->st->codec, bitstream_filters[ost->file_index][opkt.stream_index]);
                         ost->st->codec->frame_number++;
                         ost->frame_number++;
+
+                        //Fernando:
+                        //printf("************* av_free_packet(pkt) - proc: %s - line: %d\n", __func__, __LINE__);
+                        //dumpPacket(&opkt);
+                        //getchar();
                         av_free_packet(&opkt);
+
                     }
                 }
             }
@@ -2606,19 +2627,23 @@ static int av_encode( AVFormatContext **output_files, int nb_output_files, AVFor
 
 
         //Fernando:
-        printf("sameImageRemainingCounter: %d \n", sameImageRemainingCounter);
+        printf("******** sameImageRemainingCounter: %d \n", sameImageRemainingCounter);
 
         if (sameImageRemainingCounter > 0)
         {
-            pkt = lastPacket;
-            pkt.dts = imageNumber;
-            pkt.pts = imageNumber;
+            printf("if (sameImageRemainingCounter > 0)\n");
+
+            //pkt = lastPacket;
+            //pkt.dts = imageNumber;
+            //pkt.pts = imageNumber;
             sameImageRemainingCounter--;
             imageNumber++;
         }
 
         else
         {
+            printf("else\n");
+
             //if (av_read_frame(is, &pkt) < 0)
             if (av_read_frame_2(is, &pkt) < 0)
             {
@@ -2638,7 +2663,7 @@ static int av_encode( AVFormatContext **output_files, int nb_output_files, AVFor
                 }
             }
 
-            lastPacket = pkt;
+            //lastPacket = pkt;
         }
 
         LogStr("%%%%%%%%%%%%%%%%%%%%%%% 4");
@@ -2649,18 +2674,18 @@ static int av_encode( AVFormatContext **output_files, int nb_output_files, AVFor
             av_pkt_dump_log(NULL, AV_LOG_DEBUG, &pkt, do_hex_dump);
         }
 
-        printf("--------------------------------------------------------------------------\n");
-        printf("--------------------------------------------------------------------------\n");
-        printf("--------------------------------------------------------------------------\n");
-        printf("--------------------------------------------------------------------------\n");
-        //Fernando:
-        printf("pkt: %d\n", &pkt);
-        dumpPacket(&pkt);
-        printf("--------------------------------------------------------------------------\n");
-        printf("--------------------------------------------------------------------------\n");
-        printf("--------------------------------------------------------------------------\n");
-        printf("--------------------------------------------------------------------------\n");
-        //getchar();
+//        printf("--------------------------------------------------------------------------\n");
+//        printf("--------------------------------------------------------------------------\n");
+//        printf("--------------------------------------------------------------------------\n");
+//        printf("--------------------------------------------------------------------------\n");
+//        //Fernando:
+//        printf("pkt: %d\n", &pkt);
+//        dumpPacket(&pkt);
+//        printf("--------------------------------------------------------------------------\n");
+//        printf("--------------------------------------------------------------------------\n");
+//        printf("--------------------------------------------------------------------------\n");
+//        printf("--------------------------------------------------------------------------\n");
+//        //getchar();
 
 
         LogStr("%%%%%%%%%%%%%%%%%%%%%%% 6");
@@ -2747,21 +2772,29 @@ static int av_encode( AVFormatContext **output_files, int nb_output_files, AVFor
                 fprintf(stderr, "Error while decoding stream #%d.%d\n", ist->file_index, ist->index);
             }
 
-            printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
+            //Fernando:
+            //printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
+            //printf("************* av_free_packet(pkt) - proc: %s - line: %d\n", __func__, __LINE__);
+            //dumpPacket(&pkt);
+            //getchar();
             av_free_packet(&pkt);
-            printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
+            //printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
             goto redo;
         }
 
         discard_packet:
 
         //Fernando:
-        if (sameImageRemainingCounter == 0)
-        {
-            printf("+++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+        //if (sameImageRemainingCounter == 0)
+        //{
+        //    printf("+++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+        //    //printf("************* av_free_packet(pkt) - proc: %s - line: %d\n", __func__, __LINE__);
+        //    //dumpPacket(&pkt);
+        //    //getchar();
             av_free_packet(&pkt);
-            printf("+++++++++++++++++++++++++++++++++++++++++++++++++++\n");
-        }
+
+            //    printf("+++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            //}
 
         /* dump report by using the output first video and audio streams */
         print_report(output_files, ost_table, nb_ostreams, 0);
@@ -5488,18 +5521,13 @@ int main( int argc, char **argv )
     //---------------------------------------------------------------------------------------------------------
 
 
-    /*
     avcodec_register_min();
-    //avdevice_register_all();
-    av_register_min();
-    */
-
-
-
-
-    avcodec_register_all();
     avdevice_register_all();
-    av_register_all();
+    av_register_min();
+
+//    avcodec_register_all();
+//    avdevice_register_all();
+//    av_register_all();
 
 
 

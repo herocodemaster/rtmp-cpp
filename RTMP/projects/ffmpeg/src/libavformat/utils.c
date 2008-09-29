@@ -1568,6 +1568,8 @@ void hex_dump(const uint8_t *buf, int buf_size)
     LogStr("First 256 bytes");
     LogStr("--------------------------------------------------------------------");
 
+    printf("--------------------------------------------------------------------\n");
+    printf("size: %d\n", buf_size);
 
     for (int i=0; i<buf_size && i<255; ++i)
     {
@@ -1580,6 +1582,7 @@ void hex_dump(const uint8_t *buf, int buf_size)
     }
 
     printf("\n");
+    printf("--------------------------------------------------------------------\n");
 
     LogStr("--------------------------------------------------------------------");
 
@@ -1958,6 +1961,8 @@ void getNextFileName( char *fileName )
 
     if (buf[0] != '0')
     {
+        printf("********************* finish ******************\n");
+        getchar();
         LogStr ("Exit");
         return;
     }
@@ -2003,8 +2008,14 @@ void getNextFileName( char *fileName )
     {
         int dif = datediff(timeStamp, lastTimeStamp);
         //int dif = timeStamp - lastTimeStamp;
-        //printf("dif: %d\n", dif);
         sameImageRemainingCounter = dif*24/1000000;
+
+//        if (sameImageRemainingCounter >= 100)
+//        {
+//            printf("sameImageRemainingCounter: %d\n", sameImageRemainingCounter);
+//            getchar();
+//        }
+
     }
 
 
@@ -4070,6 +4081,11 @@ int av_write_header( AVFormatContext *s )
 {
     LogStr ("Init");
 
+    //Fernando:
+    //printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
+    //printf("************* proc: %s - line: %d\n", __func__, __LINE__);
+    //getchar();
+
     int ret, i;
     AVStream *st;
 
@@ -4263,6 +4279,11 @@ int av_write_frame( AVFormatContext *s, AVPacket *pkt )
 {
     LogStr ("Init");
 
+    //Fernando:
+    //printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
+    //printf("************* proc: %s - line: %d\n", __func__, __LINE__);
+    //getchar();
+
     int ret = compute_pkt_fields2(s->streams[pkt->stream_index], pkt);
 
     if (ret < 0 && !(s->oformat->flags & AVFMT_NOTIMESTAMPS))
@@ -4441,6 +4462,11 @@ int av_interleaved_write_frame( AVFormatContext *s, AVPacket *pkt )
 int av_write_trailer( AVFormatContext *s )
 {
     LogStr ("Init");
+
+    //Fernando:
+    //printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
+    //printf("************* proc: %s - line: %d\n", __func__, __LINE__);
+    //getchar();
 
     int ret, i;
 

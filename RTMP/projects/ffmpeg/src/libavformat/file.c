@@ -98,6 +98,12 @@ static int file_write( URLContext *h, unsigned char *buf, int size )
 {
     LogStr ("Init");
 
+    //Fernando:
+    //printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
+    //printf("************* proc: %s - line: %d\n", __func__, __LINE__);
+    //hex_dump(buf, size);
+    //getchar();
+
     int fd = (size_t) h->priv_data;
 
     LogStr ("Exit");

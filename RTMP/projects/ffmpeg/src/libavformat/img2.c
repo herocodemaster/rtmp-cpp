@@ -395,6 +395,9 @@ static int img_read_packet( AVFormatContext *s1, AVPacket *pkt )
 
     if (ret[0] <= 0 || ret[1] < 0 || ret[2] < 0)
     {
+        //Fernando:
+        //printf("************* av_free_packet(pkt) - proc: %s - line: %d\n", __func__, __LINE__);
+        //getchar();
         av_free_packet(pkt);
         LogStr("Exit");
         return AVERROR(EIO); /* signal EOF */
