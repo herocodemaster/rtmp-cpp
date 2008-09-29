@@ -21,7 +21,10 @@
 
 //Fernando: 20080908
 //#define LogStr(str)  printf ( "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__)
-#define LogStr(str) av_log(NULL, AV_LOG_ERROR, "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__);
+//#define LogStr(str) av_log(NULL, AV_LOG_ERROR, "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__);
+#define LogStr(str) ;
+
+
 
 #include "avformat.h"
 #include "internal.h"
@@ -31,6 +34,30 @@
 #include <sys/time.h>
 #include <time.h>
 #include <strings.h>
+
+
+//Fernando:
+//#include <sys/types.h>
+//#include <time.h>
+//#include <unistd.h>
+//#include <stdio.h>
+//#include <math.h>
+//#include <pthread.h>
+//#include <windows.h>
+#include <unistd.h>
+#include <sys/unistd.h>
+#include <sys/timeb.h>
+#include <sys/time.h>
+
+
+//Fernando:
+//void sleep(unsigned int mseconds)
+//{
+//    clock_t goal = mseconds + clock();
+//    while (goal > clock());
+//}
+
+
 
 #undef NDEBUG
 #include <assert.h>
@@ -359,6 +386,14 @@ AVInputFormat *av_find_input_format( const char *short_name )
 void av_destruct_packet( AVPacket *pkt )
 {
     LogStr("Init");
+
+    printf("************** av_destruct_packet ******************\n");
+    printf("%s: %d\n", "pkt: ", pkt);
+    printf("%s: %d\n", "pkt->priv: ", pkt->priv);
+    printf("%s: %d\n", "pkt->destruct: ", pkt->destruct);
+    printf("%s: %d\n", "pkt->data: ", pkt->data);
+    printf("****************************************************\n");
+
 
     av_free(pkt->data);
     pkt->data = NULL;
@@ -1558,6 +1593,7 @@ void dumpPacket(AVPacket *pkt)
 {
     LogStr ("Init");
 
+    printf("%s: %d\n", "pkt: ", pkt);
     printf("%s: %d\n", "pkt->size: ", pkt->size);
     printf("%s: %d\n", "pkt->pts: ", pkt->pts);
     printf("%s: %d\n", "pkt->dts: ", pkt->dts);
@@ -1565,6 +1601,10 @@ void dumpPacket(AVPacket *pkt)
     printf("%s: %d\n", "pkt->flags: ", pkt->flags);
     printf("%s: %d\n", "pkt->duration: ", pkt->duration);
     printf("%s: %d\n", "pkt->pos: ", pkt->pos);
+
+    printf("%s: %d\n", "pkt->priv: ", pkt->priv);
+    printf("%s: %d\n", "pkt->destruct: ", pkt->destruct);
+    printf("%s: %d\n", "pkt->data: ", pkt->data);
     printf("%s:\n", "Buffer: ");
 
 //        void  *priv;
@@ -1686,6 +1726,41 @@ int av_read_frame( AVFormatContext *s, AVPacket *pkt )
 }
 
 
+////Fernando:
+//void copyPacket(AVPacket *source, AVPacket *destination)
+//{
+//    LogStr ("Init");
+//
+//    av_init_packet(destination);
+//
+//
+//    destination->dts = source->dts;
+//    destination->duration = source->duration;
+//    destination->flags = source->flags;
+//    destination->pos = source->pos;
+//    destination->pts = source->pts;
+//    destination->size = source->size;
+//    destination->stream_index = source->stream_index;
+//
+//
+//    av_strlcpy(destination->data, source->data, source->size);
+//     = ;
+//    //destination->destruct
+//    //destination->priv
+//
+//
+//    int ret;
+//    ret = s->iformat->read_packet(s, pkt); //img_read_packet
+//    if (ret < 0)
+//    {
+//        LogStr ("Exit");
+//        return ret;
+//    }
+//
+//
+//    LogStr ("Exit");
+//}
+
 
 //Fernando:
 void getNextImageFromFile(char* fileName, AVFormatContext *s, AVPacket *pkt)
@@ -1731,44 +1806,311 @@ void getNextImageFromFile(char* fileName, AVFormatContext *s, AVPacket *pkt)
 
 }
 
+
+
+//Fernando:
+struct timeval timeToTimeVal(uint64_t time)
+{
+    struct tm *structTm = (struct tm*) av_malloc(sizeof(struct tm));
+
+    uint64_t year  = (time / 10000000000000);
+    uint64_t month = (time / 100000000000) - (year*100);
+    uint64_t day   = (time / 1000000000) - ( (year*10000) + (month*100) );
+    uint64_t hour  = (time / 10000000) - ( (year*1000000) + (month*10000) + (day*100) );
+    uint64_t min   = (time / 100000) - ( (year*100000000) + (month*1000000) + (day*10000) + (hour*100) );
+    uint64_t sec   = (time / 1000) - ( (year*10000000000) + (month*100000000) + (day*1000000) + (hour*10000) + (min*100));
+    uint64_t milli = (time ) - ( (year*10000000000000) + (month*100000000000) + (day*1000000000) + (hour*10000000) + (min*100000) + (sec*1000));
+
+
+//    printf("year:  %d\n", year);
+//    printf("month: %d\n", month);
+//    printf("day:   %d\n", day);
+//    printf("hour:  %d\n", hour);
+//    printf("min:   %d\n", min);
+//    printf("sec:   %d\n", sec);
+//    printf("milli:   %d\n", milli);
+
+    structTm->tm_year = year - 1900;
+    structTm->tm_mon = month - 1;
+    structTm->tm_mday = day;
+    structTm->tm_hour = hour;
+    structTm->tm_min = min;
+    structTm->tm_sec = sec;
+    structTm->tm_isdst = 0;
+    //structTm->tm_wday: 6
+    //structTm->tm_yday: 270
+
+
+    time_t tempTimeT = mktime(structTm);
+    //printf("tempTimeT-------:  %d\n", tempTimeT);
+    //printf("milli*1000-------:  %d\n", milli*1000);
+
+    struct timeval timeVal;
+
+    timeVal.tv_sec  = tempTimeT;
+    timeVal.tv_usec = milli*1000; //microseconds
+
+
+    av_free(structTm); //free();
+
+    return timeVal;
+}
+
+//Fernando: Retorna en Microsegundos
+uint64_t datediff(uint64_t newer, uint64_t older)
+{
+
+    struct timeval newerTimeVal = timeToTimeVal(newer);
+    struct timeval olderTimeVal = timeToTimeVal(older);
+
+    uint64_t dif = ((newerTimeVal.tv_sec * 1000000) + newerTimeVal.tv_usec) - ((olderTimeVal.tv_sec * 1000000) + olderTimeVal.tv_usec);
+
+    return dif;
+
+//    printf("newerTimeVal.tv_sec:  %d\n", newerTimeVal.tv_sec);
+//    printf("newerTimeVal.tv_usec: %d\n", newerTimeVal.tv_usec);
+//    printf("olderTimeVal.tv_sec:  %d\n", olderTimeVal.tv_sec);
+//    printf("olderTimeVal.tv_usec: %d\n", olderTimeVal.tv_usec);
+
+
+//    -------**************----------------******************
+//    -------**************----------------******************
+//    tim.tv_sec:  1222551212
+//    tim.tv_usec: 78125
+//    tempTM.tm_year: 108
+//    tempTM.tm_mon: 8
+//    tempTM.tm_mday: 27
+//    tempTM.tm_hour: 18
+//    tempTM.tm_min: 33
+//    tempTM.tm_sec: 32
+//    tempTM.tm_isdst: 0
+//    tempTM.tm_wday: 6
+//    tempTM.tm_yday: 270
+//    -------**************----------------******************
+//    -------**************----------------******************
+
+
+//    struct timeval tim;
+//    gettimeofday(&tim, NULL);
+//
+//    //time_t seconds = tim.tv_sec;
+//    struct tm* tempTM = localtime(&tim.tv_sec);
+//    int year = tempTM->tm_year + 1900;
+//
+//    printf("-------**************----------------******************\n");
+//    printf("-------**************----------------******************\n");
+//
+//    printf("tim.tv_sec:  %d\n", tim.tv_sec);
+//    printf("tim.tv_usec: %d\n", tim.tv_usec);
+//    printf("tempTM.tm_year: %d\n", tempTM->tm_year);
+//    printf("tempTM.tm_mon: %d\n", tempTM->tm_mon);
+//    printf("tempTM.tm_mday: %d\n", tempTM->tm_mday);
+//    printf("tempTM.tm_hour: %d\n", tempTM->tm_hour);
+//    printf("tempTM.tm_min: %d\n", tempTM->tm_min);
+//    printf("tempTM.tm_sec: %d\n", tempTM->tm_sec);
+//    printf("tempTM.tm_isdst: %d\n", tempTM->tm_isdst);
+//    printf("tempTM.tm_wday: %d\n", tempTM->tm_wday);
+//    printf("tempTM.tm_yday: %d\n", tempTM->tm_yday);
+//
+//    printf("-------**************----------------******************\n");
+//    printf("-------**************----------------******************\n");
+
+
+}
+
+
+//Fernando:
+void getNextFileName( char *fileName )
+{
+    LogStr ("Init");
+
+    av_strlcpy(fileName, "\0", 255);
+
+
+//    if (sameImageRemainingCounter > 0)
+//    {
+//        printf("sameImageRemainingCounter: %d\n", sameImageRemainingCounter);
+//
+//        av_strlcpy(fileName, lastFileName, 255);
+//        sameImageRemainingCounter--;
+//        LogStr ("Exit");
+//        return;
+//    }
+
+    char buf[255];
+    FILE* fp = fopen("img\\images.txt", "r+"); //a+
+    if( fp == NULL)
+    {
+        //printf("Can't open the file\n");
+        LogStr ("Exit");
+        return;
+    }
+
+    printf("3\n");
+
+    while( fgets(buf, sizeof(buf), fp) != NULL)
+    {
+        if (buf[0] == '0')
+        {
+            break;
+        }
+    }
+
+    if (buf[0] != '0')
+    {
+        LogStr ("Exit");
+        return;
+    }
+
+    fpos_t position;
+    fgetpos (fp, &position);
+    size_t strl = strlen(buf);
+    position = position - strl - 1;
+    fsetpos (fp, &position);
+    fputs("1", fp);
+    fclose(fp);
+
+
+
+
+    uint64_t timeStamp;
+    char tempTime[18];
+    char *temp;
+
+    temp = strtok(buf, "|");
+    temp = strtok(NULL, "|");
+    av_strlcpy(tempTime, temp, 18);
+    temp = strtok(NULL, "|");
+    size_t fileNameLen = strlen(temp);
+
+
+    av_strlcpy(fileName, "img\\", 255);
+    av_strlcat(fileName, temp, fileNameLen+4);
+
+
+
+    timeStamp = atoll(tempTime);
+    printf("tempTime: %s\n", tempTime);
+    printf("timeStamp: %" PRIu64 "\n", timeStamp);
+    printf("lastTimeStamp: %" PRIu64 "\n", lastTimeStamp);
+
+
+
+
+
+
+    if (lastTimeStamp != 0)
+    {
+        int dif = datediff(timeStamp, lastTimeStamp);
+        //int dif = timeStamp - lastTimeStamp;
+        //printf("dif: %d\n", dif);
+        sameImageRemainingCounter = dif*24/1000000;
+    }
+
+
+
+
+
+    lastTimeStamp = timeStamp;
+    av_strlcpy(lastFileName, fileName, 255);
+
+
+
+    LogStr ("Exit");
+    return;
+}
+
+
+
+////Fernando:
+//void getNextFileName( char *fileName )
+//{
+//    LogStr ("Init");
+//
+//    int tempNumber = (imageNumber/24) % 10;
+//
+//    //printf("imageNumber/3: %d \n", imageNumber/3);
+//
+//    printf("tempNumber: %d \n", tempNumber);
+//    //sprintf(fileName, "img\\image_%d.jpg", tempNumber);
+//    snprintf(fileName, 255, "img\\image_%d.jpg", tempNumber);
+//
+//    //_sleep(950);
+//    LogStr ("Exit");
+//    return;
+//}
+
+
 //Fernando:
 int av_read_frame_2( AVFormatContext *s, AVPacket *pkt )
 {
     LogStr ("Init");
     LogStr ("1");
 
-
-    if (imageNumber+1 >= 5)
-    {
-        LogStr ("2");
-        LogStr ("Exit");
-        return -1;
-    }
-
     LogStr ("3");
-
-    char fileIndex[50] = "";
-    LogStr ("4");
-
-    itoa(imageNumber+1, fileIndex, 10);
-    LogStr ("5");
 
     char fileName[255];
     LogStr ("6");
 
-    av_strlcpy(fileName, "img\\A00", 255);
-    LogStr ("7");
+    av_strlcpy(fileName, "\0", 255);
 
-    av_strlcat(fileName, fileIndex, 255);
-    LogStr ("8");
-
-    av_strlcat(fileName, ".jpg", 255);
-    LogStr ("9");
+    getNextFileName( fileName );
 
 
-    printf("*********** fileName: %s\n", fileName);
+//    if (strcmp(lastFileName_2, fileName) == 0)
+//    {
+//        printf("*********** IGUALES\n");
+//        //*pkt = lastPacket;
+//        copyPacket(lastPacket, pkt);
+//    }
+//    else
+//    {
+//        printf("*********** NO SON IGUALES\n");
+//
+//        /*
+//        while ( strcmp(fileName, "\0") == 0)
+//        {
+//            printf(".");
+//            av_strlcpy(fileName, "\0", 255);
+//            getNextFileName( fileName );
+//            //printf("*********** fileName: '%s'\n", fileName);
+//            //Sleep(1000);
+//            //sleep(500);
+//            _sleep(300);
+//        }
+//        */
+//
+//        printf("*********** fileName: '%s'\n", fileName);
+//        //printf("*********** lastFileName_2: '%s'\n", lastFileName_2);
+//        LogStr ("10");
+//        getNextImageFromFile(fileName, s, pkt);
+//    }
+
+
+
+    /*
+    while ( strcmp(fileName, "\0") == 0)
+    {
+        printf(".");
+        av_strlcpy(fileName, "\0", 255);
+        getNextFileName( fileName );
+        //printf("*********** fileName: '%s'\n", fileName);
+        //Sleep(1000);
+        //sleep(500);
+        _sleep(300);
+    }
+    */
+
+    printf("*********** fileName: '%s'\n", fileName);
+    //printf("*********** lastFileName_2: '%s'\n", lastFileName_2);
     LogStr ("10");
     getNextImageFromFile(fileName, s, pkt);
+
+    pkt->pts = imageNumber;
+    pkt->dts = imageNumber;
+    pkt->duration = 1;
+    pkt->flags = 1;
+
 
 //    printf("*********************************************************\n");
 //    printf("*********************************************************\n");
@@ -1777,11 +2119,9 @@ int av_read_frame_2( AVFormatContext *s, AVPacket *pkt )
 //    printf("*********************************************************\n");
 //    printf("*********************************************************\n");
 
-    pkt->pts = 1;
-    pkt->dts = 1;
 
-    LogStr ("11");
-
+    //lastPacket = *pkt;
+    av_strlcpy(lastFileName_2, fileName, 255);
 
     imageNumber++;
     LogStr ("Exit");

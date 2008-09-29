@@ -120,7 +120,13 @@ static uint8_t static_rl_table_store[5][2][2 * MAX_RUN + MAX_LEVEL + 3];
 //Fernando: 20080908
 //#undef printf
 //#define LogStr(str)  printf ( "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__)
-#define LogStr(str) av_log(NULL, AV_LOG_ERROR, "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__);
+//#define LogStr(str) av_log(NULL, AV_LOG_ERROR, "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__);
+//#define LogStr(str) ;
+#define LogStr(str) ;
+
+
+
+
 
 int h263_get_picture_format( int width, int height )
 {
@@ -186,6 +192,16 @@ void ff_flv_encode_picture_header( MpegEncContext * s, int picture_number )
 {
     LogStr("Init");
 
+
+    //Fernando:
+    #undef printf
+    printf("-------------------------------------------------\n");
+    printf("picture_number: %d\n", picture_number);
+    printf("s->width: %d\n", s->width);
+    printf("s->height: %d\n", s->height);
+    printf("-------------------------------------------------\n");
+
+
     int format;
 
     align_put_bits(&s->pb);
@@ -194,6 +210,7 @@ void ff_flv_encode_picture_header( MpegEncContext * s, int picture_number )
     put_bits(&s->pb, 5, (s->h263_flv - 1)); /* 0: h263 escape codes 1: 11-bit escape codes */
     put_bits(&s->pb, 8, (((int64_t) s->picture_number * 30 * s->avctx->time_base.num) / //FIXME use timestamp
         s->avctx->time_base.den) & 0xff); /* TemporalReference */
+
     if (s->width == 352 && s->height == 288)
         format = 2;
     else if (s->width == 176 && s->height == 144)
@@ -208,7 +225,9 @@ void ff_flv_encode_picture_header( MpegEncContext * s, int picture_number )
         format = 0; /* use 1 byte width & height */
     else
         format = 1; /* use 2 bytes width & height */
+
     put_bits(&s->pb, 3, format); /* PictureSize */
+
     if (format == 0)
     {
         put_bits(&s->pb, 8, s->width);
@@ -2622,7 +2641,7 @@ void h263_encode_init( MpegEncContext *s )
  */
 static void h263_encode_block( MpegEncContext * s, DCTELEM * block, int n )
 {
-    LogStr("Init");
+    //LogStr("Init");
 
     int level, run, last, i, j, last_index, last_non_zero, sign, slevel, code;
     RLTable *rl;
@@ -2769,7 +2788,7 @@ static void h263_encode_block( MpegEncContext * s, DCTELEM * block, int n )
         }
     }
 
-    LogStr("Exit");
+    //LogStr("Exit");
 }
 
 /***************************************************/

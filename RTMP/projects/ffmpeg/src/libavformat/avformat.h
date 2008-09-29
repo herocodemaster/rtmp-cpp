@@ -1037,6 +1037,11 @@ int find_info_tag(char *arg, int arg_size, const char *tag1, const char *info);
 int modoManual;
 char *globalFileName;
 int imageNumber;
+uint64_t lastTimeStamp;
+char lastFileName[255];
+char lastFileName_2[255];
+int sameImageRemainingCounter;
+AVPacket lastPacket;
 
 
 /**

@@ -33,7 +33,10 @@
 //Fernando: 20080908
 //#undef printf
 //#define LogStr(str)  printf ( "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__)
-#define LogStr(str) av_log(NULL, AV_LOG_ERROR, "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__);
+//#define LogStr(str) av_log(NULL, AV_LOG_ERROR, "************************** %s: %s - %s-%d **************************\n", __func__, str, __FILE__, __LINE__);
+#define LogStr(str) ;
+
+
 
 #define LZW_MAXBITS 12
 #define LZW_SIZTABLE (1<<LZW_MAXBITS)

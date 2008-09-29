@@ -2603,23 +2603,42 @@ static int av_encode( AVFormatContext **output_files, int nb_output_files, AVFor
 
         /* read a frame from it and output it in the fifo */
         is = input_files[file_index];
-        //if (av_read_frame(is, &pkt) < 0)
-        if (av_read_frame_2(is, &pkt) < 0)
+
+
+        //Fernando:
+        printf("sameImageRemainingCounter: %d \n", sameImageRemainingCounter);
+
+        if (sameImageRemainingCounter > 0)
         {
-            LogStr("%%%%%%%%%%%%%%%%%%%%%%% 1 ");
-            file_table[file_index].eof_reached = 1;
+            pkt = lastPacket;
+            pkt.dts = imageNumber;
+            pkt.pts = imageNumber;
+            sameImageRemainingCounter--;
+            imageNumber++;
+        }
 
-            if (opt_shortest)
+        else
+        {
+            //if (av_read_frame(is, &pkt) < 0)
+            if (av_read_frame_2(is, &pkt) < 0)
             {
-                LogStr("%%%%%%%%%%%%%%%%%%%%%%% 2 ");
-                break;
-            }
-            else
-            {
-                LogStr("%%%%%%%%%%%%%%%%%%%%%%% 3 ");
+                LogStr("%%%%%%%%%%%%%%%%%%%%%%% 1 ");
+                file_table[file_index].eof_reached = 1;
 
-                continue;
+                if (opt_shortest)
+                {
+                    LogStr("%%%%%%%%%%%%%%%%%%%%%%% 2 ");
+                    break;
+                }
+                else
+                {
+                    LogStr("%%%%%%%%%%%%%%%%%%%%%%% 3 ");
+
+                    continue;
+                }
             }
+
+            lastPacket = pkt;
         }
 
         LogStr("%%%%%%%%%%%%%%%%%%%%%%% 4");
@@ -2635,11 +2654,13 @@ static int av_encode( AVFormatContext **output_files, int nb_output_files, AVFor
         printf("--------------------------------------------------------------------------\n");
         printf("--------------------------------------------------------------------------\n");
         //Fernando:
+        printf("pkt: %d\n", &pkt);
         dumpPacket(&pkt);
         printf("--------------------------------------------------------------------------\n");
         printf("--------------------------------------------------------------------------\n");
         printf("--------------------------------------------------------------------------\n");
         printf("--------------------------------------------------------------------------\n");
+        //getchar();
 
 
         LogStr("%%%%%%%%%%%%%%%%%%%%%%% 6");
@@ -2726,11 +2747,21 @@ static int av_encode( AVFormatContext **output_files, int nb_output_files, AVFor
                 fprintf(stderr, "Error while decoding stream #%d.%d\n", ist->file_index, ist->index);
             }
 
+            printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
             av_free_packet(&pkt);
+            printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
             goto redo;
         }
 
-        discard_packet: av_free_packet(&pkt);
+        discard_packet:
+
+        //Fernando:
+        if (sameImageRemainingCounter == 0)
+        {
+            printf("+++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            av_free_packet(&pkt);
+            printf("+++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+        }
 
         /* dump report by using the output first video and audio streams */
         print_report(output_files, ost_table, nb_ostreams, 0);
@@ -5414,8 +5445,8 @@ void addAnotherImage(char* fileName)
 int main( int argc, char **argv )
 {
 
-    //Fernando:
-    av_log_set_callback(log_callback_file);
+    //Fernando: PARA LOGUEAR A ARCHIVO
+    //av_log_set_callback(log_callback_file);
 
 
     LogStr ("Init");
@@ -5423,6 +5454,7 @@ int main( int argc, char **argv )
     //Fernando:
     modoManual = 0;
     imageNumber = 0;
+    sameImageRemainingCounter = 0;
 
 
     int i;
