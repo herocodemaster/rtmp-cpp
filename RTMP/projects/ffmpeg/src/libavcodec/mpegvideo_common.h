@@ -335,7 +335,6 @@ void mpeg_motion_internal( MpegEncContext *s, uint8_t *dest_y, uint8_t *dest_cb,
         pix_op[s->chroma_x_shift][uvdxy](dest_cr, ptr_cr, uvlinesize, h >> s->chroma_y_shift);
     }
 
-    //Fernando: COMPILER
     if (!is_mpeg12 && (ENABLE_H261_ENCODER || ENABLE_H261_DECODER) && s->out_format == FMT_H261)
     {
         ff_h261_loop_filter(s);
