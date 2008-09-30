@@ -336,10 +336,10 @@ void mpeg_motion_internal( MpegEncContext *s, uint8_t *dest_y, uint8_t *dest_cb,
     }
 
     //Fernando: COMPILER
-//    if (!is_mpeg12 && (ENABLE_H261_ENCODER || ENABLE_H261_DECODER) && s->out_format == FMT_H261)
-//    {
-//        ff_h261_loop_filter(s);
-//    }
+    if (!is_mpeg12 && (ENABLE_H261_ENCODER || ENABLE_H261_DECODER) && s->out_format == FMT_H261)
+    {
+        ff_h261_loop_filter(s);
+    }
 }
 /* apply one mpeg motion vector to the three components */
 static av_always_inline
