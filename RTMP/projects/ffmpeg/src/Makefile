@@ -22,7 +22,7 @@ FFLIBS-$(CONFIG_AVFILTER) += avfilter
 FFLIBS-$(CONFIG_POSTPROC) += postproc
 FFLIBS-$(CONFIG_SWSCALE)  += swscale
 
-FFLIBS := avdevice avformat avcodec avutil
+FFLIBS := avdevice avformat avcodec avutil avfunc
 
 include common.mak
 
