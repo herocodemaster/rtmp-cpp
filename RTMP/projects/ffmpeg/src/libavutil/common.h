@@ -23,6 +23,9 @@
  * common internal and external API header
  */
 
+//TODO: Fernando: Ver de hacer este archivo multiplataforma, tiene codigo asm
+
+
 #ifndef AVUTIL_COMMON_H
 #define AVUTIL_COMMON_H
 
