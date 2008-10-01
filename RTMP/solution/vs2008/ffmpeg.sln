@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ffmpeg", "..\..\projects\ffmpeg\projects\vs2008\ffmpeg.vcproj", "{A139114F-7DB1-40E5-A8B3-6FAA5E7E0549}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libavutil", "..\..\projects\ffmpeg\projects\vs2008\libavutil.vcproj", "{3BBE05FB-72C1-4AC7-BA3A-DA24A823EB8B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libavcodec", "..\..\projects\ffmpeg\projects\vs2008\libavcodec.vcproj", "{2AF0E9F7-F7D2-420F-9CFF-6CB3BEA86D93}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libavdevice", "..\..\projects\ffmpeg\projects\vs2008\libavdevice.vcproj", "{4C2353B2-4E23-4EB6-AEBE-37D2B7507FC7}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libavfilter", "..\..\projects\ffmpeg\projects\vs2008\libavfilter.vcproj", "{E8F8815A-AFB3-4BC0-8D51-E334C4574703}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libavformat", "..\..\projects\ffmpeg\projects\vs2008\libavformat.vcproj", "{B7B2D5C9-DF9C-4242-B3DB-929FBCADBBBB}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libpostproc", "..\..\projects\ffmpeg\projects\vs2008\libpostproc.vcproj", "{2250B137-721E-44D8-9607-215796AD8C50}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libswscale", "..\..\projects\ffmpeg\projects\vs2008\libswscale.vcproj", "{C7E8F42B-A129-4426-89A1-7A4F26D252BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A139114F-7DB1-40E5-A8B3-6FAA5E7E0549}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A139114F-7DB1-40E5-A8B3-6FAA5E7E0549}.Debug|Win32.Build.0 = Debug|Win32
+		{A139114F-7DB1-40E5-A8B3-6FAA5E7E0549}.Release|Win32.ActiveCfg = Release|Win32
+		{A139114F-7DB1-40E5-A8B3-6FAA5E7E0549}.Release|Win32.Build.0 = Release|Win32
+		{3BBE05FB-72C1-4AC7-BA3A-DA24A823EB8B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3BBE05FB-72C1-4AC7-BA3A-DA24A823EB8B}.Debug|Win32.Build.0 = Debug|Win32
+		{3BBE05FB-72C1-4AC7-BA3A-DA24A823EB8B}.Release|Win32.ActiveCfg = Release|Win32
+		{3BBE05FB-72C1-4AC7-BA3A-DA24A823EB8B}.Release|Win32.Build.0 = Release|Win32
+		{2AF0E9F7-F7D2-420F-9CFF-6CB3BEA86D93}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2AF0E9F7-F7D2-420F-9CFF-6CB3BEA86D93}.Debug|Win32.Build.0 = Debug|Win32
+		{2AF0E9F7-F7D2-420F-9CFF-6CB3BEA86D93}.Release|Win32.ActiveCfg = Release|Win32
+		{2AF0E9F7-F7D2-420F-9CFF-6CB3BEA86D93}.Release|Win32.Build.0 = Release|Win32
+		{4C2353B2-4E23-4EB6-AEBE-37D2B7507FC7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4C2353B2-4E23-4EB6-AEBE-37D2B7507FC7}.Debug|Win32.Build.0 = Debug|Win32
+		{4C2353B2-4E23-4EB6-AEBE-37D2B7507FC7}.Release|Win32.ActiveCfg = Release|Win32
+		{4C2353B2-4E23-4EB6-AEBE-37D2B7507FC7}.Release|Win32.Build.0 = Release|Win32
+		{E8F8815A-AFB3-4BC0-8D51-E334C4574703}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E8F8815A-AFB3-4BC0-8D51-E334C4574703}.Debug|Win32.Build.0 = Debug|Win32
+		{E8F8815A-AFB3-4BC0-8D51-E334C4574703}.Release|Win32.ActiveCfg = Release|Win32
+		{E8F8815A-AFB3-4BC0-8D51-E334C4574703}.Release|Win32.Build.0 = Release|Win32
+		{B7B2D5C9-DF9C-4242-B3DB-929FBCADBBBB}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B7B2D5C9-DF9C-4242-B3DB-929FBCADBBBB}.Debug|Win32.Build.0 = Debug|Win32
+		{B7B2D5C9-DF9C-4242-B3DB-929FBCADBBBB}.Release|Win32.ActiveCfg = Release|Win32
+		{B7B2D5C9-DF9C-4242-B3DB-929FBCADBBBB}.Release|Win32.Build.0 = Release|Win32
+		{2250B137-721E-44D8-9607-215796AD8C50}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2250B137-721E-44D8-9607-215796AD8C50}.Debug|Win32.Build.0 = Debug|Win32
+		{2250B137-721E-44D8-9607-215796AD8C50}.Release|Win32.ActiveCfg = Release|Win32
+		{2250B137-721E-44D8-9607-215796AD8C50}.Release|Win32.Build.0 = Release|Win32
+		{C7E8F42B-A129-4426-89A1-7A4F26D252BE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C7E8F42B-A129-4426-89A1-7A4F26D252BE}.Debug|Win32.Build.0 = Debug|Win32
+		{C7E8F42B-A129-4426-89A1-7A4F26D252BE}.Release|Win32.ActiveCfg = Release|Win32
+		{C7E8F42B-A129-4426-89A1-7A4F26D252BE}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
