@@ -2,6 +2,18 @@
 # -- Ultimo -- # ./configure --extra-cflags="-mno-cygwin -mms-bitfields" --extra-ldflags="-Wl,-add-stdcall-alias" --enable-memalign-hack --target-os=mingw32 --enable-shared --disable-static --enable-gpl
 #./configure --extra-cflags="-mno-cygwin -mms-bitfields" --extra-ldflags="-Wl,--add-stdcall-alias" --enable-memalign-hack --target-os=mingw32 --enable-shared --disable-ffserver --disable-ffplay --enable-gpl --disable-decoder=ac3 --disable-decoder=eac3
 #./configure --extra-cflags="-mno-cygwin -mms-bitfields" --extra-ldflags="-Wl,--add-stdcall-alias" --enable-memalign-hack --target-os=mingw32 --enable-shared --enable-gpl
-./configure --extra-cflags="-mno-cygwin -mms-bitfields" --extra-ldflags="-Wl,-add-stdcall-alias" --enable-memalign-hack --target-os=mingw32 --enable-gpl
+
+
+
+#1-Este ultimo funciona perfectamente con MinGW-MSYS etc...
+#./configure --extra-cflags="-mno-cygwin -mms-bitfields" --extra-ldflags="-Wl,-add-stdcall-alias" --enable-memalign-hack --target-os=mingw32 --enable-gpl
  
+#2-
+#./configure --enable-memalign-hack 
+ 
+
+
+
+#Ejecucion actual: 2
+./configure --enable-memalign-hack 
 
