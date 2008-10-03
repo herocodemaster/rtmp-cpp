@@ -16,11 +16,17 @@ Open Formats:
  - Ogg Theora (Video)
 
 
+TODO General:
+	- Comparar el tiempo de procesamiento en cada Codec.
+	- 
+
 
 ----------------------------------------------------------------------------------------------------------------
 RTMP - Red5 - Flash Player - FLV - Codecs: (VP6, H263, H264, ... VER)
 ----------------------------------------------------------------------------------------------------------------
 	PASOS A SEGUIR - HITOS:
+		- De de comprimir al máximo el tamaño del archivo FLV cuando usamos MJPEG
+		- De de optimizar el tiempo de conversion de formatos.
 		- Usar ffmpeg para convertir varias imagenes JPG's en un archivo FLV
 		- "Streamear" un archivo FLV vía RTMP
 		- Eliminar funcionalidad innecesaria de ffmpeg --> El nuevo nombre será "mjpeg2flv"
