@@ -1,10 +1,45 @@
-PASOS A SEGUIR - HITOS:
-	- Usar ffmpeg para convertir varias imagenes JPG's en un archivo FLV
-	- "Streamear" un archivo FLV vía RTMP
-	- Eliminar funcionalidad innecesaria de ffmpeg --> El nuevo nombre será "mjpeg2flv"
-	- Convertir el código de "mjpeg2flv" de C a ISO C++
-	- Hacer que "mjpeg2flv" funcione en multiples compiladores y plataformas
-	- 
+
+Opciones Para Streaming:
+- RTMP - Red5                     - Flash Player      - FLV                                                                    - Codecs: VP6, H263, H264, ... VER
+- RTSP - Darwing Streaming Server - Quicktime player  - (Ver formatos de archivos)                                             - Codecs: H264, ??????
+- RTSP - VideoLAN Server          - VLC Media Player  - MPEG-1, MPEG-2 and MPEG-4 files, DVDs                                  - Codecs: ??????
+- XXXX - Windows Media Server     - Silverlight       - Windows Media Audio and Video (WMA, VC-1/WMV7–9) as well as MP3 audio  - Codecs: ??????
+
+
+Herramientas para convertir archivos de video:
+	- ffmpeg
+	- MEncoder
+	- Theora????
+
+Open Formats:
+ - Ogg Vorbis (Audio)
+ - Ogg Theora (Video)
+
+
+
+----------------------------------------------------------------------------------------------------------------
+RTMP - Red5 - Flash Player - FLV - Codecs: (VP6, H263, H264, ... VER)
+----------------------------------------------------------------------------------------------------------------
+	PASOS A SEGUIR - HITOS:
+		- Usar ffmpeg para convertir varias imagenes JPG's en un archivo FLV
+		- "Streamear" un archivo FLV vía RTMP
+		- Eliminar funcionalidad innecesaria de ffmpeg --> El nuevo nombre será "mjpeg2flv"
+		- Convertir el código de "mjpeg2flv" de C a ISO C++
+		- Hacer que "mjpeg2flv" funcione en multiples compiladores y plataformas
+		- 
+
+
+
+	Codecs disponibles en FLV:
+	
+	
+	Protocolos de Stream disponibles por Flash Player:
+		- RTMP (propietario de Adobe)
+		- RTSP????? (Open)
+	
+
+----------------------------------------------------------------------------------------------------------------
+
 
 
 TODO List:
