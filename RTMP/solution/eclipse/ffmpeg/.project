@@ -87,12 +87,12 @@
 		<link>
 			<name>bin</name>
 			<type>2</type>
-			<location>F:/Development/CPP/RTMP/projects/ffmpeg/bin</location>
+			<location>C:/Documents and Settings/fernando.pellicioni/My Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/bin</location>
 		</link>
 		<link>
 			<name>src</name>
 			<type>2</type>
-			<location>F:/Development/CPP/RTMP/projects/ffmpeg/src</location>
+			<location>C:/Documents and Settings/fernando.pellicioni/My Documents/Development/CPP/rtmp-cpp/RTMP/projects/ffmpeg/src</location>
 		</link>
 	</linkedResources>
 </projectDescription>
